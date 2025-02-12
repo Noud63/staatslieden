@@ -8,6 +8,8 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 const CommentsOnComment = ({com, userId, postId}) => {
 
+  const { data: session } = useSession();
+
   const reactions = com?.reactions.sort((a, b) =>
     b.reactedAt.localeCompare(a.reactedAt)
   );
@@ -111,7 +113,7 @@ const CommentsOnComment = ({com, userId, postId}) => {
                       </button>
                     )}
 
-                    {userId && (
+                    {session?.user && (
                       <button
                         type="button"
                         className="cursor-pointer text-[12px] font-semibold text-gray-600"

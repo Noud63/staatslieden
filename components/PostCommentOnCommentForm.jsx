@@ -104,7 +104,7 @@ const PostCommentOnCommentForm= ({ postId, commentId, setShowForm }) => {
         type="submit"
         className="absolute bottom-2 right-2 cursor-pointer"
       >
-        {sendButton && <IoSendSharp color="brown" size={25} />}
+        {sendButton && <IoSendSharp color="#900" size={22} />}
       </button>
     </form>
   );

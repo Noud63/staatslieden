@@ -1,0 +1,60 @@
+[
+  {
+    "id": 0,
+    "title": "Supermarkten",
+    "items": [
+      {
+        "naam": "Albert Heijn",
+        "adres": "Van Limburg Stirumstraat 44",
+        "postcode": "1051BC Amsterdam",
+        "telefoon": "020-6812187",
+        "website": "https://www.ah.nl",
+        "email": ""
+      },
+      {
+        "naam": "Dirk van de Broek",
+        "adres": "Tweede Nassaustraat 23",
+        "postcode": "1052BK Amsterdam",
+        "telefoon": "088-3134280",
+        "website": "https://www.dirk.nl/winkels/amsterdam/2e-nassaustraat/30",
+        "email": ""
+      }
+    ]
+  },
+   {
+     "id": 1,
+     "title": "Drogisterijen",
+     "items": [
+       {
+         "naam": "Het Kruidvat",
+         "adres": "Van Limburg Stirumstraat 58",
+         "postcode": "1051BC Amsterdam",
+         "telefoon": "031-8798000",
+         "website": "https://www.kruidvat.nl",
+         "email": ""
+       }
+     ]
+   },
+   {
+     "id": 2,
+     "title": "Bakkerijen",
+     "items": [
+       {
+         "naam": "Bakkerij Westerpark",
+         "adres": "Van Limburg Stirumstraat 34",
+         "postcode": "1051BC Amsterdam",
+         "telefoon": "020-6844180",
+         "website": "https://bakkerijwesterpark.com",
+         "email": ""
+       },
+       {
+         "naam": "Louf westerpark",
+         "adres": "De Wittenkade 96",
+         "postcode": "1051AK Amsterdam",
+         "telefoon": "020-6844180",
+         "website": "https://www.bakkerijlouf.nl",
+         "email": "info@bakkerijlouf.nl"
+       }
+     ]
+   }
+]

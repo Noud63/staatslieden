@@ -1,0 +1,64 @@
+[
+  {
+    "id": 0,
+    "title": "Café's",
+    "items": []
+  },
+  {
+    "id": 1,
+    "title": "Restaurants",
+    "items": []
+  },
+  {
+    "id": 2,
+    "title": "Snackbar",
+    "items": [
+      {
+        "naam": "Stomy's Snackbar",
+        "adres": "Van Limburg Stirumstraat 69",
+        "postcode": "1051BA Amsterdam",
+        "telefoon": "020 684 1444",
+        "website": "",
+        "email": ""
+      },
+      {
+        "naam": "Doardi Ice & Fries",
+        "adres": "Van Limburg Stirumstraat 15",
+        "postcode": "1051AZ Amsterdam",
+        "telefoon": "020 486 1010",
+        "website": "https://doardi.12waiter.eu/c/home",
+        "email": "bestellingen@doardi.nl"
+      },
+      {
+        "naam": "Onze Hanny",
+        "adres": "Van der Hoopstraat 129",
+        "postcode": "1051VE Amsterdam",
+        "telefoon": "020 684 0065",
+        "website": "https://www.instagram.com/explore/locations/2706037042799604/onze-hanny",
+        "email": ""
+      },
+      {
+        "naam": "De Buurman",
+        "adres": "Van Hallstraat 65",
+        "postcode": "1051GZ Amsterdam",
+        "telefoon": "020 488 5872",
+        "website": "https://menu.debuurman-amsterdam.nl",
+        "email": "Info@debuurman-amsterdam.nl"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Afhaal",
+    "items": [
+      {
+        "naam": "SuriKitchen",
+        "adres": "Tweede Nassaustraat 38",
+        "postcode": "1051BC Amsterdam",
+        "telefoon": "020-4751021",
+        "website": "https://surikitchen.nl",
+        "email": ""
+      }
+    ]
+  }
+]

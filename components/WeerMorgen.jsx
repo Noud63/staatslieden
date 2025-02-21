@@ -21,8 +21,7 @@ const now = new Date();
       let sunrise = convertSunsetAndSunrise(sunMoon[1].sunrise);
       let sunset = convertSunsetAndSunrise(sunMoon[1].sunset);
 
-      const dataObj = { ...data, sunrise, sunset };
-      setData(dataObj);
+      setData((prevData) => ({ ...prevData, sunrise, sunset }));
     }
   }, [sunMoon]);
 

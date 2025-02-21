@@ -2,6 +2,7 @@
 import SinglePost from "./SinglePost";
 import useSWR from "swr";
 import Spinner from "./Spinner";
+import Image from "next/image";
 
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 

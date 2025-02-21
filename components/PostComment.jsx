@@ -1,20 +1,29 @@
 "use client";
 import Image from "next/image";
 import PostCommentForm from "./PostCommentForm";
-import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import Comment from "./Comment";
-import CommentsOnComment from "./CommentsOnComment";
 
-const PostComment = ({ post, comments }) => {
-
-   const sortedComments = comments.sort((a, b) =>
-    b.createdAt.localeCompare(a.createdAt)
-  );
-
+const PostComment = ({ post}) => {
   const { data: session } = useSession();
-  const userId = session?.user?.id;
   const profilePic = session?.user?.avatar;
+
+  //Recursive function to render comments
+  //Recursion occurs when the definition of a concept or process depends on a simpler or previous version of itself.
+  const renderComments = (comments, parentId = null) => {
+    
+    return comments
+      .filter((comment) => comment.parentId === parentId)
+      .map((comment) => (
+        <div key={comment._id} className="comment">
+          {/* Render top-level comments */}
+          <Comment comment={comment} postId={post._id} parentId={parentId} />
+          <div className="pl-8">
+            {renderComments(comments, comment._id)}
+          </div>
+        </div>
+      ));
+  };
 
   return (
     <div className="flex w-full flex-col items-center gap-2">
@@ -22,17 +31,7 @@ const PostComment = ({ post, comments }) => {
         <div className="mb-2 pb-2 pl-4 text-lg font-semibold text-gray-600">
           Reacties:
         </div>
-        {sortedComments.map((com, index) => (
-          <div className="mb-4" key={index}>
-            <Comment com={com} postId={post._id} />
-            <CommentsOnComment
-              com={com}
-              postId={post._id}
-              profilePic={profilePic}
-              userId={userId}
-            />
-          </div>
-        ))}
+        <div className="w-full">{renderComments(post.comments)}</div>
       </div>
 
       <div className="flex h-auto w-full gap-2 px-4 pb-4 max-xxsm:px-2">
@@ -45,7 +44,7 @@ const PostComment = ({ post, comments }) => {
             className="h-full w-full object-cover"
           />
         </div>
-        <PostCommentForm post={post} />
+        <PostCommentForm postId={post._id} />
       </div>
     </div>
   );

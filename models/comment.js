@@ -21,26 +21,12 @@ const CommentSchema = new Schema(
     likesCount: {
       type: Number,
       default: 0, // Tracks the total number of "true" reactions (likes) for the comment
-    },
-    reactions: [
-      {
-        userId: { type: Schema.Types.ObjectId, ref: "User", required: true }, // User who reacted
-        comment: { type: String, required: true }, 
-        reactedAt: {
-          type: Date,
-          default: Date.now,
-        }, // Timestamp of reaction
-        avatar: {
-          type: String,
-        },
-      },
-    ],
+    }
   },
   {
     timestamps: true,
   },
 );
-
 
 const Comment = models.Comment || model("Comments", CommentSchema);
 

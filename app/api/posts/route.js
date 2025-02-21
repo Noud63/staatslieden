@@ -1,9 +1,12 @@
+import { NextResponse } from "next/server";
 import connectDB from "@/connectDB/database";
 import cloudinary from "@/config/cloudinary";
+import { getSessionUser } from "@/utils/getSessionUser";
+import mongoose from "mongoose";
 import Post from "@/models/post";
 import Comment from "@/models/comment";
-import Like from "@/models/like";
-import { getSessionUser } from "@/utils/getSessionUser";
+import Avatar from "@/models/avatar";
+// import Like from "@/models/like";
 
 export const POST = async (request) => {
   try {
@@ -21,19 +24,22 @@ export const POST = async (request) => {
       user: { name, email, image, id, username, avatar },
       userId,
     } = sessionUser;
-    // console.log("User:", sessionUser)
+    console.log("User:", sessionUser.user)
 
     const content = formData.get("postContent");
     const images = formData
       .getAll("images")
       .filter((image) => image.name !== ""); //prevent error cloudinary
 
+  
+
     const postData = {
       postContent: content,
-      user: userId,
+      userId: userId,
       username: username,
       name: name,
       images,
+      avatar: avatar
     };
 
     const imageUploadPromises = [];
@@ -75,46 +81,87 @@ export const POST = async (request) => {
   }
 };
 
-export const GET = async (request) => {
-  const sessionUser = await getSessionUser();
 
+// ✅ Fetch Comments with Nested Replies
+export async function GET() {
   try {
     await connectDB();
 
-    // Fetch posts and populate user info for each post (user's profile picture and username)
-    const posts = await Post.find({})
-      .populate("user", "avatar") // Populate user data (username, profilePicture)
-      .sort({ createdAt: -1 })
-      .lean();
+    // Fetch all posts
+    const posts = await Post.find().lean();
 
-    // Fetch comments and populate user info for each comment
-    for (const post of posts) {
-      const pc = (post.comments = await Comment.find({ postId: post._id })
-        .populate("userId", "avatar") // Populate user data in comments
-        .lean());
+// console.log("Posts:", posts)
 
-      const liked = await Like.findOne({
-        // If there is a liked post, it will return true
-        postId: post._id,
-        userId: sessionUser?.user?.id,
-      });
-      post.likedByUser = !!liked;
+// Fetch comments for each post and structure them with nested replies
+   const postsWithComments = await Promise.all(
+     posts.map(async (post) => {
+       const comments = await Comment.aggregate([
+         { $match: { postId: post._id } },
 
-      // Fetch likes for each comment
-      for (const comment of post.comments) {
-        const liked = await Like.findOne({
-          // If there is a liked comment, it will return true
-          postId: comment._id,
-          userId: sessionUser?.user?.id,
-        });
-        comment.likedByUser = !!liked; // Add `likedByUser` boolean. Double exclamation mark is true in this case. !!{} -> true
-      }
-      // console.log("Posts:", JSON.stringify(posts[1], null, 2));
-    }
+         // Lookup avatar for each comment
+         {
+           $lookup: {
+             from: "avatars",
+             localField: "userId", // Match the comment's author
+             foreignField: "userId", // Find the user's avatar
+             as: "avatar",
+           },
+         },
+         {
+           $addFields: {
+             avatar: { $arrayElemAt: ["$avatar.avatar", 0] }, // Extract avatar URL
+           },
+         },
 
-    return new Response(JSON.stringify(posts), { status: 200 });
+         // GraphLookup to fetch nested replies
+         {
+           $graphLookup: {
+             from: "comments",
+             startWith: "$_id",
+             connectFromField: "_id",
+             connectToField: "parentId",
+             as: "replies",
+             maxDepth: 5,
+           },
+         },
+
+         // Add avatar to replies too
+         {
+           $lookup: {
+             from: "avatars",
+             localField: "replies.userId",
+             foreignField: "userId",
+             as: "replyAvatars",
+           },
+         },
+         {
+           $addFields: {
+             "replies.avatar": { $arrayElemAt: ["$replyAvatars.avatar", 0] },
+           },
+         },
+
+         { $sort: { createdAt: -1 } },
+       ]);
+
+       // ✅ Lookup avatar for the post author
+       const postAvatar = await Avatar.findOne({ userId: post.userId }).select(
+         "avatar",
+       );
+
+       return {
+         ...post,
+         avatar: postAvatar ? postAvatar.avatar : null, // Post author's avatar
+         comments: comments.length > 0 ? comments : [],
+       };
+     }),
+   );
+
+     
+    // console.log("Posts with Comments:", JSON.stringify(postsWithComments, null, 2))
+
+    return NextResponse.json(postsWithComments, { status: 200 });
   } catch (error) {
-    console.log(error);
-    return new Response("Failed to get posts", { status: 500 });
+    return NextResponse.json({ message: "Error fetching posts", error }, { status: 500 });
   }
-};
+}
+

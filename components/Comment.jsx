@@ -5,62 +5,55 @@ import Image from "next/image";
 import React from "react";
 import { mutate } from "swr";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
-import PostCommentOnCommentForm from "./PostCommentOnCommentForm";
+import PostCommentForm from "./PostCommentForm";
 
-
-const Comment = ({ com, postId }) => {
-  
+const Comment = ({ comment, postId, parentId}) => {
   const { data: session } = useSession();
 
   const [showForm, setShowForm] = useState(false);
 
-//   useEffect(() => {
-//   mutate("/api/posts");  // Force refresh of comments when app is opened
-// }, []);
+  // const toggleLike = async (commentId) => {
+  //   // Optimistically update the UI
+  //   mutate(
+  //     `/api/posts`,
+  //     async (currentData) => {
+  //       // Find the post that contains the comment
+  //       const updatedPosts = currentData.map((post) => {
+  //         return {
+  //           ...post,
+  //           comments: post.comments.map((comment) => {
+  //             if (comment._id === commentId) {
+  //               return {
+  //                 ...comment,
+  //                 likesCount:
+  //                   comment.likesCount + (comment.likedByUser ? -1 : 1), // if likedbyuser is true -> comment.likesCount - 1 else comment.likesCount + 1
+  //                 likedByUser: !comment.likedByUser, // Toggle like state true/false
+  //               };
+  //             }
+  //             return comment;
+  //           }),
+  //         };
+  //       });
 
-  const toggleLike = async (commentId) => {
-    // Optimistically update the UI
-    mutate(
-      `/api/posts`,
-      async (currentData) => {
-        // Find the post that contains the comment
-        const updatedPosts = currentData.map((post) => {
-          return {
-            ...post,
-            comments: post.comments.map((comment) => {
-              if (comment._id === commentId) {
-                return {
-                  ...comment,
-                  likesCount:
-                    comment.likesCount + (comment.likedByUser ? -1 : 1), // if likedbyuser is true -> comment.likesCount - 1 else comment.likesCount + 1
-                  likedByUser: !comment.likedByUser, // Toggle like state true/false
-                };
-              }
-              return comment;
-            }),
-          };
-        });
+  //       try {
+  //         const res = await fetch(`/api/comments/${commentId}/like`, {
+  //           method: "POST",
+  //           headers: { "Content-Type": "application/json" },
+  //           body: JSON.stringify({ commentId }),
+  //         });
 
-        try {
-          const res = await fetch(`/api/comments/${commentId}/like`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ commentId }),
-          });
+  //         if (!res.ok) throw new Error("Failed to update like");
+  //         // mutate("/api/posts");
+  //       } catch (error) {
+  //         console.error(error);
+  //         return currentData; // Rollback on failure
+  //       }
 
-          if (!res.ok) throw new Error("Failed to update like");
-          // mutate("/api/posts");
-        } catch (error) {
-          console.error(error);
-          return currentData; // Rollback on failure
-        }
-
-        return updatedPosts; // Return updated UI state
-      },
-      false,
-    ); // `false` means it won't revalidate immediately
-  // mutate("/api/posts");
-  };
+  //       return updatedPosts; // Return updated UI state
+  //     },
+  //     false,
+  //   ); // `false` means it won't revalidate immediately
+  // };
 
   const deleteComment = async (commentId) => {
     // Optimistically update the UI
@@ -101,24 +94,14 @@ const Comment = ({ com, postId }) => {
     ); // `false` means it won't revalidate immediately
   };
 
-
-  const commentOnComment = () => {
-       setShowForm(!showForm)
-  }
-
-
   return (
     <div className="flex h-auto w-full gap-2 px-4 max-xxsm:px-2">
-      <div className="flex h-[45px] w-[45px] overflow-hidden rounded-full max-xxsm:h-[40px] max-xxsm:w-[40px]">
+      <div className={ `${parentId === null ? "h-[45px] w-[45px]" : "h-[35px] w-[35px]"} flex overflow-hidden rounded-full max-xxsm:h-[40px] max-xxsm:w-[40px]`}>
         <Image
-          src={
-            com.userId?.avatar
-              ? com.userId.avatar
-              : "/images/defaultAvatar2.png"
-          }
+          src={comment.avatar ? comment.avatar : "/images/defaultAvatar2.png"}
           alt="icon"
-          width={45}
-          height={45}
+          width={100}
+          height={100}
           className="h-full w-full object-cover"
         />
       </div>
@@ -126,21 +109,21 @@ const Comment = ({ com, postId }) => {
       <div className="flex w-full flex-1 flex-col">
         <div className="mb-1 flex flex-1 flex-col rounded-xl bg-gray-100 p-2">
           <span className="text-sm font-semibold text-gray-800">
-            {com.username}
+            {comment.username}
           </span>
-          <span>{com.comment}</span>
+          <span>{comment.comment}</span>
         </div>
 
         <div className="flex flex-row justify-between pr-2 text-[11px] font-normal text-gray-500">
           <span className="pl-2 pt-[5px]">
-            {`${new Date(com.createdAt).toLocaleDateString()}`}
+            {`${new Date(comment.createdAt).toLocaleDateString()}`}
           </span>
           <div className="flex flex-row gap-2">
-            {com.userId._id === session?.user?.id && (
+            {comment.userId === session?.user?.id && (
               <button
                 type="button"
                 className="cursor-pointer text-[12px] font-semibold text-gray-600"
-                onClick={() => deleteComment(com._id)}
+                onClick={() => deleteComment(comment._id)}
               >
                 verwijder
               </button>
@@ -150,7 +133,7 @@ const Comment = ({ com, postId }) => {
               <button
                 type="button"
                 className="cursor-pointer text-[12px] font-semibold text-gray-600"
-                onClick={() => commentOnComment(com._id, postId)}
+                onClick={() => setShowForm(!showForm)}
               >
                 reageer
               </button>
@@ -159,10 +142,10 @@ const Comment = ({ com, postId }) => {
             <button
               type="button"
               className="flex w-[50px] cursor-pointer items-center justify-center gap-3 rounded-full border border-gray-400 text-[14px] font-semibold text-gray-600"
-              onClick={() => toggleLike(com._id)}
+              // onClick={() => toggleLike(comment._id)}
               disabled={!session}
             >
-              {com.likedByUser ? (
+              {comment.likedByUser ? (
                 <div className="flex items-center gap-2">
                   <FaHeart color="#ca8a04" size={17} />
                 </div>
@@ -171,15 +154,14 @@ const Comment = ({ com, postId }) => {
                   <FaRegHeart size={17} color="#ca8a04" />
                 </div>
               )}{" "}
-              {com.likesCount}
+              {comment.likesCount}0
             </button>
           </div>
         </div>
-
-        <div className="mt-2 flex w-full justify-end">
-          <div className="border-red flex w-[90%]">
-            {showForm && <PostCommentOnCommentForm commentId={com._id} postId={postId} setShowForm={setShowForm} />}
-          </div>
+        <div className="my-2">
+          {showForm && (
+            <PostCommentForm postId={comment.postId} parentId={comment._id} setShowForm={setShowForm}/>
+          )}
         </div>
       </div>
     </div>

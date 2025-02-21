@@ -11,13 +11,12 @@ import Lightbox from "yet-another-react-lightbox";
 import Captions from "yet-another-react-lightbox/plugins/captions";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 
-const SinglePost = ({ post, comments }) => {
-
-   const slides = [
-     {
-       src: post?.images[0]
-     },
-   ];
+const SinglePost = ({ post }) => {
+  const slides = [
+    {
+      src: post?.images[0],
+    },
+  ];
 
   const { data: session } = useSession();
 
@@ -27,15 +26,13 @@ const SinglePost = ({ post, comments }) => {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    if (session?.user.id === post?.user._id) {
+    if (session?.user.id === post?.userId) {
       setShowThreeDots(true);
-      // setProfilePic(session?.user?.avatar);
-    } 
-    if (post?.user?.avatar) {
-      setProfilePic(post.user.avatar);
     }
-  }, [session, post?.user._id, post?.user.avatar]);
-  
+    if (post?.avatar) {
+      setProfilePic(post.avatar);
+    }
+  }, [session, post?.userId, post?.avatar]);
 
   return (
     <div className="singlepost relative mx-6 mb-4 flex h-auto flex-col rounded-lg bg-white shadow-md max-sm:mx-4 max-xsm:mx-2">
@@ -81,14 +78,14 @@ const SinglePost = ({ post, comments }) => {
             alt=""
             width={400}
             height={0}
-            className="h-full w-full object-cover cursor-pointer"
+            className="h-full w-full cursor-pointer object-cover"
             priority
             onClick={() => setOpen(true)}
           />
         )}
       </div>
       <LikeandShareBar post={post} />
-      <PostComment comments={comments} post={post} />
+      <PostComment post={post} />
 
       <Lightbox
         open={open}
@@ -106,8 +103,8 @@ const SinglePost = ({ post, comments }) => {
         }}
         styles={{
           container: {
-            backgroundColor: "rgb(66, 32, 6, 0.8)"
-          }
+            backgroundColor: "rgb(66, 32, 6, 0.8)",
+          },
         }}
       />
     </div>

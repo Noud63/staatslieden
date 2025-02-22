@@ -11,15 +11,15 @@ import Lightbox from "yet-another-react-lightbox";
 import Captions from "yet-another-react-lightbox/plugins/captions";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 
-const SinglePost = ({ post }) => {
-  const slides = [
-    {
-      src: post?.images[0],
-    },
-  ];
+const SinglePost = ({ post}) => {
+
+   const slides = [
+     {
+       src: post?.images[0]
+     },
+   ];
 
   const { data: session } = useSession();
-
   const [showThreeDots, setShowThreeDots] = useState(false);
   const [showOptions, setShowOptions] = useState(false);
   const [profilePic, setProfilePic] = useState(null);
@@ -33,6 +33,7 @@ const SinglePost = ({ post }) => {
       setProfilePic(post.avatar);
     }
   }, [session, post?.userId, post?.avatar]);
+  
 
   return (
     <div className="singlepost relative mx-6 mb-4 flex h-auto flex-col rounded-lg bg-white shadow-md max-sm:mx-4 max-xsm:mx-2">

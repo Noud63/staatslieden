@@ -54,6 +54,7 @@ const AddPostModal = ({ inView, setInView }) => {
       formData.append("images", file);
     });
 
+
     if (newFiles.images.length === 0 && !content) {
       setLoading(false);
       setError(true);

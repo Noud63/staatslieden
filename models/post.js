@@ -1,16 +1,19 @@
-import { Schema, model, models } from "mongoose";
+import mongoose from "mongoose";
 
-const PostSchema = new Schema(
+const PostSchema = new mongoose.Schema(
   {
-    user: {
-      type: Schema.Types.ObjectId,
+    postContent: { type: String, required: true },
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: true,
     },
-    postContent: {
-      type: String,
-      // required: true,
-    },
+    createdAt: { type: Date, default: Date.now },
+    images: [
+      {
+        type: String,
+      },
+    ],
     name: {
       type: String,
     },
@@ -21,17 +24,10 @@ const PostSchema = new Schema(
       type: Number,
       default: 0,
     },
-    images: [
-      {
-        type: String,
-      },
-    ],
   },
-  {
-    timestamps: true,
-  }
+  { timestamps: true },
 );
 
-const Post = models.Post || model("Post", PostSchema);
+const Post =  mongoose.models.Post || mongoose.model("Post", PostSchema);
 
 export default Post;

@@ -12,7 +12,7 @@ const Menu = () => {
             <div key={index}>
               <Link href={item?.href || "/not-found"}>
                 <div className="menuitem ease-in-out hover:text-xl hover:tracking-wider flex h-12 w-full cursor-pointer items-center justify-center rounded-lg border-2 text-white 
-                transition-all delay-100 duration-150 max-sm:h-10">
+                transition-all delay-100 duration-200 max-sm:h-10">
                   {item.title}
                 </div>
               </Link>

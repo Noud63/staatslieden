@@ -1,33 +1,41 @@
-const { Schema, model, models } = require("mongoose");
+import mongoose from "mongoose";
 
-const CommentSchema = new Schema(
+const CommentSchema = new mongoose.Schema(
   {
     postId: {
-      type: Schema.Types.ObjectId,
-      ref: "Posts",
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Post",
       required: true,
+    },
+    parentId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Comment",
+      default: null,
     },
     userId: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: true,
-    },
-    comment: {
-      type: String,
     },
     username: {
       type: String,
     },
-    likesCount: {
-      type: Number,
-      default: 0, // Tracks the total number of "true" reactions (likes) for the comment
-    }
+    comment: { type: String, required: true },
+    reactions: [
+      {
+        userId: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "User",
+          required: true,
+        },
+        reactedAt: { type: Date, default: Date.now },
+      },
+    ],
+
+    createdAt: { type: Date, default: Date.now },
   },
-  {
-    timestamps: true,
-  },
+  { timestamps: true },
 );
+const Comment =  mongoose.models.Comment || mongoose.model("Comment", CommentSchema);
 
-const Comment = models.Comment || model("Comments", CommentSchema);
-
-export default Comment;
+export default Comment

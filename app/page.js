@@ -11,7 +11,7 @@ export default async function Home() {
     <>
       <LeesDit />
       <AddPost />
-      <GetAllPosts initialData={initialData} />
+      <GetAllPosts initialData={initialData}/>
     </>
   );
 }

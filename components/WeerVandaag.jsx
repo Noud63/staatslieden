@@ -20,7 +20,7 @@ useEffect(() => {
     let sunrise = convertSunsetAndSunrise(sunMoon[0].sunrise);
     let sunset = convertSunsetAndSunrise(sunMoon[0].sunset);
 
-    setData((prevData) => ({ ...prevData, sunrise, sunset }));
+     setData((prevData) => ({ ...prevData, sunrise, sunset }));
   }
 }, [sunMoon]);
 

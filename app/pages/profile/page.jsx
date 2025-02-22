@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { IoWarningOutline } from "react-icons/io5";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import Link from "next/link";
+import { mutate } from "swr";
 
 const ProfilePage = () => {
   const { data: session, update } = useSession();
@@ -67,6 +68,7 @@ const ProfilePage = () => {
     } catch (err) {
       console.error(err);
     }
+    mutate("/api/posts");
   };
 
   return (

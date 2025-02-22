@@ -80,7 +80,7 @@ const PostCommentForm = ({ postId, parentId = null, setShowForm }) => {
         ref={textareaRef}
         type="text"
         name="comment"
-        className="max-h-[500px] min-h-[50px] w-full resize-none overflow-y-hidden rounded-xl bg-gray-100 py-2 pl-2 pr-10 placeholder-gray-500 outline-none"
+        className="max-h-[500px] w-full resize-none overflow-y-hidden rounded-xl bg-yellow-800/10 py-2 pl-2 pr-10 placeholder-gray-500 outline-none"
         placeholder="Schrijf een reactie..."
         defaultValue={text}
         onChange={handleInputChange}

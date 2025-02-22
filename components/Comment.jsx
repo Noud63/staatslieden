@@ -96,7 +96,7 @@ const Comment = ({ comment, postId, parentId}) => {
 
   return (
     <div className="flex h-auto w-full gap-2 px-4 max-xxsm:px-2">
-      <div className={ `${parentId === null ? "h-[45px] w-[45px]" : "h-[35px] w-[35px]"} flex overflow-hidden rounded-full max-xxsm:h-[40px] max-xxsm:w-[40px]`}>
+      <div className={ `${parentId === null ? "h-[40px] w-[40px]" : "h-[30px] w-[30px]"} flex overflow-hidden rounded-full`}>
         <Image
           src={comment.avatar ? comment.avatar : "/images/defaultAvatar2.png"}
           alt="icon"
@@ -107,7 +107,7 @@ const Comment = ({ comment, postId, parentId}) => {
       </div>
 
       <div className="flex w-full flex-1 flex-col">
-        <div className="mb-1 flex flex-1 flex-col rounded-xl bg-gray-100 p-2">
+        <div className="mb-1 flex flex-1 flex-col rounded-xl bg-yellow-800/10 px-2 pt-1 pb-2 leading-4 shadow-sm border-b border-gray-300">
           <span className="text-sm font-semibold text-gray-800">
             {comment.username}
           </span>
@@ -158,7 +158,7 @@ const Comment = ({ comment, postId, parentId}) => {
             </button>
           </div>
         </div>
-        <div className="my-2">
+        <div className="my-2 mb-3">
           {showForm && (
             <PostCommentForm postId={comment.postId} parentId={comment._id} setShowForm={setShowForm}/>
           )}

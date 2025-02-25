@@ -5,10 +5,9 @@ import { getSessionUser } from "@/utils/getSessionUser";
 
 export const POST = async (request, { params }) => {
   
-  const { commentId } = params;
+ const { commentId } = params;
   const session = await getSessionUser();
-
-  const postId = commentId;
+        await connectDB();
 
   if (!session) {
     return new Response(JSON.stringify({ message: "Unauthorized" }), {
@@ -18,30 +17,31 @@ export const POST = async (request, { params }) => {
 
   const userId = session.user.id;
 
-  // Add or remove like from database and update the likesCount in the comment
-  try {
-    await connectDB();
-    const liked = await Like.findOne({ postId, userId });
-    if (liked) {
-      const deletedLike = await Like.findOneAndDelete({ postId, userId });
-      if (deletedLike) {
-       const com = await Comment.findByIdAndUpdate(postId, { $inc: { likesCount: -1 } });
-       return new Response(
-         JSON.stringify({ message: "Like deleted"}),
-         { status: 200 },
-       );
-      }
-      
-    } else {
-      const like = await Like.create({ userId, postId });
-     const com =  await Comment.findByIdAndUpdate(postId, { $inc: { likesCount: 1 } });
-      return new Response(
-        JSON.stringify({ message: "Like added"}),
-        { status: 200 },
-      );
-    }
 
-  } catch (error) {
-    return new Response({ message: error.message }, { status: 500 });
-  }
+  // Add or remove like from database and update the likesCount in the comment
+   try {
+     const comment = await Comment.findById(commentId);
+     if (!comment) {
+       return res.status(404).json({ message: "Comment not found" });
+     }
+
+     // Check if the user has already liked the comment
+     const existingLike = await Like.findOne({ commentId, userId });
+
+     if (existingLike) {
+       // User has already liked the comment, so unlike it
+       await Like.deleteOne({ _id: existingLike._id });
+       comment.likesCount -= 1; // Decrement likesCount
+     } else {
+       // User has not liked the comment, so like it
+       const newLike = new Like({ commentId, userId });
+       await newLike.save();
+       comment.likesCount += 1; // Increment likesCount
+     }
+
+     await comment.save();
+     return new Response(comment, { status: 200 });
+   } catch (error) {
+     return new Response({ message: error.message }, { status: 500 });
+   }
 };

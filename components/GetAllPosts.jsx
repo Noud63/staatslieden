@@ -9,6 +9,7 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json());
 const GetAllPosts = ({initialData}) => {
 
 const { data, error, isLoading } = useSWR("/api/posts", fetcher, {
+  
     fallbackData: initialData, // Use preloaded data first
     revalidateOnMount: true, // Don't fetch again on mount, already have fresh data
     revalidateOnFocus: true, // Refetch when user revisits tab (great for UX)

@@ -15,8 +15,7 @@ export const POST = async (request) => {
 
     const {
       user: { name, email, image, id, avatar },
-      
-    } = sessionUser;
+      } = sessionUser;
     console.log("User:", sessionUser.user);
 
     if (!sessionUser || !sessionUser.user.id) {

@@ -12,48 +12,50 @@ const Comment = ({ comment, postId, parentId}) => {
 
   const [showForm, setShowForm] = useState(false);
 
-  // const toggleLike = async (commentId) => {
-  //   // Optimistically update the UI
-  //   mutate(
-  //     `/api/posts`,
-  //     async (currentData) => {
-  //       // Find the post that contains the comment
-  //       const updatedPosts = currentData.map((post) => {
-  //         return {
-  //           ...post,
-  //           comments: post.comments.map((comment) => {
-  //             if (comment._id === commentId) {
-  //               return {
-  //                 ...comment,
-  //                 likesCount:
-  //                   comment.likesCount + (comment.likedByUser ? -1 : 1), // if likedbyuser is true -> comment.likesCount - 1 else comment.likesCount + 1
-  //                 likedByUser: !comment.likedByUser, // Toggle like state true/false
-  //               };
-  //             }
-  //             return comment;
-  //           }),
-  //         };
-  //       });
+  console.log("Comment:", comment);
 
-  //       try {
-  //         const res = await fetch(`/api/comments/${commentId}/like`, {
-  //           method: "POST",
-  //           headers: { "Content-Type": "application/json" },
-  //           body: JSON.stringify({ commentId }),
-  //         });
+  const toggleLike = async (commentId) => {
+    // Optimistically update the UI
+    mutate(
+      `/api/posts`,
+      async (currentData) => {
+        // Find the post that contains the comment
+        const updatedPosts = currentData.map((post) => {
+          return {
+            ...post,
+            comments: post.comments.map((comment) => {
+              if (comment._id === commentId) {
+                return {
+                  ...comment,
+                  likesCount:
+                    comment.likesCount + (comment.likedByUser ? -1 : 1), // if likedbyuser is true -> comment.likesCount - 1 else comment.likesCount + 1
+                  likedByUser: !comment.likedByUser, // Toggle like state true/false
+                };
+              }
+              return comment;
+            }),
+          };
+        });
 
-  //         if (!res.ok) throw new Error("Failed to update like");
-  //         // mutate("/api/posts");
-  //       } catch (error) {
-  //         console.error(error);
-  //         return currentData; // Rollback on failure
-  //       }
+        try {
+          const res = await fetch(`/api/comments/${commentId}/like`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ commentId}),
+          });
 
-  //       return updatedPosts; // Return updated UI state
-  //     },
-  //     false,
-  //   ); // `false` means it won't revalidate immediately
-  // };
+          if (!res.ok) throw new Error("Failed to update like");
+          // mutate("/api/posts");
+        } catch (error) {
+          console.error(error);
+          return currentData; // Rollback on failure
+        }
+
+        return updatedPosts; // Return updated UI state
+      },
+      false,
+    ); // `false` means it won't revalidate immediately
+  };
 
   const deleteComment = async (commentId) => {
     // Optimistically update the UI
@@ -142,7 +144,7 @@ const Comment = ({ comment, postId, parentId}) => {
             <button
               type="button"
               className="flex w-[50px] cursor-pointer items-center justify-center gap-3 rounded-full border border-gray-400 text-[14px] font-semibold text-gray-600"
-              // onClick={() => toggleLike(comment._id)}
+              onClick={() => toggleLike(comment._id)}
               disabled={!session}
             >
               {comment.likedByUser ? (
@@ -154,7 +156,7 @@ const Comment = ({ comment, postId, parentId}) => {
                   <FaRegHeart size={17} color="#ca8a04" />
                 </div>
               )}{" "}
-              {comment.likesCount}0
+              {comment.likesCount}
             </button>
           </div>
         </div>

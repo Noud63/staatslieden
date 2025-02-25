@@ -10,7 +10,7 @@ const PostComment = ({ post}) => {
 
   //Recursive function to render comments
   //Recursion occurs when the definition of a concept or process depends on a simpler or previous version of itself.
-  const renderComments = (comments, parentId = null) => {
+  const renderComments = (comments, parentId = null,) => {
     
     return comments
       .filter((comment) => comment.parentId === parentId)

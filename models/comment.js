@@ -21,16 +21,7 @@ const CommentSchema = new mongoose.Schema(
       type: String,
     },
     comment: { type: String, required: true },
-    reactions: [
-      {
-        userId: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "User",
-          required: true,
-        },
-        reactedAt: { type: Date, default: Date.now },
-      },
-    ],
+    likesCount: { type: Number, default: 0 },
 
     createdAt: { type: Date, default: Date.now },
   },

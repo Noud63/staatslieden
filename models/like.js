@@ -5,16 +5,20 @@ const LikeSchema = new Schema(
   {
     postId: {
       type: Schema.Types.ObjectId,
-      ref: "Posts",
+      ref: "Post",
     },
     userId: {
       type: Schema.Types.ObjectId,
       ref: "User",
     },
+    commentId: {
+      type: Schema.Types.ObjectId,
+      ref: "Comment",
+    },
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 // Ensure a user can like a post only once

@@ -6,6 +6,7 @@ import mongoose from "mongoose";
 import Post from "@/models/post";
 import Comment from "@/models/comment";
 import Avatar from "@/models/avatar";
+import { ObjectId } from "mongoose";
 // import Like from "@/models/like";
 
 export const POST = async (request) => {
@@ -87,8 +88,11 @@ export async function GET() {
   try {
     await connectDB();
 
+        const sessionUser = await getSessionUser();
+        const userId = sessionUser?.user?.id;
+
     // Fetch all posts
-    const posts = await Post.find().lean();
+    const posts = await Post.find().sort({ createdAt: -1 }).lean();
 
 // console.log("Posts:", posts)
 
@@ -139,14 +143,37 @@ export async function GET() {
              "replies.avatar": { $arrayElemAt: ["$replyAvatars.avatar", 0] },
            },
          },
+         // Lookup likes for each comment
+         {
+           $lookup: {
+             from: "likes",
+             localField: "_id",
+             foreignField: "commentId",
+             as: "likes",
+           },
+         },
+
+         // Add likedByUser field dynamically for the current user
+         {
+           $addFields: {
+             likedByUser: {
+               $in: [
+                 new mongoose.mongo.ObjectId(userId),
+                 "$likes.userId",
+               ], // Check if the current user has liked the comment
+             },
+           },
+         },
 
          { $sort: { createdAt: -1 } },
        ]);
+       
 
        // ✅ Lookup avatar for the post author
        const postAvatar = await Avatar.findOne({ userId: post.userId }).select(
          "avatar",
        );
+       
 
        return {
          ...post,
@@ -156,8 +183,8 @@ export async function GET() {
      }),
    );
 
-     
-    // console.log("Posts with Comments:", JSON.stringify(postsWithComments, null, 2))
+    
+    console.log("Posts with Comments:", JSON.stringify(postsWithComments, null, 2))
 
     return NextResponse.json(postsWithComments, { status: 200 });
   } catch (error) {

@@ -6,6 +6,7 @@ const LikeSchema = new Schema(
     postId: {
       type: Schema.Types.ObjectId,
       ref: "Post",
+      default: null,
     },
     userId: {
       type: Schema.Types.ObjectId,
@@ -14,6 +15,7 @@ const LikeSchema = new Schema(
     commentId: {
       type: Schema.Types.ObjectId,
       ref: "Comment",
+      default: null,
     },
   },
   {
@@ -21,9 +23,9 @@ const LikeSchema = new Schema(
   },
 );
 
-// Ensure a user can like a post only once
-// LikeSchema.index({ user: 1, post: 1 }, { unique: true });
+LikeSchema.index({ userId: 1, postId: 1 }, { unique: true, sparse: true });
+LikeSchema.index({ userId: 1, commentId: 1 }, { unique: true, sparse: true });
 
-const Like = models.Likes || model("Likes", LikeSchema);
+const Like = models.Like || model("Like", LikeSchema);
 
 export default Like

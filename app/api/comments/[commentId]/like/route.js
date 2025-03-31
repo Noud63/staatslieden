@@ -5,7 +5,7 @@ import { getSessionUser } from "@/utils/getSessionUser";
 
 export const POST = async (request, { params }) => {
   
- const { commentId } = params;
+ const { commentId, postId } = await request.json()
   const session = await getSessionUser();
         await connectDB();
 
@@ -17,12 +17,13 @@ export const POST = async (request, { params }) => {
 
   const userId = session.user.id;
 
-
-  // Add or remove like from database and update the likesCount in the comment
+// Add or remove like from database and update the likesCount in the comment
    try {
      const comment = await Comment.findById(commentId);
+
+    //  await Like.collection.dropIndex("userId_1_postId_1");
      if (!comment) {
-       return res.status(404).json({ message: "Comment not found" });
+       return new Response(JSON.stringify({ message: "Comment not found" }), { status: 404 });
      }
 
      // Check if the user has already liked the comment
@@ -31,17 +32,24 @@ export const POST = async (request, { params }) => {
      if (existingLike) {
        // User has already liked the comment, so unlike it
        await Like.deleteOne({ _id: existingLike._id });
-       comment.likesCount -= 1; // Decrement likesCount
-     } else {
-       // User has not liked the comment, so like it
-       const newLike = new Like({ commentId, userId });
-       await newLike.save();
-       comment.likesCount += 1; // Increment likesCount
-     }
+      // Decrement likesCount atomically in the database
+      await Comment.findOneAndUpdate(
+        { _id: commentId },
+        { $inc: { likesCount: -1 } }
+      );
+    } else {
+      // User has not liked the comment, so like it
+      await Like.create({ commentId, userId });
 
-     await comment.save();
+      // Increment likesCount atomically in the database
+      await Comment.findOneAndUpdate(
+        { _id: commentId },
+        { $inc: { likesCount: 1 } }
+      );
+      }
+
      return new Response(comment, { status: 200 });
    } catch (error) {
-     return new Response({ message: error.message }, { status: 500 });
+     return new Response(JSON.stringify({ message: error.message }), { status: 500 });
    }
 };

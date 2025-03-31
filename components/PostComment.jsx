@@ -15,13 +15,12 @@ const PostComment = ({ post}) => {
     return comments
       .filter((comment) => comment.parentId === parentId)
       .map((comment) => (
-        <div key={comment._id} className="comment">
+        <div key={comment._id}>
           {/* Render top-level comments */}
           <Comment comment={comment} postId={post._id} parentId={parentId} />
-          <div className="pl-8">
-            {renderComments(comments, comment._id)}
-          </div>
-        </div>
+          {/* Render comment replies */}
+          <div className="pl-8">{renderComments(comments, comment._id)}</div>
+            </div>
       ));
   };
 

@@ -14,12 +14,16 @@ try {
 
    const data = await res.json();
 
+  //  console.log("Data:", data)
+
    return data;
 } catch (error) {
-  console.log(error)
+  console.error("Error fetching posts:", error);
+  return []; // Ensure it returns an empty array instead of undefined
 }
  
 }
+
 
 async function getPostsByUserId(userId) {
   try {

@@ -33,9 +33,14 @@ const LikeButton = ({ postId, post }) => {
             body: JSON.stringify({ postId }),
           });
 
-          const data = await res.json();
-
-          if (!res.ok) throw new Error("Failed to update like");
+          if (!res.ok) {
+            const errorData = await res.json();
+            console.error(
+              "Failed to update like:",
+              res.status,
+              errorData.message,
+            );
+          }
         } catch (error) {
           console.error("Error toggling like:", error);
           return currentData;
@@ -45,7 +50,6 @@ const LikeButton = ({ postId, post }) => {
       },
       false,
     ); // `false` means it won't revalidate immediately
-    
   };
 
   return (

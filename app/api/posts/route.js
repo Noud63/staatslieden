@@ -181,7 +181,7 @@ export async function GET() {
          ...post,
          avatar: postAvatar ? postAvatar.avatar : null, // Post author's avatar
          comments: comments.length > 0 ? comments : [],
-         likedByUser: !!liked, // true if the user has liked the post
+         likedByUser: !!liked, // true if the user has liked the post. (if a like object has been found. The double exclamation mark (!!) in JavaScript is a way to convert a value into a boolean)
        };
      }),
    );

@@ -11,7 +11,7 @@ const LoginRegisterLogout = () => {
 const { data: session, status } = useSession();
 
   return (
-    <div className="flex w-full flex-row items-center justify-end gap-4 text-white max-sm:mx-4 max-sm:mt-4 max-sm:justify-between">
+    <div className="flex w-full flex-row items-center text-white max-md:mx-4 max-md:mt-4 max-md:justify-between">
       <Hamburger />
 
       <div className="flex flex-row gap-4">
@@ -23,7 +23,7 @@ const { data: session, status } = useSession();
           ""
         )}
 
-        <div className="flex items-center justify-center gap-4">
+        <div className="flex items-center justify-center gap-4 w-[160px]">
           {!session?.user ? (
             <Link href="/pages/login" className="flex w-full justify-end pr-3">
               Inloggen
@@ -36,7 +36,7 @@ const { data: session, status } = useSession();
 
           {session?.user && (
             <button
-              className="mr-4 max-sm:mr-2"
+              className="max-sm:mr-2"
               onClick={() => {
                 signOut({ callbackUrl: "/", redirect: true });
               }}
@@ -46,7 +46,7 @@ const { data: session, status } = useSession();
           )}
         </div>
       </div>
-        <Link href="/pages/weatherreport"  className="xsm:hidden">
+        <Link href="/pages/weatherreport"  className="md:hidden">
         <Weatherreport />
       </Link>
     </div>

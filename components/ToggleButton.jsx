@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { useCallback } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 
 const ToggleButton = ({ ID, title, dropDownId, setDropDownId }) => {
-
-  const toggleDropdown = () => {
+  //Use the useCallback hook to memoize the toggleDropdown function
+  const toggleDropdown = useCallback(() => {
     setDropDownId(dropDownId === ID ? null : ID);
-  };
-  
+  }, [dropDownId, ID, setDropDownId]);
+
+
   return (
     <button
       type="button"
@@ -23,4 +24,4 @@ const ToggleButton = ({ ID, title, dropDownId, setDropDownId }) => {
   );
 };
 
-export default ToggleButton
+export default ToggleButton;

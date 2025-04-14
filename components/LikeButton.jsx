@@ -12,7 +12,7 @@ const LikeButton = ({ postId, post }) => {
     mutate(
       `/api/posts`,
       async (currentData) => {
-        // Find the post that contains the comment
+        // Find the post with the likesCount
         const updatedPosts = currentData.map((p) => {
           if (p._id === postId) {
             return {
@@ -35,11 +35,7 @@ const LikeButton = ({ postId, post }) => {
 
           if (!res.ok) {
             const errorData = await res.json();
-            console.error(
-              "Failed to update like:",
-              res.status,
-              errorData.message,
-            );
+            console.error("Failed to update like:", res.status, errorData.message);
           }
         } catch (error) {
           console.error("Error toggling like:", error);

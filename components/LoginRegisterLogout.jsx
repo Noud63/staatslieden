@@ -23,9 +23,12 @@ const { data: session, status } = useSession();
           ""
         )}
 
-        <div className="flex items-center justify-center gap-4 w-[160px]">
+        <div className="flex items-center justify-center gap-4">
           {!session?.user ? (
-            <Link href="/pages/login" className="flex w-full justify-end pr-3">
+            <Link
+              href="/pages/login"
+              className="flex w-full justify-end"
+            >
               Inloggen
             </Link>
           ) : (
@@ -46,7 +49,7 @@ const { data: session, status } = useSession();
           )}
         </div>
       </div>
-        <Link href="/pages/weatherreport"  className="md:hidden">
+      <Link href="/pages/weatherreport" className="md:hidden">
         <Weatherreport />
       </Link>
     </div>

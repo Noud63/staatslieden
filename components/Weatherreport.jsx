@@ -15,13 +15,13 @@ const Weatherreport = () => {
   }, []);
 
   return (
-    <div className="flex flex-col">
-      <div className="relative flex flex-col items-center pr-4 max-xsm:items-end mr-8 max-md:mr-0 max-md:pr-0">
+    <div className="flex flex-col ml-2">
+      <div className="relative flex flex-col items-center max-xsm:items-end">
         <div
           className={
             weather.temp === undefined
               ? "hidden"
-              : "flex items-center text-2xl text-white max-xsm:text-base"
+              : "flex items-center text-xl text-white"
           }
         >
           {`${weather.temp}\xB0C`}
@@ -32,7 +32,7 @@ const Weatherreport = () => {
               width={0}
               height={0}
               sizes="100vw"
-              className="h-[55px] w-[55px] max-sm:h-[40px] max-sm:w-[40px] max-xsm:hidden"
+              className="h-[55px] w-[50px] max-sm:h-[40px] max-sm:w-[40px] max-xsm:hidden pt-1"
             />
           )}
         </div>

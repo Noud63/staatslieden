@@ -7,7 +7,7 @@ import translations from "@/data/translations";
 const HistoriePage = () => {
 
   const { language, toggleLanguage } = useLanguage();
-  const t = translations[language];
+  const t = translations[language].pages.historie;
 
   return (
     <div className="mx-6 mt-8 text-white max-md:mx-4 max-sm:mt-4">

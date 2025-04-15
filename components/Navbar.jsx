@@ -22,14 +22,16 @@ return (
         </Link>
       </div>
 
-      <TranslateButton />
-
-      <div className="flex max-md:hidden">
-        <LoginRegisterLogout />
+      <div className="flex w-[350px] flex-row items-center justify-between">
+        <div className="max-md:hidden">
+          <LoginRegisterLogout />
+        </div>
 
         <Link href="/pages/weatherreport" className="max-md:hidden">
           <Weatherreport />
         </Link>
+
+        <TranslateButton />
       </div>
     </div>
   </div>

@@ -92,7 +92,7 @@ const translations = {
       regels_4: `If your message does not comply with these rules, we have the right to delete it.`,
     },
     addPost: {
-      delen: "What would you like to share with us",
+      delen: "Share something with us",
     },
     user: {
       login: "Login",

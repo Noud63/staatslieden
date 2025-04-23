@@ -62,7 +62,7 @@ const PostCommentForm = ({ postId, parentId = null, setShowForm }) => {
 
   const handleTextareaClick = () => {
     if (!session) {
-      router.push("/pages/login");
+      router.push("/login");
     }
   };
 

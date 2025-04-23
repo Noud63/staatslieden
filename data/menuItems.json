@@ -1,30 +1,14 @@
 [
-  { "id": 1, "title": ["Historie", "History"], "href": "/pages/menu/historie" },
+  { "id": 1, "title": ["Historie", "History" ], "href": "/menu/historie" },
   { "id": 2, "title": ["Social", "Social"], "href": "/" },
-  { "id": 3, "title": ["Nieuws", "News"], "href": "/" },
-  {
-    "id": 4,
-    "title": ["Demografie", "Demografics"],
-    "href": "/pages/menu/demografie"
-  },
-  { "id": 5, "title": ["Beeld", "Images"], "href": "/pages/menu/beeld" },
-  { "id": 6, "title": ["Over", "About"], "href": "/" },
-  {
-    "id": 7,
-    "title": ["Praktisch", "Practical"],
-    "href": "/pages/menu/praktisch/grofvuil"
-  },
-  {
-    "id": 8,
-    "title": ["Westergas", "Westergas"],
-    "href": "/pages/menu/westergas"
-  },
-  { "id": 9, "title": ["Buurt", "Neighbourhood"], "href": "/pages/menu/buurt" },
-  {
-    "id": 10,
-    "title": ["Kunst & Cultuur", "Art & Culture"],
-    "href": "/pages/menu/kunst"
-  },
-  { "id": 11, "title": ["Weer", "Weather"], "href": "/pages/weatherreport" },
-  { "id": 12, "title": ["Contact", "Contact"], "href": "/pages/menu/contact" }
+  { "id": 3, "title": ["Nieuws", "News"], "href": "/menu/nieuws" },
+  { "id": 4, "title": ["Demografie", "Demografics"], "href": "/menu/demografie" },
+  { "id": 5, "title": ["Beeld", "Images"], "href": "/menu/beeld" },
+  { "id": 6, "title": ["Over", "About"], "href": "/menu/over" },
+  { "id": 7, "title": ["Praktisch", "Praktical"], "href": "/menu/praktisch/grofvuil" },
+  { "id": 8, "title": ["Westergas", "Westergas"], "href": "/menu/westergas" },
+  { "id": 9, "title": ["Buurt", "Neighborhood"], "href": "/menu/buurt" },
+  { "id": 10, "title": ["Kunst en Cultuur", "Art & Culture"], "href": "/menu/kunst" },
+  { "id": 11, "title": ["Weer", "Weather"], "href": "/weatherreport" },
+  { "id": 12, "title": ["Contact", "Contact"], "href": "/menu/contact" }
 ]

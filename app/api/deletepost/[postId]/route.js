@@ -50,8 +50,6 @@ export const DELETE = async (request, { params }) => {
     await Like.deleteMany({ postId: postId });
     // delete all comments
     await Comment.deleteMany({ postId: postId });
-    //delete comment likes
-    
 
     console.log("Deleted:", deletedPost)
 

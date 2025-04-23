@@ -5,16 +5,11 @@ import { signOut } from "next-auth/react";
 import Link from 'next/link';
 import Hamburger from './Hamburger';
 import Weatherreport from './Weatherreport';
-import { useLanguage } from "@/context/LanguageContext";
-import translations from "@/data/translations";
 
 
 const LoginRegisterLogout = () => {
 
 const { data: session, status } = useSession();
-
-const { language, toggleLanguage } = useLanguage();
-const t = translations[language].user;
 
   return (
     <div className="flex flex-row items-center text-white max-md:mx-4 max-md:mt-4 max-md:justify-between max-md:w-full">
@@ -23,7 +18,7 @@ const t = translations[language].user;
       <div className="flex flex-row gap-4">
         {!session ? (
           <Link href="/pages/register" className="">
-           {t.registreer}
+           Registreer
           </Link>
         ) : (
           ""
@@ -32,13 +27,13 @@ const t = translations[language].user;
         <div className="flex items-center justify-center gap-4">
           {!session?.user ? (
             <Link
-              href="/pages/login"
+              href="/login"
               className="flex w-full justify-end"
             >
-              {t.login}
+             Login
             </Link>
           ) : (
-            <Link href="/pages/profile">
+            <Link href="/profile">
               <span className="flex items-center justify-start">{`Hi, ${session?.user?.username}`}</span>
             </Link>
           )}
@@ -56,7 +51,7 @@ const t = translations[language].user;
         </div>
       </div>
 
-      <Link href="/pages/weatherreport" className="md:hidden">
+      <Link href="/weatherreport" className="md:hidden">
         <Weatherreport />
       </Link>
 

@@ -110,7 +110,7 @@ const LoginPage = () => {
 
           <div className="mt-4 flex w-full items-center gap-1 font-medium">
             Nog geen account? <ArrowRight size={16} />
-            <Link href="/pages/register">Registreer</Link>
+            <Link href="/register">Registreer</Link>
           </div>
         </form>
       </div>

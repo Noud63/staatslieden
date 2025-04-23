@@ -1,32 +1,30 @@
 "use client"
-import React from "react";
-import Image from "next/image";
-import { useLanguage } from "@/context/LanguageContext";
-import translations from "@/data/translations";
+import React from 'react'
+import { useTranslations } from "next-intl";
+import Image from 'next/image';
 
 const HistoriePage = () => {
 
-  const { language, toggleLanguage } = useLanguage();
-  const t = translations[language].pages.historie;
+  const t = useTranslations("historie");
 
   return (
     <div className="mx-6 mt-8 text-white max-md:mx-4 max-sm:mt-4">
       <div className="flex items-center justify-between rounded-lg bg-white py-2 text-yellow-900 max-xsm:text-xl">
-        <span className="px-4 text-xl font-semibold">{t.title}</span>
+        <span className="px-4 text-xl font-semibold">{t("titel")}</span>
       </div>
 
       <div className="mx-auto w-full max-w-[960px] max-xl:max-w-full">
         <div className="mb-4 mt-8 flex w-full items-center justify-between rounded-md border-b-2 border-yellow-900 bg-yellow-700 px-4 py-2 text-base shadow-lg">
           Intro
         </div>
-        <p className="mt-4 text-lg text-white">{t.intro}</p>
+        <p className="mt-4 text-lg text-white">{t.raw("content_a2")}</p>
         <br />
 
         <div className="mb-4 mt-8 flex w-full items-center justify-between rounded-md border-b-2 border-yellow-900 bg-yellow-700 px-4 py-2 text-base shadow-lg">
-          {t.section}
+          In den beginne
         </div>
 
-        <p className="mt-4 text-lg text-white">{t.content}</p>
+        <p className="mt-4 text-lg text-white">{t.raw("content_a2")}</p>
 
         <div className="mt-4 border-8 border-white">
           <Image
@@ -38,7 +36,7 @@ const HistoriePage = () => {
           />
 
           <div className="bg-white pt-2 text-sm text-yellow-950">
-            <span>{t.imageCaption}</span>
+            <span>Kaart situatie rond 1895</span>
           </div>
         </div>
 
@@ -53,6 +51,6 @@ const HistoriePage = () => {
       </div>
     </div>
   );
-};
+}
 
-export default HistoriePage;
+export default HistoriePage

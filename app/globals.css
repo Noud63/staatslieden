@@ -114,6 +114,10 @@
 box-shadow: 0px 0px 30px #372011;
 }
 
+.menuitem {
+  box-shadow: 0px 0px 24px #fff;
+}
+
 @layer base {
   * {
     @apply border-border;

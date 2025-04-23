@@ -2,7 +2,7 @@ import React from 'react'
 import Link from 'next/link';
 import Weatherreport from './Weatherreport';
 import LoginRegisterLogout from './LoginRegisterLogout';
-import TranslateButton from './TranslateButton';
+import LanguageSwitcher from './LanguageSwitcher';
 
 const Navbar = () => {
 
@@ -15,7 +15,7 @@ return (
             <div className="font-CloisterBlack text-[4rem] text-white max-xsm:text-[3.2rem]">
               Staatslieden
             </div>
-            <div className="text-[0.77rem] text-[#ffcb3b] retina:text-[0.72rem] max-xsm:text-[0.60rem]">
+            <div className="text-[0.77rem] text-[#ffcb3b] retina:text-[0.72rem] max-xsm:text-[0.605rem]">
               webapplicatie voor de Staatsliedenbuurt Amsterdam
             </div>
           </div>
@@ -27,11 +27,11 @@ return (
           <LoginRegisterLogout />
         </div>
 
-        <Link href="/pages/weatherreport" className="max-md:hidden">
+        <Link href="/weatherreport" className="max-md:hidden">
           <Weatherreport />
         </Link>
 
-        <TranslateButton />
+        <LanguageSwitcher />
       </div>
     </div>
   </div>

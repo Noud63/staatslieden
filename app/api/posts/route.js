@@ -1,4 +1,4 @@
-import Like from "@/models/like";
+import { NextResponse } from "next/server";
 import connectDB from "@/connectDB/database";
 import cloudinary from "@/config/cloudinary";
 import { getSessionUser } from "@/utils/getSessionUser";
@@ -6,6 +6,8 @@ import mongoose from "mongoose";
 import Post from "@/models/post";
 import Comment from "@/models/comment";
 import Avatar from "@/models/avatar";
+import { ObjectId } from "mongoose";
+// import Like from "@/models/like";
 
 export const POST = async (request) => {
   try {
@@ -96,14 +98,7 @@ export async function GET() {
 
 // Fetch comments for each post and structure them with nested replies
    const postsWithComments = await Promise.all(
-
-
      posts.map(async (post) => {
-
-      const liked = userId
-        ? await Like.findOne({ postId: post._id, userId })
-        : null; 
-        
        const comments = await Comment.aggregate([
          { $match: { postId: post._id } },
 
@@ -162,7 +157,10 @@ export async function GET() {
          {
            $addFields: {
              likedByUser: {
-               $in: [new mongoose.mongo.ObjectId(userId), "$likes.userId"], // Check if the current user has liked the comment
+               $in: [
+                 new mongoose.mongo.ObjectId(userId),
+                 "$likes.userId",
+               ], // Check if the current user has liked the comment
              },
            },
          },
@@ -181,19 +179,16 @@ export async function GET() {
          ...post,
          avatar: postAvatar ? postAvatar.avatar : null, // Post author's avatar
          comments: comments.length > 0 ? comments : [],
-         likedByUser: !!liked, // true if the user has liked the post. (if a like object has been found. The double exclamation mark (!!) in JavaScript is a way to convert a value into a boolean)
        };
      }),
    );
 
     
-    console.log("Posts with Comments:", JSON.stringify(postsWithComments, null, 2))
+    // console.log("Posts with Comments:", JSON.stringify(postsWithComments, null, 2))
 
-    return new Response(JSON.stringify(postsWithComments), { status: 200 });
+    return NextResponse.json(postsWithComments, { status: 200 });
   } catch (error) {
-    return new Response(JSON.stringify({ message: error.message }), {
-      status: 500,
-    });
+    return NextResponse.json({ message: "Error fetching posts", error }, { status: 500 });
   }
 }
 

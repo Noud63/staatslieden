@@ -4,45 +4,38 @@ import Like from "@/models/like";
 import { getSessionUser } from "@/utils/getSessionUser";
 
 export const POST = async (request, { params }) => {
- 
+
   const { postId } = params;
-  const session = await getSessionUser()
+  const session = await getSessionUser();
+  await connectDB();
 
   if (!session) {
-    return new Response(JSON.stringify({message: "Unauthorized"}), { status: 401 });
+    return new Response(JSON.stringify({ message: "Unauthorized" }), {
+      status: 401,
+    });
   }
 
-  const userId = session.user.id;
+  const userId = session?.user.id;
 
   try {
- await connectDB();
-
     const liked = await Like.findOne({ postId, userId });
-
-    let updatedLikesCount;
-    
-       if (liked) {
-         // If already liked, remove the like
-         await Like.findOneAndDelete({ postId, userId });
-         const post = await Post.findByIdAndUpdate(postId, { $inc: { likesCount: liked ? -1 : 1 } },{ new: true }) // Return updated document);
-         updatedLikesCount = post?.likesCount ?? 0;
-       } else {
-         // If not liked, create a new like
-         await Like.create({ userId, postId });
-         const post = await Post.findByIdAndUpdate(postId,{ $inc: { likesCount: liked ? -1 : 1 } },{ new: true });
-          updatedLikesCount = post?.likesCount ?? 0;
-       }
-
-        return new Response(
-          JSON.stringify({ likesCount: updatedLikesCount, liked: !liked }),
-          {
-            status: 200,
-          },
-        );
+    if (liked) {
+      // If already liked, remove the like
+      await Like.findOneAndDelete({ postId, userId });
+      const post = await Post.findByIdAndUpdate(postId, {
+        $inc: { likesCount: -1 },
+      });
+      return new Response(JSON.stringify({ message: "dec" }), { status: 200 });
+    } else {
+      // If not liked, create a new like
+      await Like.create({ userId, postId });
+      const post = await Post.findByIdAndUpdate(postId, {
+        $inc: { likesCount: 1 },
+      });
+      return new Response(JSON.stringify({ message: "inc" }), { status: 200 });
+    }
   } catch (error) {
-    return new Response(JSON.stringify({ message: error.message }), {
-      status: 500,
-    });
+    return new Response({ message: error.message }, { status: 500 });
   }
 };
 

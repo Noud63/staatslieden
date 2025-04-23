@@ -1,0 +1,34 @@
+{
+  "menu": {
+    "historie": "Historie",
+    "social": "Social",
+    "nieuws": "Nieuws",
+    "demografie": "Demografie",
+    "beeld": "Beeld",
+    "over": "Over",
+    "praktisch": "Praktisch",
+    "westergas": "Westergas",
+    "buurt": "Buurt",
+    "kunst": "Kunst en Cultuur",
+    "weer": "Weer",
+    "contact": "Contact"
+  },
+  "historie": {
+    "titel": "Geschiedenis van de Staatsliedenbuurt",
+     "content_a1": ["De Staatsliedenbuurt is een Amsterdamse buurt (in de Nederlandse provincie Noord-Holland) in het stadsdeel West.\n",
+                    "De buurt ligt ten zuiden van de Haarlemmertrekvaart en ten westen van de vaarroute Singelgracht - Kattensloot - Kostverlorenvaart.\n",
+                    "De buurt is ontstaan in de 19e eeuw en heeft sindsdien verschillende transformaties ondergaan. Oorspronkelijk was het een arbeiderswijk, maar het heeft zich ontwikkeld tot een levendige en multiculturele gemeenschap.\n",
+                    "De buurt is vernoemd naar de staatslieden van Nederland, die een belangrijke rol hebben gespeeld in de geschiedenis van het land."],
+      "content_a2": [ "Als het gaat om de historie van de Staatsliedenbuurt is de vraag waar begint die geschiedenis. Waar moet je beginnen met dat verhaal?\n",
+                    "Zeker gezien de geografische ligging van de Staatsliedenbuurt in het gebied dat behoorde tot de vroegere gemeente Sloten, verdient de periode voor de annexatie (1877-1896-1921) door Amsterdam, toen Sloten zijn zelfstandigheid en grond verloor aan Amsterdam, hier zeker aandacht."]
+  },
+  "demografie": {
+    "titel": "Demografie",
+    "desc" : ["Hier vindt je de demografische gegevens van de wijk.\n",
+"Maar wat is demografie eigenlijk?\n",
+"Demografie is bevolkingsonderzoek of bevolkingsleer. Demografie onderzoekt hoe een bevolkingsgroep (gemeenschap) is samengesteld.\n",
+"Hierbij wordt gekeken naar bijvoorbeeld leeftijd, geslacht, nationaliteit, etniciteit, opleidingsniveau, burgerlijke staat en beroep.\n",
+"Hierbij heb je ook te maken met sociale wetenschappen als geografie, sociologie, antropologie en geschiedenis, maar ook exacte wetenschappen als statistiek en wiskunde.\n",
+"Beweeg met je muis over het diagram voor de exacte aantallen of percentages per jaar."]
+  }
+}

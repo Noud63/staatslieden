@@ -4,8 +4,6 @@ import AddPostModal from "./AddPostModal";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useLanguage } from "@/context/LanguageContext";
-import translations from "@/data/translations";
 
 const AddPost = () => {
   
@@ -18,16 +16,12 @@ const AddPost = () => {
 
   const router = useRouter()
 
-  const { language, toggleLanguage } = useLanguage();
-  const t = translations[language].addPost;
-
-
   const showAddPostModal = () => {
     if (session?.user) {
       setInView(!inView);
     }
     if(!session?.user){
-      router.push("/pages/login")
+      router.push("/login")
     }
   };
 
@@ -50,8 +44,8 @@ return (
           onClick={showAddPostModal}
         >
           {session?.user
-            ? `${t.delen}, ${name}?`
-            : `${t.delen}?`}
+            ? `Schrijf hier iets, ${name}!`
+            : "wat wil je met ons delen?"}
         </button>
       </div>
     </section>

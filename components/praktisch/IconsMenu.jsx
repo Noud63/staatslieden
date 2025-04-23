@@ -7,7 +7,7 @@ const IconsMenu = () => {
     <div className="w-full border-b-2 pb-4">
       <div className="flex flex-col gap-2 px-2 pt-4 text-lg max-xsm:px-0">
         <Link
-          href="/pages/menu/praktisch/grofvuil"
+          href="/menu/praktisch/grofvuil"
           className="w-full max-w-[220px]"
         >
           <div className="flex items-center gap-2">
@@ -25,7 +25,7 @@ const IconsMenu = () => {
         </Link>
 
         <Link
-          href="/pages/menu/praktisch/afvalcontainers"
+          href="/menu/praktisch/afvalcontainers"
           className="w-full max-w-[220px]"
         >
           <div className="flex items-center gap-2">
@@ -42,7 +42,7 @@ const IconsMenu = () => {
           </div>
         </Link>
 
-        <Link href="/pages/menu/praktisch/ov" className="w-full max-w-[220px]">
+        <Link href="/menu/praktisch/ov" className="w-full max-w-[220px]">
           <div className="flex items-center gap-2">
             <div className="flex h-[20px] w-[40px] justify-center">
               <Image
@@ -58,7 +58,7 @@ const IconsMenu = () => {
         </Link>
 
         <Link
-          href="/pages/menu/praktisch/winkels"
+          href="/menu/praktisch/winkels"
           className="w-full max-w-[220px]"
         >
           <div className="flex items-center gap-2">
@@ -76,7 +76,7 @@ const IconsMenu = () => {
         </Link>
 
         <Link
-          href="/pages/menu/praktisch/horeca"
+          href="/menu/praktisch/horeca"
           className="w-full max-w-[220px]"
         >
           <div className="flex items-center gap-2">
@@ -94,7 +94,7 @@ const IconsMenu = () => {
         </Link>
 
         <Link
-          href="/pages/menu/praktisch/dienstverlening"
+          href="/menu/praktisch/dienstverlening"
           className="w-full max-w-[220px]"
         >
           <div className="flex items-center gap-2">
@@ -112,7 +112,7 @@ const IconsMenu = () => {
         </Link>
 
         <Link
-          href="/pages/menu/praktisch/zorg"
+          href="/menu/praktisch/zorg"
           className="w-full max-w-[220px]"
         >
           <div className="flex items-center gap-2">

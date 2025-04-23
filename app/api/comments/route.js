@@ -16,7 +16,7 @@ export const POST = async (request) => {
     const {
       user: { name, email, image, id, avatar },
       } = sessionUser;
-    // console.log("User:", sessionUser.user);
+    console.log("User:", sessionUser.user);
 
     if (!sessionUser || !sessionUser.user.id) {
       return new Response("Not authorized!", { status: 401 });
@@ -35,7 +35,7 @@ export const POST = async (request) => {
       avatar: avatar
     });
 
-    // console.log("New Comment:", newComment);
+    console.log("New Comment:", newComment);
 
     await newComment.save();
     return NextResponse.json(newComment, { status: 201 });

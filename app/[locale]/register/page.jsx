@@ -166,7 +166,7 @@ const RegisterPage = () => {
 
           <div className="mt-4 flex w-full items-center gap-1 font-medium">
             Heb je al een account? <ArrowRight size={16} />
-            <Link href="/pages/login">Login</Link>
+            <Link href="/login">Login</Link>
           </div>
         </form>
       </div>

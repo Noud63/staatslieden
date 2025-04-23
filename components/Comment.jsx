@@ -41,18 +41,11 @@ const Comment = ({ comment, postId, parentId}) => {
           const res = await fetch(`/api/comments/${commentId}/like`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-           body: JSON.stringify({commentId, postId}),
+            body: JSON.stringify({ commentId}),
           });
 
-          if (!res.ok) {
-            const errorData = await res.json();
-            console.error(
-              "Failed to update like:",
-              res.status,
-              errorData.message,
-            );
-          }
-          mutate("/api/posts");
+          if (!res.ok) throw new Error("Failed to update like");
+          // mutate("/api/posts");
         } catch (error) {
           console.error(error);
           return currentData; // Rollback on failure

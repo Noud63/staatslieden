@@ -5,6 +5,7 @@ import LeesDit from "@/components/LeesDit";
 import { fetchPosts } from "@/utils/postsRequest";
 
 export default async function Home() {
+  
   const initialData = await fetchPosts(); // Fetch on server
 
   return (

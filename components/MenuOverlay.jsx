@@ -3,8 +3,12 @@ import Link from "next/link";
 import data from "../data/menuItems.json";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import Image from "next/image";
+import { useLocale } from "next-intl";
 
 const MenuOverlay = ({ setOpenModal, openModal }) => {
+
+  const currentLocale = useLocale();
+  
   const closeModal = () => {
     setOpenModal(false);
   };
@@ -23,7 +27,7 @@ const MenuOverlay = ({ setOpenModal, openModal }) => {
             <div key={index}>
               <Link href={item?.href || "/not-found"}>
                 <div className="flex h-12 w-full cursor-pointer items-center justify-center rounded-lg border-[3px] border-white font-semibold tracking-wide text-white shadow-lg">
-                  {item.title}
+                  {currentLocale === "nl" ? item.title[0] : item.title[1]}
                 </div>
               </Link>
             </div>
@@ -36,7 +40,7 @@ const MenuOverlay = ({ setOpenModal, openModal }) => {
             alt="logo"
             width={100}
             height={0}
-            className="h-[40px] w-[40px] object-cover rotate-6"
+            className="h-[40px] w-[40px] rotate-6 object-cover"
           />
         </div>
       </div>

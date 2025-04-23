@@ -45,7 +45,7 @@ const { data: session, status } = useSession();
                 signOut({ callbackUrl: "/", redirect: true });
               }}
             >
-              <span>{t.loguit}</span>
+              <span>Uitloggen</span>
             </button>
           )}
         </div>

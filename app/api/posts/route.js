@@ -6,8 +6,7 @@ import mongoose from "mongoose";
 import Post from "@/models/post";
 import Comment from "@/models/comment";
 import Avatar from "@/models/avatar";
-import { ObjectId } from "mongoose";
-// import Like from "@/models/like";
+
 
 export const POST = async (request) => {
   try {

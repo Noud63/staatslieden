@@ -38,7 +38,7 @@ const { data, error, isLoading } = useSWR("/api/posts", fetcher, {
        </div>
      );
 
-  console.log("Posts:", data);
+  // console.log("Posts:", data);
 
   return (
     <div className="mx-auto flex w-full max-w-[670px] flex-grow flex-col rounded-lg py-4">

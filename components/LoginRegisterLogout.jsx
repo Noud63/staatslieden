@@ -17,7 +17,7 @@ const { data: session, status } = useSession();
 
       <div className="flex flex-row gap-4">
         {!session ? (
-          <Link href="/register" className="">
+          <Link href="/pages/register" className="">
            Registreer
           </Link>
         ) : (

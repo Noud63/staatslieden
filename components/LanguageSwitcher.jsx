@@ -15,8 +15,7 @@ const LanguageSwitcher = () => {
     const newPath = segments.join('/');
 
     router.push(newPath);
-
-  };
+};
 
 return (
   <div className="flex h-full pt-1 max-md:w-full max-md:justify-end max-md:pt-0">

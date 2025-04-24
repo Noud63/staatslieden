@@ -9,19 +9,17 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/captions.css";
+import { getRequestConfig } from "next-intl/server";
 
 // Replace hasLocale with a custom implementation
-const isValidLocale = (locales, locale) => locales.includes(locale);
+// const isValidLocale = (locales, locale) => locales.includes(locale);
 
 export default async function RootLayout({ children, params }) {
-
   const { locale } = await params;
+  // if (!isValidLocale(routing.locales, locale)) {
+  //   notFound();
+  // }
 
-  if (!isValidLocale(routing.locales, locale)) {
-    notFound();
-  }
-
-  // console.log("Locales:", routing.locales);
   const messages = (await import(`../../messages/${locale}.json`)).default;
 
   return (

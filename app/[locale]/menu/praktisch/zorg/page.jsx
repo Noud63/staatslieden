@@ -1,4 +1,4 @@
-import AllZorgInstanties from "@/components/praktisch/zorg/AlleZorgInstanties";
+import AllZorgInstanties from "@/components/hoofdmenu/praktisch/zorg/AlleZorgInstanties";
 
 const ZorgPage = () => {
 

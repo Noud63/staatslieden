@@ -1,5 +1,5 @@
 import React from "react";
-import Horeca from "@/components/praktisch/Horeca";
+import Horeca from "@/components/hoofdmenu/praktisch/Horeca";
 
 const HorecaPage = () => {
   return (

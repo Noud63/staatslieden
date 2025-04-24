@@ -1,4 +1,4 @@
-import IconsMenu from "@/components/praktisch/IconsMenu";
+import IconsMenu from "@/components/hoofdmenu/praktisch/IconsMenu";
 
 export default function PraktischLayout({ children }) {
   return (

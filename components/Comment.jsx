@@ -12,7 +12,7 @@ const Comment = ({ comment, postId, parentId}) => {
 
   const [showForm, setShowForm] = useState(false);
 
-  // console.log("Comment:", comment);
+  console.log("Comment:", comment);
 
   const toggleLike = async (commentId) => {
     // Optimistically update the UI

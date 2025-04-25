@@ -12,10 +12,10 @@ return (
       <div className="flex flex-row items-center">
         <Link href="/">
           <div className="mb-2 flex flex-col items-center leading-none tracking-wide">
-            <div className="font-CloisterBlack text-[4rem] text-white max-xsm:text-[3.6rem] text-center w-fit">
+            <div className="w-fit text-center font-CloisterBlack text-[4rem] text-white max-xsm:text-[3.6rem]">
               Staatslieden
             </div>
-            <div className="subtitle text-[0.76rem] text-[#ffcb3b] retina:text-[0.72rem] max-xsm:text-[0.67rem] ">
+            <div className="subtitle w-fit text-center text-[0.76rem] text-[#ffcb3b] retina:text-[0.72rem] max-xsm:text-[0.67rem]">
               webapplicatie voor de Staatsliedenbuurt Amsterdam
             </div>
           </div>

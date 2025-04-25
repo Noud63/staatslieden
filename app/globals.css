@@ -130,7 +130,7 @@ box-shadow: 0px 0px 30px #372011;
 @layer utilities {
   @media (max-width: 400px) and (min-resolution: 2dppx) {
     .subtitle {
-      font-size: 0.68rem;
+      font-size: 0.5rem;
     }
   }
 }

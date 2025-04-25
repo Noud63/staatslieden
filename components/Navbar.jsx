@@ -12,7 +12,7 @@ return (
       <div className="flex flex-row items-center">
         <Link href="/">
           <div className="mb-2 flex flex-col items-center leading-none tracking-wide">
-            <div className="font-CloisterBlack text-[4rem] text-white max-xsm:text-[3.4rem] text-center w-fit">
+            <div className="font-CloisterBlack text-[4rem] text-white max-xsm:text-[3.6rem] text-center w-fit">
               Staatslieden
             </div>
             <div className="text-[0.76rem] text-[#ffcb3b] retina:text-[0.72rem] max-xsm:text-[0.64rem] text-center w-fit">

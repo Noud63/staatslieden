@@ -12,42 +12,25 @@ const LeesDitEerst = () => {
     <div className="mx-4">
       <div className="mx-auto mt-[20px] w-full max-w-[620px] flex-col rounded-lg border-2 p-4">
         <div className="mb-4 flex items-center justify-between border-b pb-4 text-xl font-semibold text-white">
-          <span>{t("titel")}</span>
+          <span>{t("titel_3")}</span>
           <Link href={"/"}>
             <AiOutlineCloseCircle size={30} color="#fff" />
           </Link>
         </div>
         <div className="mb-4 text-white">
           <div className="mb-4">
-            Om een bericht te posten dient u zich eerst te registreren en
-            vervolgens in te loggen met uw email en gebruikersnaam. Door op uw
-            naam te klikken gaat u naar uw profielpagina en kunt u, desgewenst
-            een profielafbeelding toevoegen.
+            {t("alinea_1")}
             <br />
           </div>
-          U kunt uw meningen, kritische geluiden, afbeeldingen en opmerkingen
-          via dit platform met ons delen. Om dit voor iedereen prettig te
-          houden, vragen we u vriendelijk om u aan de volgende huisregels te
-          houden:
+          {t("alinea_2")}
         </div>
         <div className="px-4 text-white">
+          {}
           <ul className="list-disc">
-            <li>
-              Ga netjes met elkaar om op dit platform. Bedreigen, schelden,
-              hatelijk gedrag en kwetsen is op dit platform niet gewenst.
-            </li>
-            <li>
-              Respecteer elkaars mening en privacy. Deel geen publiekelijke en
-              privacygevoelige informatie.
-            </li>
-            <li>
-              Plaatst u meer dan één keer ongepaste berichten op dit platform?
-              Dan kunnen we u als gebruiker blokkeren.
-            </li>
-            <li>
-              Voldoet uw bericht niet aan deze regels? Dan mogen wij uw bericht
-              verwijderen.
-            </li>
+            <li>{t("regel_1")}</li>
+            <li>{t("regel_2")}</li>
+            <li>{t("regel_3")}</li>
+            <li>{t("regel_4")}</li>
           </ul>
         </div>
 
@@ -57,6 +40,7 @@ const LeesDitEerst = () => {
             alt="respect"
             width={60}
             height={60}
+            className="h-auto w-auto"
           />
           respect
         </div>

@@ -16,11 +16,12 @@
   "historie": {
     "titel": "History of the Staatsliedenbuurt",
     "content_a1": [
-      "The Staatsliedenbuurt is a neighborhood in Amsterdam (in the Dutch province of North Holland) located in the district of West.",
+      "The Staatsliedenbuurt is a neighborhood in Amsterdam located in the district of West.",
       "The neighborhood lies south of the Haarlemmertrekvaart and west of the waterway route Singelgracht - Kattensloot - Kostverlorenvaart.",
       "The area emerged in the 19th century and has since undergone various transformations. Originally a working-class neighborhood, it has developed into a vibrant and multicultural community.",
       "The neighborhood is named after the statesmen of the Netherlands, who played an important role in the country's history."
     ],
+    "subtitel": "In the beginning",
     "content_a2": [
       "When it comes to the history of the Staatsliedenbuurt, the question is: where does that history begin? Where should you start telling that story?",
       "Given the geographical location of the Staatsliedenbuurt in the area that once belonged to the former municipality of Sloten, the period before the annexation (1877–1896–1921) by Amsterdam, when Sloten lost its independence and land to the city, certainly deserves attention here."
@@ -38,6 +39,14 @@
     ]
   },
   "leesditeerst": {
-    "titel": "Rules for posting online"
+    "titel_1": "Read this first",
+    "titel_2": "Read this first",
+    "titel_3": "Rules for posting online",
+    "alinea_1": "To post a message, you must first register and then log in with your email and username. By clicking on your name, you go to your profile page where you can, if you wish, add a profile picture.",
+    "alinea_2": "You can share your opinions, critical comments, images, and remarks with us through this platform. To keep this enjoyable for everyone, we kindly ask you to follow these house rules:",
+    "regel_1": "Treat each other respectfully on this platform. Threatening, swearing, hateful behavior, and hurting others are not allowed here.",
+    "regel_2": "Respect each other's opinions and privacy. Do not share public or sensitive personal information.",
+    "regel_3": "If you post inappropriate messages more than once on this platform, we may block you as a user.",
+    "regel_4": "If your message does not comply with these rules, we have the right to delete it."
   }
 }

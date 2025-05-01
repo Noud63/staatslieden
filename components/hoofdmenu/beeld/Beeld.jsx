@@ -4,12 +4,15 @@ import Lightbox from "yet-another-react-lightbox";
 import Captions from "yet-another-react-lightbox/plugins/captions";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import Image from "next/image";
-
+import { useTranslations } from "next-intl";
 import images from "../../../data/beeldToenEnNu.json";
 
 const Beeld = () => {
+
   const [open, setOpen] = useState(false);
   const [slides, setSlides] = useState([]);
+
+  const t = useTranslations("beeld");
 
   const sortedImages = images.sort((a, b) => a.jaar - b.jaar);
 
@@ -22,8 +25,8 @@ const Beeld = () => {
     <>
       <div className="text-lg font-semibold tracking-wide">
         <div className="flex w-full items-center gap-2 rounded-md bg-white py-2 pl-4 text-yellow-950 max-xsm:text-base">
-          <span>De Staatsliedenbuurt in beeld</span>
-          <span className="max-xsm:hidden">(1900-heden)</span>
+          <span>{t("titel")}</span>
+          <span className="max-xsm:hidden">{t("1900heden")}</span>
         </div>
       </div>
       <div className="mt-4 grid grid-cols-[repeat(auto-fill,_minmax(260px,_1fr))] gap-2">

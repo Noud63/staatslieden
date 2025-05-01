@@ -1,24 +1,26 @@
-"use client"
-import React from 'react'
+"use client";
+import React from "react";
 import { useSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
-import Link from 'next/link';
-import Hamburger from './Hamburger';
-import Weatherreport from './Weatherreport';
-
+import Link from "next/link";
+import Hamburger from "./Hamburger";
+import Weatherreport from "./Weatherreport";
+import { useTranslations } from "next-intl";
 
 const LoginRegisterLogout = () => {
 
-const { data: session, status } = useSession();
+  const { data: session, status } = useSession();
+
+    const t = useTranslations("auth");
 
   return (
-    <div className="flex flex-row items-center text-white max-md:mx-4 max-md:mt-4 max-md:justify-between max-md:w-full">
+    <div className="flex flex-row items-center text-white max-md:mx-4 max-md:mt-4 max-md:w-full max-md:justify-between">
       <Hamburger />
 
       <div className="flex flex-row gap-4">
         {!session ? (
-          <Link href="/pages/register" className="">
-           Registreer
+          <Link href="/register" className="">
+            {t("registreren")}
           </Link>
         ) : (
           ""
@@ -26,11 +28,8 @@ const { data: session, status } = useSession();
 
         <div className="flex items-center justify-center gap-4">
           {!session?.user ? (
-            <Link
-              href="/login"
-              className="flex w-full justify-end"
-            >
-             Login
+            <Link href="/login" className="flex w-full justify-end">
+              {t("inloggen")}
             </Link>
           ) : (
             <Link href="/profile">
@@ -45,7 +44,7 @@ const { data: session, status } = useSession();
                 signOut({ callbackUrl: "/", redirect: true });
               }}
             >
-              <span>Uitloggen</span>
+              <span> {t("uitloggen")}</span>
             </button>
           )}
         </div>
@@ -54,9 +53,8 @@ const { data: session, status } = useSession();
       <Link href="/weatherreport" className="md:hidden">
         <Weatherreport />
       </Link>
-
     </div>
   );
-}
+};
 
-export default LoginRegisterLogout
+export default LoginRegisterLogout;

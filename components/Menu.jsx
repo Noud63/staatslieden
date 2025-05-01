@@ -11,10 +11,12 @@ const Menu = () => {
   let pathname = usePathname();
   const currentLocale = useLocale();
 
+  console.log(pathname)
+
 if (pathname.length > 3) {
     pathname = pathname.slice(3, pathname.length);
   } else if (pathname.length <= 3) {
-    pathname = "/";
+    pathname = `/${currentLocale}`;
   }
 
   return (

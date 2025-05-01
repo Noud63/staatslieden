@@ -1,4 +1,9 @@
 {
+  "auth": {
+    "inloggen": "Inloggen",
+    "uitloggen": "Uitloggen",
+    "registreren": "Registreren"
+  },
   "menu": {
     "historie": "Historie",
     "social": "Social",
@@ -25,26 +30,37 @@
     "content_a2": [
       "Als het gaat om de historie van de Staatsliedenbuurt is de vraag waar begint die geschiedenis. Waar moet je beginnen met dat verhaal?\n",
       "Zeker gezien de geografische ligging van de Staatsliedenbuurt in het gebied dat behoorde tot de vroegere gemeente Sloten, verdient de periode voor de annexatie (1877-1896-1921) door Amsterdam, toen Sloten zijn zelfstandigheid en grond verloor aan Amsterdam, hier zeker aandacht."
-    ]
+    ],
+    "kaart": "Situatie rond 1895"
   },
   "demografie": {
     "titel": "Demografie",
-    "desc" : ["Hier vindt je de demografische gegevens van de wijk.\n",
-"Maar wat is demografie eigenlijk?\n",
-"Demografie is bevolkingsonderzoek of bevolkingsleer. Demografie onderzoekt hoe een bevolkingsgroep (gemeenschap) is samengesteld.\n",
-"Hierbij wordt gekeken naar bijvoorbeeld leeftijd, geslacht, nationaliteit, etniciteit, opleidingsniveau, burgerlijke staat en beroep.\n",
-"Hierbij heb je ook te maken met sociale wetenschappen als geografie, sociologie, antropologie en geschiedenis, maar ook exacte wetenschappen als statistiek en wiskunde.\n",
-"Beweeg met je muis over het diagram voor de exacte aantallen of percentages per jaar."]
+    "desc": [
+      "Hier vindt je de demografische gegevens van de wijk.\n",
+      "Maar wat is demografie eigenlijk?\n",
+      "Demografie is bevolkingsonderzoek of bevolkingsleer. Demografie onderzoekt hoe een bevolkingsgroep (gemeenschap) is samengesteld.\n",
+      "Hierbij wordt gekeken naar bijvoorbeeld leeftijd, geslacht, nationaliteit, etniciteit, opleidingsniveau, burgerlijke staat en beroep.\n",
+      "Hierbij heb je ook te maken met sociale wetenschappen als geografie, sociologie, antropologie en geschiedenis, maar ook exacte wetenschappen als statistiek en wiskunde.\n",
+      "Beweeg met je muis over het diagram voor de exacte aantallen of percentages per jaar."
+    ]
   },
   "leesditeerst": {
-     "titel_1": "Een bericht plaatsen?",
-     "titel_2": "Lees dit eerst!",
-     "titel_3": "Regels voor online posten",
-     "alinea_1": "Om een bericht te posten dient u zich eerst te registreren en vervolgens in te loggen met uw email en gebruikersnaam. Door op uw naam te klikken gaat u naar uw profielpagina en kunt u, desgewenst een profielafbeelding toevoegen.",
-     "alinea_2": "U kunt uw meningen, kritische geluiden, afbeeldingen en opmerkingen via dit platform met ons delen. Om dit voor iedereen prettig te houden, vragen we u vriendelijk om u aan de volgende huisregels te houden:",
-     "regel_1": "Ga netjes met elkaar om op dit platform. Bedreigen, schelden, hatelijk gedrag en kwetsen is op dit platform niet gewenst.",
-     "regel_2":"Respecteer elkaars mening en privacy. Deel geen publiekelijke en privacygevoelige informatie",
-     "regel_3":"Plaatst u meer dan één keer ongepaste berichten op dit platform? Dan kunnen we u als gebruiker blokkeren.",
-     "regel_4":"Voldoet uw bericht niet aan deze regels? Dan mogen wij uw bericht verwijderen."
-}
+    "titel_1": "Een bericht plaatsen?",
+    "titel_2": "Lees dit eerst!",
+    "titel_3": "Regels voor online posten",
+    "alinea_1": "Om een bericht te posten dient u zich eerst te registreren en vervolgens in te loggen met uw email en gebruikersnaam. Door op uw naam te klikken gaat u naar uw profielpagina en kunt u, desgewenst een profielafbeelding toevoegen.",
+    "alinea_2": "U kunt uw meningen, kritische geluiden, afbeeldingen en opmerkingen via dit platform met ons delen. Om dit voor iedereen prettig te houden, vragen we u vriendelijk om u aan de volgende huisregels te houden:",
+    "regel_1": "Ga netjes met elkaar om op dit platform. Bedreigen, schelden, hatelijk gedrag en kwetsen is op dit platform niet gewenst.",
+    "regel_2": "Respecteer elkaars mening en privacy. Deel geen publiekelijke en privacygevoelige informatie",
+    "regel_3": "Plaatst u meer dan één keer ongepaste berichten op dit platform? Dan kunnen we u als gebruiker blokkeren.",
+    "regel_4": "Voldoet uw bericht niet aan deze regels? Dan mogen wij uw bericht verwijderen."
+  },
+  "post": {
+    "postiets": "Post hier iets",
+    "delen": "Wat wil je met ons delen?"
+  },
+  "beeld": {
+    "titel": "De Staatsliedenbuurt in beeld",
+    "1900heden": "(1900-heden)"
+  }
 }

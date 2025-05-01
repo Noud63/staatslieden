@@ -7,6 +7,7 @@ import { CircleCheckBig } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
+import { useLocale } from "next-intl";
 
 const LoginPage = () => {
  
@@ -15,6 +16,8 @@ const LoginPage = () => {
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
   const [message, setMessage] = useState("");
+
+  const locale = useLocale();
    
   const router = useRouter();
 
@@ -31,7 +34,7 @@ const LoginPage = () => {
      if (res.status === 200) {
        setSuccess(true);
        setTimeout(() => {
-         router.push("/");
+         router.push(`/${locale}`);
        }, 1500);
      }
 

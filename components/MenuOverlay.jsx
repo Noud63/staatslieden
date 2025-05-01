@@ -26,7 +26,7 @@ const MenuOverlay = ({ setOpenModal, openModal }) => {
           data.map((item, index) => (
             <div key={index}>
               <Link href={item?.href || "/not-found"}>
-                <div className="flex h-12 w-full cursor-pointer items-center justify-center rounded-lg border-[3px] border-white font-semibold tracking-wide text-white shadow-lg">
+                <div className="flex h-12 w-full cursor-pointer items-center justify-center rounded-lg border-[3px] border-white font-normal tracking-wide text-white shadow-lg">
                   {currentLocale === "nl" ? item.title[0] : item.title[1]}
                 </div>
               </Link>

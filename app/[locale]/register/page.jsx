@@ -55,7 +55,7 @@ const RegisterPage = () => {
         setSuccess(true);
         setTimeout(() => {
           setSuccess(false);
-          router.push("/pages/login");
+          router.push("/login");
         }, 5000);
       } else if (
         res.status === 409 ||

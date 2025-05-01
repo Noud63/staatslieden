@@ -3,17 +3,19 @@ import Image from "next/image";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 
 const LeesDitEerst = () => {
 
     const t = useTranslations("leesditeerst");
+    const locale = useLocale()
 
   return (
     <div className="mx-4">
       <div className="mx-auto mt-[20px] w-full max-w-[620px] flex-col rounded-lg border-2 p-4">
         <div className="mb-4 flex items-center justify-between border-b pb-4 text-xl font-semibold text-white">
           <span>{t("titel_3")}</span>
-          <Link href={"/"}>
+          <Link href={`/${locale}`}>
             <AiOutlineCloseCircle size={30} color="#fff" />
           </Link>
         </div>

@@ -9,7 +9,7 @@ return (<div className="flex h-full pt-1 max-md:w-full max-md:justify-end max-md
   <button
     onClick={toggleLanguage}
     className={`${
-      language === "dutch"
+      language === "nl"
         ? "bg-[url('../public/icons/english_flag.png')]" 
         : "bg-[url('../public/icons/dutch_flag.png')]"
     } h-[20px] w-[35px] bg-cover bg-center bg-no-repeat`}

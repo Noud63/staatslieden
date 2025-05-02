@@ -7,7 +7,7 @@ import { useLocale } from 'next-intl';
 
 const Navbar = () => {
 
-  const locale= useLocale();  
+  const locale = useLocale()
 
 return (
   <div className="navbar flex h-[100px] w-full justify-between border-b border-yellow-800 py-3 max-sm:px-4">

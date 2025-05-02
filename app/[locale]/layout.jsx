@@ -9,7 +9,6 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/captions.css";
-import { getRequestConfig } from "next-intl/server";
 
 // Replace hasLocale with a custom implementation
 // const isValidLocale = (locales, locale) => locales.includes(locale);

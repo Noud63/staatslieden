@@ -17,7 +17,6 @@ const LoginPage = () => {
   const [success, setSuccess] = useState(false);
   const [message, setMessage] = useState("");
 
-  const locale = useLocale();
    
   const router = useRouter();
 
@@ -34,7 +33,7 @@ const LoginPage = () => {
      if (res.status === 200) {
        setSuccess(true);
        setTimeout(() => {
-         router.push(`/${locale}`);
+         router.push("/");
        }, 1500);
      }
 

@@ -1,35 +1,46 @@
 "use client";
-import { usePathname, useRouter } from "next/navigation";
 import { useLocale } from "next-intl";
+import { usePathname, useRouter } from "@/i18n/navigation";
 
-const LanguageSwitcher = () => {
+const TranslateButton = () => {
+  const locale = useLocale(); // 'nl' or 'en'
+  const router = useRouter();
+  const pathname = usePathname(); // Current path
 
-    const router = useRouter();
-    const pathname = usePathname();
-    const currentLocale = useLocale();
+  
+  // Handle language change
+  const handleToggle = () => {
+    const newLocale = locale === "nl" ? "en" : "nl";
+    // Extract the base path (removes '/nl' or '/en' from the beginning of the URL)
+    const newPathname = pathname.replace(/^\/(nl|en)/, `/${newLocale}`);
 
-     const handleLocaleChange = (newLocale) => {
-    // Strip the current locale from the path
-    const segments = pathname.split('/');
-    segments[1] = newLocale; // replace the locale segment
-    const newPath = segments.join('/');
+    // Navigate to the new path with the updated locale in the URL
+    router.replace(newPathname, { locale: newLocale });
+  };
 
-    router.push(newPath);
-};
-
-return (
-  <div className="flex h-full pt-1 max-md:w-full max-md:justify-end max-md:pt-0">
+  return (
     <button
-      value={currentLocale}
-      onClick={() => handleLocaleChange(currentLocale === "nl" ? "en" : "nl")}
+      onClick={handleToggle}
       className={`${
-        currentLocale === "nl"
+        locale === "nl"
           ? "bg-[url('/icons/english_flag.png')]"
           : "bg-[url('/icons/dutch_flag.png')]"
       } h-[20px] w-[35px] bg-cover bg-center bg-no-repeat`}
-    ></button>
-  </div>
-);
+    />
+  );
 };
 
-export default LanguageSwitcher;
+export default TranslateButton;
+
+// const router = useRouter();
+// const pathname = usePathname();
+// const currentLocale = useLocale();
+
+// const handleLocaleChange = (newLocale) => {
+//   // Strip the current locale from the path
+//   const segments = pathname.split("/");
+//   segments[1] = newLocale; // replace the locale segment
+//   const newPath = segments.join("/");
+
+//   router.push(newPath);
+// };

@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import Image from "next/image";
 import { AiOutlineCloseCircle } from "react-icons/ai";
@@ -8,7 +9,8 @@ import { useLocale } from "next-intl";
 const LeesDitEerst = () => {
 
     const t = useTranslations("leesditeerst");
-    const locale = useLocale()
+
+    const locale = useLocale(); // 'nl' or 'en'
 
   return (
     <div className="mx-4">

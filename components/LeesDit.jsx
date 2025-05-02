@@ -1,3 +1,4 @@
+"use client"  
 import React from 'react'
 import Image from 'next/image'
 import vinger from "../assets/icons/vinger.png"
@@ -8,7 +9,8 @@ import { useLocale } from "next-intl";
 const LeesDit = () => {
 
   const t = useTranslations("leesditeerst")
-  const locale = useLocale()
+
+  const locale = useLocale() // 'nl' or 'en'
 
   return (
     <div className="mx-6 mt-4 max-sm:mx-4 max-xsm:mx-2">

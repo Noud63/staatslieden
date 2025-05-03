@@ -99,7 +99,6 @@ module.exports = {
   	}
   },
   plugins: [
-    require("tailwindcss-animate"),
     function ({ addVariant }) {
       addVariant(
         "retina",

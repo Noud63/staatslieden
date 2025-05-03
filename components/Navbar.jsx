@@ -14,11 +14,11 @@ return (
     <div className="mx-auto flex w-full max-w-[1980px] flex-row items-center justify-between px-6 max-sm:justify-between max-sm:px-0">
       <div className="flex flex-row items-center">
         <Link href={`/${locale}`}>
-          <div className="mb-2 flex flex-col leading-none tracking-wide">
-            <div className="font-CloisterBlack text-[3.8rem] text-white max-xsm:text-[3.2rem]">
+          <div className="mb-2 flex flex-col leading-none">
+            <div className="font-CloisterBlack text-[4rem] text-white max-xsm:text-[3.2rem]">
               Staatslieden
             </div>
-            <div className="text-[0.76rem] text-[#ffcb3b] retina:text-[0.72rem] max-xsm:text-[0.6rem]">
+            <div className="text-[0.72rem] text-[#ffcb3b] retina:text-[0.77rem] max-xsm:text-[0.61rem] tracking-wide">
               webapplicatie voor de Staatsliedenbuurt Amsterdam
             </div>
           </div>

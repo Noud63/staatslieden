@@ -15,7 +15,7 @@ return (
       <div className="flex flex-row items-center">
         <Link href={`/${locale}`}>
           <div className="mb-2 flex flex-col leading-none tracking-wide">
-            <div className="font-CloisterBlack text-[4rem] text-white max-xsm:text-[3.2rem]">
+            <div className="font-CloisterBlack text-[3.8rem] text-white max-xsm:text-[3.2rem]">
               Staatslieden
             </div>
             <div className="text-[0.76rem] text-[#ffcb3b] retina:text-[0.72rem] max-xsm:text-[0.6rem]">
@@ -25,7 +25,7 @@ return (
         </Link>
       </div>
 
-      <div className="flex w-[350px] flex-row items-center justify-between">
+      <div className="flex w-[350px] flex-row items-center justify-between max-md:justify-end">
         <div className="max-md:hidden">
           <LoginRegisterLogout />
         </div>

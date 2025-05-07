@@ -18,14 +18,14 @@ return (
             <div className="w-fit text-center font-CloisterBlack text-[4rem] text-white max-xsm:text-[3.6rem]">
               Staatslieden
             </div>
-            <div className="text-[0.8rem] text-[#ffcb3b] retina:text-[0.76rem] retina:max-xsm:text-[0.6rem] max-xsm:text-[0.62rem]">
+            <div className="text-[0.76rem] text-[#ffcb3b] retina:text-[0.76rem] retina:max-xsm:text-[0.6rem] max-xsm:text-[0.62rem]">
               webapplicatie voor de Staatsliedenbuurt Amsterdam
             </div>
           </div>
         </Link>
       </div>
 
-      <div className="flex w-[350px] flex-row items-center justify-between">
+      <div className="flex w-[350px] flex-row items-center justify-between max-md:justify-end">
         <div className="max-md:hidden">
           <LoginRegisterLogout />
         </div>

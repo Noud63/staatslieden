@@ -18,7 +18,7 @@ return (
             <div className="w-fit text-center font-CloisterBlack text-[4rem] text-white max-xsm:text-[3.6rem]">
               Staatslieden
             </div>
-            <div className="text-[0.76rem] text-[#ffcb3b] retina:text-[0.76rem] retina:max-xsm:text-[0.6rem] max-xsm:text-[0.62rem]">
+            <div className="text-[0.76rem] text-[#ffcb3b] retina:text-[0.76rem] retina:max-xsm:text-[0.64rem] max-xsm:text-[0.62rem]">
               webapplicatie voor de Staatsliedenbuurt Amsterdam
             </div>
           </div>

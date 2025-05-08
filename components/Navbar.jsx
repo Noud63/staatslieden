@@ -17,7 +17,7 @@ const Navbar = () => {
               <div className="w-fit text-center font-CloisterBlack text-[3.4rem] text-white">
                 Staatslieden
               </div>
-              <div className="text-[0.65rem] text-[#ffcb3b] retina:text-[0.6rem]">
+              <div className="text-[0.65rem] text-[#ffcb3b] retina:text-[0.5rem]">
                 webapplicatie voor de Staatsliedenbuurt Amsterdam
               </div>
             </div>

@@ -25,7 +25,7 @@ const TranslateButton = () => {
         locale === "nl"
           ? "bg-[url('/icons/english_flag.png')]"
           : "bg-[url('/icons/dutch_flag.png')]"
-      } h-[20px] w-[35px] bg-cover bg-center bg-no-repeat`}
+      } h-[18px] w-[30px] bg-cover bg-center bg-no-repeat`}
     />
   );
 };

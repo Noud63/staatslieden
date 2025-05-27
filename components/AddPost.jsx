@@ -5,11 +5,14 @@ import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 
 const AddPost = () => {
   const [inView, setInView] = useState(false);
 
   const t = useTranslations("post");
+
+  const locale = useLocale();
 
   const { data: session, status } = useSession();
   const profilePic = session?.user?.avatar;
@@ -23,7 +26,7 @@ const AddPost = () => {
       setInView(!inView);
     }
     if (!session?.user) {
-      router.push("/login");
+      router.push(`/${locale}/login`);
     }
   };
 

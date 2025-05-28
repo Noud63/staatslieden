@@ -2,7 +2,40 @@
   {
     "id": 0,
     "title": "Café's",
-    "items": []
+    "items": [
+      {
+        "naam": "Café Kosmos",
+        "adres": "De Wittenkade 190",
+        "postcode": "1051 AP Amsterdam",
+        "telefoon": "0204003341",
+        "website": "https://www.kosmosamsterdam.nl",
+        "email": "info@kosmosamsterdam.nl"
+      },
+      {
+        "naam": "Café Brel",
+        "adres": "Van Hallstraat 37",
+        "postcode": "1051GX Amsterdam",
+        "telefoon": "0203415341",
+        "website": "https://cafe-brel.nl",
+        "email": "info@cafe-brel.nl"
+      },
+      {
+        "naam": "Café De Pianist",
+        "adres": "Groen van Prinstererstraat 41",
+        "postcode": "1051EH Amsterdam",
+        "telefoon": "0207371943",
+        "website": "https://www.cafedepianist.nl",
+        "email": "info@cafedepianist.nl"
+      },
+      {
+        "naam": "The Shamrock Inn",
+        "adres": "Fannius Scholtenstraat 54",
+        "postcode": "1051GA Amsterdam",
+        "telefoon": "0207654321",
+        "website": "https://www.facebook.com/cafeshamrock1/?locale=nl_NL",
+        "email": ""
+      }
+    ]
   },
   {
     "id": 1,
@@ -57,6 +90,14 @@
         "postcode": "1051BC Amsterdam",
         "telefoon": "020-4751021",
         "website": "https://surikitchen.nl",
+        "email": ""
+      },
+      {
+        "naam": "Punjab Express",
+        "adres": "Van Limburg Stirumstraat 71",
+        "postcode": "1051 BA Amsterdam",
+        "telefoon": "0206820017",
+        "website": "https://www.punjab-express.nl/",
         "email": ""
       }
     ]

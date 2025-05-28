@@ -230,5 +230,19 @@
         "email": ""
       }
     ]
+  },
+  {
+    "id": 12,
+    "title": "Slagerijen",
+    "items": [
+      {
+        "naam": "Slagerij Alhoceima",
+        "adres": "Van Limburg Stirumstraat 113",
+        "postcode": "1051BA Amsterdam",
+        "telefoon": "020 682 1286",
+        "website": "https://www.slagerijalhoceima.nl",
+        "email": "info@slagerijalhoceima.nl"
+      }
+    ]
   }
 ]

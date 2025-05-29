@@ -18,7 +18,7 @@ const Horeca = () => {
       <div
         className={`transition-height w-full overflow-hidden duration-700 ease-in-out ${
           dropDownId === cat.id
-            ? "max-h-[1170px] opacity-100"
+            ? "max-h-[3200px] opacity-100"
             : "max-h-[0px] opacity-0"
         }`}
       >

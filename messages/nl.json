@@ -2,7 +2,10 @@
   "auth": {
     "inloggen": "Inloggen",
     "uitloggen": "Uitloggen",
-    "registreren": "Registreren"
+    "registreren": "Registreren",
+    "verwijder": "verwijder",
+    "reageer": "reageer",
+    "bewerk": "bewerk"
   },
   "menu": {
     "historie": "Historie",

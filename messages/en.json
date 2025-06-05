@@ -3,9 +3,9 @@
     "inloggen": "Login",
     "uitloggen": "Logout",
     "registreren": "Register",
-    "verwijder": "delete",
+    "verwijder": "Delete",
     "reageer": "react",
-    "bewerk": "edit"
+    "bewerk": "Edit"
   },
   "menu": {
     "historie": "History",

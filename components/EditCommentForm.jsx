@@ -1,12 +1,16 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import { IoMdCloseCircleOutline } from "react-icons/io";
+import { IoSendSharp } from "react-icons/io5";
 import { mutate } from "swr";
+import { useTranslations } from 'next-intl';
 
 const EditCommentForm = ({comment, setShowEditComment}) => {
   const [commentContent, setCommentContent] = useState(comment?.comment);
 
   const textareaRef = useRef(null);
+
+  const t = useTranslations("auth");  
 
   const updatedData = {
     commentContent,
@@ -59,19 +63,9 @@ const EditCommentForm = ({comment, setShowEditComment}) => {
   };
 
   return (
-    <div className="flex w-full items-center justify-center overflow-y-auto rounded-lg border-b border-gray-300 bg-yellow-800/10 shadow-lg">
+    <div className="flex w-full items-center justify-center overflow-y-auto rounded-lg border-b border-gray-300 bg-yellow-800/10 shadow-sm">
       <div className="w-full overflow-y-auto rounded-lg px-4">
-        <div className="flex items-center justify-between border-b border-black pb-1 pt-2">
-          <span className="text-lg font-semibold">Bewerk:</span>
-          <div
-            className="flex cursor-pointer items-center"
-            onClick={() => setShowEditComment(false)}
-          >
-            <IoMdCloseCircleOutline size={24} color={"#854d0e"} />
-          </div>
-        </div>
-
-        <form onSubmit={handleEditPost} className="mt-2 w-full">
+        <form onSubmit={handleEditPost} className="w-full">
           <div className="w-full">
             <textarea
               ref={textareaRef}
@@ -79,16 +73,27 @@ const EditCommentForm = ({comment, setShowEditComment}) => {
               name="commentContent"
               defaultValue={commentContent}
               onChange={(e) => setCommentContent(e.target.value)}
-              className="max-h-[500px] w-full resize-none rounded-xl bg-transparent py-2  pr-10 placeholder-gray-500 outline-none"
+              className="max-h-[500px] w-full resize-none rounded-xl bg-transparent py-2 pr-10 text-base placeholder-gray-500 outline-none"
             />
           </div>
 
-          <div className="mb-4 mt-4 flex w-full justify-end">
+          <div className="mb-2 flex w-full justify-between border-t border-yellow-800 pt-2">
+            <div className="flex items-center justify-between pb-1 pt-2">
+            
+              <div
+                className="flex cursor-pointer items-center"
+                onClick={() => setShowEditComment(false)}
+              >
+                <IoMdCloseCircleOutline size={24} color={"#854d0e"} />
+              </div>
+            </div>
             <button
               type="submit"
-              className="w-full rounded-lg bg-gradient-to-r from-yellow-950 via-yellow-700 to-yellow-950 py-2 font-semibold text-white"
+              className="flex flex-row items-center gap-1 font-normal text-yellow-800"
             >
-              Update
+              <div className="text-[22px]">
+                <IoSendSharp color="#854d0e" />
+              </div>
             </button>
           </div>
         </form>

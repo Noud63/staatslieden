@@ -113,7 +113,7 @@ const toggleLike = async (commentId) => {
   };
 
   return (
-    <div className="flex h-auto w-full gap-2 px-4 max-xxsm:px-2 mb-2">
+    <div className="mb-2 flex h-auto w-full gap-2 px-4 max-xxsm:px-2">
       <div
         className={`${parentId === null ? "h-[40px] w-[40px]" : "h-[30px] w-[30px]"} flex overflow-hidden rounded-full`}
       >
@@ -127,7 +127,6 @@ const toggleLike = async (commentId) => {
       </div>
 
       <div className="flex w-full flex-1 flex-col">
-
         <div>
           {showEditComment && (
             <EditCommentForm
@@ -136,13 +135,15 @@ const toggleLike = async (commentId) => {
             />
           )}
         </div>
-        
+
         {!showEditComment && (
           <div className="flex flex-1 flex-col rounded-xl border-b border-gray-300 bg-yellow-800/10 px-2 pb-2 pt-1 leading-4 shadow-sm">
             <span className="text-sm font-semibold text-gray-800">
               {comment.username}
             </span>
-            <span>{comment.comment}</span>
+            <span className="text-sm text-gray-800">
+              {comment.comment}
+            </span>
           </div>
         )}
 

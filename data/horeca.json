@@ -34,6 +34,30 @@
         "telefoon": "0207654321",
         "website": "https://www.facebook.com/cafeshamrock1/?locale=nl_NL",
         "email": ""
+      },
+      {
+        "naam": "Café Nassau",
+        "adres": "De Wittenkade 105 A",
+        "postcode": "1051AG Amsterdam",
+        "telefoon": "0206843562",
+        "website": "https://cafenassau.com",
+        "email": "info@cafenassau.com"
+      },
+      {
+        "naam": "Café Beurre",
+        "adres": "van Limburgstirumstraat 115",
+        "postcode": "1051BA Amsterdam",
+        "telefoon": "0208460510",
+        "website": "https://www.cafebeurreamsterdam.nl",
+        "email": "info@cafebeurreamsterdam.nl"
+      },
+      {
+        "naam": "Café-Restaurant Amsterdam",
+        "adres": "Watertorenplein 6",
+        "postcode": "1051PA Amsterdam",
+        "telefoon": "0206822666",
+        "website": "https://cradam.nl",
+        "email": "info@cradam.nl"
       }
     ]
   },

@@ -118,6 +118,10 @@ box-shadow: 0px 0px 30px #372011;
   box-shadow: 0px 0px 24px #fff;
 }
 
+.commentOptions {
+  box-shadow: 0px 0px 18px #a3a3a3;
+}
+
 @layer base {
   * {
     @apply border-border;

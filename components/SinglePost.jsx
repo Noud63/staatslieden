@@ -65,7 +65,7 @@ const SinglePost = ({ post}) => {
               alt=""
               width={40}
               height={40}
-              className="h-[40px] w-[40px] cursor-pointer rounded-full p-2 transition-all hover:bg-yellow-800/40"
+              className="h-[40px] w-[40px] cursor-pointer rounded-full p-2 transition-all duration-500 hover:bg-yellow-800/10"
               onClick={() => setShowOptions(!showOptions)}
             />
           </div>
@@ -85,6 +85,7 @@ const SinglePost = ({ post}) => {
           />
         )}
       </div>
+      
       <LikeandShareBar post={post} />
       <PostComment post={post} />
 

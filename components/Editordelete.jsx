@@ -6,10 +6,13 @@ import deleteIcon from "../assets/icons/delete.png";
 import EditPostForm from "./EditPostForm";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { mutate } from "swr";
+import { useTranslations } from "next-intl";
 
 const Editordelete = ({ showOptions, setShowOptions, postId, post }) => {
 
   const [showEditForm, setShowEditForm] = useState(false);
+
+  const t = useTranslations("auth");
 
   const showEditPostModal = () => {
     setShowEditForm(true);
@@ -53,9 +56,9 @@ const Editordelete = ({ showOptions, setShowOptions, postId, post }) => {
         <EditPostForm setShowEditForm={setShowEditForm} post={post} />
       )}
       {showOptions && (
-        <div className="postMenu absolute right-14 top-12 flex h-auto w-[240px] flex-col rounded-lg bg-white p-4 text-lg font-semibold">
+        <div className="postMenu absolute right-3 top-16 flex h-auto w-[240px] flex-col rounded-lg bg-white p-4 text-lg font-semibold border border-gray-300">
           <div
-            className="mb-2 flex w-full cursor-pointer flex-row border-b border-gray-400 pb-2"
+            className="items-center flex-row mb-2 flex w-full cursor-pointer border-b border-gray-400 pb-2"
             onClick={showEditPostModal}
           >
             <Image
@@ -65,10 +68,10 @@ const Editordelete = ({ showOptions, setShowOptions, postId, post }) => {
               height={32}
               className="h-[32px] w-[32px] cursor-pointer p-2"
             />
-            <span>Bewerk</span>
+            <span>{t("bewerk")}</span>
           </div>
           <div
-            className="flex w-full cursor-pointer flex-row border-b border-gray-400 pb-2"
+            className="flex w-full cursor-pointer flex-row items-center border-b border-gray-400 pb-2"
             onClick={deletePost}
           >
             <Image
@@ -76,15 +79,17 @@ const Editordelete = ({ showOptions, setShowOptions, postId, post }) => {
               alt=""
               width={32}
               height={32}
-              className="h-[32px] w-[32px] cursor-pointer p-2"
+              className="h-[34px] w-[32px] cursor-pointer p-2"
             />
-            <span>Verwijder</span>
+            <span>{t("verwijder")}</span>
           </div>
           <div className="mt-4 flex w-full justify-center">
             <button type="button" onClick={() => setShowOptions(false)}>
               <AiOutlineCloseCircle size={24} color="#000" />
             </button>
           </div>
+
+          <div className="absolute -top-[12px] right-3 h-0 w-0 border-b-[12px] border-l-[10px] border-r-[10px] border-b-white border-l-transparent border-r-transparent"></div>
         </div>
       )}
     </>

@@ -1,20 +1,36 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import React from "react";
+import threedots from "../assets/icons/threedots.png";
 import { mutate } from "swr";
+import { useTranslations } from 'next-intl';
+import commentIcon from "../assets/icons/comment.png";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import PostCommentForm from "./PostCommentForm";
+import EditCommentForm from "./EditCommentForm";
+import CommentOptions from "./CommentOptions"; // Assuming you have a separate component for comment options
 
-const Comment = ({ comment, postId, parentId}) => {
+const Comment = ({ comment, postId, parentId }) => {
+
   const { data: session } = useSession();
 
-  const [showForm, setShowForm] = useState(false);
+  const t = useTranslations("auth");
+  
+ const [showForm, setShowForm] = useState(false);
+  const [showOptions, setShowOptions] = useState(false);
+  const [showEditComment, setShowEditComment] = useState(false);
 
-  // console.log("Comment:", comment);
+  const userId = session?.user?.id;
 
-  const toggleLike = async (commentId) => {
+  useEffect(()=> {
+if(showForm && showOptions) {
+  setShowForm(false)
+}
+},[showForm, showOptions])
+
+const toggleLike = async (commentId) => {
     // Optimistically update the UI
     mutate(
       `/api/posts`,
@@ -41,7 +57,7 @@ const Comment = ({ comment, postId, parentId}) => {
           const res = await fetch(`/api/comments/${commentId}/like`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ commentId}),
+            body: JSON.stringify({ commentId }),
           });
 
           if (!res.ok) throw new Error("Failed to update like");
@@ -97,8 +113,10 @@ const Comment = ({ comment, postId, parentId}) => {
   };
 
   return (
-    <div className="flex h-auto w-full gap-2 px-4 max-xxsm:px-2">
-      <div className={ `${parentId === null ? "h-[40px] w-[40px]" : "h-[30px] w-[30px]"} flex overflow-hidden rounded-full`}>
+    <div className="flex h-auto w-full gap-2 px-4 max-xxsm:px-2 mb-2">
+      <div
+        className={`${parentId === null ? "h-[40px] w-[40px]" : "h-[30px] w-[30px]"} flex overflow-hidden rounded-full`}
+      >
         <Image
           src={comment.avatar ? comment.avatar : "/images/defaultAvatar2.png"}
           alt="icon"
@@ -109,60 +127,95 @@ const Comment = ({ comment, postId, parentId}) => {
       </div>
 
       <div className="flex w-full flex-1 flex-col">
-        <div className="mb-1 flex flex-1 flex-col rounded-xl bg-yellow-800/10 px-2 pt-1 pb-2 leading-4 shadow-sm border-b border-gray-300">
-          <span className="text-sm font-semibold text-gray-800">
-            {comment.username}
-          </span>
-          <span>{comment.comment}</span>
+
+        <div>
+          {showEditComment && (
+            <EditCommentForm
+              comment={comment}
+              setShowEditComment={setShowEditComment}
+            />
+          )}
         </div>
+        
+        {!showEditComment && (
+          <div className="flex flex-1 flex-col rounded-xl border-b border-gray-300 bg-yellow-800/10 px-2 pb-2 pt-1 leading-4 shadow-sm">
+            <span className="text-sm font-semibold text-gray-800">
+              {comment.username}
+            </span>
+            <span>{comment.comment}</span>
+          </div>
+        )}
 
         <div className="flex flex-row justify-between pr-2 text-[11px] font-normal text-gray-500">
-          <span className="pl-2 pt-[5px]">
+          <span className="pl-2 pt-[8px]">
             {`${new Date(comment.createdAt).toLocaleDateString()}`}
           </span>
-          <div className="flex flex-row gap-2">
-            {comment.userId === session?.user?.id && (
-              <button
-                type="button"
-                className="cursor-pointer text-[12px] font-semibold text-gray-600"
-                onClick={() => deleteComment(comment._id)}
-              >
-                verwijder
-              </button>
-            )}
 
-            {session?.user?.id && (
+          <div className="relative flex flex-row items-center gap-2">
+            {userId && (
               <button
                 type="button"
-                className="cursor-pointer text-[12px] font-semibold text-gray-600"
+                className="cursor-pointer py-2 text-sm text-gray-600"
                 onClick={() => setShowForm(!showForm)}
               >
-                reageer
+                {t("reageer")}
               </button>
             )}
 
             <button
               type="button"
-              className="flex w-[50px] cursor-pointer items-center justify-center gap-3 rounded-full border border-gray-400 text-[14px] font-semibold text-gray-600"
+              className="mt-1 flex h-[24px] cursor-pointer items-center justify-center gap-1 rounded-full border border-gray-400 px-2 text-[14px] font-semibold text-gray-600"
               onClick={() => toggleLike(comment._id)}
               disabled={!session}
             >
               {comment.likedByUser ? (
-                <div className="flex items-center gap-2">
-                  <FaHeart color="#ca8a04" size={17} />
+                <div className="flex items-center">
+                  <FaHeart color="#ca8a04" size={15} />
                 </div>
               ) : (
-                <div className="flex items-center gap-2">
-                  <FaRegHeart size={17} color="#ca8a04" />
+                <div className="flex items-center">
+                  <FaRegHeart size={15} color="#ca8a04" />
                 </div>
               )}{" "}
               {comment.likesCount}
             </button>
+
+            {session?.user?.id && comment.userId === userId && (
+              <div>
+                <Image
+                  src={threedots}
+                  alt=""
+                  width={24}
+                  height={24}
+                  className="mt-1 flex h-[24px] w-[24px] cursor-pointer items-center justify-center rounded-full p-[2px] transition-all duration-500 hover:bg-yellow-800/10"
+                  onClick={() => setShowOptions(!showOptions)}
+                />
+              </div>
+            )}
+
+            {showOptions && (
+              <CommentOptions
+                comment={comment}
+                userId={userId}
+                setShowOptions={setShowOptions}
+                showOptions={showOptions}
+                setShowForm={setShowForm}
+                showForm={showForm}
+                setShowEditComment={setShowEditComment}
+                showEditComment={showEditComment}
+                deleteComment={deleteComment}
+              />
+            )}
           </div>
         </div>
-        <div className="my-2 mb-3">
+
+        <div>
           {showForm && (
-            <PostCommentForm postId={comment.postId} parentId={comment._id} setShowForm={setShowForm}/>
+            <PostCommentForm
+              postId={comment.postId}
+              parentId={comment._id}
+              setShowForm={setShowForm}
+            />
           )}
         </div>
       </div>

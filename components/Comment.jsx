@@ -137,11 +137,11 @@ const toggleLike = async (commentId) => {
         </div>
 
         {!showEditComment && (
-          <div className="flex flex-1 flex-col rounded-xl border-b border-gray-300 bg-yellow-800/10 px-2 pb-2 pt-1 leading-4 shadow-sm">
+          <div className="flex flex-1 flex-col rounded-xl border-b border-gray-300 bg-yellow-800/10 px-2 pb-2 pt-1 leading-[18px] shadow-sm">
             <span className="text-sm font-semibold text-gray-800">
               {comment.username}
             </span>
-            <span className="text-sm text-gray-800">
+            <span className="text-[15px] text-gray-800">
               {comment.comment}
             </span>
           </div>

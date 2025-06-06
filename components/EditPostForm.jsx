@@ -8,6 +8,7 @@ import Image from "next/image";
 import { mutate } from "swr";
 
 const EditPostForm = ({ setShowEditForm, post }) => {
+  
   const [postContent, setPostContent] = useState(post?.postContent);
   const [inputFiles, setInputFiles] = useState({ images: [] });
 
@@ -15,6 +16,16 @@ const EditPostForm = ({ setShowEditForm, post }) => {
   const textareaRef = useRef(null);
 
   const router = useRouter();
+
+  useEffect(() => {
+      // Focus the textarea when the component mounts
+      if (textareaRef.current) {
+        const textarea = textareaRef.current;
+        textarea.focus();
+        // Move cursor to end of text
+        textarea.selectionStart = textarea.selectionEnd = textarea.value.length;
+      }
+    }, []);
 
   const updatedData = {
     postContent,

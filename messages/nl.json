@@ -68,5 +68,8 @@
   },
   "placeholder": {
     "schrijfeenreactie": "Schrijf een reactie..."
+  },
+  "reactie": {
+    "reacties": "Reacties"
   }
 }

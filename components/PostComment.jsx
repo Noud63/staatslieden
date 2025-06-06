@@ -3,10 +3,13 @@ import Image from "next/image";
 import PostCommentForm from "./PostCommentForm";
 import { useSession } from "next-auth/react";
 import Comment from "./Comment";
+import { useTranslations } from "next-intl";
 
 const PostComment = ({ post}) => {
   const { data: session } = useSession();
   const profilePic = session?.user?.avatar;
+
+  const t = useTranslations("reactie");
 
   //Recursive function to render comments
   //Recursion occurs when the definition of a concept or process depends on a simpler or previous version of itself.
@@ -29,7 +32,7 @@ const PostComment = ({ post}) => {
     <div className="flex w-full flex-col items-center gap-2">
       <div className="flex w-full flex-col">
         <div className="mb-2 pb-2 pl-4 text-lg font-semibold text-gray-600">
-          Reacties:
+          {t("reacties")}:
         </div>
         <div className="w-full">{renderComments(post.comments)}</div>
       </div>

@@ -5,32 +5,30 @@ import Image from "next/image";
 import React from "react";
 import threedots from "../assets/icons/threedots.png";
 import { mutate } from "swr";
-import { useTranslations } from 'next-intl';
-import commentIcon from "../assets/icons/comment.png";
+import { useTranslations } from "next-intl";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import PostCommentForm from "./PostCommentForm";
 import EditCommentForm from "./EditCommentForm";
 import CommentOptions from "./CommentOptions"; // Assuming you have a separate component for comment options
 
 const Comment = ({ comment, postId, parentId }) => {
-
   const { data: session } = useSession();
 
   const t = useTranslations("auth");
-  
- const [showForm, setShowForm] = useState(false);
+
+  const [showForm, setShowForm] = useState(false);
   const [showOptions, setShowOptions] = useState(false);
   const [showEditComment, setShowEditComment] = useState(false);
 
   const userId = session?.user?.id;
 
-  useEffect(()=> {
-if(showForm && showOptions) {
-  setShowForm(false)
-}
-},[showForm, showOptions])
+  useEffect(() => {
+    if (showForm && showOptions) {
+      setShowForm(false);
+    }
+  }, [showForm, showOptions]);
 
-const toggleLike = async (commentId) => {
+  const toggleLike = async (commentId) => {
     // Optimistically update the UI
     mutate(
       `/api/posts`,
@@ -141,9 +139,7 @@ const toggleLike = async (commentId) => {
             <span className="text-sm font-semibold text-gray-800">
               {comment.username}
             </span>
-            <span className="text-[15px] text-gray-800">
-              {comment.comment}
-            </span>
+            <span className="text-[15px] text-gray-800">{comment.comment}</span>
           </div>
         )}
 

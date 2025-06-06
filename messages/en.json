@@ -65,5 +65,8 @@
   "beeld": {
     "titel": "The Staatsliedenbuurt in pictures",
     "1900heden": "(1900-present)"
+  },
+  "placeholder": {
+    "schrijfeenreactie": "Write a comment..."
   }
 }

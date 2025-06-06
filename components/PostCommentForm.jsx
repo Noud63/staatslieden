@@ -4,6 +4,7 @@ import { useSession } from "next-auth/react";
 import { IoSendSharp } from "react-icons/io5";
 import { useRouter } from "next/navigation";
 import { mutate } from "swr";
+import { useTranslations } from "next-intl";
 
 const PostCommentForm = ({ postId, parentId = null, setShowForm }) => {
   const [text, setText] = useState("");
@@ -16,6 +17,8 @@ const PostCommentForm = ({ postId, parentId = null, setShowForm }) => {
   const textareaRef = useRef(null);
 
   const router = useRouter();
+
+  const t = useTranslations("placeholder");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -81,7 +84,7 @@ const PostCommentForm = ({ postId, parentId = null, setShowForm }) => {
         type="text"
         name="comment"
         className="max-h-[500px] w-full resize-none overflow-y-hidden rounded-xl bg-yellow-800/10 py-2 pl-2 pr-10 placeholder-gray-500 outline-none"
-        placeholder="Schrijf een reactie..."
+        placeholder={t("schrijfeenreactie")}
         defaultValue={text}
         onChange={handleInputChange}
         onClick={handleTextareaClick}

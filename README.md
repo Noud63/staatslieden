@@ -1,6 +1,6 @@
 <h1>Staatsliedenbuurt</h1>
 
-Nextjs 14 app router, NextAuth, SWR, next-intl–Internationalization (i18n), and Tailwind.</br></br>
+Nextjs 14 app router, NextAuth, SWR, next-intl–Internationalization (i18n),Tailwind and MongoDB.</br></br>
 
 
 ![Image](https://github.com/user-attachments/assets/46a8cfe0-9132-4f3b-8d10-2969f4d02d01)</br></br>

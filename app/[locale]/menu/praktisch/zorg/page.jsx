@@ -1,12 +1,13 @@
 import AllZorgInstanties from "@/components/hoofdmenu/praktisch/zorg/AlleZorgInstanties";
+import TitleBar from "@/components/TitleBar";
 
 const ZorgPage = () => {
 
   return (
     <div className="mt-8">
-      <div className="rounded-md bg-white py-2 pl-4 text-lg font-semibold text-yellow-900">
-        <span className="font-bold">Zorg</span>
-      </div>
+
+      <TitleBar title="Zorg" />
+      
       <div className="py-8 pl-4 max-xsm:pl-2">
         <p>
           Hier vindt je alle mogelijke zorginstellingen in de Staatsliedenbuurt
@@ -14,8 +15,8 @@ const ZorgPage = () => {
         </p>
       </div>
 
-        <AllZorgInstanties />
-     
+      <AllZorgInstanties />
+      
     </div>
   );
 };

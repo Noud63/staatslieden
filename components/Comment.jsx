@@ -6,6 +6,7 @@ import React from "react";
 import threedots from "../assets/icons/threedots.png";
 import { mutate } from "swr";
 import { useTranslations } from "next-intl";
+import commentIcon from "../assets/icons/comment.png";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import PostCommentForm from "./PostCommentForm";
 import EditCommentForm from "./EditCommentForm";
@@ -177,14 +178,14 @@ const Comment = ({ comment, postId, parentId }) => {
               {comment.likesCount}
             </button>
 
-            {session?.user?.id && comment.userId === userId && (
-              <div>
+            {userId && comment.userId === userId && (
+              <div className="mt-1 h-[26px] w-[26px] cursor-pointer items-center justify-center rounded-full p-[4px] transition-all duration-500 hover:bg-yellow-800/10">
                 <Image
                   src={threedots}
                   alt=""
                   width={24}
                   height={24}
-                  className="mt-1 flex h-[24px] w-[24px] cursor-pointer items-center justify-center rounded-full p-[2px] transition-all duration-500 hover:bg-yellow-800/10"
+                  className="flex h-full w-full"
                   onClick={() => setShowOptions(!showOptions)}
                 />
               </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import TitleBar from "@/components/TitleBar";
 
 const Historie = () => {
 
@@ -8,11 +9,7 @@ const Historie = () => {
 
   return (
     <>
-      <div className="flex items-center justify-between rounded-lg bg-white py-2 text-yellow-900 max-xsm:text-xl">
-        <span className="px-4 text-xl font-semibold max-xsm:text-[16px]">
-          {t("titel")}
-        </span>
-      </div>
+      <TitleBar title={t("titel")} />
 
       <div className="mx-auto w-full max-w-[960px] max-xl:max-w-full">
         <div className="mb-4 mt-4 flex w-full items-center justify-between rounded-md border-b-2 border-yellow-900 bg-yellow-700 px-4 py-2 text-lg shadow-lg max-xsm:text-base">
@@ -45,9 +42,7 @@ const Historie = () => {
           </div>
         </div>
 
-        <p className="mt-4 text-lg text-white">
-         
-        </p>
+        <p className="mt-4 text-lg text-white"></p>
       </div>
     </>
   );

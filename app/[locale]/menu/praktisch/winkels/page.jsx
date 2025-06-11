@@ -1,16 +1,13 @@
 import React from "react";
 import Winkelbestand from "@/components/hoofdmenu/praktisch/Winkelbestand";
+import TitleBar from "@/components/TitleBar";
 
 const WinkelsPage = () => {
   return (
     <div className="mt-8">
-      <div className="rounded-md bg-white py-2 pl-4 text-lg font-semibold text-yellow-900">
-        <span className="font-bold">Winkelbestand</span>
-      </div>
+      <TitleBar title="Winkelbestand" />
       <div className="py-8 pl-4 max-xsm:pl-2">
-        <p>
-          Hier vindt je het hele winkelbestand.
-        </p>
+        <p>Hier vindt je het hele winkelbestand.</p>
       </div>
       <Winkelbestand />
     </div>

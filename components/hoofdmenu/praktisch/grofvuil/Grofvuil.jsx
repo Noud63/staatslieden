@@ -1,15 +1,15 @@
 import React from 'react'
 import WatWeOphalen from './WatWeOphalen';
 import Image from 'next/image';
+import TitleBar from '@/components/TitleBar';
+
 
 const Grofvuil = () => {
 
   return (
     <div>
       <div className="mt-8">
-        <div className="rounded-md bg-white py-2 pl-4 text-lg font-semibold text-yellow-900">
-          <span className="font-bold">Grofvuil</span>
-        </div>
+        <TitleBar title="Grofvuil" />
         <div className="py-8 pl-4 max-xsm:pl-2">
           <p>
             Grofvuil zijn spullen die niet in een vuilniszak of afvalcontainer
@@ -22,9 +22,7 @@ const Grofvuil = () => {
       </div>
 
       <div>
-        <div className="rounded-md bg-white py-2 pl-4 text-lg font-semibold text-yellow-900">
-          <span className="font-bold">Grofvuil:</span> <span>wegbrengen</span>
-        </div>
+        <TitleBar title="Grofvuil: wegbrengen" />
         <div className="py-8 pl-4 max-xsm:pl-2">
           <p>
             Breng uw grof afval gratis naar een recyclepunt. Dat bent u er
@@ -51,18 +49,13 @@ const Grofvuil = () => {
       </div>
 
       <div>
-        <div className="rounded-md bg-white py-2 pl-4 text-lg font-semibold text-yellow-900">
-          <span className="font-bold">Grofvuil:</span>{" "}
-          <span>laten ophalen</span>
-        </div>
+        <TitleBar title="Grofvuil: laten ophalen" />
       </div>
 
       <WatWeOphalen />
 
       <div className="mt-8">
-        <div className="rounded-md bg-white py-2 pl-4 text-lg text-yellow-900">
-          <span className="font-bold">Ophaaldag grofvuil</span>
-        </div>
+        <TitleBar title="Ophaaldag grofvuil" />
         <div className="py-8 pl-4 max-xsm:pl-2">
           <div className="flex flex-row">
             <div className="w-[110px]">Ophaaldag: </div>
@@ -84,9 +77,7 @@ const Grofvuil = () => {
       </div>
 
       <div>
-        <div className="rounded-md bg-white py-2 pl-4 text-lg font-semibold text-yellow-900">
-          <span className="font-bold">Bruikbare spullen</span>
-        </div>
+        <TitleBar title="Bruikbare spullen" />
         <div className="py-8 pl-4 max-xsm:pl-2">
           <p>
             Geef spullen die nog bruikbaar zijn een tweede leven.

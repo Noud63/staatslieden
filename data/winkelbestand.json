@@ -112,7 +112,15 @@
         "telefoon": "0643827448",
         "website": "",
         "email": ""
-      }
+      },
+       {
+         "naam": "Bohak Stomerij",
+         "adres": "Van Limburg Stirumstraat 12-A",
+         "postcode": "1051BE Amsterdam",
+         "telefoon": "020 682 6012",
+         "website": "",
+         "email": ""
+       }
     ]
   },
   {
@@ -244,5 +252,19 @@
         "email": "info@slagerijalhoceima.nl"
       }
     ]
-  }
+  },
+   {
+     "id": 12,
+     "title": "Schoenmaker",
+     "items": [
+       {
+         "naam": "Bohak Schoenmakerij",
+         "adres": "Van Limburg Stirumstraat 12-A",
+         "postcode": "1051BE Amsterdam",
+         "telefoon": "020 682 6012",
+         "website": "",
+         "email": ""
+       }
+     ]
+   }
 ]

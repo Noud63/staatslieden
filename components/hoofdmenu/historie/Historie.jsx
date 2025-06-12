@@ -4,8 +4,7 @@ import Image from "next/image";
 import TitleBar from "@/components/TitleBar";
 
 const Historie = () => {
-
-      const t = useTranslations("historie");
+  const t = useTranslations("historie");
 
   return (
     <>
@@ -20,7 +19,7 @@ const Historie = () => {
         </p>
         <br />
 
-        <div className="mb-4 mt-8 flex w-full items-center justify-between rounded-md border-b-2 border-yellow-900 bg-yellow-700 px-4 py-2 text-lg shadow-lg max-xsm:text-base">
+        <div className="mb-4 mt-4 flex w-full items-center justify-between rounded-md border-b-2 border-yellow-900 bg-yellow-700 px-4 py-2 text-lg shadow-lg max-xsm:text-base">
           {t("subtitel")}
         </div>
 
@@ -37,12 +36,16 @@ const Historie = () => {
             className="h-auto w-full shadow-lg"
           />
 
-          <div className="bg-white pt-2 text-sm text-yellow-950">
+          <div className="bg-white pt-2 text-base text-yellow-950">
             <span> {t("kaart")}</span>
           </div>
         </div>
 
-        <p className="mt-4 text-lg text-white"></p>
+        <p className="mt-4 text-lg text-white">
+          <p>{t.raw("content_a3").slice(0, 5)}</p>
+          <p>{t.raw("content_a3").slice(5, 7)}</p>
+          <p>{t.raw("content_a3").slice(7, t.raw("content_a3").length)}</p>
+        </p>
       </div>
     </>
   );

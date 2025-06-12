@@ -43,9 +43,15 @@ const Historie = () => {
 
         <p className="mt-4 text-lg text-white">
           <p>{t.raw("content_a3").slice(0, 5)}</p>
-          <p>{t.raw("content_a3").slice(5, 7)}</p>
-          <p>{t.raw("content_a3").slice(7, t.raw("content_a3").length)}</p>
+          <p>{t.raw("content_a3").slice(5, 10)}</p>
+          <p>{t.raw("content_a3").slice(10, t.raw("content_a3").length)}</p>
         </p>
+
+        <div className="mb-4 mt-4 flex w-full items-center justify-between rounded-md border-b-2 border-yellow-900 bg-yellow-700 px-4 py-2 text-lg shadow-lg max-xsm:text-base">
+          Moderne tijd
+        </div>
+
+        <p className="mt-4 text-lg text-white">{t.raw("content_a4")}</p>
       </div>
     </>
   );

@@ -8,10 +8,10 @@ import { WhatsappShareButton, WhatsappIcon } from "react-share";
 
 const LikeAndShareButtons = ({post}) => {
 
-  const sharedPost = `${window.location.href}/post/${post._id}`;
+  const sharedPost = `${window.location.href}/${post._id}`;
   // console.log('post', post);
  
-  console.log('sharePost', sharedPost);
+  // console.log('SharePost', sharedPost);
 
   return (
     <div className="flex w-full flex-row justify-between pl-4 pr-6">

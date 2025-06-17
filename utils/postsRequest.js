@@ -14,16 +14,12 @@ try {
 
    const data = await res.json();
 
-  //  console.log("Data:", data)
-
    return data;
 } catch (error) {
-  console.error("Error fetching posts:", error);
-  return []; // Ensure it returns an empty array instead of undefined
+  console.log(error)
 }
  
 }
-
 
 async function getPostsByUserId(userId) {
   try {
@@ -47,12 +43,12 @@ async function getPostsByUserId(userId) {
   }
 }
 
-async function getSinglepostById(id) {
+async function getSinglepostById(postId) {
   try {
     if (!apiDomain) {
      return [];
    }
-    const res = await fetch(`${apiDomain}/singlePostById/${id}`, {
+    const res = await fetch(`${apiDomain}/singlePostById/${postId}`, {
       cache: "no-store",
     });
 
@@ -68,6 +64,7 @@ async function getSinglepostById(id) {
     throw new Error("Something went wrong!");
   }
 }
+
 
 async function getUserInfo(id) {
   try {

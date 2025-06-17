@@ -8,7 +8,7 @@ import { WhatsappShareButton, WhatsappIcon } from "react-share";
 
 const LikeAndShareButtons = ({post}) => {
 
-  const sharedPost = `${window.location.href}/${post._id}`;
+  const sharedPost = `${window.location.href}/sharedpost/${post._id}`;
   // console.log('post', post);
  
   // console.log('SharePost', sharedPost);

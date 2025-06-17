@@ -41,7 +41,7 @@ const Historie = () => {
           </div>
         </div>
 
-        <div className="mt-4 text-lg text-white">
+        <div className="mt-4 text-lg text-white max-xsm:text-base">
           <p>{t.raw("content_a3").slice(0, 5)}</p>
           <p>{t.raw("content_a3").slice(5, 10)}</p>
           <p>{t.raw("content_a3").slice(10, t.raw("content_a3").length)}</p>
@@ -51,16 +51,16 @@ const Historie = () => {
           Moderne tijd
         </div>
 
-        <div className="mt-4 text-lg text-white">
+        <div className="mt-4 text-lg text-white max-xsm:text-base">
           <p>{t.raw("content_a4").slice(0, 4)}</p>
           <p>{t.raw("content_a4").slice(4, t.raw("content_a4").length)}</p>
         </div>
 
-        <div className="mt-4 text-lg text-white">
+        <div className="mt-4 text-lg text-white max-xsm:text-base">
           <p>{t.raw("content_a5")}</p>
         </div>
 
-        <div className="mt-4 text-lg text-white">
+        <div className="mt-4 text-lg text-white max-xsm:text-base">
           <p>{t.raw("content_a6")}</p>
         </div>
       </div>

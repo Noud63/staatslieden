@@ -8,17 +8,20 @@ import { WhatsappShareButton, WhatsappIcon } from "react-share";
 
 const LikeAndShareButtons = ({post}) => {
 
-  // const currentUrl = window.location.href;
+  const sharedPost = `${window.location.href}/post/${post._id}`;
+  // console.log('post', post);
+ 
+  console.log('sharePost', sharedPost);
 
   return (
     <div className="flex w-full flex-row justify-between pl-4 pr-6">
       <LikeButton postId={post._id} post={post} />
 
-      <span className="flex h-full cursor-pointer items-center">
-        {/* <WhatsappShareButton url={currentUrl}> */}
+      <div className="flex h-full cursor-pointer items-center">
+        <WhatsappShareButton url={sharedPost}>
           <FaWhatsapp color="gray" size={30} className="cursor-pointer" />
-        {/* </WhatsappShareButton> */}
-      </span>
+        </WhatsappShareButton>
+      </div>
       <TbShare3 color="gray" size={30} className="cursor-pointer" />
     </div>
   );

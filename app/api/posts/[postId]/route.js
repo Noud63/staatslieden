@@ -15,7 +15,7 @@ export const GET = async (request, { params }) => {
   }
 
   try { 
-    const post = await Post.findOne({ postId});
+    const post = await Post.findOne({ _id:postId});
     if (post) {
      
       return new Response(JSON.stringify(post), { status: 200 });

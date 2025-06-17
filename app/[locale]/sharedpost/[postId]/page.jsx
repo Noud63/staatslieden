@@ -1,4 +1,5 @@
 import React from 'react'
+import notFoundPage from '../../not-found';
 import { getSinglepostById } from '@/utils/postsRequest';
 
 const SharedPostPage = async ({ params }) => {
@@ -8,7 +9,9 @@ const SharedPostPage = async ({ params }) => {
   const post = await getSinglepostById(postId); // your own function
   console.log('SharedPost', post);  
 
-  if (!post) return notFound();
+  if (!post) {
+    return notFoundPage 
+  }
 
   return <div>
     <div>{post.name}</div>

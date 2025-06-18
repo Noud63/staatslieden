@@ -9,14 +9,9 @@ import { useSession } from "next-auth/react";
 
 const LikeAndShareButtons = ({post}) => {
 
-  
-
   const { data: session } = useSession();
 
-  const sharedPost = `${window.location.href}/sharedpost/${post._id}`;
-  // console.log('post', post);
- 
-  // console.log('SharePost', sharedPost);
+  const sharedPost = `${window.location.origin}/sharedpost/${post._id}`;
 
   return (
     <div className="flex w-full flex-row justify-between pl-4 pr-6">
@@ -27,7 +22,7 @@ const LikeAndShareButtons = ({post}) => {
           <FaWhatsapp color="gray" size={30} className="cursor-pointer" />
         </WhatsappShareButton>
       ) : (
-      <FaWhatsapp color="gray" size={30} className="cursor-not-allowed" />)}
+      <FaWhatsapp color="gray" size={30} className="" />)}
        
       </div>
       <TbShare3 color="gray" size={30} className="cursor-pointer" />

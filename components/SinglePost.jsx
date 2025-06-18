@@ -45,7 +45,7 @@ const SinglePost = ({ post}) => {
       />
 
       <div className="flex w-full items-center justify-between border-b border-gray-400 p-4 pb-2 max-xxsm:pl-2">
-        <div className="flex flex-1">
+        <div className="flex flex-1 items-center">
           <div className="flex h-[45px] w-[45px] flex-row overflow-hidden max-xxsm:h-[40px] max-xxsm:w-[40px]">
             <Image
               src={profilePic ? profilePic : "/images/defaultAvatar.png"}

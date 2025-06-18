@@ -26,6 +26,6 @@ const AvatarSchema = new Schema(
 // Ensure a user can like a post only once
 // LikeSchema.index({ user: 1, post: 1 }, { unique: true });
 
-const Avatar = models.Avatar || model("Avatars", AvatarSchema);
+const Avatar = models.Avatar || model("Avatar", AvatarSchema);
 
 export default Avatar;

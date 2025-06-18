@@ -87,6 +87,6 @@ async function getUserInfo(id) {
 export {
   fetchPosts,
   getPostsByUserId,
-  getSinglepostById,
+  // getSinglepostById,
   getUserInfo
 };

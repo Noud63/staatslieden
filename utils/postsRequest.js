@@ -43,27 +43,31 @@ async function getPostsByUserId(userId) {
   }
 }
 
-async function getSinglepostById(postId) {
-  try {
-    if (!apiDomain) {
-     return [];
-   }
-    const res = await fetch(`${apiDomain}/posts/${postId}`, {
-      cache: "no-store",
-    });
+// async function getSinglepostById(postId) {
+//   try {
+//     if (!apiDomain) {
+//       return [];
+//     }
+//     const res = await fetch(`${apiDomain}/posts/${postId}`, {
+//       cache: "no-store",
+//     });
 
-    if (!res.ok) {
-      throw new Error("Failed to fetch data!");
-    }
+//     if (!res.ok) {
+//       throw new Error(`Failed to fetch post ${postId}: ${res.statusText}`);
+//     }
 
-    const data = await res.json();
+//     const data = await res.json();
 
-    return data;
-  } catch (error) {
-    console.log(error);
-    throw new Error("Something went wrong!");
-  }
-}
+//     if (!data) {
+//       throw new Error(`Post ${postId} not found.`);
+//     }
+
+//     return data;
+//   } catch (err) {
+//     console.error("getSinglepostById failed:", err);
+//     throw err;
+//   }
+// }
 
 
 async function getUserInfo(id) {

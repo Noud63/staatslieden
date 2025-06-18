@@ -1,23 +1,31 @@
 import React from 'react'
-import notFoundPage from '../../not-found';
-import { getSinglepostById } from '@/utils/postsRequest';
+// import { getSinglepostById } from '@/utils/postsRequest';
+import connectDB from "@/connectDB/database";
+import Post from "@/models/post";
+import { notFound } from "next/navigation";
+// import LikeButton from "@/components/LikeButton";
+// import { FaWhatsapp } from "react-icons/fa";
+import Image from 'next/image';
 
 const SharedPostPage = async ({ params }) => {
-  const { postId } = params;
 
-  // fetch post data here
-  const post = await getSinglepostById(postId); // your own function
-  console.log('SharedPost', post);  
+  await connectDB();
 
-  if (!post) {
-    return notFoundPage 
-  }
+  const post = await Post.findById(params.postId).lean();
 
-  return <div>
-    <div>{post.name}</div>
-    <div>{post.postContent}</div>
-    <div>{post.images[0]}</div>
-  </div>;
+  if (!post) return notFound();
+
+  // const sharedUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/post/${post._id}`;
+
+  return (
+    <div>
+      <div>{post.name}</div>
+      <div>{post.postContent}</div>
+      <div>
+        <Image src={post.images[0]} width={100} height={100}/>
+      </div>
+    </div>
+  );
 };
 
 export default SharedPostPage

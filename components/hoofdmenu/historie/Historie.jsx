@@ -27,22 +27,22 @@ const Historie = () => {
           {t.raw("content_a2")}
         </p>
 
-        <div className="mt-4 border-8 border-white">
-          <Image
-            src="/images/sloten_amsterdam.png"
-            alt="Staatsliedenbuurt"
-            width={960}
-            height={0}
-            className="h-auto w-full shadow-lg"
-          />
-
-          <div className="bg-white pt-2 text-base text-yellow-950">
-            <span> {t("kaart")}</span>
-          </div>
-        </div>
-
         <div className="mt-4 text-lg text-white max-xsm:text-base">
           <p>{t.raw("content_a3").slice(0, 5)}</p>
+
+          <div className="mb-4 mt-4 border-8 border-white">
+            <Image
+              src="/images/Sloten_1750.jpg"
+              alt="Staatsliedenbuurt"
+              width={960}
+              height={0}
+              className="h-auto w-full shadow-lg"
+            />
+
+            <div className="bg-white pt-2 text-base text-yellow-950">
+              <span> {t("kaart_1")}</span>
+            </div>
+          </div>
           <p>{t.raw("content_a3").slice(5, 10)}</p>
           <p>{t.raw("content_a3").slice(10, t.raw("content_a3").length)}</p>
         </div>
@@ -53,7 +53,35 @@ const Historie = () => {
 
         <div className="mt-4 text-lg text-white max-xsm:text-base">
           <p>{t.raw("content_a4").slice(0, 4)}</p>
+
+          <div className="mb-4 mt-4">
+            <Image
+              src="/images/amsterdam_1860.jpg"
+              alt="Staatsliedenbuurt"
+              width={960}
+              height={0}
+              className="h-auto w-full shadow-lg"
+            />
+
+            <div className="bg-white pb-2 pl-7 text-base text-yellow-950">
+              <span> {t("kaart_2")}</span>
+            </div>
+          </div>
           <p>{t.raw("content_a4").slice(4, t.raw("content_a4").length)}</p>
+        </div>
+
+        <div className="mb-4 mt-4 border-8 border-white">
+          <Image
+            src="/images/amsterdam_1940.jpg"
+            alt="Staatsliedenbuurt"
+            width={960}
+            height={0}
+            className="h-auto w-full shadow-lg"
+          />
+
+          <div className="bg-white pt-2 text-base text-yellow-800">
+            <span> {t("kaart_3")}</span>
+          </div>
         </div>
 
         <div className="mt-4 text-lg text-white max-xsm:text-base">

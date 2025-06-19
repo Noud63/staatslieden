@@ -34,7 +34,9 @@
       "When it comes to the history of the Staatsliedenbuurt, the question is: where does that history begin? Where should you start telling that story?",
       "Given the geographical location of the Staatsliedenbuurt in the area that once belonged to the former municipality of Sloten, the period before the annexation (1877–1896–1921) by Amsterdam, when Sloten lost its independence and land to the city, certainly deserves attention here."
     ],
-    "kaart": "Situation around 1895",
+    "kaart_1": "Sloten en Amsterdam 1770",
+    "kaart_2": "Amsterdam 1860",
+    "kaart_3": "Amsterdam 1940",
     "content_a3": [
       "Everything located between the IJ (and later the North Sea Canal) to the north and the Nieuwe Meer to the south belonged before 1877 to Sloten.\n",
       "On the sides, the Schinkel and the Kostverlorenkade on one side and the Ringvaart of the Haarlemmermeer on the other side were considered the municipal boundaries.\n",
@@ -63,7 +65,8 @@
       "The population of the neighborhood consisted of lower-level civil servants, better-educated workers, and small business owners, and was socially distinct from the residents of the new housing east of Van Hallstraat: the Jordaan residents from basement dwellings and evicted caravan dwellers placed in new municipal housing from 1915 onward were seen as antisocial by the rest of the neighborhood.\n",
       "In 1918, they drove the royal family, who had come to open the Princess Church on Van Hallstraat, out of the neighborhood. As many families moved in the 1930s to better homes in the Bos en Lommer neighborhood, the social homogeneity of the population increased. In 1931, the two largest occupational groups were day laborers and the unemployed.\n",
       "Rent strikes occurred in 1932 and 1933; in 1934, the Jordaan riots spread to the Staatsliedenbuurt. An official report from 1959 concluded that the average IQ of the neighborhood residents was among the lowest in the city, and even in 1970, not a single school-leaver went on to grammar school (gymnasium).\n",
-      "The neighborhood was and remained poor. The housing stock in the area deteriorated during the 1960s and 1970s. Hundreds of homes were boarded up without any plans for demolition or new construction.\n"
+      "The neighborhood was and remained poor. The housing stock in the area deteriorated during the 1960s and 1970s. Hundreds of homes were boarded up without any plans for demolition or new construction.\n",
+      "In the early 1980s, the Staatsliedenbuurt was severely deteriorated and almost a state within a state. The police barely entered the area, the law of the strongest prevailed — in this case, the squatters. There were their own laws and rules; the squatters even maintained a completely independent housing distribution system."
     ],
     "content_a5": [
       "It wasn't until 1978 that a zoning plan was introduced, which in 1981 resulted in a new housing block with family homes, even though the majority of the neighborhood’s residents no longer lived in family situations.\n",
@@ -78,8 +81,11 @@
       "Public order then became a top priority on the agenda of the municipal executive (B. en W.). A new police station was opened on Marnixstraat, which three weeks later evicted a mother and child (with a priority housing certificate) from a home on Schaepmanstraat.\n",
       "The house was re-squatted and cleared again, and the following day, on October 25, 1985, one of the arrestees, Hans Kok, died in a police cell. The reactions from both squatters and police were intense.\n",
       "In the end, public peace was bought by pouring tens of millions into the neighborhood; no application for facilities or improvements was rejected anymore. Since then, large-scale renovations have taken place.\n",
-      "There are various new housing complexes, such as the eco-district on the former waterworks site. The elderly housing complex De Koperen Knoop* on Van Limburg Stirumstraat preserves the memory of the neighborhood's oldest residents.\n",
-      "In Zaal 100, a squatted school on De Wittenstraat, and on the grounds of the former Westergasfabriek*, culture is thriving."
+      "There are various new housing complexes, such as the eco-district on the former waterworks site. The elderly housing complex De Koperen Knoop on Van Limburg Stirumstraat preserves the memory of the neighborhood's oldest residents.\n",
+      "In Zaal 100, a squatted school on De Wittenstraat, and on the grounds of the former Westergasfabriek, culture is thriving."
+    ],
+    "content_a7": [
+
     ]
   },
   "demografie": {

@@ -7,6 +7,7 @@ import Menu from "@/components/Menu";
 import { NextIntlClientProvider } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
+import { Toaster } from "react-hot-toast";
 import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/captions.css";
 
@@ -37,6 +38,7 @@ export default async function RootLayout({ children, params }) {
             <Footer />
           </AuthProvider>
         </NextIntlClientProvider>
+        <Toaster position="bottom-center" />
       </body>
     </html>
   );

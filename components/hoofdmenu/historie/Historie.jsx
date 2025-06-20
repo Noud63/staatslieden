@@ -77,7 +77,7 @@ const Historie = () => {
           <p className="pb-4">{t.raw("content_a4").slice(0, 4)}</p>
 
           <div
-            className="max-xsmd:w-full max-xsmd:mb-4 float-start mr-3 mt-2 w-[280px] bg-white p-2"
+            className="max-xsmd:w-full max-xsmd:mb-4 float-start mr-3 mt-2 w-[295px] bg-white p-2"
             onClick={() =>
               addSlide({
                 src: "/images/amsterdam_1860.jpg",
@@ -88,13 +88,13 @@ const Historie = () => {
             <Image
               src="/images/amsterdam_1860.jpg"
               alt="Staatsliedenbuurt"
-              width={280}
+              width={295}
               height={0}
-              className="max-xsmd:w-full h-auto w-[280px] cursor-pointer pb-1"
+              className="max-xsmd:w-full h-auto w-[295px] cursor-pointer"
               onClick={() => setOpen(true)}
             />
 
-            <div className="bg-white pl-2 text-base text-yellow-950">
+            <div className="bg-white pl-1 text-base text-yellow-950">
               <span> {t("kaart_2")}</span>
             </div>
           </div>
@@ -102,7 +102,7 @@ const Historie = () => {
         </div>
 
         <div
-          className="max-xsmd:w-full max-xsmd:mb-4 float-start mr-3 mt-2 w-[280px] bg-white p-2"
+          className="max-xsmd:w-full max-xsmd:mb-4 float-start mr-3 mt-2 w-[285px] bg-white p-2"
           onClick={() =>
             addSlide({
               src: "/images/amsterdam_1940.jpg",
@@ -113,9 +113,9 @@ const Historie = () => {
           <Image
             src="/images/amsterdam_1940.jpg"
             alt="Staatsliedenbuurt"
-            width={280}
+            width={285}
             height={0}
-            className="max-xsmd:w-full h-auto w-[280px] cursor-pointer pb-1"
+            className="max-xsmd:w-full h-auto w-[285px] cursor-pointer pb-1"
             onClick={() => setOpen(true)}
           />
 

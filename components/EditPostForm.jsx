@@ -128,7 +128,7 @@ const EditPostForm = ({ setShowEditForm, post }) => {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 top-0 z-[999] flex w-full items-center justify-center overflow-y-auto bg-yellow-950/70">
-      <div className="mx-4 mt-4 max-h-screen w-full max-w-[500px] overflow-y-auto rounded-lg bg-white p-4 shadow-md max-xsm:mx-2">
+      <div className="editpost border-[#420002] mx-4 mt-4 max-h-screen w-full max-w-[500px] overflow-y-auto rounded-lg border bg-white p-4 shadow-md max-xsm:mx-2">
         <div className="flex items-center justify-between border-b border-black py-4">
           <span className="text-xl font-semibold">Bewerk:</span>
           <div
@@ -147,7 +147,7 @@ const EditPostForm = ({ setShowEditForm, post }) => {
               name="postContent"
               defaultValue={postContent}
               onChange={(e) => setPostContent(e.target.value)}
-              className={`${post?.images[0] ? "min-h-[50px]" : "min-h-[100px]"} w-full resize-none rounded-xl bg-white py-2 pr-10 placeholder-gray-500 outline-none overflow-auto`}
+              className={`${post?.images[0] ? "min-h-[50px]" : "min-h-[100px]"} w-full resize-none overflow-auto rounded-xl bg-white py-2 pr-10 placeholder-gray-500 outline-none`}
             />
           </div>
 
@@ -199,14 +199,12 @@ const EditPostForm = ({ setShowEditForm, post }) => {
                 </div>
               </div>
             ) : (
-              
-                <div
-                  className="editbuttons flex cursor-pointer items-center justify-center rounded-lg border border-gray-400 bg-white px-4 py-2 font-semibold"
-                  onClick={handleUploadImage}
-                >
-                  Upload afbeelding
-                </div>
-              
+              <div
+                className="editbuttons flex cursor-pointer items-center justify-center rounded-lg border border-gray-400 bg-white px-4 py-2 font-semibold"
+                onClick={handleUploadImage}
+              >
+                Upload afbeelding
+              </div>
             )}
           </div>
 

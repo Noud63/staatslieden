@@ -14,7 +14,7 @@ const LoginRegisterLogout = () => {
     const t = useTranslations("auth");
 
   return (
-    <div className="flex flex-row items-center text-white max-md:mx-4 max-md:mt-4 max-md:w-full max-md:justify-between">
+    <div className="flex flex-row items-center text-white max-md:mt-4 justify-between">
       <Hamburger />
 
       <div className="flex flex-row gap-4">

@@ -29,8 +29,10 @@ export default async function RootLayout({ children, params }) {
         <NextIntlClientProvider locale={locale} messages={messages}>
           <AuthProvider>
             <Navbar />
-            <div className="w-full max-md:flex md:hidden">
-              <LoginRegisterLogout />
+            <div className="mx-6 max-md:flex max-sm:mx-4 max-xsm:mx-2 md:hidden">
+              <div className="mx-auto w-full max-w-[620px]">
+                <LoginRegisterLogout />
+              </div>
             </div>
 
             <Menu />

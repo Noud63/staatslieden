@@ -19,6 +19,8 @@ const Beeld = () => {
   const addSlide = (imageObject) => {
     slides.length = 0;
     slides.push(imageObject);
+
+    console.log(imageObject)
   };
 
   return (

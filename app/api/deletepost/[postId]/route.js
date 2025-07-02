@@ -2,7 +2,8 @@ import connectDB from "@/connectDB/database";
 import { extractPublicId } from "cloudinary-build-url";
 import Post from "@/models/post";
 import Comment from "@/models/comment";
-import Like from "@/models/like";
+import PostLike from "@/models/postLikes";
+import CommentLike from "@/models/commentLikes";
 import { deleteImageFromCloudinary } from "@/utils/deleteImageFromCloudinary";
 import { getSessionUser } from "@/utils/getSessionUser";
 
@@ -38,18 +39,12 @@ export const DELETE = async (request, { params }) => {
     { status: 404 }
   );
 }
-    // find all comments
-    const comments = await Comment.find({ postId: postId });
-    // delete comment likes
-    if (comments.length > 0) {
-      for (let comment of comments) {
-        await Like.deleteMany({ postId: comment._id });
-      }
-    }
     // delete post likes
-    await Like.deleteMany({ postId: postId });
+    await PostLike.deleteMany({ postId: postId });
     // delete all comments
     await Comment.deleteMany({ postId: postId });
+    //delete all comment likes
+    await CommentLike.deleteMany({ postId: postId });
 
     console.log("Deleted:", deletedPost)
 

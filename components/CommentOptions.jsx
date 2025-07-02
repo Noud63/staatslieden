@@ -41,8 +41,6 @@ const CommentOptions = ({
         </button>
       )}
 
-      
-
       {comment.userId === userId && (
         <button
           type="button"

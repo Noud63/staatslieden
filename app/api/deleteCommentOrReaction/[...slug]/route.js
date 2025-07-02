@@ -1,6 +1,6 @@
 import connectDB from "@/connectDB/database";
 import Comment from "@/models/comment";
-import Like from "@/models/like";
+import CommentLike from "@/models/commentLikes";
 import { getSessionUser } from "@/utils/getSessionUser";
 
 export const DELETE = async (request, { params }) => {
@@ -47,7 +47,7 @@ export const DELETE = async (request, { params }) => {
     } else {
       // If no reactionId, delete the whole comment and its reactions
       await Comment.findByIdAndDelete(commentId);
-      await Like.deleteMany({ postId: commentId });
+      await CommentLike.deleteMany({ postId: commentId });
 
       return new Response(
         JSON.stringify({ message: "Comment deleted successfully!" }),

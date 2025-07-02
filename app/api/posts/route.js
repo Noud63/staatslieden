@@ -5,6 +5,7 @@ import { getSessionUser } from "@/utils/getSessionUser";
 import mongoose from "mongoose";
 import Post from "@/models/post";
 import Comment from "@/models/comment";
+import PostLike from "@/models/postLikes";
 import Avatar from "@/models/avatar";
 
 
@@ -145,7 +146,7 @@ export async function GET() {
          // Lookup likes for each comment
          {
            $lookup: {
-             from: "likes",
+             from: "commentlikes",
              localField: "_id",
              foreignField: "commentId",
              as: "likes",
@@ -156,28 +157,30 @@ export async function GET() {
          {
            $addFields: {
              likedByUser: {
-               $in: [
-                 new mongoose.mongo.ObjectId(userId),
-                 "$likes.userId",
-               ], // Check if the current user has liked the comment
+               $in: [new mongoose.mongo.ObjectId(userId), "$likes.userId"], // Check if the current user has liked the comment
              },
            },
          },
 
          { $sort: { createdAt: -1 } },
        ]);
-       
+
+       // ✅ Check if the user liked this post
+       const postLike = await PostLike.findOne({
+         postId: post._id,
+         userId: userId,
+       }).lean()
 
        // ✅ Lookup avatar for the post author
        const postAvatar = await Avatar.findOne({ userId: post.userId }).select(
          "avatar",
        );
-       
 
        return {
          ...post,
          avatar: postAvatar ? postAvatar.avatar : null, // Post author's avatar
          comments: comments.length > 0 ? comments : [],
+         likedByUser: !!postLike, // ✅ user has liked this post?
        };
      }),
    );

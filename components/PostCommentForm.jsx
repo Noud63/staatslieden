@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { mutate } from "swr";
 import { useTranslations } from "next-intl";
 
-const PostCommentForm = ({ postId, parentId = null, setShowForm }) => {
+const PostCommentForm = ({ postId, parentId = null}) => {
   const [text, setText] = useState("");
   const [sendButton, setSendButton] = useState(false);
 
@@ -39,8 +39,6 @@ const PostCommentForm = ({ postId, parentId = null, setShowForm }) => {
 
       if (response.ok) {
         const comment = await response.json();
-        console.log(comment);
-        setShowForm(false);
         mutate("/api/posts");
       }
     } catch (error) {
@@ -48,7 +46,7 @@ const PostCommentForm = ({ postId, parentId = null, setShowForm }) => {
     } finally {
       textareaRef.current.value = "";
     }
-    mutate("/api/posts");
+    // mutate("/api/posts");
   };
 
   useEffect(() => {

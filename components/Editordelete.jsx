@@ -7,6 +7,7 @@ import EditPostForm from "./EditPostForm";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { mutate } from "swr";
 import { useTranslations } from "next-intl";
+import { optimisticDeletePost } from "@/utils/optimisticUpdate"; // Assuming you have this utility function 
 
 const Editordelete = ({ showOptions, setShowOptions, postId, post }) => {
 
@@ -20,15 +21,10 @@ const Editordelete = ({ showOptions, setShowOptions, postId, post }) => {
   };
 
   const deletePost = async () => {
-    mutate(
-      `/api/posts`,
-      async (currentData) => {
-        // Find the post that contains the comment
-        const updatedPosts = currentData.filter((post) => {
-          return post._id !== postId;
-        });
-
-        try {
+         try {
+          // Optimistically update the UI both for all the post and the post by user
+          mutate("/api/posts", optimisticDeletePost(postId), false);
+          
           const res = await fetch(`/api/deletepost/${postId}`, {
             method: "DELETE",
           });
@@ -43,11 +39,6 @@ const Editordelete = ({ showOptions, setShowOptions, postId, post }) => {
           console.log(data.message);
           return currentData; // Rollback on failure
         }
-        return updatedPosts; // Return updated UI state
-      },
-      false,
-    ); // `false` means it won't revalidate immediately
-    
   };
 
   return (

@@ -10,6 +10,8 @@ import commentIcon from "../assets/icons/comment.png";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import PostCommentForm from "./PostCommentForm";
 import EditCommentForm from "./EditCommentForm";
+import { optimisticCommentLikeUpdate } from "@/utils/optimisticUpdate";
+import { optimisticDeleteComment } from "@/utils/optimisticUpdate";
 import CommentOptions from "./CommentOptions"; // Assuming you have a separate component for comment options
 
 const Comment = ({ comment, postId, parentId }) => {
@@ -30,67 +32,32 @@ const Comment = ({ comment, postId, parentId }) => {
   }, [showForm, showOptions]);
 
   const toggleLike = async (commentId) => {
-    // Optimistically update the UI
-    mutate(
-      `/api/posts`,
-      async (currentData) => {
-        // Find the post that contains the comment
-        const updatedPosts = currentData.map((post) => {
-          return {
-            ...post,
-            comments: post.comments.map((comment) => {
-              if (comment._id === commentId) {
-                return {
-                  ...comment,
-                  likesCount:
-                    comment.likesCount + (comment.likedByUser ? -1 : 1), // if likedbyuser is true -> comment.likesCount - 1 else comment.likesCount + 1
-                  likedByUser: !comment.likedByUser, // Toggle like state true/false
-                };
-              }
-              return comment;
-            }),
-          };
-        });
-
-        try {
+    
+         try {
+          // Optimistically update the UI both for all the post and the post by user
+          mutate("/api/posts", optimisticCommentLikeUpdate(commentId), false);
+          
           const res = await fetch(`/api/comments/${commentId}/like`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ commentId }),
+            body: JSON.stringify({ commentId, postId }),
           });
 
           if (!res.ok) throw new Error("Failed to update like");
           // mutate("/api/posts");
         } catch (error) {
           console.error(error);
-          return currentData; // Rollback on failure
         }
-
-        return updatedPosts; // Return updated UI state
-      },
-      false,
-    ); // `false` means it won't revalidate immediately
-  };
+    };
 
   const deleteComment = async (commentId) => {
     // Optimistically update the UI
-    mutate(
-      `/api/posts`,
-      async (currentData) => {
-        // Find the post that contains the comment
-        const updatedPosts = currentData.map((post) => {
-          if (post._id === postId) {
-            return {
-              ...post,
-              comments: post.comments.filter((comment) => {
-                return comment._id !== commentId;
-              }),
-            };
-          }
-          return post;
-        });
-
-        try {
+         try {
+          mutate(
+            "/api/posts",
+            optimisticDeleteComment(postId, commentId),
+            false,
+          );
           const res = await fetch(`/api/deleteComment/${commentId}`, {
             method: "DELETE",
           });
@@ -104,11 +71,6 @@ const Comment = ({ comment, postId, parentId }) => {
           console.log(data.message);
           return currentData;
         }
-
-        return updatedPosts; // Return updated UI state
-      },
-      false,
-    ); // `false` means it won't revalidate immediately
   };
 
   return (

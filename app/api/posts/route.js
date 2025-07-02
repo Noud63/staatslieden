@@ -94,12 +94,12 @@ export async function GET() {
     // Fetch all posts
     const posts = await Post.find().sort({ createdAt: -1 }).lean();
 
-// console.log("Posts:", posts)
+    // console.log("Posts:", posts)
 
-// Fetch comments for each post and structure them with nested replies
-   const postsWithComments = await Promise.all(
-     posts.map(async (post) => {
-       const comments = await Comment.aggregate([
+    // Fetch comments for each post and structure them with nested replies
+    const postsWithComments = await Promise.all(
+        posts.map(async (post) => {
+         const comments = await Comment.aggregate([
          { $match: { postId: post._id } },
 
          // Lookup avatar for each comment

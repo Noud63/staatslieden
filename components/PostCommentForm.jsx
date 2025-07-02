@@ -47,6 +47,7 @@ const PostCommentForm = ({ postId, parentId = null, setShowForm }) => {
       console.error("An unexpected error happened:", error);
     } finally {
       textareaRef.current.value = "";
+      setSendButton(false);
     }
     mutate("/api/posts");
   };

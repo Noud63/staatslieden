@@ -84,7 +84,7 @@ const EditPostForm = ({ setShowEditForm, post }) => {
       console.log(error);
       console.log(data.message);
     }
-     mutate("/api/posts");
+     mutate("/api/getposts");
   };
 
   const deleteSelectedImage = (name) => {

@@ -76,7 +76,7 @@ const AddPostModal = ({ inView, setInView }) => {
     } catch (error) {
       console.log(error);
     }
-     mutate("/api/posts");
+     mutate("/api/getposts");
   };
 
   return (

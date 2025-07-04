@@ -35,7 +35,7 @@ export const POST = async (request) => {
       avatar: avatar
     });
 
-    console.log("New Comment:", newComment);
+    // console.log("New Comment:", newComment);
 
     await newComment.save();
     return NextResponse.json(newComment, { status: 201 });

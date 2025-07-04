@@ -1,29 +1,35 @@
 "use client";
+import React, { useState } from "react";
 import Image from "next/image";
 import PostCommentForm from "./PostCommentForm";
 import { useSession } from "next-auth/react";
 import Comment from "./Comment";
 import { useTranslations } from "next-intl";
 
-const PostComment = ({ post}) => {
+const PostComment = ({post}) => {
   const { data: session } = useSession();
   const profilePic = session?.user?.avatar;
 
   const t = useTranslations("reactie");
 
+  // showForm is needed separatly in comment and PostComment to avoid error in PostCommentForm
+  const [showForm, setShowForm] = useState(false);
+
   //Recursive function to render comments
   //Recursion occurs when the definition of a concept or process depends on a simpler or previous version of itself.
-  const renderComments = (comments, parentId = null,) => {
-    
+  const renderComments = (comments, parentId = null) => {
     return comments
       .filter((comment) => comment.parentId === parentId)
       .map((comment) => (
         <div key={comment._id} className="comment">
           {/* Render top-level comments */}
-          <Comment comment={comment} postId={post._id} parentId={parentId} />
-          <div className="pl-8">
-            {renderComments(comments, comment._id)}
-          </div>
+          <Comment
+            comment={comment}
+            postId={post._id}
+            parentId={parentId}
+            post={post}
+          />
+          <div className="pl-8">{renderComments(comments, comment._id)}</div>
         </div>
       ));
   };
@@ -47,7 +53,12 @@ const PostComment = ({ post}) => {
             className="h-full w-full object-cover"
           />
         </div>
-        <PostCommentForm postId={post._id} />
+        <PostCommentForm
+          postId={post._id}
+          post={post}
+          setShowForm={setShowForm}
+          showForm={showForm}
+        />
       </div>
     </div>
   );

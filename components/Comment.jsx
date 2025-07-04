@@ -14,11 +14,12 @@ import { optimisticCommentLikeUpdate } from "@/utils/optimisticUpdate";
 import { optimisticDeleteComment } from "@/utils/optimisticUpdate";
 import CommentOptions from "./CommentOptions"; // Assuming you have a separate component for comment options
 
-const Comment = ({ comment, postId, parentId }) => {
+const Comment = ({ comment, postId, parentId, post }) => {
   const { data: session } = useSession();
 
   const t = useTranslations("auth");
 
+  // showForm is needed separatly in comment and PostComment to avoid error in PostCommentForm
   const [showForm, setShowForm] = useState(false);
   const [showOptions, setShowOptions] = useState(false);
   const [showEditComment, setShowEditComment] = useState(false);
@@ -32,45 +33,55 @@ const Comment = ({ comment, postId, parentId }) => {
   }, [showForm, showOptions]);
 
   const toggleLike = async (commentId) => {
-    
-         try {
-          // Optimistically update the UI both for all the post and the post by user
-          mutate("/api/posts", optimisticCommentLikeUpdate(commentId), false);
-          
-          const res = await fetch(`/api/comments/${commentId}/like`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ commentId, postId }),
-          });
+    try {
+      // Optimistically update the UI both for all the post and the post by user
+      mutate("/api/getposts", optimisticCommentLikeUpdate(commentId), false);
+      mutate(
+        `/api/getposts/postsByUserId/${post.userId}`,
+        optimisticCommentLikeUpdate(commentId),
+        false,
+      );
 
-          if (!res.ok) throw new Error("Failed to update like");
-          // mutate("/api/posts");
-        } catch (error) {
-          console.error(error);
-        }
-    };
+      const res = await fetch(`/api/comments/${commentId}/like`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ commentId, postId }),
+      });
+
+      if (!res.ok) throw new Error("Failed to update like");
+      // mutate("/api/posts");
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const deleteComment = async (commentId) => {
     // Optimistically update the UI
-         try {
-          mutate(
-            "/api/posts",
-            optimisticDeleteComment(postId, commentId),
-            false,
-          );
-          const res = await fetch(`/api/deleteComment/${commentId}`, {
-            method: "DELETE",
-          });
+    try {
+      mutate(
+        "/api/getposts",
+        optimisticDeleteComment(postId, commentId),
+        false,
+      );
 
-          const data = await res.json();
+      mutate(
+        `/api/getposts/postsByUserId/${post.userId}`,
+        optimisticDeleteComment(postId, commentId),
+        false,
+      );
+      const res = await fetch(`/api/deleteComment/${commentId}`, {
+        method: "DELETE",
+      });
 
-          if (res.ok) {
-            console.log(data.message);
-          }
-        } catch (error) {
-          console.log(data.message);
-          return currentData;
-        }
+      const data = await res.json();
+
+      if (res.ok) {
+        console.log(data.message);
+      }
+    } catch (error) {
+      console.log(data.message);
+      return currentData;
+    }
   };
 
   return (
@@ -175,6 +186,8 @@ const Comment = ({ comment, postId, parentId }) => {
               postId={comment.postId}
               parentId={comment._id}
               setShowForm={setShowForm}
+              showForm={showForm}
+              post={post}
             />
           )}
         </div>

@@ -8,7 +8,7 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 const GetAllPosts = ({initialData}) => {
 
-const { data, error, isLoading } = useSWR("/api/posts", fetcher, {
+const { data, error, isLoading } = useSWR("/api/getposts", fetcher, {
   
     fallbackData: initialData, // Use preloaded data first
     revalidateOnMount: true, // Don't fetch again on mount, already have fresh data

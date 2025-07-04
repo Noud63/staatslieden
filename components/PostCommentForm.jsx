@@ -5,8 +5,9 @@ import { IoSendSharp } from "react-icons/io5";
 import { useRouter } from "next/navigation";
 import { mutate } from "swr";
 import { useTranslations } from "next-intl";
+import { optimisticAddComment } from "@/utils/optimisticUpdate";
 
-const PostCommentForm = ({ postId, parentId = null, setShowForm }) => {
+const PostCommentForm = ({ postId, parentId = null, setShowForm, showForm, post }) => {
   const [text, setText] = useState("");
   const [sendButton, setSendButton] = useState(false);
 
@@ -20,17 +21,34 @@ const PostCommentForm = ({ postId, parentId = null, setShowForm }) => {
 
   const t = useTranslations("placeholder");
 
+  
+  const tempComment = {
+    postId,
+    parentId: parentId || null,
+    userId: session?.user.id,
+    username: session?.user.username,
+    comment: text,
+    createdAt: new Date().toISOString(),
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!text.trim()) return;
 
     try {
+      mutate("/api/getposts", optimisticAddComment(postId, tempComment), false);
+      mutate(
+        `/api/getposts/postsByUserId/${post.userId}`,
+        optimisticAddComment(postId, tempComment),
+        false,
+      );
+
       const response = await fetch("/api/comments", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           postId,
-          parentId,
+          parentId: parentId || null,
           userId: session?.user.id,
           username: session?.user.username,
           comment: text,
@@ -39,9 +57,7 @@ const PostCommentForm = ({ postId, parentId = null, setShowForm }) => {
 
       if (response.ok) {
         const comment = await response.json();
-        console.log(comment);
         setShowForm(false);
-        mutate("/api/posts");
       }
     } catch (error) {
       console.error("An unexpected error happened:", error);
@@ -49,7 +65,9 @@ const PostCommentForm = ({ postId, parentId = null, setShowForm }) => {
       textareaRef.current.value = "";
       setSendButton(false);
     }
-    mutate("/api/posts");
+    // Revalidate to fetch the real comment
+    mutate("/api/getposts");
+    mutate(`/api/getposts/postsByUserId/${post.userId}`);
   };
 
   useEffect(() => {

@@ -8,7 +8,6 @@ import Comment from "@/models/comment";
 import PostLike from "@/models/postLikes";
 import Avatar from "@/models/avatar";
 
-
 export const POST = async (request) => {
   try {
     await connectDB();
@@ -25,14 +24,12 @@ export const POST = async (request) => {
       user: { name, email, image, id, username, avatar },
       userId,
     } = sessionUser;
-    console.log("User:", sessionUser.user)
+    console.log("User:", sessionUser.user);
 
     const content = formData.get("postContent");
     const images = formData
       .getAll("images")
       .filter((image) => image.name !== ""); //prevent error cloudinary
-
-  
 
     const postData = {
       postContent: content,
@@ -40,7 +37,7 @@ export const POST = async (request) => {
       username: username,
       name: name,
       images,
-      avatar: avatar
+      avatar: avatar,
     };
 
     const imageUploadPromises = [];
@@ -82,14 +79,13 @@ export const POST = async (request) => {
   }
 };
 
-
 // ✅ Fetch Comments with Nested Replies
 export async function GET() {
   try {
     await connectDB();
 
-        const sessionUser = await getSessionUser();
-        const userId = sessionUser?.user?.id;
+    const sessionUser = await getSessionUser();
+    const userId = sessionUser?.user?.id;
 
     // Fetch all posts
     const posts = await Post.find().sort({ createdAt: -1 }).lean();
@@ -98,99 +94,100 @@ export async function GET() {
 
     // Fetch comments for each post and structure them with nested replies
     const postsWithComments = await Promise.all(
-        posts.map(async (post) => {
-         const comments = await Comment.aggregate([
-         { $match: { postId: post._id } },
+      posts.map(async (post) => {
+        const comments = await Comment.aggregate([
+          { $match: { postId: post._id } },
 
-         // Lookup avatar for each comment
-         {
-           $lookup: {
-             from: "avatars",
-             localField: "userId", // Match the comment's author
-             foreignField: "userId", // Find the user's avatar
-             as: "avatar",
-           },
-         },
-         {
-           $addFields: {
-             avatar: { $arrayElemAt: ["$avatar.avatar", 0] }, // Extract avatar URL
-           },
-         },
+          // Lookup avatar for each comment
+          {
+            $lookup: {
+              from: "avatars",
+              localField: "userId", // Match the comment's author
+              foreignField: "userId", // Find the user's avatar
+              as: "avatar",
+            },
+          },
+          {
+            $addFields: {
+              avatar: { $arrayElemAt: ["$avatar.avatar", 0] }, // Extract avatar URL
+            },
+          },
 
-         // GraphLookup to fetch nested replies
-         {
-           $graphLookup: {
-             from: "comments",
-             startWith: "$_id",
-             connectFromField: "_id",
-             connectToField: "parentId",
-             as: "replies",
-             maxDepth: 5,
-           },
-         },
+          // GraphLookup to fetch nested replies
+          {
+            $graphLookup: {
+              from: "comments",
+              startWith: "$_id",
+              connectFromField: "_id",
+              connectToField: "parentId",
+              as: "replies",
+              maxDepth: 5,
+            },
+          },
 
-         // Add avatar to replies too
-         {
-           $lookup: {
-             from: "avatars",
-             localField: "replies.userId",
-             foreignField: "userId",
-             as: "replyAvatars",
-           },
-         },
-         {
-           $addFields: {
-             "replies.avatar": { $arrayElemAt: ["$replyAvatars.avatar", 0] },
-           },
-         },
-         // Lookup likes for each comment
-         {
-           $lookup: {
-             from: "commentlikes",
-             localField: "_id",
-             foreignField: "commentId",
-             as: "likes",
-           },
-         },
+          // Add avatar to replies too
+          {
+            $lookup: {
+              from: "avatars",
+              localField: "replies.userId",
+              foreignField: "userId",
+              as: "replyAvatars",
+            },
+          },
+          {
+            $addFields: {
+              "replies.avatar": { $arrayElemAt: ["$replyAvatars.avatar", 0] },
+            },
+          },
+          // Lookup likes for each comment
+          {
+            $lookup: {
+              from: "commentlikes",
+              localField: "_id",
+              foreignField: "commentId",
+              as: "likes",
+            },
+          },
 
-         // Add likedByUser field dynamically for the current user
-         {
-           $addFields: {
-             likedByUser: {
-               $in: [new mongoose.mongo.ObjectId(userId), "$likes.userId"], // Check if the current user has liked the comment
-             },
-           },
-         },
+          // Add likedByUser field dynamically for the current user
+          {
+            $addFields: {
+              likedByUser: {
+                $in: [new mongoose.mongo.ObjectId(userId), "$likes.userId"], // Check if the current user has liked the comment
+              },
+            },
+          },
 
-         { $sort: { createdAt: -1 } },
-       ]);
+          { $sort: { createdAt: -1 } },
+        ]);
 
-       // ✅ Check if the user liked this post
-       const postLike = await PostLike.findOne({
-         postId: post._id,
-         userId: userId,
-       }).lean()
+        // ✅ Check if the user liked this post
+        const postLike = await PostLike.findOne({
+          postId: post._id,
+          userId: userId,
+        }).lean();
 
-       // ✅ Lookup avatar for the post author
-       const postAvatar = await Avatar.findOne({ userId: post.userId }).select(
-         "avatar",
-       );
+        // ✅ Lookup avatar for the post author
+        const postAvatar = await Avatar.findOne({ userId: post.userId }).select(
+          "avatar",
+        );
 
-       return {
-         ...post,
-         avatar: postAvatar ? postAvatar.avatar : null, // Post author's avatar
-         comments: comments.length > 0 ? comments : [],
-         likedByUser: !!postLike, // ✅ user has liked this post?
-       };
-     }),
-   );
+        return {
+          ...post,
+          avatar: postAvatar ? postAvatar.avatar : null, // Post author's avatar
+          comments: comments.length > 0 ? comments : [],
+          likedByUser: !!postLike, // ✅ user has liked this post?
+        };
+      }),
+    );
 
-    
     // console.log("Posts with Comments:", JSON.stringify(postsWithComments, null, 2))
 
     return NextResponse.json(postsWithComments, { status: 200 });
   } catch (error) {
-    return NextResponse.json({ message: "Error fetching posts", error }, { status: 500 });
+    return NextResponse.json(
+      { message: "Error fetching posts", error },
+      { status: 500 },
+    );
   }
 }
-

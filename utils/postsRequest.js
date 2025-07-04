@@ -1,13 +1,13 @@
 
 const apiDomain = process.env.NEXT_PUBLIC_API_DOMAIN || null;
 
-async function fetchPosts() {
+async function fetchPosts(postId) {
 try {
    if (!apiDomain) {
      return [];
    }
-   const res = await fetch(`${apiDomain}/posts`, {cache: "no-store"}); // server component fetch req needs the full url http://localhost:3000/api
-
+   const url = postId ? `${apiDomain}/getposts/getPostByUserId/${postId}` : `${apiDomain}/getposts`; // server component fetch req needs the full url http://localhost:3000/api
+   const res = await fetch(url, { cache: "no-store" });
    if (!res.ok) {
      throw new Error("Failed to fetch data!");
    }

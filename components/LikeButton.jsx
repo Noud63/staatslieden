@@ -11,7 +11,12 @@ const LikeButton = ({ postId, post }) => {
   const toggleLike = async () => {
     try {
       // Optimistically update the UI 
-      mutate("/api/posts", optimisticPostLikeUpdate(postId), false);
+      mutate("/api/getposts", optimisticPostLikeUpdate(postId), false);
+      mutate(
+        `/api/getposts/postsByUserId/${post.userId}`,
+        optimisticPostLikeUpdate(postId),
+        false,
+      );
 
       const res = await fetch(`/api/posts/${postId}/like`, {
         method: "POST",
@@ -22,6 +27,8 @@ const LikeButton = ({ postId, post }) => {
       });
 
       const data = await res.json();
+
+       await mutate("/api/getposts");
 
       if (!res.ok) throw new Error("Failed to update like");
     } catch (error) {

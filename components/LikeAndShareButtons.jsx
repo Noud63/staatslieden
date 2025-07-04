@@ -1,5 +1,5 @@
 "use client"
-import React from 'react'
+import React,{useState, useEffect} from 'react'
 import LikeButton from './LikeButton';
 import { FaWhatsapp } from "react-icons/fa";
 import { TbShare3 } from "react-icons/tb";
@@ -12,7 +12,12 @@ const LikeAndShareButtons = ({post}) => {
 
   const { data: session } = useSession();
 
-  const sharedPost = `${window.location.origin}/sharedpost/${post._id}`;
+  const [sharedPost, setSharedPost] = useState("");
+
+  useEffect(() => {
+    // This runs only on client
+    setSharedPost(`${window.location.origin}/sharedpost/${post._id}`);
+  }, [post._id]);
 
   const handleCopyLink = async () => {
     try {

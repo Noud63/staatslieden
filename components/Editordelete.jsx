@@ -23,7 +23,12 @@ const Editordelete = ({ showOptions, setShowOptions, postId, post }) => {
   const deletePost = async () => {
          try {
           // Optimistically update the UI both for all the post and the post by user
-          mutate("/api/posts", optimisticDeletePost(postId), false);
+          mutate("/api/getposts", optimisticDeletePost(postId), false);
+          mutate(
+            `/api/getposts/postsByUserId/${post.userId}`,
+            optimisticCommentLikeUpdate(commentId),
+            false,
+          );
           
           const res = await fetch(`/api/deletepost/${postId}`, {
             method: "DELETE",

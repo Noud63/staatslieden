@@ -21,6 +21,30 @@ const optimisticCommentLikeUpdate = (commentId) => (currentData) => {
   });
 };
 
+const optimisticAddComment = (postId, newComment) => (data) => {
+  if (!data || !data.posts) return data;
+
+  return {
+    ...data,
+    posts: data.posts.map((post) => {
+      if (post.id !== postId) return post;
+
+      return {
+        ...post,
+        comments: [
+          ...(post.comments || []),
+          {
+            ...newComment,
+            _id: `temp-${Date.now()}`, // temporary id
+            likesCount: 0,
+            createdAt: new Date().toISOString(),
+          },
+        ],
+      };
+    }),
+  };
+};
+
 const optimisticPostLikeUpdate = (postId) => (currentData) => {
   if (!currentData) return currentData;
   console.log("Current:", currentData);
@@ -66,5 +90,6 @@ export {
   optimisticPostLikeUpdate,
   optimisticCommentLikeUpdate,
   optimisticDeletePost,
-  optimisticDeleteComment
+  optimisticDeleteComment,
+  optimisticAddComment
 };

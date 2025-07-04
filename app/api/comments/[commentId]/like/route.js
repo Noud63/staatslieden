@@ -31,7 +31,7 @@ export const POST = async (request, { params }) => {
   // Add or remove like from database and update the likesCount in the comment
    try {
      const comment = await Comment.findById(commentId);
-     console.log("Comment:", comment); 
+    //  console.log("Comment:", comment); 
      if (!comment) {
        return res.status(404).json({ message: "Comment not found" });
      }

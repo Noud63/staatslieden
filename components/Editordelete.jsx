@@ -26,7 +26,7 @@ const Editordelete = ({ showOptions, setShowOptions, postId, post }) => {
           mutate("/api/getposts", optimisticDeletePost(postId), false);
           mutate(
             `/api/getposts/postsByUserId/${post.userId}`,
-            optimisticCommentLikeUpdate(commentId),
+            optimisticDeletePost(postId),
             false,
           );
           
@@ -35,14 +35,14 @@ const Editordelete = ({ showOptions, setShowOptions, postId, post }) => {
           });
 
           const data = await res.json();
+          console.log(data.message)
 
           if (res.ok) {
-            console.log(data.message);
+            // console.log(data.message);
             setShowOptions(false);
           }
         } catch (error) {
-          console.log(data.message);
-          return currentData; // Rollback on failure
+          console.log(error);
         }
   };
 

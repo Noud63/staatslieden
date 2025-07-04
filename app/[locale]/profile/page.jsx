@@ -68,7 +68,7 @@ const ProfilePage = () => {
     } catch (err) {
       console.error(err);
     }
-    mutate("/api/posts");
+    mutate("/api/getposts");
   };
 
   return (

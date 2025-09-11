@@ -180,16 +180,16 @@ const Comment = ({ comment, postId, parentId, post }) => {
           </div>
         </div>
 
-        <div>
-          {showForm && (
-            <PostCommentForm
-              postId={comment.postId}
-              parentId={comment._id}
-              setShowForm={setShowForm}
-              showForm={showForm}
-              post={post}
-            />
-          )}
+        <div
+          className={`transition-all duration-500 ease-in-out ${showForm ? "max-h-[500px] translate-x-0 opacity-100" : "max-h-0 opacity-0"} overflow-hidden`}
+        >
+          <PostCommentForm
+            postId={comment.postId}
+            parentId={comment._id}
+            setShowForm={setShowForm}
+            showForm={showForm}
+            post={post}
+          />
         </div>
       </div>
     </div>

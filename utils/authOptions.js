@@ -20,18 +20,6 @@ export const authOptions = {
       strategy: "jwt",
     },
    providers: [
-  //     EmailProvider({
-  //       server: {
-  //         host: process.env.EMAIL_SERVER_HOST,
-  //         port: process.env.EMAIL_SERVER_PORT,
-  //         auth: {
-  //           user: process.env.EMAIL_SERVER_USER,
-  //           pass: process.env.EMAIL_SERVER_PASSWORD,
-  //         },
-  //       },
-  //       from: process.env.EMAIL_FROM,
-  //       maxAge: 60,
-  //     }),
 
       GoogleProvider({
         clientId: process.env.GOOGLE_CLIENT_ID,
@@ -73,20 +61,19 @@ export const authOptions = {
               email: credentials.email,
             });
             if (!foundUser) {
-              throw new Error("Invalid email or password");
+              throw new Error("Invalid credentials");
             }
             const match = await bcrypt.compare(
               credentials.password,
               foundUser.password
             );
             if (!match) {
-              throw new Error("Password did not matched");
+              throw new Error("Invalid credentials");
             }
             return foundUser;
           } catch (error) {
-            console.log(error);
+            throw new Error("Invalid credentials");
           }
-          return null;
         },
       }),
      ],
@@ -99,33 +86,17 @@ callbacks: {
         await connectDB();
         
         if (account.provider === "google" || account.provider === "facebook") {
-          // 2. Check if user exists
-          const userExists = await User.findOne({ email: profile.email });
-          // 3. If not, add user to database
-          if (!userExists) {
-            await User.create({
-              email: profile.email,
+          // 2. Check if user exists, and if not, add user to database, or update image if social login
+          const update = {
+            $set: {
               username: profile.name,
               name: profile.name,
-              avatar: profile.picture
-            });
-          }
-          // If user exist add corresponding profile-image (from google or facebook) by updating document image value
-          if (userExists) {
-            await User.updateOne({ email: userExists.email }, [
-              {
-                $set: {
-                  image: {
-                    $cond: {
-                      if: account.provider === "facebook",
-                      then: user.image,
-                      else: profile.picture,
-                    },
-                  },
-                },
-              },
-            ]);
-          }
+              avatar: account.provider === "facebook" ? user.image : profile.picture,
+            },
+          };
+          const options = { upsert: true, new: true, setDefaultsOnInsert: true };
+          
+          await User.findOneAndUpdate({ email: profile.email }, update, options);
         }
         // 4. Return true to allow sign in
         return true;
@@ -134,20 +105,22 @@ callbacks: {
         if (user) {
           // token.name = user.name;
           token.username = user.username;
+          token.id = user._id;
+          token.avatar = user.avatar;
         }
         // console.log("Jwt_user:", { user });
         return token;
       },
+
       //Modify the session object
       async session({ session, token }) {
-        // 1. Get user from the database
-        const user = await User.findOne({ email: session.user.email });
-        // 2. Assign user id to the session
-        session.user.id = user._id.toString();
-        // 4. Assign username to the session
+        //  NextAuth automatically includes the name property in the session if it exists on the user object
+        // Assign user id to the session
+        session.user.id = token.id;
+        // Assign username to the session
         session.user.username = token.username;
-        // 4. Assign avatar to the session
-        session.user.avatar = user.avatar;
+        // Assign avatar to the session
+        session.user.avatar = token.avatar;
         // console.log(session)
         return session;
       },

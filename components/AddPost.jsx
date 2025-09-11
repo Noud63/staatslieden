@@ -27,6 +27,8 @@ const AddPost = () => {
     }
   };
 
+  console.log("Session:", session)
+
   return (
     <div className="mx-6 mt-4 max-sm:mx-4 max-xsm:mx-2">
       <section className="singlepost mx-auto flex w-full max-w-[620px] justify-between rounded-lg bg-white px-4 py-4 max-xsm:py-3">

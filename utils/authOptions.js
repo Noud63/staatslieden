@@ -101,14 +101,17 @@ callbacks: {
         // 4. Return true to allow sign in
         return true;
       },
-      async jwt({ token, user, account }) {
+      async jwt({ token, user, account, trigger, session }) {
         if (user) {
           // token.name = user.name;
           token.username = user.username;
           token.id = user._id;
           token.avatar = user.avatar;
         }
-        // console.log("Jwt_user:", { user });
+        if(trigger === "update" && session?.user) {
+          token.avatar = session.user.avatar;
+        }
+        console.log("Jwt_user:", { user });
         return token;
       },
 

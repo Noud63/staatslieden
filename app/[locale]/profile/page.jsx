@@ -55,11 +55,12 @@ const ProfilePage = () => {
       });
 
       const result = await res.json();
-
+      console.log("Result:", result)
       // Refresh session
-      await update();
-
-      if (res.status === 200) {
+      await update({ ...session, user: { ...session.user, avatar: result.avatar } });
+      console.log("Session after update:", session)
+    
+     if (res.status === 200) {
         setLoading(false);
         setTimeout(() => {
           router.push("/");
@@ -70,6 +71,8 @@ const ProfilePage = () => {
     }
     mutate("/api/getposts");
   };
+
+  console.log("Avatar:", avatar)
 
   return (
     <div className="mt-10 flex w-full justify-center">
@@ -163,19 +166,7 @@ const ProfilePage = () => {
             />
           </div>
         </div>
-        <div className="mb-16 hidden items-center justify-center pr-4 max-xsm:mb-8 max-xsm:mt-8 max-xsm:flex">
-          <Image
-            src={
-              session?.user?.avatar
-                ? session?.user?.avatar
-                : "/images/defaultAvatar2.png"
-            }
-            alt=""
-            width={50}
-            height={50}
-            className="h-[60px] w-[60px] rounded-full"
-          />
-        </div>
+       
       </div>
     </div>
   );

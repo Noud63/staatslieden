@@ -13,6 +13,7 @@ const AddPost = () => {
 
   const { data: session, status } = useSession();
   const profilePic = session?.user?.avatar;
+  console.log("Profile Picture:", profilePic);
 
   const name = session?.user?.username;
 

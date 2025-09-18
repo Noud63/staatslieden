@@ -24,6 +24,8 @@ export const GET = async (request, { params }) => {
         .lean());
     }
 
+    console.log("Posts by userId:", posts);
+
     return new Response(JSON.stringify({ posts }), { status: 200 });
   } catch (error) {
     console.log(error);

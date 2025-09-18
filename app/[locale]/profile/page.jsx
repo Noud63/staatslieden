@@ -55,12 +55,14 @@ const ProfilePage = () => {
       });
 
       const result = await res.json();
-      console.log("Result:", result)
-      // Refresh session
-      await update({ ...session, user: { ...session.user, avatar: result.avatar } });
-      console.log("Session after update:", session)
-    
-     if (res.status === 200) {
+
+      // Refresh session - corrected to spread the user object to preserve all user data
+      await update({
+        ...session,
+        user: { ...session.user, avatar: result.avatar },
+      });
+
+      if (res.status === 200) {
         setLoading(false);
         setTimeout(() => {
           router.push("/");
@@ -72,7 +74,7 @@ const ProfilePage = () => {
     mutate("/api/getposts");
   };
 
-  console.log("Avatar:", avatar)
+  console.log("Avatar:", session.user.avatar);
 
   return (
     <div className="mt-10 flex w-full justify-center">
@@ -96,7 +98,7 @@ const ProfilePage = () => {
           <span className="font-normal">{email}</span>
         </div>
 
-        <div className="mb-4 flex flex-row justify-between">
+        <div className="mb-4 flex flex-row justify-between max-xsm:flex-col">
           <div className="flex flex-col max-xsm:w-full">
             <span className="mb-2 font-semibold">Voeg profielfoto toe:</span>
             <form onSubmit={handleSubmit}>
@@ -152,7 +154,7 @@ const ProfilePage = () => {
             </form>
           </div>
 
-          <div className="mb-16 flex items-center pr-4 max-xsm:hidden">
+          <div className="mb-16 flex items-center pr-4 max-xsm:mb-4 max-xsm:mt-6 max-xsm:justify-center">
             <Image
               src={
                 session?.user?.avatar
@@ -166,7 +168,6 @@ const ProfilePage = () => {
             />
           </div>
         </div>
-       
       </div>
     </div>
   );

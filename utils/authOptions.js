@@ -18,7 +18,27 @@ export const authOptions = {
 
   session: {
     strategy: "jwt",
+    maxAge: 24 * 60 * 60, // 24 hours
+    updateAge: 24 * 60 * 60, // 24 hours
   },
+
+  jwt: {
+    secret: process.env.AUTH_SECRET,
+    maxAge: 60 * 60 * 24, // 24 hours
+  },
+
+  cookies: {
+    sessionToken: {
+      name: `__Secure-next-auth.session-token`,
+      options: {
+        httpOnly: true,
+        sameSite: 'lax',
+        path: '/',
+        secure: true
+      }
+    }
+  },
+
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
@@ -99,7 +119,9 @@ export const authOptions = {
       // 4. Return true to allow sign in
       return true;
     },
+    
     async jwt({ token, user, account, trigger, session }) {
+      token.exp = Math.floor(Date.now() / 1000) + (60 * 60 * 24); //24 hours expiration
       if (user) {
         // token.name = user.name;
         token.username = user.username;
@@ -107,7 +129,7 @@ export const authOptions = {
         token.avatar = user.avatar;
         console.log("Jwt_user:", { user });
       }
-      if (trigger === "update") {
+      if (trigger === "update" && session?.user) {
         token.avatar = session.user.avatar;
       }
 

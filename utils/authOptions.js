@@ -12,8 +12,8 @@ import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import clientPromise from "@/lib/db";
 
 
-
 export const authOptions = {
+
   adapter: MongoDBAdapter(clientPromise),
 
   session: {
@@ -40,18 +40,18 @@ export const authOptions = {
   },
 
   providers: [
-    GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      authorization: {
-        params: {
-          prompt: "consent",
-          access_type: "offline",
-          response_type: "code",
-        },
-      },
-      allowDangerousEmailAccountLinking: true,
-    }),
+    // GoogleProvider({
+    //   clientId: process.env.GOOGLE_CLIENT_ID,
+    //   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    //   authorization: {
+    //     params: {
+    //       prompt: "consent",
+    //       access_type: "offline",
+    //       response_type: "code",
+    //     },
+    //   },
+    //   allowDangerousEmailAccountLinking: true,
+    // }),
 
     //     FacebookProvider({
     //       clientId: process.env.FACEBOOK_CLIENT_ID,
@@ -121,9 +121,11 @@ export const authOptions = {
     },
     
     async jwt({ token, user, account, trigger, session }) {
+  
       token.exp = Math.floor(Date.now() / 1000) + (60 * 60 * 24); //24 hours expiration
       if (user) {
         // token.name = user.name;
+        console.log("User:", { user });
         token.username = user.username;
         token.id = user._id;
         token.avatar = user.avatar;
@@ -140,7 +142,6 @@ export const authOptions = {
     async session({ session, token }) {
       //  NextAuth automatically includes the name property in the session if it exists on the user object
       // Assign user id to the session
-
       session.user.id = token.id;
       // Assign username to the session
       session.user.username = token.username;

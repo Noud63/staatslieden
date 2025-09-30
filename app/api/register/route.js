@@ -25,7 +25,6 @@ export const POST = async (request, res) => {
       );
     }
     let status = await client.status();
-    console.log("Remaining:", status.quotas.month.remaining);
 
    
       const user = await User.findOne({email});

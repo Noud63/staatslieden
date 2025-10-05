@@ -10,46 +10,44 @@ import { signIn } from "next-auth/react";
 import { useLocale } from "next-intl";
 
 const LoginPage = () => {
- 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
   const [message, setMessage] = useState("");
 
-   
   const router = useRouter();
 
   const handleSubmit = async (e) => {
-   e.preventDefault();
+    e.preventDefault();
 
-   try {
-     const res = await signIn("credentials", {
-       email,
-       password,
-       redirect: false,
-     });
+    try {
+      const res = await signIn("credentials", {
+        email,
+        password,
+        redirect: false,
+      });
 
-     if (res.status === 200) {
-       setSuccess(true);
-       setTimeout(() => {
-         router.push("/");
-       }, 1500);
-     }
+      if (res.status === 200) {
+        setSuccess(true);
+        setTimeout(() => {
+          router.push("/");
+        }, 1500);
+      }
 
-     if (!res.ok) {
-       setError(true);
-       setTimeout(() => {
-         setError(false);
-       }, 2000);
-     }
-   } catch (error) {
-     console.log(error, { message: error.message });
-   } finally {
-     setEmail("");
-     setPassword("");
-   }
- };
+      if (!res.ok) {
+        setError(true);
+        setTimeout(() => {
+          setError(false);
+        }, 2000);
+      }
+    } catch (error) {
+      console.log(error, { message: error.message });
+    } finally {
+      setEmail("");
+      setPassword("");
+    }
+  };
 
   return (
     <div className="mx-auto mt-4 w-full px-4 max-xsm:px-2">
@@ -84,13 +82,16 @@ const LoginPage = () => {
               placeholder="Enter password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              required
             />
           </div>
 
           {error && (
             <div className="flex w-full flex-row items-center rounded-md bg-red-100 px-4 py-3">
               <CircleX size={20} color="darkred" className="mr-2" />
-              <span className="text-red-800">Gebruiker bestaat niet!</span>
+              <span className="text-red-800">
+                Ongeldige inloggegevens!
+              </span>
             </div>
           )}
 

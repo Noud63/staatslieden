@@ -41,7 +41,7 @@ const LoginPage = () => {
        setError(true);
        setTimeout(() => {
          setError(false);
-       }, 1000);
+       }, 2000);
      }
    } catch (error) {
      console.log(error, { message: error.message });
@@ -90,7 +90,7 @@ const LoginPage = () => {
           {error && (
             <div className="flex w-full flex-row items-center rounded-md bg-red-100 px-4 py-3">
               <CircleX size={20} color="darkred" className="mr-2" />
-              <span className="text-red-800">{message}</span>
+              <span className="text-red-800">Gebruiker bestaat niet!</span>
             </div>
           )}
 

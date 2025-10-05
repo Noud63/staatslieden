@@ -19,7 +19,7 @@ export const authOptions = {
   session: {
     strategy: "jwt",
     maxAge: 24 * 60 * 60, // 24 hours
-    updateAge: 24 * 60 * 60, // 24 hours
+    updateAge: 60 * 60, // 1 hour - refresh session hourly
   },
 
   jwt: {
@@ -34,7 +34,7 @@ export const authOptions = {
         httpOnly: true,
         sameSite: 'lax',
         path: '/',
-        secure: true
+        secure: true //in production >  process.env.NODE_ENV === "production"
       }
     }
   },
@@ -75,23 +75,39 @@ export const authOptions = {
       },
       async authorize(credentials, req) {
         try {
-          if (!credentials) return null;
-          const foundUser = await User.findOne({
-            email: credentials.email,
-          });
-          if (!foundUser) {
-            throw new Error("Invalid credentials");
+          if (!credentials?.email || !credentials?.password) return null;
+
+          // Basic email validation. For production applications, use email validation libraries like:validator.js
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(credentials.email)) {
+            return null;
           }
+
+          await connectDB();
+
+          const foundUser = await User.findOne({
+            email: credentials.email.toLowerCase(),
+          }).select('+password'); // Ensure password is selected if excluded by default
+
+          if (!foundUser || !foundUser.password) {
+            // return null for security, don't reveal whether user exists
+            return null; 
+          }
+          
           const match = await bcrypt.compare(
             credentials.password,
             foundUser.password,
           );
           if (!match) {
-            throw new Error("Invalid credentials");
+            // return null for security
+           return null;
           }
-          return foundUser;
+
+          return foundUser
+
         } catch (error) {
-          throw new Error("Invalid credentials");
+          console.error("Auth error:", error); // Log on server only
+          return null;
         }
       },
     }),

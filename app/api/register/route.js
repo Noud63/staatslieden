@@ -25,6 +25,7 @@ export const POST = async (request, res) => {
       );
     }
     let status = await client.status();
+   
 
    
       const user = await User.findOne({email});

@@ -2,8 +2,9 @@ import connectDB from "@/connectDB/database";
 import Post from "@/models/post";
 import PostLike from "@/models/postLikes";
 import { getSessionUser } from "@/utils/getSessionUser";
+import Notification from "@/models/notification";
 
-export const POST = async (request, { params }) => {
+export const POST = async (req, { params }) => {
 
   const { postId } = params;
   const session = await getSessionUser();
@@ -25,6 +26,16 @@ export const POST = async (request, { params }) => {
       const post = await Post.findByIdAndUpdate(postId, {
         $inc: { likesCount: -1 },
       });
+
+      if (post && post.userId.toString() !== userId) {
+        await Notification.findOneAndDelete({
+          recipient: post.userId,
+          sender: userId,
+          type: "like",
+          post: post._id,
+        });
+      }
+      
       return new Response(JSON.stringify({ message: "dec" }), { status: 200 });
     } else {
       // If not liked, create a new like
@@ -32,6 +43,17 @@ export const POST = async (request, { params }) => {
       const post = await Post.findByIdAndUpdate(postId, {
         $inc: { likesCount: 1 },
       });
+
+      if (post && post.userId.toString() !== userId) {
+        await Notification.create({
+          recipient: post.userId,
+          sender: userId,
+          type: "like",
+          post: post._id,
+          isRead: false,
+        });
+      }
+
       return new Response(JSON.stringify({ message: "inc" }), { status: 200 });
     }
   } catch (error) {

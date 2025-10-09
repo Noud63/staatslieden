@@ -28,7 +28,7 @@ const AddPost = () => {
     }
   };
 
-  console.log("Session:", session)
+  // console.log("Session:", session)
 
   return (
     <div className="mx-6 mt-4 max-sm:mx-4 max-xsm:mx-2">

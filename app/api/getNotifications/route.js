@@ -13,9 +13,11 @@ const session = await getSessionUser();
   const notifications = await Notification.find({
     recipient: session.user.id,
     isRead: false,
-  });
+  }).populate("post")
+    .populate("comment")
+    .populate("sender", "username name avatar");
 
-  // console.log("Notifications fetched:", notifications);
+  console.log("Notifications fetched:", notifications);
 
   return new Response(JSON.stringify({ notifications }), { status: 200 });
 }

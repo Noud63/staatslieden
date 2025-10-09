@@ -74,7 +74,7 @@ const ProfilePage = () => {
     mutate("/api/getposts");
   };
 
-  console.log("Avatar:", session.user.avatar);
+  // console.log("Avatar:", session.user.avatar);
 
   return (
     <div className="mt-10 flex w-full justify-center">

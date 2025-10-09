@@ -23,7 +23,7 @@ export default function NavbarNotificationBadge() {
     <span style={{
         position: "absolute",
       top: "-14px",
-      right: "-16px",
+      right: "-22px",
       background: "red",
       width: "1.5em",
       height: "1.5em",

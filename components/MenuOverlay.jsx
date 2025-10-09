@@ -19,8 +19,8 @@ const MenuOverlay = ({ setOpenModal, openModal }) => {
       items-center justify-start overflow-y-auto bg-[rgba(255,255,255,0.7)] px-2 backdrop-blur-sm transition duration-300 ease-in`}
       onClick={closeModal}
     >
-      <div className="my-8 cursor-pointer" onClick={closeModal}>
-        <IoMdCloseCircleOutline size={35} color="#422006" />
+      <div className="mt-8 mb-6 cursor-pointer" onClick={closeModal}>
+        <IoMdCloseCircleOutline size={35} color="#713f12" />
       </div>
       <div className="grid w-full grid-cols-2 gap-2 rounded-xl">
         {data &&
@@ -28,7 +28,7 @@ const MenuOverlay = ({ setOpenModal, openModal }) => {
             <div key={index}>
               <Link href={item?.href || "/not-found"}>
                 <div className="flex h-12 w-full cursor-pointer items-center justify-center rounded-lg 
-                bg-gradient-to-r from-red-950 via-yellow-800 to-red-950 font-normal tracking-wide text-white shadow-lg border-2">
+                border-2 border-yellow-900 tracking-wide text-yellow-950 font-semibold shadow-lg">
                   {currentLocale === "nl" ? item.title[0] : item.title[1]}
                 </div>
               </Link>

@@ -141,11 +141,11 @@ export const authOptions = {
       token.exp = Math.floor(Date.now() / 1000) + (60 * 60 * 24); //24 hours expiration
       if (user) {
         // token.name = user.name;
-        console.log("User:", { user });
+        // console.log("User:", { user });
         token.username = user.username;
         token.id = user._id;
         token.avatar = user.avatar;
-        console.log("Jwt_user:", { user });
+        // console.log("Jwt_user:", { user });
       }
       if (trigger === "update" && session?.user) {
         token.avatar = session.user.avatar;
@@ -163,7 +163,7 @@ export const authOptions = {
       session.user.username = token.username;
       // Assign avatar to the session
       session.user.avatar = token.avatar;
-      console.log("Session:", session);
+      // console.log("Session:", session);
       return session;
     },
   },

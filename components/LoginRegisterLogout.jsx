@@ -15,7 +15,7 @@ const LoginRegisterLogout = () => {
   const t = useTranslations("auth");
 
   return (
-    <div className="flex flex-row items-center text-white max-md:mt-4 justify-between">
+    <div className="flex flex-row items-center text-white max-md:mt-4 justify-between max-xsm:h-[50px]">
       <Hamburger />
 
       <div className="flex flex-row gap-4">
@@ -36,8 +36,8 @@ const LoginRegisterLogout = () => {
             <div className="relative">
             <Link href="/profile">
               <span className="flex items-center justify-start">{`Hi, ${session?.user?.username}`}</span>
-             <NavbarNotificationBadge />
             </Link>
+            <NavbarNotificationBadge />
             </div>
           )}
 

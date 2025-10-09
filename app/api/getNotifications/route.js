@@ -15,7 +15,7 @@ const session = await getSessionUser();
     isRead: false,
   });
 
-  console.log("Notifications fetched:", notifications);
+  // console.log("Notifications fetched:", notifications);
 
   return new Response(JSON.stringify({ notifications }), { status: 200 });
 }

@@ -32,7 +32,7 @@ const Weatherreport = () => {
               width={0}
               height={0}
               sizes="100vw"
-              className="h-[55px] w-[50px] max-sm:h-[40px] max-sm:w-[40px] max-xsm:hidden pt-1"
+              className="h-[55px] w-[50px] max-xsm:hidden pt-1"
             />
           )}
         </div>

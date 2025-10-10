@@ -17,7 +17,7 @@ const session = await getSessionUser();
     .populate("comment")
     .populate("sender", "username name avatar");
 
-  console.log("Notifications fetched:", notifications);
+  // console.log("Notifications fetched:", notifications);
 
   return new Response(JSON.stringify({ notifications }), { status: 200 });
 }

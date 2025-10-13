@@ -19,6 +19,7 @@ export async function GET(req) {
   })
     .populate("post")
     .populate("comment")
+    .populate("sender", "username name avatar")
     .sort({ createdAt: -1 })
     .lean(); // Convert to plain JavaScript objects
 

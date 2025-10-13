@@ -29,8 +29,16 @@ export default function NavbarNotificationBadge() {
     }
   );
 
+    // Add effect to trigger initial fetch when session is available
+  useEffect(() => {
+    if (session?.user?.id) {
+      mutate('/api/getNotifications');
+    }
+  }, [session?.user?.id, mutate]);
+
   const notifications = data?.notifications || [];
   const count = notifications.length;
+
   const handleBadgeClick = () => {
     setShowPanel((prev) => !prev);
   };

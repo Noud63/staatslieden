@@ -40,6 +40,8 @@ export default function NavbarNotificationBadge() {
 
   if (!session?.user?.id || count === 0) return null;
 
+   console.log("Notifications fetched:", notifications);
+
   return (
     <>
       <div onClick={handleBadgeClick}>
@@ -88,7 +90,7 @@ export default function NavbarNotificationBadge() {
         <ul className="flex flex-col px-2 pt-3">
           {notifications.map((note) => (
             <li key={note._id}>
-              <div className="flex flex-col" onClick={() => getLikedPostOrComment(note)}>
+              <div className="flex flex-col cursor-pointer" onClick={() => getLikedPostOrComment(note)}>
                 {note.post ? (
                   <span className="text-yellow-900">
                     <div className="flex w-full justify-center">

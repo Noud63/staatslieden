@@ -28,14 +28,14 @@ const LoginPage = () => {
         redirect: false,
       });
 
-      if (res.status === 200) {
-        setSuccess(true);
-        setTimeout(() => {
-          router.push("/");
-        }, 1500);
-      }
+     if (res?.ok) {
+      setSuccess(true);
+      setTimeout(() => {
+        router.push("/");
+      }, 1500);
+    }
 
-      if (!res.ok) {
+      if (res?.error) {
         setError(true);
         setTimeout(() => {
           setError(false);

@@ -4,40 +4,25 @@ import { useSession } from "next-auth/react";
 import { FaThumbsUp } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 import Image from "next/image";
-import useSWR from 'swr';
 
-const fetcher = async (url) => {
-  const res = await fetch(url);
-  if (!res.ok) {
-    throw new Error('Failed to fetch notifications');
-  }
-  return res.json();
-};
 
 export default function NavbarNotificationBadge() {
   const { data: session } = useSession();
+  const [count, setCount] = useState(0);
+  const [notifications, setNotifications] = useState([]);
   const [showPanel, setShowPanel] = useState(false);
 
-  // Replace useEffect with useSWR
-  const { data, error, mutate } = useSWR(
-    session?.user?.id ? '/api/getNotifications' : null,
-    fetcher,
-    {
-      refreshInterval: 10000, // Check every 10 seconds
-      revalidateOnFocus: true,
-      revalidateOnReconnect: true
-    }
-  );
-
-    // Add effect to trigger initial fetch when session is available
   useEffect(() => {
-    if (session?.user?.id) {
-      mutate('/api/getNotifications');
-    }
-  }, [session?.user?.id, mutate]);
+    if (!session?.user?.id) return;
 
-  const notifications = data?.notifications || [];
-  const count = notifications.length;
+    async function fetchNotifications() {
+      const res = await fetch("/api/getNotifications");
+      const data = await res.json();
+      setCount(data.notifications?.length || 0);
+      setNotifications(data.notifications || []);
+    }
+    fetchNotifications();
+  }, [session?.user?.id]);
 
   const handleBadgeClick = () => {
     setShowPanel((prev) => !prev);

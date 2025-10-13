@@ -1,5 +1,7 @@
 import { getSessionUser } from "@/utils/getSessionUser";
 import Notification from "@/models/notification";
+import Post from "@/models/post";          // ✅ add this
+import Comment from "@/models/comment";    // ✅ add this if you populate comments
 import connectDB from "@/connectDB/database";
 
 export async function GET(req) {

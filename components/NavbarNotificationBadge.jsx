@@ -4,12 +4,30 @@ import { useSession } from "next-auth/react";
 import { FaThumbsUp } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 import Image from "next/image";
+import SinglePost from "./SinglePost";
+import { IoMdCloseCircleOutline } from "react-icons/io";
 
 export default function NavbarNotificationBadge() {
+
   const { data: session } = useSession();
   const [count, setCount] = useState(0);
   const [notifications, setNotifications] = useState([]);
   const [showPanel, setShowPanel] = useState(false);
+  const [post, setPost] = useState(null);
+
+
+  //Prevent background from scrolling when modal is open
+  useEffect(() => {
+    if (post) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = ""; // cleanup on unmount
+    };
+  }, [post]);
+
 
   useEffect(() => {
     if (!session?.user?.id) return;
@@ -28,22 +46,31 @@ export default function NavbarNotificationBadge() {
   };
 
   const getLikedPostOrComment = async (note) => {
-    if (note?.post) {
-      const res = await fetch(`/api/getSinglePost/${note.post._id}`);
+    try {
+    // Figure out which postId we need
+    const postId = note?.post?._id || note?.comment?.postId;
+    if (!postId) return;
 
-      if (!res.ok) {
-        console.error("Failed to fetch notifications:", await res.text());
-        return;
-      }
-      console.log(await res.json());
-    } else if (note?.comment) {
-      console.log("Notification commentId:", note._id);
+    // Fetch the post once
+    const res = await fetch(`/api/getSinglePost/${postId}`);
+
+    if (!res.ok) {
+      console.error("Failed to fetch post:", await res.text());
+      return;
     }
+
+    const post = await res.json();
+    setPost(post);
+    setShowPanel(false);
+
+  } catch (error) {
+    console.error("Error fetching post:", error);
+  }
   };
 
   if (!session?.user?.id || count === 0) return null;
 
-  console.log("Notifications fetched:", notifications);
+  // console.log("Post:", post);
 
   return (
     <>
@@ -158,6 +185,26 @@ export default function NavbarNotificationBadge() {
           </div>
         </div>
       </div>
+      {post && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-yellow-950/70"
+          onClick={() => setPost(null)}
+        >
+          <div
+            className="relative max-h-[100vh] w-full max-w-[720px] overflow-y-auto p-6 shadow-xl max-sm:px-2"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/*Prevent closing when clicking inside modal*/}
+            <SinglePost post={post} />
+            <div
+              className="absolute left-1/2 top-2 -translate-x-1/2 cursor-pointer rounded-full bg-white"
+              onClick={() => setPost(null)}
+            >
+              <IoMdCloseCircleOutline size={30} color={"black"} />
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }

@@ -1,55 +1,34 @@
-import Comment from "@/models/comment";
-import Post from "@/models/post";
+import { NextResponse } from "next/server";
 import connectDB from "@/connectDB/database";
+import { getSessionUser } from "@/utils/getSessionUser";
+import mongoose from "mongoose";
+import Post from "@/models/post";
+import Comment from "@/models/comment";
+import PostLike from "@/models/postLikes";
+import Avatar from "@/models/avatar";
+import { postWithComments } from "@/utils/getPostWithComments";
 
 export async function GET(req, { params }) {
   try {
     await connectDB();
+
     const { postId } = params;
+    const sessionUser = await getSessionUser();
+    const currentUserId = sessionUser?.user?.id;
 
-    // Get all comments for this post
-    const allComments = await Comment.find({ postId })
-      .populate("userId", "username name avatar");
-
-    // Helper function to build comment tree
-    const buildCommentTree = (parentId = null) => {
-      const comments = allComments.filter(comment => 
-        parentId === null 
-          ? !comment.parentId 
-          : comment.parentId?.toString() === parentId.toString()
-      );
-
-      return comments.map(comment => ({
-        ...comment.toObject(),
-        replies: buildCommentTree(comment._id)
-      }));
-    };
-
-    // Get the post data
-    const post = await Post.findById(postId)
-      .populate("userId", "username name avatar");
-
+    // Find the single post
+    const post = await Post.findById(postId).lean();
     if (!post) {
-      return new Response(JSON.stringify({ message: "Post not found" }), { 
-        status: 404 
-      });
+      return NextResponse.json({ message: "Post not found" }, { status: 404 });
     }
 
-    // Build complete comment tree
-    const commentTree = buildCommentTree();
+    const postComments = await postWithComments(post, currentUserId);
 
-    // Combine post with organized comments
-    const postWithComments = {
-      ...post.toObject(),
-      comments: commentTree
-    };
-
-    console.log("Post with comments:", JSON.stringify(postWithComments, null, 2));
-
-    return new Response(JSON.stringify(postWithComments), { status: 200 });
+    return NextResponse.json(postComments, { status: 200 });
   } catch (error) {
-    return new Response(JSON.stringify({ message: error.message }), { 
-      status: 500 
-    });
+    return NextResponse.json(
+      { message: "Error fetching post", error },
+      { status: 500 }
+    );
   }
 }

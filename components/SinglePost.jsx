@@ -11,7 +11,9 @@ import Lightbox from "yet-another-react-lightbox";
 import Captions from "yet-another-react-lightbox/plugins/captions";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 
-const SinglePost = ({ post}) => {
+const SinglePost = ({post}) => {
+
+  console.log("SinglePost post:", post);
 
    const slides = [
      {
@@ -71,7 +73,7 @@ const SinglePost = ({ post}) => {
           </div>
         )}
       </div>
-      <div className="p-4">{post.postContent}</div>
+      <div className="p-4 text-black">{post.postContent}</div>
       <div className="w-full">
         {post?.images[0] && (
           <Image

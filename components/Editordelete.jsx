@@ -64,7 +64,7 @@ const Editordelete = ({ showOptions, setShowOptions, postId, post }) => {
               height={32}
               className="h-[32px] w-[32px] cursor-pointer p-2"
             />
-            <span>{t("bewerk")}</span>
+            <span className="text-black">{t("bewerk")}</span>
           </div>
           <div
             className="flex w-full cursor-pointer flex-row items-center border-b border-gray-400 pb-2"
@@ -77,7 +77,7 @@ const Editordelete = ({ showOptions, setShowOptions, postId, post }) => {
               height={32}
               className="h-[34px] w-[32px] cursor-pointer p-2"
             />
-            <span>{t("verwijder")}</span>
+            <span className="text-black">{t("verwijder")}</span>
           </div>
           <div className="mt-4 flex w-full justify-center">
             <button type="button" onClick={() => setShowOptions(false)}>

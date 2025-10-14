@@ -130,7 +130,7 @@ const EditPostForm = ({ setShowEditForm, post }) => {
     <div className="fixed bottom-0 left-0 right-0 top-0 z-[999] flex w-full items-center justify-center overflow-y-auto bg-yellow-950/70">
       <div className="editpost border-[#420002] mx-4 mt-4 max-h-screen w-full max-w-[500px] overflow-y-auto rounded-lg border bg-white p-4 shadow-md max-xsm:mx-2">
         <div className="flex items-center justify-between border-b border-black py-4">
-          <span className="text-xl font-semibold">Bewerk:</span>
+          <span className="text-xl font-semibold text-black">Bewerk:</span>
           <div
             className="flex cursor-pointer items-center"
             onClick={closeModal}
@@ -140,7 +140,7 @@ const EditPostForm = ({ setShowEditForm, post }) => {
         </div>
 
         <form onSubmit={handleEditPost} className="mt-2 w-full">
-          <div className="w-full">
+          <div className="w-full text-black">
             <textarea
               ref={textareaRef}
               type="text"
@@ -170,7 +170,7 @@ const EditPostForm = ({ setShowEditForm, post }) => {
                   <div className="text-lg font-semibold">Afbeelding:</div>
                   <div className="flex gap-2">
                     <div
-                      className="flex w-[120px] max-w-[150px] cursor-pointer items-center justify-center rounded-lg border border-gray-400 bg-white py-1 pr-3 font-semibold shadow-md"
+                      className="flex w-[120px] max-w-[150px] text-black cursor-pointer items-center justify-center rounded-lg border border-gray-400 bg-white py-1 pr-3 font-semibold shadow-md"
                       onClick={handleUploadImage}
                     >
                       <Image
@@ -183,7 +183,7 @@ const EditPostForm = ({ setShowEditForm, post }) => {
                       Vervang
                     </div>
                     <div
-                      className="flex w-[120px] max-w-[150px] cursor-pointer items-center justify-center gap-2 rounded-lg border border-gray-400 bg-white py-1 font-semibold shadow-md"
+                      className="flex w-[120px] max-w-[150px] text-black cursor-pointer items-center justify-center gap-2 rounded-lg border border-gray-400 bg-white py-1 font-semibold shadow-md"
                       onClick={deleteImage}
                     >
                       <Image

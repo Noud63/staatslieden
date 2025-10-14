@@ -28,6 +28,8 @@ const LikeButton = ({ postId, post }) => {
 
       const data = await res.json();
 
+      console.log(data)
+
        await mutate("/api/getposts");
 
       if (!res.ok) throw new Error("Failed to update like");

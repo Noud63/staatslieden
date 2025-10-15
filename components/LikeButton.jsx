@@ -6,6 +6,7 @@ import { mutate } from "swr";
 import { optimisticPostLikeUpdate } from "@/utils/optimisticUpdate";
 
 const LikeButton = ({ postId, post }) => {
+  
   const { data: session } = useSession();
 
   const toggleLike = async () => {
@@ -30,7 +31,11 @@ const LikeButton = ({ postId, post }) => {
 
       console.log(data)
 
-       await mutate("/api/getposts");
+       await Promise.all([
+  mutate("/api/getposts"),
+  mutate(`/api/getposts/postsByUserId/${post.userId}`),
+  mutate(`/api/getSinglePost/${postId}`) // also keep modal fresh
+]);
 
       if (!res.ok) throw new Error("Failed to update like");
     } catch (error) {

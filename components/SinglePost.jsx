@@ -13,8 +13,6 @@ import Zoom from "yet-another-react-lightbox/plugins/zoom";
 
 const SinglePost = ({post}) => {
 
-  console.log("SinglePost post:", post);
-
    const slides = [
      {
        src: post?.images[0]

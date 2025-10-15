@@ -3,12 +3,11 @@ import React, { useState, useRef, useEffect } from "react";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import { useRouter } from "next/navigation";
 import deleteIcon from "../assets/icons/delete.png";
-import replace from "../assets/icons/replace.png"
+import replace from "../assets/icons/replace.png";
 import Image from "next/image";
 import { mutate } from "swr";
 
 const EditPostForm = ({ setShowEditForm, post }) => {
-  
   const [postContent, setPostContent] = useState(post?.postContent);
   const [inputFiles, setInputFiles] = useState({ images: [] });
 
@@ -17,15 +16,17 @@ const EditPostForm = ({ setShowEditForm, post }) => {
 
   const router = useRouter();
 
+  const postId = post?._id;
+
   useEffect(() => {
-      // Focus the textarea when the component mounts
-      if (textareaRef.current) {
-        const textarea = textareaRef.current;
-        textarea.focus();
-        // Move cursor to end of text
-        textarea.selectionStart = textarea.selectionEnd = textarea.value.length;
-      }
-    }, []);
+    // Focus the textarea when the component mounts
+    if (textareaRef.current) {
+      const textarea = textareaRef.current;
+      textarea.focus();
+      // Move cursor to end of text
+      textarea.selectionStart = textarea.selectionEnd = textarea.value.length;
+    }
+  }, []);
 
   const updatedData = {
     postContent,
@@ -40,7 +41,6 @@ const EditPostForm = ({ setShowEditForm, post }) => {
 
   // Add new image file to state
   const handleChange = (event) => {
-    
     if (!event.target.files) return;
 
     const { files } = event.target;
@@ -84,7 +84,10 @@ const EditPostForm = ({ setShowEditForm, post }) => {
       console.log(error);
       console.log(data.message);
     }
-     mutate("/api/getposts");
+    await Promise.all([
+      mutate("/api/getposts"),
+      mutate(`/api/getposts/postsByUserId/${post.userId}`),
+    ]);
   };
 
   const deleteSelectedImage = (name) => {
@@ -113,7 +116,12 @@ const EditPostForm = ({ setShowEditForm, post }) => {
     } catch (error) {
       console.log(error);
     }
-    mutate("/api/posts");
+
+    await Promise.all([
+      mutate("/api/posts"),
+      mutate(`/api/getposts/postsByUserId/${post.userId}`),
+    ]);
+
     setShowEditForm(false);
   };
 
@@ -128,7 +136,7 @@ const EditPostForm = ({ setShowEditForm, post }) => {
 
   return (
     <div className="fixed bottom-0 left-0 right-0 top-0 z-[999] flex w-full items-center justify-center overflow-y-auto bg-yellow-950/70">
-      <div className="editpost border-[#420002] mx-4 mt-4 max-h-screen w-full max-w-[500px] overflow-y-auto rounded-lg border bg-white p-4 shadow-md max-xsm:mx-2">
+      <div className="editpost mx-4 mt-4 max-h-screen w-full max-w-[500px] overflow-y-auto rounded-lg border border-[#420002] bg-white p-4 shadow-md max-xsm:mx-2">
         <div className="flex items-center justify-between border-b border-black py-4">
           <span className="text-xl font-semibold text-black">Bewerk:</span>
           <div
@@ -170,7 +178,7 @@ const EditPostForm = ({ setShowEditForm, post }) => {
                   <div className="text-lg font-semibold">Afbeelding:</div>
                   <div className="flex gap-2">
                     <div
-                      className="flex w-[120px] max-w-[150px] text-black cursor-pointer items-center justify-center rounded-lg border border-gray-400 bg-white py-1 pr-3 font-semibold shadow-md"
+                      className="flex w-[120px] max-w-[150px] cursor-pointer items-center justify-center rounded-lg border border-gray-400 bg-white py-1 pr-3 font-semibold text-black shadow-md"
                       onClick={handleUploadImage}
                     >
                       <Image
@@ -183,7 +191,7 @@ const EditPostForm = ({ setShowEditForm, post }) => {
                       Vervang
                     </div>
                     <div
-                      className="flex w-[120px] max-w-[150px] text-black cursor-pointer items-center justify-center gap-2 rounded-lg border border-gray-400 bg-white py-1 font-semibold shadow-md"
+                      className="flex w-[120px] max-w-[150px] cursor-pointer items-center justify-center gap-2 rounded-lg border border-gray-400 bg-white py-1 font-semibold text-black shadow-md"
                       onClick={deleteImage}
                     >
                       <Image

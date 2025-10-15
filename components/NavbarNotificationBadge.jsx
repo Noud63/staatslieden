@@ -6,6 +6,7 @@ import { IoMdClose } from "react-icons/io";
 import Image from "next/image";
 import SinglePost from "./SinglePost";
 import { IoMdCloseCircleOutline } from "react-icons/io";
+import { mutate } from "swr";
 
 export default function NavbarNotificationBadge() {
 
@@ -66,6 +67,7 @@ export default function NavbarNotificationBadge() {
   } catch (error) {
     console.error("Error fetching post:", error);
   }
+  
   };
 
   if (!session?.user?.id || count === 0) return null;
@@ -98,7 +100,8 @@ export default function NavbarNotificationBadge() {
       </div>
 
       <div
-        className={`${showPanel ? "translate-x-0" : "translate-x-full"} fixed bottom-0 right-0 top-0 z-[10] flex h-full max-h-screen w-full max-w-[290px] flex-col overflow-y-auto bg-[rgba(255,255,255)] px-2 shadow-lg backdrop-blur-sm transition duration-300 ease-in`}
+        className={`${showPanel ? "translate-x-0" : "translate-x-full"} fixed bottom-0 right-0 top-0 z-[10] 
+        flex h-full max-h-screen w-full max-w-[350px] flex-col overflow-y-auto bg-[rgba(255,255,255)] px-2 pb-6 shadow-xl backdrop-blur-sm transition duration-300 ease-in`}
       >
         <div className="mb-2 mt-4 flex w-full justify-around border-b border-yellow-900">
           <FaThumbsUp
@@ -114,16 +117,16 @@ export default function NavbarNotificationBadge() {
             className="mb-4 cursor-pointer"
           />
         </div>
-        <ul className="flex flex-col px-2 pt-3">
+        <ul className="flex flex-col px-2 pt-3 mx-auto ">
           {notifications.map((note) => (
-            <li key={note._id}>
+            <li key={note._id} className="border-b-2 border-dotted border-yellow-950 mx-auto w-full pt-4">
               <div
                 className="flex cursor-pointer flex-col"
                 onClick={() => getLikedPostOrComment(note)}
-              >
+                >
                 {note.post ? (
                   <span className="text-yellow-900">
-                    <div className="flex w-full justify-center">
+                    <div className="flex w-full justify-center pb-2">
                       <Image
                         src={note?.sender.avatar || "/images/logo_yellow.png"}
                         alt="logo"
@@ -144,7 +147,7 @@ export default function NavbarNotificationBadge() {
                   </span>
                 ) : (
                   <span className="text-yellow-900">
-                    <div className="flex w-full justify-center">
+                    <div className="flex w-full justify-center pb-2">
                       <Image
                         src={note?.sender.avatar || "/images/logo_yellow.png"}
                         alt="logo"
@@ -165,7 +168,7 @@ export default function NavbarNotificationBadge() {
                   </span>
                 )}
               </div>
-              <div className="mb-6 flex flex-col border-b border-dotted border-yellow-900 pb-2">
+              <div className="mb-6 flex flex-col  border-yellow-900 pb-2">
                 <small className="pt-1 text-gray-500">
                   created: {new Date(note.createdAt).toLocaleString()}
                 </small>
@@ -193,8 +196,8 @@ export default function NavbarNotificationBadge() {
           <div
             className="relative max-h-[100vh] w-full max-w-[720px] overflow-y-auto p-6 shadow-xl max-sm:px-2"
             onClick={(e) => e.stopPropagation()}
-          >
-            {/*Prevent closing when clicking inside modal*/}
+          >{/*stopPropagation() =  Prevent closing when clicking inside modal*/}
+            
             <SinglePost post={post} />
             <div
               className="absolute left-1/2 top-2 -translate-x-1/2 cursor-pointer rounded-full bg-white"

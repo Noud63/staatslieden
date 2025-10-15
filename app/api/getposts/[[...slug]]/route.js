@@ -16,20 +16,20 @@ export async function GET(request, { params }) {
     const sessionUser = await getSessionUser();
     const currentUserId = sessionUser?.user?.id;
 
-    const userIdFilter = params?.slug?.[1]; // optional userId from URL
+    const userId = params?.slug?.[1]; // optional userId from URL
 
-    console.log("UserId:", userIdFilter); 
+    // console.log("Slug", params?.slug); Slug, [ 'postsByUserId', '66f531615ed693d84f788a5e' ]
 
     // Fetch posts filtered by userId if provided
-    const query = userIdFilter ? {userId: userIdFilter } : {};
+    const query = userId ? { userId: userId } : {};
 
-    const posts = await Post.find(query)
+    const posts = await Post.find(query) // Filter posts by userId if provided else get all posts {}
       .sort({ createdAt: -1 })
       .lean();
 
-   const postsWithComments = await Promise.all(
-  posts.map((post) => postWithComments(post, currentUserId))
-);
+    const postsWithComments = await Promise.all(
+      posts.map((post) => postWithComments(post, currentUserId)),
+    );
 
     return NextResponse.json(postsWithComments, { status: 200 });
   } catch (error) {

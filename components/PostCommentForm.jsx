@@ -7,7 +7,13 @@ import { mutate } from "swr";
 import { useTranslations } from "next-intl";
 import { optimisticAddComment } from "@/utils/optimisticUpdate";
 
-const PostCommentForm = ({ postId, parentId = null, setShowForm, showForm, post }) => {
+const PostCommentForm = ({
+  postId,
+  parentId = null,
+  setShowForm,
+  showForm,
+  post,
+}) => {
   const [text, setText] = useState("");
   const [sendButton, setSendButton] = useState(false);
 
@@ -21,7 +27,6 @@ const PostCommentForm = ({ postId, parentId = null, setShowForm, showForm, post 
 
   const t = useTranslations("placeholder");
 
-  
   const tempComment = {
     postId,
     parentId: parentId || null,
@@ -66,8 +71,10 @@ const PostCommentForm = ({ postId, parentId = null, setShowForm, showForm, post 
       setSendButton(false);
     }
     // Revalidate to fetch the real comment
-    mutate("/api/getposts");
-    mutate(`/api/getposts/postsByUserId/${post.userId}`);
+    await Promise.all([
+      mutate("/api/getposts"),
+      mutate(`/api/getposts/postsByUserId/${post.userId}`),
+    ]);
   };
 
   useEffect(() => {
@@ -102,7 +109,7 @@ const PostCommentForm = ({ postId, parentId = null, setShowForm, showForm, post 
         ref={textareaRef}
         type="text"
         name="comment"
-        className="max-h-[500px] w-full resize-none overflow-y-hidden rounded-xl bg-yellow-800/10 py-2 pl-2 pr-10 placeholder-gray-500 outline-none"
+        className="max-h-[500px] w-full resize-none overflow-y-hidden rounded-xl bg-yellow-800/10 py-2 pl-2 pr-10 text-black placeholder-gray-500 outline-none"
         placeholder={t("schrijfeenreactie")}
         defaultValue={text}
         onChange={handleInputChange}

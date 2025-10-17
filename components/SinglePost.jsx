@@ -1,23 +1,27 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import Image from "next/image";
-import PostComment from "./PostComment";
-import LikeandShareBar from "./LikeandShareBar";
-import PostUserName from "./PostUserName";
-import Editordelete from "./Editordelete";
-import threedots from "../assets/icons/threedots.png";
+import useSWR from "swr";
 import { useSession } from "next-auth/react";
+import { useState, useEffect } from "react";
+import Image from "next/image";
 import Lightbox from "yet-another-react-lightbox";
-import Captions from "yet-another-react-lightbox/plugins/captions";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
+import Captions from "yet-another-react-lightbox/plugins/captions";
+import LikeandShareBar from "./LikeandShareBar";
+import PostComment from "./PostComment";
+import Editordelete from "./Editordelete";
+import PostUserName from "./PostUserName";
+import threedots from "../assets/icons/threedots.png";
+import { usePostActions } from "@/hooks/usePostActions";
 
-const SinglePost = ({post}) => {
+const fetcher = (url) => fetch(url).then((res) => res.json());
 
-   const slides = [
-     {
-       src: post?.images[0]
-     },
-   ];
+const SinglePost = ({ postId, post: initialPost }) => {
+  // SWR fetch only if no initial post is provided
+  const { data: post, mutate } = useSWR(
+    postId ? `/api/getSinglePost/${postId}` : null,
+    fetcher,
+    { fallbackData: initialPost }
+  );
 
   const { data: session } = useSession();
   const [showThreeDots, setShowThreeDots] = useState(false);
@@ -26,14 +30,20 @@ const SinglePost = ({post}) => {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    if (session?.user.id === post?.userId) {
+    if (session?.user?.id === post?.userId) {
       setShowThreeDots(true);
     }
     if (post?.avatar) {
       setProfilePic(post.avatar);
     }
   }, [session, post?.userId, post?.avatar]);
-  
+
+  if (!post) return <div className="text-center p-4">Loading post...</div>;
+
+  const { likePost, likeComment, deleteComment} = usePostActions(post);
+
+  const slides = post?.images?.length ? post.images.map((img) => ({ src: img })) : [];
+
 
   return (
     <div className="singlepost relative mx-6 mb-4 flex h-auto flex-col rounded-lg bg-white shadow-md max-sm:mx-4 max-xsm:mx-2">
@@ -44,9 +54,9 @@ const SinglePost = ({post}) => {
         post={post}
       />
 
-      <div className="flex w-full items-center justify-between border-b border-gray-400 p-4 pb-2 max-xxsm:pl-2">
+      <div className="flex w-full items-center justify-between border-b border-gray-400 p-4 pb-2">
         <div className="flex flex-1 items-center">
-          <div className="flex h-[45px] w-[45px] flex-row overflow-hidden max-xxsm:h-[40px] max-xxsm:w-[40px]">
+          <div className="flex h-[45px] w-[45px] flex-row overflow-hidden">
             <Image
               src={profilePic ? profilePic : "/images/defaultAvatar.png"}
               alt="icon"
@@ -71,46 +81,39 @@ const SinglePost = ({post}) => {
           </div>
         )}
       </div>
-      <div className="p-4 text-black">{post.postContent}</div>
-      <div className="w-full">
-        {post?.images[0] && (
-          <Image
-            src={post?.images[0]}
-            alt=""
-            width={400}
-            height={0}
-            className="h-full w-full cursor-pointer object-cover"
-            placeholder="blur"
-            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDABQODxIPDRQSEBIXFRQdHx4eHRseHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/2wBDAR4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
-            priority
-            onClick={() => setOpen(true)}
-          />
-        )}
-      </div>
-      
-      <LikeandShareBar post={post} />
-      <PostComment post={post} />
 
-      <Lightbox
-        open={open}
-        close={() => setOpen(false)}
-        plugins={[Zoom, Captions]}
-        zoom={{
-          scrollToZoom: true,
-          maxZoomPixelRatio: 5,
-        }}
-        slides={slides}
-        carousel={{ finite: slides.length <= 1 }}
-        render={{
-          buttonPrev: slides.length <= 1 ? () => null : undefined,
-          buttonNext: slides.length <= 1 ? () => null : undefined,
-        }}
-        styles={{
-          container: {
-            backgroundColor: "rgb(66, 32, 6, 0.8)",
-          },
-        }}
-      />
+      <div className="p-4 text-black">{post.postContent}</div>
+
+      {post?.images?.[0] && (
+        <Image
+          src={post.images[0]}
+          alt=""
+          width={400}
+          height={0}
+          className="h-full w-full cursor-pointer object-cover"
+          onClick={() => setOpen(true)}
+        />
+      )}
+
+      <LikeandShareBar post={post} onLike={() => likePost(post)} />
+      <PostComment post={post} onLikeComment={(commentId) => likeComment(commentId, post)}
+        onDeleteComment={(commentId) => deleteComment(commentId, post)}/>
+
+      {slides.length > 0 && (
+        <Lightbox
+          open={open}
+          close={() => setOpen(false)}
+          plugins={[Zoom, Captions]}
+          zoom={{ scrollToZoom: true, maxZoomPixelRatio: 5 }}
+          slides={slides}
+          carousel={{ finite: slides.length <= 1 }}
+          render={{
+            buttonPrev: slides.length <= 1 ? () => null : undefined,
+            buttonNext: slides.length <= 1 ? () => null : undefined,
+          }}
+          styles={{ container: { backgroundColor: "rgb(66, 32, 6, 0.8)" } }}
+        />
+      )}
     </div>
   );
 };

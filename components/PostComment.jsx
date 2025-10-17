@@ -6,7 +6,7 @@ import { useSession } from "next-auth/react";
 import Comment from "./Comment";
 import { useTranslations } from "next-intl";
 
-const PostComment = ({post}) => {
+const PostComment = ({post, onLikeComment, onDeleteComment}) => {
   const { data: session } = useSession();
   const profilePic = session?.user?.avatar;
 
@@ -28,6 +28,8 @@ const PostComment = ({post}) => {
             postId={post._id}
             parentId={parentId}
             post={post}
+            onLikeComment={onLikeComment}
+            onDeleteComment={onDeleteComment}
           />
           <div className="pl-8">{renderComments(comments, comment._id)}</div>
         </div>

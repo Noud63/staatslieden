@@ -13,6 +13,7 @@ const PostCommentForm = ({
   setShowForm,
   showForm,
   post,
+  mutatePost,
 }) => {
   const [text, setText] = useState("");
   const [sendButton, setSendButton] = useState(false);
@@ -47,6 +48,7 @@ const PostCommentForm = ({
         optimisticAddComment(postId, tempComment),
         false,
       );
+      mutate("/api/getSinglePost/${postId}", optimisticAddComment(postId, tempComment), false);
 
       const response = await fetch("/api/comments", {
         method: "POST",
@@ -74,6 +76,7 @@ const PostCommentForm = ({
     await Promise.all([
       mutate("/api/getposts"),
       mutate(`/api/getposts/postsByUserId/${post.userId}`),
+      mutate(`/api/getSinglePost/${postId}`),
     ]);
   };
 

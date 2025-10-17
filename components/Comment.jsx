@@ -14,7 +14,7 @@ import { optimisticCommentLikeUpdate } from "@/utils/optimisticUpdate";
 import { optimisticDeleteComment } from "@/utils/optimisticUpdate";
 import CommentOptions from "./CommentOptions"; // Assuming you have a separate component for comment options
 
-const Comment = ({ comment, postId, parentId, post }) => {
+const Comment = ({ comment, postId, parentId, post, onLikeComment, onDeleteComment }) => {
   const { data: session } = useSession();
 
   const t = useTranslations("auth");
@@ -32,57 +32,63 @@ const Comment = ({ comment, postId, parentId, post }) => {
     }
   }, [showForm, showOptions]);
 
-  const toggleLike = async (commentId) => {
-    try {
-      // Optimistically update the UI both for all the post and the post by user
-      mutate("/api/getposts", optimisticCommentLikeUpdate(commentId), false);
-      mutate(
-        `/api/getposts/postsByUserId/${post.userId}`,
-        optimisticCommentLikeUpdate(commentId),
-        false,
-      );
+//   const toggleLike = async (commentId) => {
+//     try {
+//       // Optimistically update the UI both for all the post and the post by user
+//       mutate("/api/getposts", optimisticCommentLikeUpdate(commentId), false);
+//       mutate(
+//         `/api/getposts/postsByUserId/${post.userId}`,
+//         optimisticCommentLikeUpdate(commentId),
+//         false,
+//       );
 
-      const res = await fetch(`/api/comments/${commentId}/like`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ commentId, postId }),
-      });
+//       const res = await fetch(`/api/comments/${commentId}/like`, {
+//         method: "POST",
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify({ commentId, postId }),
+//       });
 
-      if (!res.ok) throw new Error("Failed to update like");
-      // mutate("/api/posts");
-    } catch (error) {
-      console.error(error);
-    }
-  };
+//       if (!res.ok) throw new Error("Failed to update like");
+//       // mutate("/api/posts");
+//     } catch (error) {
+//       console.error(error);
+//     }
+//     await Promise.all([
+//   mutate("/api/getposts"),
+//   mutate(`/api/getposts/postsByUserId/${post.userId}`),
+//    mutatePost?.(),
+// ]);
 
-  const deleteComment = async (commentId) => {
-    // Optimistically update the UI
-    try {
-      mutate(
-        "/api/getposts",
-        optimisticDeleteComment(postId, commentId),
-        false,
-      );
+//   };
 
-      mutate(
-        `/api/getposts/postsByUserId/${post.userId}`,
-        optimisticDeleteComment(postId, commentId),
-        false,
-      );
-      const res = await fetch(`/api/deleteComment/${commentId}`, {
-        method: "DELETE",
-      });
+//   const deleteComment = async (commentId) => {
+//     // Optimistically update the UI
+//     try {
+//       mutate(
+//         "/api/getposts",
+//         optimisticDeleteComment(postId, commentId),
+//         false,
+//       );
 
-      const data = await res.json();
+//       mutate(
+//         `/api/getposts/postsByUserId/${post.userId}`,
+//         optimisticDeleteComment(postId, commentId),
+//         false,
+//       );
+//       const res = await fetch(`/api/deleteComment/${commentId}`, {
+//         method: "DELETE",
+//       });
 
-      if (res.ok) {
-        console.log(data.message);
-      }
-    } catch (error) {
-      console.log(data.message);
-      return currentData;
-    }
-  };
+//       const data = await res.json();
+
+//       if (res.ok) {
+//         console.log(data.message);
+//       }
+//     } catch (error) {
+//       console.log(data.message);
+//       return currentData;
+//     }
+//   };
 
   return (
     <div className="mb-2 flex h-auto w-full gap-2 px-4 max-xxsm:px-2">
@@ -136,7 +142,7 @@ const Comment = ({ comment, postId, parentId, post }) => {
             <button
               type="button"
               className="mt-1 flex h-[24px] cursor-pointer items-center justify-center gap-1 rounded-full border border-gray-400 px-2 text-[14px] font-semibold text-gray-600"
-              onClick={() => toggleLike(comment._id)}
+              onClick={() => onLikeComment(comment._id)}
               disabled={!session}
             >
               {comment.likedByUser ? (
@@ -174,7 +180,7 @@ const Comment = ({ comment, postId, parentId, post }) => {
                 showForm={showForm}
                 setShowEditComment={setShowEditComment}
                 showEditComment={showEditComment}
-                deleteComment={deleteComment}
+                onDeleteComment={onDeleteComment}
               />
             )}
           </div>

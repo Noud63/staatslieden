@@ -12,7 +12,8 @@ const CommentOptions = ({
   deleteComment,
   setShowOptions,
   setShowEditComment,
-  showEditComment
+  showEditComment,
+  onDeleteComment
 }) => {
 
   const t = useTranslations("auth");
@@ -45,7 +46,7 @@ const CommentOptions = ({
         <button
           type="button"
           className="cursor-pointer border-b border-gray-400 py-2 text-2xl text-[16px] font-semibold text-gray-600"
-          onClick={() => deleteComment(comment._id)}
+          onClick={() => onDeleteComment(comment._id)}
         >
           <div className="flex flex-row items-center gap-1">
             <Image

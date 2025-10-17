@@ -4,14 +4,18 @@ import Post from "@/models/post";
 import Comment from "@/models/comment";
 import PostLike from "@/models/postLikes";
 import CommentLike from "@/models/commentLikes";
+import Notification from "@/models/notification";
 import { deleteImageFromCloudinary } from "@/utils/deleteImageFromCloudinary";
 import { getSessionUser } from "@/utils/getSessionUser";
 
 export const DELETE = async (request, { params }) => {
+  console.log("API HIT:", params);
   try {
     await connectDB();
 
     const { postId } = params;
+
+    console.log("PostId to delete:", postId);
 
     const sessionUser = await getSessionUser();
 
@@ -22,7 +26,20 @@ export const DELETE = async (request, { params }) => {
       );
     }
 
-    const post = await Post.findById({ _id: postId });
+    const post = await Post.findById({_id:postId});
+    if (!post) {
+      return new Response(JSON.stringify({ message: "Post not found" }), {
+        status: 404,
+      });
+    }
+
+    if (post.userId.toString() !== sessionUser.user.id) {
+      return new Response(
+        JSON.stringify({ message: "Not authorized to delete this post" }),
+        { status: 403 },
+      );
+    }
+    // Delete image from cloudinary if exists
     const image = post.images[0];
     if (image) {
       const imageToDelete = image;
@@ -32,21 +49,24 @@ export const DELETE = async (request, { params }) => {
     }
 
     // Delete post
-    const deletedPost = await Post.findOneAndDelete({ _id: postId });
+    const deletedPost = await Post.findOneAndDelete({_id:postId});
     if (!deletedPost) {
-  return new Response(
-    JSON.stringify({ message: "Post not found or already deleted!" }),
-    { status: 404 }
-  );
-}
+      return new Response(
+        JSON.stringify({ message: "Post not found or already deleted!" }),
+        { status: 404 },
+      );
+    }
     // delete post likes
     await PostLike.deleteMany({ postId: postId });
     // delete all comments
     await Comment.deleteMany({ postId: postId });
     //delete all comment likes
     await CommentLike.deleteMany({ postId: postId });
-
-    console.log("Deleted:", deletedPost)
+    //Delete notifications
+   await Notification.deleteMany({postId: postId}); 
+ 
+    
+    console.log("Deleted:", deletedPost);
 
     return new Response(
       JSON.stringify({ message: "Post deleted successfully!" }),
@@ -54,6 +74,12 @@ export const DELETE = async (request, { params }) => {
     );
   } catch (error) {
     console.log(error);
-    return new Response({message: "Something went wrong!"}, { status: 500 });
+    return new Response(
+      JSON.stringify({
+        message: "Something went wrong!",
+        error: error.message,
+      }),
+      { status: 500 },
+    );
   }
 };

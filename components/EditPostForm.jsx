@@ -1,20 +1,19 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import { IoMdCloseCircleOutline } from "react-icons/io";
-import { useRouter } from "next/navigation";
 import deleteIcon from "../assets/icons/delete.png";
 import replace from "../assets/icons/replace.png";
 import Image from "next/image";
+import { revalidatePostCaches } from "@/utils/revalidatePost";
 import { mutate } from "swr";
 
 const EditPostForm = ({ setShowEditForm, post }) => {
+
   const [postContent, setPostContent] = useState(post?.postContent);
   const [inputFiles, setInputFiles] = useState({ images: [] });
 
   const inputFilesRef = useRef(null);
   const textareaRef = useRef(null);
-
-  const router = useRouter();
 
   const postId = post?._id;
 
@@ -79,15 +78,12 @@ const EditPostForm = ({ setShowEditForm, post }) => {
       if (res.status === 200) {
         console.log(data.message);
         setShowEditForm(false);
+        await revalidatePostCaches(postId, post.userId);
       }
     } catch (error) {
       console.log(error);
       console.log(data.message);
     }
-    await Promise.all([
-      mutate("/api/getposts"),
-      mutate(`/api/getposts/postsByUserId/${post.userId}`),
-    ]);
   };
 
   const deleteSelectedImage = (name) => {
@@ -104,6 +100,18 @@ const EditPostForm = ({ setShowEditForm, post }) => {
   };
 
   const deleteImage = async () => {
+    //Optimistic delete image from cached data
+    mutate(
+      "/api/getposts",
+      (posts) => {
+        if (!posts) return posts;
+        return posts.map((post) =>
+          post._id === postId ? { ...post, images: [] } : post,
+        );
+      },
+      false,
+    );
+
     try {
       const res = await fetch(`/api/deleteImage/${post._id}`, {
         method: "DELETE",
@@ -112,17 +120,13 @@ const EditPostForm = ({ setShowEditForm, post }) => {
       const data = await res.json();
       if (res.status === 200) {
         console.log(data.message);
+        setShowEditForm(false);
+        //Revalidate cache
+        await revalidatePostCaches(postId, post.userId);
       }
     } catch (error) {
       console.log(error);
     }
-
-    await Promise.all([
-      mutate("/api/posts"),
-      mutate(`/api/getposts/postsByUserId/${post.userId}`),
-    ]);
-
-    setShowEditForm(false);
   };
 
   // Adjust the textarea height whenever the comment changes
@@ -175,7 +179,9 @@ const EditPostForm = ({ setShowEditForm, post }) => {
             {post?.images[0] ? (
               <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 transform flex-row gap-2 p-4 text-center">
                 <div className="editbuttons2 flex flex-col gap-2 rounded-lg border border-gray-400 bg-white px-4 pb-4 pt-4">
-                  <div className="text-lg font-semibold">Afbeelding:</div>
+                  <div className="text-lg font-semibold text-black">
+                    Afbeelding:
+                  </div>
                   <div className="flex gap-2">
                     <div
                       className="flex w-[120px] max-w-[150px] cursor-pointer items-center justify-center rounded-lg border border-gray-400 bg-white py-1 pr-3 font-semibold text-black shadow-md"
@@ -208,7 +214,7 @@ const EditPostForm = ({ setShowEditForm, post }) => {
               </div>
             ) : (
               <div
-                className="editbuttons flex cursor-pointer items-center justify-center rounded-lg border border-gray-400 bg-white px-4 py-2 font-semibold"
+                className="editbuttons flex cursor-pointer items-center justify-center rounded-lg border border-gray-400 bg-white px-4 py-2 font-semibold text-black"
                 onClick={handleUploadImage}
               >
                 Upload afbeelding
@@ -231,13 +237,15 @@ const EditPostForm = ({ setShowEditForm, post }) => {
             {inputFiles.images.length > 0 &&
               inputFiles.images.map((img) => (
                 <div
-                  className="flex w-full flex-row items-center gap-2 py-1"
+                  className="flex w-full flex-col items-center gap-2 py-1"
                   key={img.name}
                 >
-                  <span className="font-semibold">Geselecteerd :</span>
-                  <span>{img.name}</span>
+                  <span className="font-semibold text-black">
+                    Geselecteerd :
+                  </span>
+                  <span className="text-black">{img.name}</span>
                   <IoMdCloseCircleOutline
-                    size={20}
+                    size={30}
                     color="red"
                     className="cursor-pointer pt-1"
                     onClick={() => deleteSelectedImage(img.name)}

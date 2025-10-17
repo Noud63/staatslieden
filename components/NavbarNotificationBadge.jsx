@@ -6,6 +6,7 @@ import { IoMdClose } from "react-icons/io";
 import Image from "next/image";
 import SinglePost from "./SinglePost";
 import { IoMdCloseCircleOutline } from "react-icons/io";
+import Spinner from "./Spinner";
 import { mutate } from "swr";
 
 export default function NavbarNotificationBadge() {
@@ -15,6 +16,7 @@ export default function NavbarNotificationBadge() {
   const [notifications, setNotifications] = useState([]);
   const [showPanel, setShowPanel] = useState(false);
   const [post, setPost] = useState(null);
+  const [postId, setPostId] = useState(null);
 
 
   //Prevent background from scrolling when modal is open
@@ -47,32 +49,18 @@ export default function NavbarNotificationBadge() {
   };
 
   const getLikedPostOrComment = async (note) => {
-    try {
-    // Figure out which postId we need
+  try {
     const postId = note?.post?._id || note?.comment?.postId;
     if (!postId) return;
-
-    // Fetch the post once
-    const res = await fetch(`/api/getSinglePost/${postId}`);
-
-    if (!res.ok) {
-      console.error("Failed to fetch post:", await res.text());
-      return;
-    }
-
-    const post = await res.json();
-    setPost(post);
+    setPostId(postId);
     setShowPanel(false);
-
   } catch (error) {
     console.error("Error fetching post:", error);
   }
-  
-  };
+};
 
-  if (!session?.user?.id || count === 0) return null;
 
-  // console.log("Post:", post);
+if (!session?.user?.id || count === 0) return null;
 
   return (
     <>
@@ -188,26 +176,28 @@ export default function NavbarNotificationBadge() {
           </div>
         </div>
       </div>
-      {post && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-yellow-950/70"
-          onClick={() => setPost(null)}
-        >
-          <div
-            className="relative max-h-[100vh] w-full max-w-[720px] overflow-y-auto p-6 shadow-xl max-sm:px-2"
-            onClick={(e) => e.stopPropagation()}
-          >{/*stopPropagation() =  Prevent closing when clicking inside modal*/}
-            
-            <SinglePost post={post} />
-            <div
-              className="absolute left-1/2 top-2 -translate-x-1/2 cursor-pointer rounded-full bg-white"
-              onClick={() => setPost(null)}
-            >
-              <IoMdCloseCircleOutline size={30} color={"black"} />
-            </div>
-          </div>
-        </div>
-      )}
+    
+{postId && (
+  <div
+    className="fixed inset-0 z-50 flex items-center justify-center bg-yellow-950/70"
+    onClick={() => setPostId(null)}
+  >
+    <div
+      className="relative max-h-[100vh] w-full max-w-[720px] overflow-y-auto p-6 shadow-xl max-sm:px-2"
+      onClick={(e) => e.stopPropagation()}
+      >
+      <SinglePost postId={postId} />
+      <div
+        className="absolute left-1/2 top-2 -translate-x-1/2 cursor-pointer rounded-full bg-white"
+        onClick={() => setPostId(null)}
+       >
+        <IoMdCloseCircleOutline size={30} color={"black"} />
+      </div>
+      
+    </div>
+  </div>
+)}
+
     </>
   );
 }

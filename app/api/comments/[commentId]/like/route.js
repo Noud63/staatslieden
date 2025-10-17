@@ -51,6 +51,7 @@ export const POST = async (request, { params }) => {
       sender: userId,
       type: "like",
       comment: comment._id,
+      postId: comment.postId  
     });
   }
      } 
@@ -70,6 +71,7 @@ export const POST = async (request, { params }) => {
           type: "like",
           comment: comment._id,
           isRead: false,
+          postId: comment.postId 
         });
       }
      }

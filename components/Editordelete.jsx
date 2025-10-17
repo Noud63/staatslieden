@@ -7,11 +7,14 @@ import EditPostForm from "./EditPostForm";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { mutate } from "swr";
 import { useTranslations } from "next-intl";
+import { usePostActions } from "@/hooks/usePostActions";
 import { optimisticDeletePost } from "@/utils/optimisticUpdate"; // Assuming you have this utility function 
 
-const Editordelete = ({ showOptions, setShowOptions, postId, post }) => {
+const Editordelete = ({ showOptions, setShowOptions, postId, post}) => {
 
   const [showEditForm, setShowEditForm] = useState(false);
+
+  const { deletePost } = usePostActions(post);
 
   const t = useTranslations("auth");
 
@@ -20,31 +23,31 @@ const Editordelete = ({ showOptions, setShowOptions, postId, post }) => {
     setShowOptions(false);
   };
 
-  const deletePost = async () => {
-         try {
-          // Optimistically update the UI both for all the post and the post by user
-          mutate("/api/getposts", optimisticDeletePost(postId), false);
-          mutate(
-            `/api/getposts/postsByUserId/${post.userId}`,
-            optimisticDeletePost(postId),
-            false,
-          );
+  // const deletePost = async () => {
+  //        try {
+  //         // Optimistically update the UI both for all the post and the post by user
+  //         mutate("/api/getposts", optimisticDeletePost(postId), false);
+  //         mutate(
+  //           `/api/getposts/postsByUserId/${post.userId}`,
+  //           optimisticDeletePost(postId),
+  //           false,
+  //         );
           
-          const res = await fetch(`/api/deletepost/${postId}`, {
-            method: "DELETE",
-          });
+  //         const res = await fetch(`/api/deletepost/${postId}`, {
+  //           method: "DELETE",
+  //         });
 
-          const data = await res.json();
-          console.log(data.message)
+  //         const data = await res.json();
+  //         console.log(data.message)
 
-          if (res.ok) {
-            // console.log(data.message);
-            setShowOptions(false);
-          }
-        } catch (error) {
-          console.log(error);
-        }
-  };
+  //         if (res.ok) {
+  //           // console.log(data.message);
+  //           setShowOptions(false);
+  //         }
+  //       } catch (error) {
+  //         console.log(error);
+  //       }
+  // };
 
   return (
     <>
@@ -68,7 +71,7 @@ const Editordelete = ({ showOptions, setShowOptions, postId, post }) => {
           </div>
           <div
             className="flex w-full cursor-pointer flex-row items-center border-b border-gray-400 pb-2"
-            onClick={deletePost}
+            onClick={() => deletePost(postId, post.userId)}
           >
             <Image
               src={deleteIcon}

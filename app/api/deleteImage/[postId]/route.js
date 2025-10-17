@@ -26,14 +26,16 @@ export const DELETE = async (request, {params}) => {
           { new: true } // Return the updated document
         );
 
+        console.log("Post:", updatedPost);
+
     return new Response(
-       JSON.stringify({ message: "Post deleted successfully!" }),
+       JSON.stringify({ message: "Image deleted successfully!" }),
        { status: 200 }
      );
         
      } catch (error) {
         return new Response(
-          JSON.stringify({ message: "Post deletion failed!" }),
+          JSON.stringify({ message: "Image deletion failed!" }),
           { status: 500 }
         );
      }

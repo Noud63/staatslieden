@@ -6,6 +6,7 @@ const notificationSchema = new Schema({
   post: { type:Schema.Types.ObjectId, ref: "Post" },
   comment: { type:Schema.Types.ObjectId, ref: "Comment" },
   sender: { type:Schema.Types.ObjectId, ref: "User", required: true },
+  postId: { type: Schema.Types.ObjectId, ref: "Post" },
   isRead: { type: Boolean, default: false },
   createdAt: { type: Date, default: Date.now }
 });

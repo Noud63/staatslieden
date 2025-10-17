@@ -21,6 +21,26 @@ const optimisticCommentLikeUpdate = (commentId) => (currentData) => {
   });
 };
 
+// Optimistic update for a single post object
+export const optimisticCommentLikeUpdateSinglePost = (commentId) => (currentData) => {
+  if (!currentData) return currentData;
+
+  return {
+    ...currentData,
+    comments: currentData.comments.map((comment) => {
+      if (comment._id === commentId) {
+        return {
+          ...comment,
+          likesCount: comment.likesCount + (comment.likedByUser ? -1 : 1),
+          likedByUser: !comment.likedByUser,
+        };
+      }
+      return comment;
+    }),
+  };
+};
+
+
 const optimisticAddComment = (postId, newComment) => (data) => {
   if (!data || !data.posts) return data;
 
@@ -61,6 +81,17 @@ const optimisticPostLikeUpdate = (postId) => (currentData) => {
   });
 };
 
+// For single post object (modal)
+export const optimisticPostLikeUpdateSinglePost = (postId) => (currentData) => {
+  if (!currentData || currentData._id !== postId) return currentData;
+
+  return {
+    ...currentData,
+    likes: currentData.likes + (currentData.likedByUser ? -1 : 1),
+    likedByUser: !currentData.likedByUser,
+  };
+};
+
 const optimisticDeletePost = (postId) => (currentData) => {
   if (!currentData) return currentData;
   console.log("Current:", currentData);
@@ -69,6 +100,19 @@ const optimisticDeletePost = (postId) => (currentData) => {
     return post._id !== postId;
   });
 };
+
+export const optimisticDeleteSinglePost = (postId) => (currentData) => {
+  if (!currentData) return currentData;
+
+  // If the current post is the one being deleted, return null
+  if (currentData._id === postId) {
+    return null;
+  }
+
+  // Otherwise, leave it unchanged
+  return currentData;
+};
+
 
 const optimisticDeleteComment = (postId, commentId) => (currentData) => {
   if (!currentData) return currentData;
@@ -86,10 +130,24 @@ const optimisticDeleteComment = (postId, commentId) => (currentData) => {
   });
 };
 
+// For single post object (modal)
+export const optimisticDeleteCommentSinglePost = (commentId) => (currentData) => {
+  if (!currentData) return currentData;
+
+  return {
+    ...currentData,
+    comments: currentData.comments.filter((comment) => comment._id !== commentId),
+  };
+};
+
 export {
   optimisticPostLikeUpdate,
   optimisticCommentLikeUpdate,
   optimisticDeletePost,
+  optimisticDeleteSinglePost,
   optimisticDeleteComment,
-  optimisticAddComment
+  optimisticAddComment,
+  optimisticPostLikeUpdateSinglePost,
+  optimisticDeleteCommentSinglePost,
+   
 };

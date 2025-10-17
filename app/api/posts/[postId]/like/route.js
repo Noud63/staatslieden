@@ -33,6 +33,7 @@ export const POST = async (req, { params }) => {
           sender: userId,
           type: "like",
           post: post._id,
+          postId: post._id
         });
       }
       
@@ -50,6 +51,7 @@ export const POST = async (req, { params }) => {
           sender: userId,
           type: "like",
           post: post._id,
+          postId:post._id,
           isRead: false,
         });
       }

@@ -71,7 +71,7 @@ const SinglePost = ({ postId, post: initialPost, setPostId }) => {
       <Editordelete
         showOptions={showOptions}
         setShowOptions={setShowOptions}
-        postId={post._id}
+        postId={postId}
         post={post}
       />
 

@@ -8,42 +8,18 @@ import SinglePost from "./SinglePost";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import Spinner from "./Spinner";
 import { mutate } from "swr";
+import SideBarNotificationList from "./SideBarNotificationList";
 import SingleNotificationPost from "./SingleNotificationPost";
 
 export default function NavbarNotificationBadge() {
-  const { data: session } = useSession();
-  const [count, setCount] = useState(0);
-  const [notifications, setNotifications] = useState([]);
-  const [showPanel, setShowPanel] = useState(false);
-  const [post, setPost] = useState(null);
-  const [postId, setPostId] = useState(null);
-
   
-  useEffect(() => {
-    if (!session?.user?.id) return;
-
-    async function fetchNotifications() {
-      const res = await fetch("/api/getNotifications");
-      const data = await res.json();
-      setCount(data.notifications?.length || 0);
-      setNotifications(data.notifications || []);
-    }
-    fetchNotifications();
-  }, [session?.user?.id]);
+  const { data: session } = useSession();
+  const [count, setCount] = useState();
+  const [showPanel, setShowPanel] = useState(false);
+  const [postId, setPostId] = useState(null);
 
   const handleBadgeClick = () => {
     setShowPanel((prev) => !prev);
-  };
-
-  const getLikedPostOrComment = async (note) => {
-    try {
-      const postId = note?.post?._id || note?.comment?.postId;
-      if (!postId) return;
-      setPostId(postId);
-      setShowPanel(false);
-    } catch (error) {
-      console.error("Error fetching post:", error);
-    }
   };
 
   if (!session?.user?.id || count === 0) return null;
@@ -73,107 +49,14 @@ export default function NavbarNotificationBadge() {
         </span>
       </div>
 
-      <div
-        className={`${showPanel ? "translate-x-0" : "translate-x-full"} fixed bottom-0 right-0 top-0 z-[10] flex h-full max-h-screen w-full max-w-[340px] flex-col overflow-y-auto bg-[rgba(255,255,255)] px-4 pb-6 shadow-xl backdrop-blur-sm transition duration-300 ease-in`}
-      >
-        <div className="mb-2 mt-4 flex w-full justify-around border-b border-yellow-900">
-          <FaThumbsUp
-            color="#713f12"
-            size={20}
-            disabled={!session?.user ? true : false}
-            className="mb-4 mr-2"
-          />
-          <IoMdClose
-            color="#713f12"
-            size={24}
-            onClick={() => setShowPanel(false)}
-            className="mb-4 cursor-pointer"
-          />
-        </div>
-        <ul className="flex flex-col pt-3">
-          {notifications.map((note) => (
-            <li
-              key={note._id}
-              className="w-full border-b-2 border-dotted border-yellow-950 pt-4"
-            >
-              <div
-                className="mx-auto flex cursor-pointer flex-col"
-                onClick={() => getLikedPostOrComment(note)}
-              >
-                {note.post ? (
-                  <div className="mx-auto flex w-full flex-col text-yellow-900">
-                    <div className="flex justify-center pb-2">
-                      <Image
-                        src={note?.sender.avatar || "/images/logo_yellow.png"}
-                        alt="logo"
-                        width={100}
-                        height={0}
-                        className="h-[30px] w-[30px] rounded-full object-cover"
-                      />
-                    </div>
-                    <div className="mx-auto">
-                      <span className="font-semibold text-yellow-950">
-                        {note.sender?.name || note.sender?.username}
-                      </span>{" "}
-                      Likes your post: <br />
-                      <span>
-                        {note.post.postContent.length < 35
-                          ? note.post.postContent
-                          : note.post.postContent.slice(0, 35) + "..."}
-                      </span>
-                      <div className="mb-6 flex flex-col border-yellow-900 pb-2">
-                        <small className="pt-1 text-gray-500">
-                          created: {new Date(note.createdAt).toLocaleString()}
-                        </small>
-                      </div>
-                    </div>
-                  </div>
-                ) : (
-                  <div className="mx-auto flex w-full flex-col text-yellow-900">
-                    <div className="flex w-full justify-center pb-2">
-                      <Image
-                        src={note?.sender.avatar || "/images/logo_yellow.png"}
-                        alt="logo"
-                        width={100}
-                        height={0}
-                        className="h-[30px] w-[30px] rounded-full object-cover"
-                      />
-                    </div>
-
-                    <div className="mx-auto">
-                      <span className="font-semibold text-yellow-950">
-                        {note.sender?.name || note.sender?.username}
-                      </span>{" "}
-                      Likes your comment: <br />
-                      <span className="text-yellow-900">
-                        {note.comment.comment.length < 35
-                          ? note.comment.comment
-                          : note.comment.comment.slice(0, 35) + "..."}
-                      </span>
-                      <div className="mb-6 flex flex-col border-yellow-900 pb-2">
-                        <small className="pt-1 text-gray-500">
-                          created: {new Date(note.createdAt).toLocaleString()}
-                        </small>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </li>
-          ))}
-        </ul>
-        <div className="flex w-full justify-center">
-          <div className="mt-8 flex h-[30px] w-[30px] items-center justify-center rounded-full border-2 border-[#422006] pb-1 pl-[2px]">
-            <Image
-              src={"/images/logo_yellow.png"}
-              alt="logo"
-              width={100}
-              height={0}
-              className="h-[16px] w-[16px] rotate-6 object-cover"
-            />
-          </div>
-        </div>
-      </div>
+      <SideBarNotificationList
+        postId={postId}
+        setCount={setCount}
+        count={count}
+        showPanel={showPanel}
+        setShowPanel={setShowPanel}
+        setPostId={setPostId}
+      />
 
       {postId && (
         <SingleNotificationPost

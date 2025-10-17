@@ -55,7 +55,7 @@ const Editordelete = ({ showOptions, setShowOptions, postId, post}) => {
         <EditPostForm setShowEditForm={setShowEditForm} post={post} />
       )}
       {showOptions && (
-        <div className="postMenu absolute right-3 top-16 flex h-auto w-[240px] flex-col rounded-lg bg-white p-4 text-lg font-semibold border border-gray-300">
+        <div className={`postMenu absolute right-3 ${postId ? 'top-32' : 'top-16'} flex h-auto w-[240px] flex-col rounded-lg bg-white p-4 text-lg font-semibold border border-gray-300`}>
           <div
             className="items-center flex-row mb-2 flex w-full cursor-pointer border-b border-gray-400 pb-2"
             onClick={showEditPostModal}
@@ -71,7 +71,7 @@ const Editordelete = ({ showOptions, setShowOptions, postId, post}) => {
           </div>
           <div
             className="flex w-full cursor-pointer flex-row items-center border-b border-gray-400 pb-2"
-            onClick={() => deletePost(postId, post.userId)}
+            onClick={() => deletePost(post._id, post.userId)}
           >
             <Image
               src={deleteIcon}

@@ -9,7 +9,8 @@ import {
   optimisticDeleteComment,
   optimisticDeleteCommentSinglePost,
   optimisticDeletePost,
-  optimisticDeleteSinglePost
+  optimisticDeleteSinglePost,
+  optimisticAddComment
 } from "@/utils/optimisticUpdate";
 
 export function usePostActions(postOrPosts) {

@@ -1,5 +1,5 @@
 //higher-order function => a function that returns another function.
-//currentData is mutate("api/getposts") or api/getposts/postsByUserId/${post.userId}
+//currentData comes from the KEY in mutate(), mutate("api/getposts" = KEY) or api/getposts/postsByUserId/${post.userId} etc.
 
 const optimisticCommentLikeUpdate = (commentId) => (currentData) => {
   if (!currentData) return currentData;

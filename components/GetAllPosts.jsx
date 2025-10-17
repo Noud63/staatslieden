@@ -34,11 +34,9 @@ const { data, error, isLoading } = useSWR("/api/getposts", fetcher, {
    if (isLoading)
      return (
        <div>
-         <Spinner loading={isLoading} />
+         <Spinner loading={isLoading} size={100} />
        </div>
      );
-
-  // console.log("Posts:", data);
 
   return (
     <div className="mx-auto flex w-full max-w-[670px] flex-grow flex-col rounded-lg py-4">

@@ -5,7 +5,6 @@ import { IoSendSharp } from "react-icons/io5";
 import { useRouter } from "next/navigation";
 import { mutate } from "swr";
 import { useTranslations } from "next-intl";
-import { optimisticAddComment } from "@/utils/optimisticUpdate";
 import { revalidatePostCaches } from "@/utils/revalidatePost";
 import { usePostActions } from "@/hooks/usePostActions";
 

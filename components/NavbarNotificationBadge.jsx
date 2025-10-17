@@ -8,9 +8,9 @@ import SinglePost from "./SinglePost";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import Spinner from "./Spinner";
 import { mutate } from "swr";
+import SingleNotificationPost from "./SingleNotificationPost";
 
 export default function NavbarNotificationBadge() {
-
   const { data: session } = useSession();
   const [count, setCount] = useState(0);
   const [notifications, setNotifications] = useState([]);
@@ -18,20 +18,7 @@ export default function NavbarNotificationBadge() {
   const [post, setPost] = useState(null);
   const [postId, setPostId] = useState(null);
 
-
-  //Prevent background from scrolling when modal is open
-  useEffect(() => {
-    if (post) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-    return () => {
-      document.body.style.overflow = ""; // cleanup on unmount
-    };
-  }, [post]);
-
-
+  
   useEffect(() => {
     if (!session?.user?.id) return;
 
@@ -49,18 +36,17 @@ export default function NavbarNotificationBadge() {
   };
 
   const getLikedPostOrComment = async (note) => {
-  try {
-    const postId = note?.post?._id || note?.comment?.postId;
-    if (!postId) return;
-    setPostId(postId);
-    setShowPanel(false);
-  } catch (error) {
-    console.error("Error fetching post:", error);
-  }
-};
+    try {
+      const postId = note?.post?._id || note?.comment?.postId;
+      if (!postId) return;
+      setPostId(postId);
+      setShowPanel(false);
+    } catch (error) {
+      console.error("Error fetching post:", error);
+    }
+  };
 
-
-if (!session?.user?.id || count === 0) return null;
+  if (!session?.user?.id || count === 0) return null;
 
   return (
     <>
@@ -88,8 +74,7 @@ if (!session?.user?.id || count === 0) return null;
       </div>
 
       <div
-        className={`${showPanel ? "translate-x-0" : "translate-x-full"} fixed bottom-0 right-0 top-0 z-[10] 
-        flex h-full max-h-screen w-full max-w-[350px] flex-col overflow-y-auto bg-[rgba(255,255,255)] px-2 pb-6 shadow-xl backdrop-blur-sm transition duration-300 ease-in`}
+        className={`${showPanel ? "translate-x-0" : "translate-x-full"} fixed bottom-0 right-0 top-0 z-[10] flex h-full max-h-screen w-full max-w-[340px] flex-col overflow-y-auto bg-[rgba(255,255,255)] px-4 pb-6 shadow-xl backdrop-blur-sm transition duration-300 ease-in`}
       >
         <div className="mb-2 mt-4 flex w-full justify-around border-b border-yellow-900">
           <FaThumbsUp
@@ -105,16 +90,19 @@ if (!session?.user?.id || count === 0) return null;
             className="mb-4 cursor-pointer"
           />
         </div>
-        <ul className="flex flex-col px-2 pt-3 mx-auto ">
+        <ul className="flex flex-col pt-3">
           {notifications.map((note) => (
-            <li key={note._id} className="border-b-2 border-dotted border-yellow-950 mx-auto w-full pt-4">
+            <li
+              key={note._id}
+              className="w-full border-b-2 border-dotted border-yellow-950 pt-4"
+            >
               <div
-                className="flex cursor-pointer flex-col"
+                className="mx-auto flex cursor-pointer flex-col"
                 onClick={() => getLikedPostOrComment(note)}
-                >
+              >
                 {note.post ? (
-                  <span className="text-yellow-900">
-                    <div className="flex w-full justify-center pb-2">
+                  <div className="mx-auto flex w-full flex-col text-yellow-900">
+                    <div className="flex justify-center pb-2">
                       <Image
                         src={note?.sender.avatar || "/images/logo_yellow.png"}
                         alt="logo"
@@ -123,18 +111,25 @@ if (!session?.user?.id || count === 0) return null;
                         className="h-[30px] w-[30px] rounded-full object-cover"
                       />
                     </div>
-                    <span className="font-semibold text-yellow-950">
-                      {note.sender?.name || note.sender?.username}
-                    </span>{" "}
-                    Likes your post: <br />
-                    <span>
-                      {note.post.postContent.length < 35
-                        ? note.post.postContent
-                        : note.post.postContent.slice(0, 35) + "..."}
-                    </span>
-                  </span>
+                    <div className="mx-auto">
+                      <span className="font-semibold text-yellow-950">
+                        {note.sender?.name || note.sender?.username}
+                      </span>{" "}
+                      Likes your post: <br />
+                      <span>
+                        {note.post.postContent.length < 35
+                          ? note.post.postContent
+                          : note.post.postContent.slice(0, 35) + "..."}
+                      </span>
+                      <div className="mb-6 flex flex-col border-yellow-900 pb-2">
+                        <small className="pt-1 text-gray-500">
+                          created: {new Date(note.createdAt).toLocaleString()}
+                        </small>
+                      </div>
+                    </div>
+                  </div>
                 ) : (
-                  <span className="text-yellow-900">
+                  <div className="mx-auto flex w-full flex-col text-yellow-900">
                     <div className="flex w-full justify-center pb-2">
                       <Image
                         src={note?.sender.avatar || "/images/logo_yellow.png"}
@@ -144,22 +139,25 @@ if (!session?.user?.id || count === 0) return null;
                         className="h-[30px] w-[30px] rounded-full object-cover"
                       />
                     </div>
-                    <span className="font-semibold text-yellow-950">
-                      {note.sender?.name || note.sender?.username}
-                    </span>{" "}
-                    Likes your comment: <br />
-                    <span className="text-yellow-900">
-                      {note.comment.comment.length < 35
-                        ? note.comment.comment
-                        : note.comment.comment.slice(0, 35) + "..."}
-                    </span>
-                  </span>
+
+                    <div className="mx-auto">
+                      <span className="font-semibold text-yellow-950">
+                        {note.sender?.name || note.sender?.username}
+                      </span>{" "}
+                      Likes your comment: <br />
+                      <span className="text-yellow-900">
+                        {note.comment.comment.length < 35
+                          ? note.comment.comment
+                          : note.comment.comment.slice(0, 35) + "..."}
+                      </span>
+                      <div className="mb-6 flex flex-col border-yellow-900 pb-2">
+                        <small className="pt-1 text-gray-500">
+                          created: {new Date(note.createdAt).toLocaleString()}
+                        </small>
+                      </div>
+                    </div>
+                  </div>
                 )}
-              </div>
-              <div className="mb-6 flex flex-col  border-yellow-900 pb-2">
-                <small className="pt-1 text-gray-500">
-                  created: {new Date(note.createdAt).toLocaleString()}
-                </small>
               </div>
             </li>
           ))}
@@ -176,28 +174,13 @@ if (!session?.user?.id || count === 0) return null;
           </div>
         </div>
       </div>
-    
-{postId && (
-  <div
-    className="fixed inset-0 z-50 flex items-center justify-center bg-yellow-950/70"
-    onClick={() => setPostId(null)}
-  >
-    <div
-      className="relative max-h-[100vh] w-full max-w-[720px] overflow-y-auto p-6 shadow-xl max-sm:px-2"
-      onClick={(e) => e.stopPropagation()}
-      >
-      <SinglePost postId={postId} />
-      <div
-        className="absolute left-1/2 top-2 -translate-x-1/2 cursor-pointer rounded-full bg-white"
-        onClick={() => setPostId(null)}
-       >
-        <IoMdCloseCircleOutline size={30} color={"black"} />
-      </div>
-      
-    </div>
-  </div>
-)}
 
+      {postId && (
+        <SingleNotificationPost
+          postId={postId}
+          setPostId={() => setPostId(null)}
+        />
+      )}
     </>
   );
 }

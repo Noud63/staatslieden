@@ -12,18 +12,19 @@ import Editordelete from "./Editordelete";
 import PostUserName from "./PostUserName";
 import threedots from "../assets/icons/threedots.png";
 import { usePostActions } from "@/hooks/usePostActions";
+import Spinner from "./Spinner";
+import CloseSinglePostButton from "./CloseSinglePostButton";
+
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
-const SinglePost = ({ postId, post: initialPost }) => {
+const SinglePost = ({ postId, post: initialPost, setPostId }) => {
   // SWR fetch only if no initial post is provided
   const { data: post, mutate } = useSWR(
     postId ? `/api/getSinglePost/${postId}` : null,
     fetcher,
     { fallbackData: initialPost }
   );
-
-  
 
   const { data: session } = useSession();
   const [showThreeDots, setShowThreeDots] = useState(false);
@@ -32,6 +33,19 @@ const SinglePost = ({ postId, post: initialPost }) => {
   const [open, setOpen] = useState(false);
 
    const { likePost, likeComment, deleteComment} = usePostActions(post);
+
+   //Prevent background from scrolling when modal is open
+  useEffect(() => {
+    if (postId) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = ""; // cleanup on unmount
+    };
+  }, [postId]);
+
 
 
   useEffect(() => {
@@ -46,11 +60,13 @@ const SinglePost = ({ postId, post: initialPost }) => {
   const slides = post?.images?.length ? post.images.map((img) => ({ src: img })) : [];
 
   if (!post){
-  return <div className="text-center p-4">Loading post...</div>;
+  return <div className="relative w-full mx-auto"><Spinner loading={true} size={80} className="w-[80px] mx-auto"/></div>;
   }
-
  return (
     <div className="singlepost relative mx-6 mb-4 flex h-auto flex-col rounded-lg bg-white shadow-md max-sm:mx-4 max-xsm:mx-2">
+
+      {postId && <CloseSinglePostButton setPostId={setPostId} />}
+
       <Editordelete
         showOptions={showOptions}
         setShowOptions={setShowOptions}
@@ -119,6 +135,7 @@ const SinglePost = ({ postId, post: initialPost }) => {
         />
       )}
     </div>
+    
   );
 };
 

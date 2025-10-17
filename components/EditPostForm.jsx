@@ -6,6 +6,7 @@ import replace from "../assets/icons/replace.png";
 import Image from "next/image";
 import { revalidatePostCaches } from "@/utils/revalidatePost";
 import { mutate } from "swr";
+import Spinner from "./Spinner";
 
 const EditPostForm = ({ setShowEditForm, post }) => {
 
@@ -14,6 +15,8 @@ const EditPostForm = ({ setShowEditForm, post }) => {
 
   const inputFilesRef = useRef(null);
   const textareaRef = useRef(null);
+
+  const [loading, setLoading] = useState(false);
 
   const postId = post?._id;
 
@@ -58,7 +61,7 @@ const EditPostForm = ({ setShowEditForm, post }) => {
 
   const handleEditPost = async (e) => {
     e.preventDefault();
-
+    setLoading(true); // start spinner
     const formData = new FormData(e.target);
 
     updatedData.images.forEach((file) => {
@@ -83,7 +86,9 @@ const EditPostForm = ({ setShowEditForm, post }) => {
     } catch (error) {
       console.log(error);
       console.log(data.message);
-    }
+    }finally {
+    setLoading(false); // stop spinner
+  }
   };
 
   const deleteSelectedImage = (name) => {
@@ -259,7 +264,7 @@ const EditPostForm = ({ setShowEditForm, post }) => {
               type="submit"
               className="w-full rounded-lg bg-gradient-to-r from-yellow-950 via-yellow-700 to-yellow-950 py-4 font-semibold text-white"
             >
-              Update
+              {loading ? <Spinner loading={loading} size={20}/> : "Update"}
             </button>
           </div>
         </form>

@@ -23,9 +23,7 @@ const SinglePost = ({ postId, post: initialPost }) => {
     { fallbackData: initialPost }
   );
 
-  if (!post){
-  return <div className="text-center p-4">Loading post...</div>;
-  }
+  
 
   const { data: session } = useSession();
   const [showThreeDots, setShowThreeDots] = useState(false);
@@ -46,6 +44,10 @@ const SinglePost = ({ postId, post: initialPost }) => {
   }, [session, post?.userId, post?.avatar]);
 
   const slides = post?.images?.length ? post.images.map((img) => ({ src: img })) : [];
+
+  if (!post){
+  return <div className="text-center p-4">Loading post...</div>;
+  }
 
  return (
     <div className="singlepost relative mx-6 mb-4 flex h-auto flex-col rounded-lg bg-white shadow-md max-sm:mx-4 max-xsm:mx-2">

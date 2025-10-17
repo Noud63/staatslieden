@@ -60,13 +60,13 @@ const SideBarNotificationList = ({
           <li
             key={note._id}
             className="w-full border-b-2 border-dotted border-yellow-950 pt-4"
-          >
+             >
             <div
-              className="mx-auto flex cursor-pointer flex-col"
+              className="flex cursor-pointer flex-col"
               onClick={() => getLikedPostOrComment(note)}
-            >
+                >
               {note.post ? (
-                <div className="mx-auto flex w-full flex-col text-yellow-900">
+                <div className="flex w-full flex-col text-yellow-900">
                   <div className="flex justify-center pb-2">
                     <Image
                       src={note?.sender.avatar || "/images/logo_yellow.png"}
@@ -76,11 +76,12 @@ const SideBarNotificationList = ({
                       className="h-[30px] w-[30px] rounded-full object-cover"
                     />
                   </div>
-                  <div className="mx-auto">
-                    <span className="font-semibold text-yellow-950">
-                      {note.sender?.name || note.sender?.username}
-                    </span>{" "}
-                    Likes your post: <br />
+                  <div className="mx-auto flex flex-col justify-start">
+                    <div className=" text-yellow-950">
+                      <span className="font-semibold">{note.sender?.name || note.sender?.username} </span>{" "}
+                      <span>likes your post: <br /></span>
+                    </div>
+                    
                     <span>
                       {note.post.postContent.length < 35
                         ? note.post.postContent
@@ -94,8 +95,8 @@ const SideBarNotificationList = ({
                   </div>
                 </div>
               ) : (
-                <div className="mx-auto flex w-full flex-col text-yellow-900">
-                  <div className="flex w-full justify-center pb-2">
+                <div className="flex w-full flex-col text-yellow-900">
+                  <div className="flex justify-center pb-2">
                     <Image
                       src={note?.sender.avatar || "/images/logo_yellow.png"}
                       alt="logo"
@@ -105,11 +106,12 @@ const SideBarNotificationList = ({
                     />
                   </div>
 
-                  <div className="mx-auto">
-                    <span className="font-semibold text-yellow-950">
-                      {note.sender?.name || note.sender?.username}
-                    </span>{" "}
-                    Likes your comment: <br />
+                  <div className="mx-auto flex flex-col justify-start">
+                    <div className=" text-yellow-950">
+                      <span className="font-semibold">{note.sender?.name || note.sender?.username}</span>{" "}
+                      <span>likes your comment: </span><br />
+                    </div>
+                    
                     <span className="text-yellow-900">
                       {note.comment.comment.length < 35
                         ? note.comment.comment

@@ -29,6 +29,11 @@ const SinglePost = ({ postId, post: initialPost }) => {
   const [profilePic, setProfilePic] = useState(null);
   const [open, setOpen] = useState(false);
 
+   if (!post) return <div className="text-center p-4">Loading post...</div>;
+
+  const { likePost, likeComment, deleteComment} = usePostActions(post);
+
+
   useEffect(() => {
     if (session?.user?.id === post?.userId) {
       setShowThreeDots(true);
@@ -38,10 +43,7 @@ const SinglePost = ({ postId, post: initialPost }) => {
     }
   }, [session, post?.userId, post?.avatar]);
 
-  if (!post) return <div className="text-center p-4">Loading post...</div>;
-
-  const { likePost, likeComment, deleteComment} = usePostActions(post);
-
+ 
   const slides = post?.images?.length ? post.images.map((img) => ({ src: img })) : [];
 
 

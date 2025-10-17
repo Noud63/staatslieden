@@ -72,7 +72,7 @@ export function usePostActions(postOrPosts) {
       await Promise.all([
         mutate("/api/getposts"),
         mutate(`/api/getposts/postsByUserId/${post.userId}`),
-      await mutate(`/api/getSinglePost/${postId}`)
+        mutate(`/api/getSinglePost/${postId}`)
       ])
   };
 
@@ -97,6 +97,14 @@ export function usePostActions(postOrPosts) {
         mutate(`/api/getSinglePost/${postId}`)
       ]);
 };
+
+ const addComment = (post, postId, tempComment) => {
+    if (!post || !postId) return;
+
+    mutate("/api/getposts", optimisticAddComment(postId, tempComment), false);
+    mutate(`/api/getposts/postsByUserId/${post.userId}`, optimisticAddComment(postId, tempComment), false);
+    mutate(`/api/getSinglePost/${postId}`, optimisticAddComment(postId, tempComment), false);
+  };
 
 const deletePost = async (postId, userId) => {
   try {
@@ -124,5 +132,5 @@ const deletePost = async (postId, userId) => {
 };
 
 
-  return { likePost, likeComment, deleteComment, deletePost };
+  return { likePost, likeComment, addComment, deleteComment, deletePost };
 }

@@ -6,14 +6,15 @@ import { useRouter } from "next/navigation";
 import { mutate } from "swr";
 import { useTranslations } from "next-intl";
 import { optimisticAddComment } from "@/utils/optimisticUpdate";
+import { revalidatePostCaches } from "@/utils/revalidatePost";
+import { usePostActions } from "@/hooks/usePostActions";
 
 const PostCommentForm = ({
   postId,
   parentId = null,
   setShowForm,
   showForm,
-  post,
-  mutatePost,
+  post
 }) => {
   const [text, setText] = useState("");
   const [sendButton, setSendButton] = useState(false);
@@ -21,6 +22,8 @@ const PostCommentForm = ({
   const { data: session } = useSession();
   const id = session?.user?.id;
   const user = session?.user;
+
+  const { addComment } = usePostActions();
 
   const textareaRef = useRef(null);
 
@@ -42,13 +45,8 @@ const PostCommentForm = ({
     if (!text.trim()) return;
 
     try {
-      mutate("/api/getposts", optimisticAddComment(postId, tempComment), false);
-      mutate(
-        `/api/getposts/postsByUserId/${post.userId}`,
-        optimisticAddComment(postId, tempComment),
-        false,
-      );
-      mutate("/api/getSinglePost/${postId}", optimisticAddComment(postId, tempComment), false);
+      // Optimistically update UI
+      addComment(post, postId, tempComment);
 
       const response = await fetch("/api/comments", {
         method: "POST",
@@ -65,6 +63,7 @@ const PostCommentForm = ({
       if (response.ok) {
         const comment = await response.json();
         setShowForm(false);
+        await revalidatePostCaches(postId, post.userId);
       }
     } catch (error) {
       console.error("An unexpected error happened:", error);
@@ -72,12 +71,7 @@ const PostCommentForm = ({
       textareaRef.current.value = "";
       setSendButton(false);
     }
-    // Revalidate to fetch the real comment
-    await Promise.all([
-      mutate("/api/getposts"),
-      mutate(`/api/getposts/postsByUserId/${post.userId}`),
-      mutate(`/api/getSinglePost/${postId}`),
-    ]);
+   
   };
 
   useEffect(() => {

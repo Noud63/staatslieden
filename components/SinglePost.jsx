@@ -60,8 +60,9 @@ const SinglePost = ({ postId, post: initialPost, setPostId }) => {
   const slides = post?.images?.length ? post.images.map((img) => ({ src: img })) : [];
 
   if (!post){
-  return <div className="relative w-full mx-auto"><Spinner loading={true} size={80} className="w-[80px] mx-auto"/></div>;
+  return <Spinner loading={true} size={80} />;
   }
+  
  return (
     <div className="singlepost relative mx-6 mb-4 flex h-auto flex-col rounded-lg bg-white shadow-md max-sm:mx-4 max-xsm:mx-2">
 

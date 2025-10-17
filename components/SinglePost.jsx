@@ -23,15 +23,17 @@ const SinglePost = ({ postId, post: initialPost }) => {
     { fallbackData: initialPost }
   );
 
+  if (!post){
+  return <div className="text-center p-4">Loading post...</div>;
+  }
+
   const { data: session } = useSession();
   const [showThreeDots, setShowThreeDots] = useState(false);
   const [showOptions, setShowOptions] = useState(false);
   const [profilePic, setProfilePic] = useState(null);
   const [open, setOpen] = useState(false);
 
-   if (!post) return <div className="text-center p-4">Loading post...</div>;
-
-  const { likePost, likeComment, deleteComment} = usePostActions(post);
+   const { likePost, likeComment, deleteComment} = usePostActions(post);
 
 
   useEffect(() => {
@@ -43,11 +45,9 @@ const SinglePost = ({ postId, post: initialPost }) => {
     }
   }, [session, post?.userId, post?.avatar]);
 
- 
   const slides = post?.images?.length ? post.images.map((img) => ({ src: img })) : [];
 
-
-  return (
+ return (
     <div className="singlepost relative mx-6 mb-4 flex h-auto flex-col rounded-lg bg-white shadow-md max-sm:mx-4 max-xsm:mx-2">
       <Editordelete
         showOptions={showOptions}

@@ -22,7 +22,7 @@ const optimisticCommentLikeUpdate = (commentId) => (currentData) => {
 };
 
 // Optimistic update for a single post object
-export const optimisticCommentLikeUpdateSinglePost = (commentId) => (currentData) => {
+const optimisticCommentLikeUpdateSinglePost = (commentId) => (currentData) => {
   if (!currentData) return currentData;
 
   return {
@@ -82,7 +82,7 @@ const optimisticPostLikeUpdate = (postId) => (currentData) => {
 };
 
 // For single post object (modal)
-export const optimisticPostLikeUpdateSinglePost = (postId) => (currentData) => {
+const optimisticPostLikeUpdateSinglePost = (postId) => (currentData) => {
   if (!currentData || currentData._id !== postId) return currentData;
 
   return {
@@ -101,7 +101,7 @@ const optimisticDeletePost = (postId) => (currentData) => {
   });
 };
 
-export const optimisticDeleteSinglePost = (postId) => (currentData) => {
+const optimisticDeleteSinglePost = (postId) => (currentData) => {
   if (!currentData) return currentData;
 
   // If the current post is the one being deleted, return null
@@ -131,7 +131,7 @@ const optimisticDeleteComment = (postId, commentId) => (currentData) => {
 };
 
 // For single post object (modal)
-export const optimisticDeleteCommentSinglePost = (commentId) => (currentData) => {
+const optimisticDeleteCommentSinglePost = (commentId) => (currentData) => {
   if (!currentData) return currentData;
 
   return {
@@ -143,6 +143,7 @@ export const optimisticDeleteCommentSinglePost = (commentId) => (currentData) =>
 export {
   optimisticPostLikeUpdate,
   optimisticCommentLikeUpdate,
+  optimisticCommentLikeUpdateSinglePost,
   optimisticDeletePost,
   optimisticDeleteSinglePost,
   optimisticDeleteComment,

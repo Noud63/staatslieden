@@ -1,13 +1,21 @@
 
 const getNotifications = async () => {
     try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_DOMAIN}/getNotifications`)
-        const data = await res.json();
-        console.log("Data:", data.notification);
-        return data
-    } catch (error) {
-        console.error("Error fetching notifications:", error);
+    const res = await fetch(`/api/getNotifications`, {
+      method: "GET",
+      cache: "no-store",      // avoid stale data
+    });
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch notifications: ${res.status}`);
     }
+
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching notifications:", error);
+    return { notifications: [] };
+  }
 }
 
 export default getNotifications;

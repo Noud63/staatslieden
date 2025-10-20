@@ -1,4 +1,4 @@
-// utils/revalidatePosts.js
+
 import { mutate } from "swr";
 
 export const revalidatePostCaches = async (postId, userId) => {

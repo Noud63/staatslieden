@@ -4,6 +4,8 @@ import Post from "@/models/post";          // ✅ add this
 import Comment from "@/models/comment";    // ✅ add this if you populate comments
 import connectDB from "@/connectDB/database";
 
+export const dynamic = "force-dynamic"; //Prevents to statically pre-render the page.
+
 export async function GET(req) {
   try {
     await connectDB();

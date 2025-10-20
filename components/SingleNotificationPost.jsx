@@ -3,10 +3,9 @@ import SinglePost from "./SinglePost";
 import Spinner from "./Spinner";
 
 const SingleNotificationPost = ({ postId, setPostId }) => {
-
+  
   if (!postId) {
     return <Spinner loading={true} size={80} />;
-    
   }
   return (
     <div

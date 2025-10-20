@@ -11,6 +11,7 @@ import { mutate } from "swr";
 import SideBarNotificationList from "./SideBarNotificationList";
 import SingleNotificationPost from "./SingleNotificationPost";
 
+
 export default function NavbarNotificationBadge() {
   
   const { data: session } = useSession();

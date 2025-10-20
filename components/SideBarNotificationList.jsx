@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
@@ -24,7 +25,7 @@ const SideBarNotificationList = ({
       setNotifications(data.notifications || []);
     }
     fetchNotifications();
-  }, [session?.user?.id]);
+  }, [session?.user?.id, setCount]);
 
   const getLikedPostOrComment = async (note) => {
     try {

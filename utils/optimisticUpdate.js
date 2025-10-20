@@ -1,6 +1,16 @@
 //higher-order function => a function that returns another function.
 //currentData comes from the KEY in mutate(), mutate("api/getposts" = KEY) or api/getposts/postsByUserId/${post.userId} etc.
 
+const optimisticDeletePost = (postId) => (currentData) => {
+  if (!currentData) return currentData;
+  console.log("Current:", currentData);
+  // Optimistically delete post
+  return currentData.filter((post) => {
+    return post._id !== postId;
+  });
+};
+
+
 const optimisticCommentLikeUpdate = (commentId) => (currentData) => {
   if (!currentData) return currentData;
   // Optimistically update the comment's likes
@@ -21,27 +31,11 @@ const optimisticCommentLikeUpdate = (commentId) => (currentData) => {
   });
 };
 
-// Optimistic update for a single post object
-const optimisticCommentLikeUpdateSinglePost = (commentId) => (currentData) => {
-  if (!currentData) return currentData;
-
-  return {
-    ...currentData,
-    comments: currentData.comments.map((comment) => {
-      if (comment._id === commentId) {
-        return {
-          ...comment,
-          likesCount: comment.likesCount + (comment.likedByUser ? -1 : 1),
-          likedByUser: !comment.likedByUser,
-        };
-      }
-      return comment;
-    }),
-  };
-};
-
 
 const optimisticAddComment = (postId, newComment) => (data) => {
+
+  console.log("Data:", data);
+
   if (!data || !data.posts) return data;
 
   return {
@@ -65,54 +59,6 @@ const optimisticAddComment = (postId, newComment) => (data) => {
   };
 };
 
-const optimisticPostLikeUpdate = (postId) => (currentData) => {
-  if (!currentData) return currentData;
-  console.log("Current:", currentData);
-  // Optimistically update the comment's likes
-  return currentData.map((post) => {
-    if (post._id === postId) {
-      return {
-        ...post,
-        likesCount: post.likesCount + (post.likedByUser ? -1 : 1), // if likedbyuser is true -> comment.likesCount - 1 else comment.likesCount + 1
-        likedByUser: !post.likedByUser, // Toggle like state true/false
-      };
-    }
-    return post;
-  });
-};
-
-// For single post object (modal)
-const optimisticPostLikeUpdateSinglePost = (postId) => (currentData) => {
-  if (!currentData || currentData._id !== postId) return currentData;
-
-  return {
-    ...currentData,
-    likes: currentData.likes + (currentData.likedByUser ? -1 : 1),
-    likedByUser: !currentData.likedByUser,
-  };
-};
-
-const optimisticDeletePost = (postId) => (currentData) => {
-  if (!currentData) return currentData;
-  console.log("Current:", currentData);
-  // Optimistically delete post
-  return currentData.filter((post) => {
-    return post._id !== postId;
-  });
-};
-
-const optimisticDeleteSinglePost = (postId) => (currentData) => {
-  if (!currentData) return currentData;
-
-  // If the current post is the one being deleted, return null
-  if (currentData._id === postId) {
-    return null;
-  }
-
-  // Otherwise, leave it unchanged
-  return currentData;
-};
-
 
 const optimisticDeleteComment = (postId, commentId) => (currentData) => {
   if (!currentData) return currentData;
@@ -129,6 +75,69 @@ const optimisticDeleteComment = (postId, commentId) => (currentData) => {
     return post;
   });
 };
+
+
+const optimisticPostLikeUpdate = (postId) => (currentData) => {
+  if (!currentData) return currentData;
+  console.log("Current:", currentData);
+  // Optimistically update the comment's likes
+  return currentData.map((post) => {
+    if (post._id === postId) {
+      return {
+        ...post,
+        likesCount: post.likesCount + (post.likedByUser ? -1 : 1), // if likedbyuser is true -> comment.likesCount - 1 else comment.likesCount + 1
+        likedByUser: !post.likedByUser, // Toggle like state true/false
+      };
+    }
+    return post;
+  });
+};
+
+
+// Optimistic update for a single post object
+const optimisticCommentLikeUpdateSinglePost = (commentId) => (currentData) => {
+  if (!currentData) return currentData;
+
+  return {
+    ...currentData,
+    comments: currentData.comments.map((comment) => {
+      if (comment._id === commentId) {
+        return {
+          ...comment,
+          likesCount: comment.likesCount + (comment.likedByUser ? -1 : 1),
+          likedByUser: !comment.likedByUser,
+        };
+      }
+      return comment;
+    }),
+  };
+};
+
+
+// For single post object (modal)
+const optimisticPostLikeUpdateSinglePost = (postId) => (currentData) => {
+  if (!currentData || currentData._id !== postId) return currentData;
+
+  return {
+    ...currentData,
+    likes: currentData.likes + (currentData.likedByUser ? -1 : 1),
+    likedByUser: !currentData.likedByUser,
+  };
+};
+
+
+const optimisticDeleteSinglePost = (postId) => (currentData) => {
+  if (!currentData) return currentData;
+
+  // If the current post is the one being deleted, return null
+  if (currentData._id === postId) {
+    return null;
+  }
+
+  // Otherwise, leave it unchanged
+  return currentData;
+};
+
 
 // For single post object (modal)
 const optimisticDeleteCommentSinglePost = (commentId) => (currentData) => {
@@ -150,5 +159,4 @@ export {
   optimisticAddComment,
   optimisticPostLikeUpdateSinglePost,
   optimisticDeleteCommentSinglePost,
-   
 };

@@ -110,9 +110,10 @@ const SinglePost = ({ postId, post: initialPost, setPostId }) => {
           src={post.images[0]}
           alt=""
           width={400}
-          height={0}
-          className="h-full w-full cursor-pointer object-cover"
+          height={200}
+          className="h-[400px] w-full cursor-pointer object-cover"
           onClick={() => setOpen(true)}
+
         />
       )}
 
@@ -132,7 +133,7 @@ const SinglePost = ({ postId, post: initialPost, setPostId }) => {
             buttonPrev: slides.length <= 1 ? () => null : undefined,
             buttonNext: slides.length <= 1 ? () => null : undefined,
           }}
-          styles={{ container: { backgroundColor: "rgb(66, 32, 6, 0.8)" } }}
+          styles={{ container: { backgroundColor: "rgb(0,0,0, 0.5)" } }}
         />
       )}
     </div>

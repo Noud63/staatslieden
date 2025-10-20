@@ -21,7 +21,7 @@ if (!cached) {
 async function connectDB() {
 
 if (cached.conn &&  mongoose.connection.readyState === 1) {
-  console.log("Database is already connected.");
+  // console.log("Database is already connected.");
   return cached.conn; 
 }
 

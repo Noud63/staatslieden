@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import { FaThumbsUp } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 import Image from "next/image";
+import getNotifications from "@/utils/getNotifications";
 
 const SideBarNotificationList = ({
   setCount,
@@ -18,13 +19,14 @@ const SideBarNotificationList = ({
   useEffect(() => {
     if (!session?.user?.id) return;
 
-    async function fetchNotifications() {
-      const res = await fetch("/api/getNotifications");
-      const data = await res.json();
-      setCount(data.notifications?.length || 0);
-      setNotifications(data.notifications || []);
-    }
-    fetchNotifications();
+     const fetchNotifications = async () => {
+      const res = await getNotifications();
+      if (res && Array.isArray(res.notifications)) {
+        setNotifications(res.notifications);
+        setCount(res.notifications.length);
+      }
+     }
+      fetchNotifications();
   }, [session?.user?.id, setCount]);
 
   const getLikedPostOrComment = async (note) => {

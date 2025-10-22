@@ -3,6 +3,7 @@ import Comment from "@/models/comment";
 import mongoose from "mongoose";
 import CommentLike from "@/models/commentLikes";
 import { getSessionUser } from "@/utils/getSessionUser";
+import Notification from "@/models/notification";
 
 export const DELETE = async (request, { params }) => {
   try {
@@ -60,6 +61,11 @@ export const DELETE = async (request, { params }) => {
 
     // delete comment likes
     await CommentLike.deleteMany({ commentId: commentId });
+
+    //Delete notifications related to the deleted comments
+    await Notification.deleteMany({
+      comment: { $in: allCommentIds },
+    });
 
     return new Response(
       JSON.stringify({ message: "Comment deleted successfully!" }),

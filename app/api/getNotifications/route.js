@@ -27,7 +27,7 @@ export async function GET(req) {
     .sort({ createdAt: -1 })
     .lean(); // Convert to plain JavaScript objects
 
-  // console.log("Notifications fetched:", notifications);
+  console.log("Notifications fetched:", JSON.stringify(notifications, null, 2)  );
 
   return new Response(JSON.stringify({ notifications }), { status: 200 });
   } catch (error) {

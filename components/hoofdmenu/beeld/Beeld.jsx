@@ -14,7 +14,7 @@ const Beeld = () => {
 
   const t = useTranslations("beeld");
 
-  const sortedImages = images.sort((a, b) => a.jaar - b.jaar);
+  const sortedImages = [...images].sort((a, b) => a.jaar - b.jaar); // Keep import array immutable -> [...copy_array_first]
 
   const addSlide = (imageObject) => {
     slides.length = 0;

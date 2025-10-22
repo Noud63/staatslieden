@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
-import getWeatherData from "@/utils/getWeatherData";
-import getSunriseAndSunset from "@/utils/getSunriseAndSunset";
+import getWeatherData from "@/helper/getWeatherData";
+import getSunriseAndSunset from "@/helper/getSunriseAndSunset";
 import WeerVandaag from "@/components/WeerVandaag";
 import WeerMorgen from "@/components/WeerMorgen";
 
@@ -25,7 +25,7 @@ const WeatherreportPage = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const {results} = await getSunriseAndSunset();
+      const { results } = await getSunriseAndSunset();
       setSunMoon(results);
     };
     getData();

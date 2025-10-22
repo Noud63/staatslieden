@@ -60,7 +60,7 @@ const SinglePost = ({ postId, post: initialPost, setPostId }) => {
   const slides = post?.images?.length ? post.images.map((img) => ({ src: img })) : [];
 
   if (!post){
-  return <Spinner loading={true} size={80} />;
+  return <Spinner loading={true} size={20} />;
   }
   
  return (

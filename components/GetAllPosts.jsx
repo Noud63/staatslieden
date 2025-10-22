@@ -31,12 +31,12 @@ const { data, error, isLoading } = useSWR("/api/getposts", fetcher, {
          <span>Refresh the page!</span>
        </div>
      );
-   if (isLoading)
-     return (
-       <div>
-         <Spinner loading={isLoading} size={100} />
-       </div>
-     );
+  //  if (isLoading)
+  //    return (
+  //      <div className="mx-auto mt-8 flex min-h-[200px] w-full max-w-[620px] flex-col items-center justify-center" >
+  //        <Spinner loading={isLoading} size={20} />
+  //      </div>
+  //    );
 
   return (
     <div className="mx-auto flex w-full max-w-[670px] flex-grow flex-col rounded-lg py-4">

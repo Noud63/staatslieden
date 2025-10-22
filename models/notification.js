@@ -2,7 +2,7 @@ import { Schema, model, models } from "mongoose";
 
 const notificationSchema = new Schema({
   recipient: { type:Schema.Types.ObjectId, ref: "User", required: true },
-  type: { type: String, enum: ["like"], required: true },
+  type: { type: String, enum: ["like", "comment"], required: true },
   post: { type:Schema.Types.ObjectId, ref: "Post" },
   comment: { type:Schema.Types.ObjectId, ref: "Comment" },
   sender: { type:Schema.Types.ObjectId, ref: "User", required: true },

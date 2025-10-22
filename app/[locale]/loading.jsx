@@ -1,20 +1,20 @@
 "use client"
 import React from 'react'
-import ClipLoader from "react-spinners/ClipLoader"
+import GridLoader from "react-spinners/GridLoader"
 
 const override = {
     display: 'block',
-    margin: '180px auto'
-
+    margin: '100px auto'
+    
 }
 
 const LoadingPage = ({loading}) => {
   return (
-    <ClipLoader
+    <GridLoader
       color="#fff"
       loading={loading}
       cssOverride={override}
-      size={100}
+      size={20}
       aria-label="Loading Spinner"
     />
   );

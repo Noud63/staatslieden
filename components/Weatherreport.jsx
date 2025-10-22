@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import getWeatherData from "@/utils/getWeatherData";
+import getWeatherData from "@/helper/getWeatherData";
 import Image from "next/image";
 
 const Weatherreport = () => {
@@ -15,7 +15,7 @@ const Weatherreport = () => {
   }, []);
 
   return (
-    <div className="flex flex-col ml-2">
+    <div className="ml-2 flex flex-col">
       <div className="relative flex flex-col items-center max-xsm:items-end">
         <div
           className={
@@ -32,7 +32,7 @@ const Weatherreport = () => {
               width={0}
               height={0}
               sizes="100vw"
-              className="h-[55px] w-[50px] max-xsm:hidden pt-1"
+              className="h-[55px] w-[50px] pt-1 max-xsm:hidden"
             />
           )}
         </div>

@@ -1,29 +1,27 @@
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
-import convertSunsetAndSunrise from "@/utils/convertSunsetAndSunrise";
+import convertSunsetAndSunrise from "@/helper/convertSunsetAndSunrise";
 
 const WeerVandaag = ({ data1, sunMoon }) => {
-
-  const now = new Date()
+  const now = new Date();
   const options = {
-  month: "short",
-  day: "numeric",
-};
+    month: "short",
+    day: "numeric",
+  };
 
-const date = now.toLocaleDateString('nl-NL', options).split(" ")
-const monthShort = date[1][0].toUpperCase() + date[1].slice(1)
+  const date = now.toLocaleDateString("nl-NL", options).split(" ");
+  const monthShort = date[1][0].toUpperCase() + date[1].slice(1);
 
-const [data, setData] = useState({});
+  const [data, setData] = useState({});
 
-useEffect(() => {
-  if (sunMoon.length > 0) {
-    let sunrise = convertSunsetAndSunrise(sunMoon[0].sunrise);
-    let sunset = convertSunsetAndSunrise(sunMoon[0].sunset);
+  useEffect(() => {
+    if (sunMoon.length > 0) {
+      let sunrise = convertSunsetAndSunrise(sunMoon[0].sunrise);
+      let sunset = convertSunsetAndSunrise(sunMoon[0].sunset);
 
-     setData((prevData) => ({ ...prevData, sunrise, sunset }));
-  }
-}, [sunMoon]);
-
+      setData((prevData) => ({ ...prevData, sunrise, sunset }));
+    }
+  }, [sunMoon]);
 
   return (
     <div className="mt-4 rounded-lg border-2 p-2">

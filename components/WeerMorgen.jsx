@@ -1,18 +1,17 @@
-import React,{useEffect, useState} from 'react'
-import Image from 'next/image';
-import convertSunsetAndSunrise from '@/utils/convertSunsetAndSunrise';
+import React, { useEffect, useState } from "react";
+import Image from "next/image";
+import convertSunsetAndSunrise from "@/helper/convertSunsetAndSunrise";
 
-const WeerMorgen = ({data2, sunMoon, tomorrow }) => {
-
-const now = new Date();
+const WeerMorgen = ({ data2, sunMoon, tomorrow }) => {
+  const now = new Date();
   const options = {
     month: "short",
     day: "numeric",
   };
-  const month = now.toLocaleDateString("nl-NL", { month: "short"});
+  const month = now.toLocaleDateString("nl-NL", { month: "short" });
 
   const nextDay = tomorrow.toLocaleDateString("nl-NL").split("-")[0];
-  const nextMonth = tomorrow.toLocaleDateString("nl-NL", { month: "short" }); 
+  const nextMonth = tomorrow.toLocaleDateString("nl-NL", { month: "short" });
 
   const [data, setData] = useState({});
 
@@ -134,6 +133,6 @@ const now = new Date();
       </div>
     </div>
   );
-}
+};
 
-export default WeerMorgen
+export default WeerMorgen;

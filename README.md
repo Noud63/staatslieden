@@ -3,7 +3,7 @@
 Nextjs 14 app router, NextAuth, SWR, next-intl (Internationalization (i18n)),Tailwind and MongoDB.</br></br>
 
 
-![Image](https://github.com/user-attachments/assets/46a8cfe0-9132-4f3b-8d10-2969f4d02d01)</br></br>
+<div?><img width="1919" height="1080" alt="Image" src="https://github.com/user-attachments/assets/786a579e-fcff-4284-9b4e-ea9dde7b8f71" /></div></br></br>
 
 ![Image](https://github.com/user-attachments/assets/1fa0d40e-1e97-4a32-94b7-4917f789605f)</br></br>
 

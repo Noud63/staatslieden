@@ -47,7 +47,6 @@ const SinglePost = ({ postId, post: initialPost, setPostId }) => {
   }, [postId]);
 
 
-
   useEffect(() => {
     if (session?.user?.id === post?.userId) {
       setShowThreeDots(true);

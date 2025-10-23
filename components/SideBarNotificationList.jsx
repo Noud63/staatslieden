@@ -1,5 +1,5 @@
 "use client";
-import React, { use } from "react";
+import React, { useRef } from "react";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { FaThumbsUp } from "react-icons/fa";
@@ -16,6 +16,27 @@ const SideBarNotificationList = ({
 }) => {
   const { data: session } = useSession();
   const [notifications, setNotifications] = useState([]);
+
+  const sidebarRef = useRef(null);
+
+  // Close when clicking outside sidebar
+  useEffect(() => {
+    function handleClickOutside(event) {
+      console.log("Clicked outside sidebar:", event.target);
+      if (
+        sidebarRef.current && 
+        !sidebarRef.current.contains(event.target) // true, same as sidebarRef.current.contains(event.target) === false
+      ) {
+        setShowPanel(false);
+      }
+    }
+    if (showPanel) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [showPanel, setShowPanel]);
 
 
   useEffect(() => {
@@ -65,6 +86,7 @@ return (
     <div
       className={`sidebar_scroll ${showPanel ? "translate-x-0" : "translate-x-full"} fixed bottom-0 right-0 top-0 z-[10] flex h-full max-h-screen w-full 
       max-w-[340px] flex-col overflow-y-auto bg-[rgba(255,255,255)] pr-2 pl-4 pb-6 shadow-xl backdrop-blur-sm transition duration-300 ease-in`}
+      ref={sidebarRef}
        >
       <div className="mb-2 mt-4 flex w-full justify-around border-b border-yellow-900">
         <FaThumbsUp color="#713f12" size={24} className="mb-4 mr-2" />

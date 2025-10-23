@@ -63,7 +63,7 @@ export const POST = async (request) => {
         postId: postId,
       });
       console.log("Comment owner Note:", note);
-    }else if(parentId === null && post && post.userId.toString() !== userId){
+    }else if(parentId === null && (post && post.userId.toString()) !== userId){
          const postOwnerNote = await Notification.create({
         recipient: post.userId,
         type: "comment",
@@ -74,7 +74,9 @@ export const POST = async (request) => {
       });
       console.log("Post Owner Note:", postOwnerNote);
     }
+
     return NextResponse.json(newComment, { status: 201 });
+
   } catch (error) {
     return NextResponse.json(
       { message: "Error creating comment", error },

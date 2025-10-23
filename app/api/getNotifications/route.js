@@ -21,11 +21,12 @@ export async function GET(req) {
     recipient: session.user.id,
     isRead: false,
   })
+    .lean() // Convert to plain JavaScript objects
     .populate("post")
     .populate("comment")
     .populate("sender", "username name avatar")
     .sort({ createdAt: -1 })
-    .lean(); // Convert to plain JavaScript objects
+    
 
   console.log("Notifications fetched:", JSON.stringify(notifications, null, 2)  );
 

@@ -73,6 +73,11 @@ body::-webkit-scrollbar {
     display: none;
 }
 
+.singleNotificationPost {
+  scrollbar-width: none;
+  scrollbar-color: transparent transparent;
+}
+
 /* Base sidebar scroll container */
 .sidebar_scroll {
   overflow-y: auto;
@@ -119,10 +124,6 @@ body::-webkit-scrollbar {
     box-shadow: 0px 0px 40px #392809;
   }
 
- .demo {
-  auto-grow: true
- }
-
  .singlepost {
   box-shadow: 0px 0px 10px #420002;
  }
@@ -159,11 +160,3 @@ box-shadow: 0px 0px 30px #372011;
   box-shadow: 0px 0px 40px #420002;
  }
 
-@layer base {
-  * {
-    @apply border-border;
-    }
-  body {
-    @apply bg-background text-foreground;
-    }
-}

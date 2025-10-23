@@ -9,7 +9,7 @@ const SingleNotificationPost = ({ postId, setPostId }) => {
   }
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+      className="singleNotificationPost fixed inset-0 z-50 flex items-center justify-center bg-black/50"
       onClick={setPostId}
     >
       <div

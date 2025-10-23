@@ -6,6 +6,7 @@ import { FaThumbsUp } from "react-icons/fa";
 import { IoMdClose, IoMdCloseCircleOutline } from "react-icons/io";
 import Image from "next/image";
 import getNotifications from "@/utils/getNotifications";
+import NotificationListItems from "./NotificationListItems";
 
 const SideBarNotificationList = ({
   setCount,
@@ -33,7 +34,6 @@ const SideBarNotificationList = ({
 
 
   const getLikedPostOrComment = (postId) => {
-   // const postId = note?.post?._id || note?.comment?.postId;
     if (!postId) {
       console.warn("No postId found for notification:", note);
       return;
@@ -61,13 +61,11 @@ const SideBarNotificationList = ({
     }
   }
 
-
-
-  return (
+return (
     <div
       className={`sidebar_scroll ${showPanel ? "translate-x-0" : "translate-x-full"} fixed bottom-0 right-0 top-0 z-[10] flex h-full max-h-screen w-full 
-      max-w-[340px] flex-col overflow-y-auto bg-[rgba(255,255,255)] px-4 pb-6 shadow-xl backdrop-blur-sm transition duration-300 ease-in`}
-    >
+      max-w-[340px] flex-col overflow-y-auto bg-[rgba(255,255,255)] pr-2 pl-4 pb-6 shadow-xl backdrop-blur-sm transition duration-300 ease-in`}
+       >
       <div className="mb-2 mt-4 flex w-full justify-around border-b border-yellow-900">
         <FaThumbsUp color="#713f12" size={24} className="mb-4 mr-2" />
         <IoMdCloseCircleOutline
@@ -79,80 +77,7 @@ const SideBarNotificationList = ({
       </div>
       <ul className="flex flex-col pt-2">
         {notifications.map((note) => (
-          <li
-            key={note._id}
-            className="w-full border-b-2 border-dotted border-yellow-950 pt-4"
-          >
-            <div
-              className="flex cursor-pointer flex-col"
-              onClick={() => getLikedPostOrComment(note.postId)}
-            >
-              {(note.post || note.comment) && (
-                <div className="flex w-full flex-col text-yellow-900">
-                  <div className="flex justify-center pb-2">
-                    <Image
-                      src={note?.sender.avatar || "/images/logo_yellow.png"}
-                      alt="logo"
-                      width={100}
-                      height={0}
-                      className="h-[30px] w-[30px] rounded-full object-cover"
-                    />
-                  </div>
-
-                  <div className="flex flex-col justify-start">
-                    <div className="text-yellow-950">
-                      <span className="font-semibold">
-                        {note.sender?.name || note.sender?.username}
-                      </span>{" "}
-                      {note.type === "like" &&
-                        (note.post ? (
-                          <>
-                            likes your post: <br />
-                            <span>
-                              {note.post?.postContent.length < 60
-                                ? note.post?.postContent
-                                : note.post?.postContent.slice(0,60) + "..."}
-                            </span>
-
-                          </>
-                        ) : (
-                          <>
-                            likes your comment: <br />
-                            <span>
-                              {note.comment?.comment.length < 60
-                                ? note.comment?.comment
-                                : note.comment?.comment.slice(0, 60) + "..."}
-                            </span>
-                          </>
-                        ))}
-                      {note.type === "comment" &&
-                        (note.comment?.parentId && note.comment ? (
-                          <>
-                            commented on your comment: <br />
-                            <span>{note.comment?.comment}</span>
-                          </>
-                        ) : (
-                          <>
-                            commented on your post: <br />
-                            <span>
-                              {note.comment?.comment.length < 35
-                                ? note.comment?.comment
-                                : note.comment?.comment.slice(0, 35) + "..."}
-                            </span>
-                          </>
-                        ))}
-                    </div>
-
-                    <div className="mb-6 flex flex-col border-yellow-900 pb-2">
-                      <small className="pt-1 text-gray-500">
-                        created: {new Date(note.createdAt).toLocaleString()}
-                      </small>
-                    </div>
-                  </div>
-                </div>
-              )}
-            </div>
-          </li>
+          <NotificationListItems key={note._id} note={note} getLikedPostOrComment={getLikedPostOrComment} />
         ))}
       </ul>
 
@@ -193,7 +118,7 @@ export default SideBarNotificationList;
 //         });
 
 // Example notification object structure:
-// Like on a comment does not heve a post field
+// Like on a comment does not have a post field
 // {
 //     "_id": "68f8e252749a42238ef40357",
 //     "recipient": "67a3453aee56feb8d589b01d",

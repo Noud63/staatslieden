@@ -264,7 +264,7 @@ const EditPostForm = ({ setShowEditForm, post }) => {
               type="submit"
               className="w-full rounded-lg bg-gradient-to-r from-yellow-950 via-yellow-700 to-yellow-950 py-4 font-semibold text-white"
             >
-              {loading ? <Spinner loading={loading} size={20}/> : "Update"}
+              {loading ? <Spinner loading={loading} size={4}/> : "Update"}
             </button>
           </div>
         </form>

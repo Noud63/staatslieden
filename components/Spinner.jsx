@@ -1,21 +1,28 @@
 "use client";
 import React from "react";
-import { ClipLoader } from "react-spinners";
+import { Grid } from "react-loader-spinner";
 
-const override = {
-  display: "block",
-  margin: "180px auto",
-};
+// const override = {
+//   display: "block",
+//   margin: "180px auto",
+// };
 
-const Spinner = ({ loading, size}) => {
+const Spinner = ({ loading, height, width }) => {
   return (
-    <ClipLoader
+    <>
+    {loading && <Grid
+      visible={true}
+      height={height}
+      width={width}
       color="#fff"
-      loading={loading} // loading state true or false
-      cssOverride={override}
-      size={size}
-      aria-label="Loading Spinner"
-    />
+      ariaLabel="grid-loading"
+      radius="12.5"
+      wrapperStyle={{}}
+      wrapperClass="grid-wrapper w-full flex justify-center items-center"
+    />}
+    
+    </>
+    
   );
 };
 

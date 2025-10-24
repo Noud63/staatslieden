@@ -6,7 +6,7 @@ import Spinner from "./Spinner";
 const SingleNotificationPost = ({ postId, setPostId }) => {
   
   if (!postId) {
-    return <Spinner loading={true} size={80} />;
+    return <Spinner loading={true} height={50} width={50} />;
   }
   return (
     <div

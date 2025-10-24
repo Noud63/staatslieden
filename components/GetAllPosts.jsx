@@ -33,7 +33,7 @@ const { data, error, isLoading } = useSWR("/api/getposts", fetcher, {
      );
      
    if(isLoading){
-    return <Spinner loading={isLoading} size={20} />;
+    return <div className="mt-[100px]"><Spinner loading={isLoading} height={50} width={50}/></div>;
    }
 
   return (

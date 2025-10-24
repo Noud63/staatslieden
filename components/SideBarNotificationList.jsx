@@ -22,7 +22,7 @@ const SideBarNotificationList = ({
   // Close when clicking outside sidebar
   useEffect(() => {
     function handleClickOutside(event) {
-      console.log("Clicked outside sidebar:", event.target);
+      // console.log("Clicked outside sidebar:", event.target);
       if (
         sidebarRef.current && 
         !sidebarRef.current.contains(event.target) // true, same as sidebarRef.current.contains(event.target) === false

@@ -38,7 +38,7 @@ const { data, error, isLoading } = useSWR("/api/getposts", fetcher, {
       {
         data && data.map((post) => (
           <div key={post._id}>
-            <SinglePost post={post} />
+            <SinglePost post={post} loading={isLoading}/>
         </div>
         ))}
     </div>

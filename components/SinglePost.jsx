@@ -20,7 +20,7 @@ const fetcher = (url) => fetch(url).then((res) => res.json());
 
 const SinglePost = ({ postId, post: initialPost, setPostId }) => {
   // SWR fetch only if no initial post is provided
-  const { data: post, mutate } = useSWR(
+  const { data: post, mutate, isLoading } = useSWR(
     postId ? `/api/getSinglePost/${postId}` : null,
     fetcher,
     { fallbackData: initialPost }
@@ -59,7 +59,7 @@ const SinglePost = ({ postId, post: initialPost, setPostId }) => {
   const slides = post?.images?.length ? post.images.map((img) => ({ src: img })) : [];
 
   if (!post){
-  return <Spinner loading={true} size={20} />;
+  return <Spinner loading={isLoading} size={20} />;
   }
   
  return (
@@ -110,9 +110,9 @@ const SinglePost = ({ postId, post: initialPost, setPostId }) => {
           alt=""
           width={400}
           height={200}
-          className="h-[400px] w-full cursor-pointer object-cover"
+          className="h-auto w-full cursor-pointer "
           onClick={() => setOpen(true)}
-
+          priority
         />
       )}
 

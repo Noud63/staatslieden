@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import SinglePost from "./SinglePost";
 import Spinner from "./Spinner";

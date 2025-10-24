@@ -108,7 +108,7 @@ return (
         className="mx-auto mt-8 w-full rounded-lg bg-gradient-to-r from-yellow-950 via-yellow-700 to-yellow-950 py-2 text-white"
         onClick={deleteAllNotifications}
       >
-        Verwijder likes
+        Verwijder reacties
       </button>
 
       <div className="flex w-full justify-center">

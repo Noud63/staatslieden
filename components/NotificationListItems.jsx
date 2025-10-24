@@ -31,7 +31,7 @@ const NotificationListItems = ({ getLikedPostOrComment, note, }) => {
                       {note.type === "like" &&
                         (note.post ? (
                           <>
-                            likes your post: <br />
+                            vindt je bericht leuk: <br />
                             <span>
                               {note.post?.postContent.length < 60
                                 ? note.post?.postContent
@@ -41,7 +41,7 @@ const NotificationListItems = ({ getLikedPostOrComment, note, }) => {
                           </>
                         ) : (
                           <>
-                            likes your comment: <br />
+                            vindt je reactie leuk: <br />
                             <span>
                               {note.comment?.comment.length < 60
                                 ? note.comment?.comment
@@ -53,12 +53,12 @@ const NotificationListItems = ({ getLikedPostOrComment, note, }) => {
                       {note.type === "comment" &&
                         (note.comment?.parentId && note.comment ? (
                           <>
-                            commented on your comment: <br />
+                            reageerde op jou reactie: <br />
                             <span>{note.comment?.comment}</span>
                           </>
                         ) : (
                           <>
-                            commented on your post: <br />
+                            reageerde op jou bericht: <br />
                             <span>
                               {note.comment?.comment.length < 35
                                 ? note.comment?.comment
@@ -70,7 +70,7 @@ const NotificationListItems = ({ getLikedPostOrComment, note, }) => {
 
                     <div className="mb-6 flex flex-col border-yellow-900 pb-2">
                       <small className="pt-1 text-gray-500">
-                        created: {new Date(note.createdAt).toLocaleString()}
+                        Gepost op : {new Date(note.createdAt).toLocaleString()}
                       </small>
                     </div>
                   </div>

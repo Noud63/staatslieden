@@ -1,7 +1,7 @@
 import React from "react";
 import AlleHaltesBus21 from "./AllehaltesBus21";
-import AlleHaltesTram19 from "./AlleHaltesTram19";
-import Tramlijn19 from "./Tramlijn19";
+import AlleHaltesTram5 from "./AlleHaltesTram5";
+import Tramlijn5 from "./Tramlijn5";
 import Buslijn21 from "./Buslijn21";
 import TitleBar from "@/components/TitleBar";
 
@@ -28,7 +28,7 @@ const Ov = () => {
           </div>
         </div>
 
-        <Tramlijn19 />
+        <Tramlijn5 />
 
         <div>Route: Van Hallstraat - Amstelveen Stadshart</div>
         <div>
@@ -44,7 +44,7 @@ const Ov = () => {
         </div>
       </div>
 
-      <AlleHaltesTram19 />
+      <AlleHaltesTram5 />
 
       <TitleBar title="Buslijnen" />
       

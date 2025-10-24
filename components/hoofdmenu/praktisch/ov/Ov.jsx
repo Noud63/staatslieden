@@ -14,7 +14,7 @@ const Ov = () => {
       <div className="py-8 pl-4 max-xsm:pl-2">
         <p>
           Hier vindt je alle bus en tramlijnen van en naar de Staatsliedenbuurt
-          met alle haltes. Het zijn er twee, te weten tramlijn 19 en buslijn 21.
+          met alle haltes. Het zijn er twee, te weten tramlijn 5 en buslijn 21.
         </p>
       </div>
 
@@ -24,19 +24,19 @@ const Ov = () => {
         <div className="mb-4 flex max-w-[330px] flex-row items-center border-b pb-2 max-xsm:max-w-full">
           <span className="text-lg font-semibold">Tramlijn</span>
           <div className="mx-2 flex h-[28px] w-[28px] items-center justify-center rounded-full bg-white pr-[2px] font-bold text-yellow-900">
-            19
+            5
           </div>
         </div>
 
         <Tramlijn19 />
 
-        <div>Route: Van Hallstraat - Diemen (Sniep)</div>
+        <div>Route: Van Hallstraat - Amstelveen Stadshart</div>
         <div>
           Voor actuele vertrektijden{" "}
           <a
-            href="https://gvb.nl/reisinformatie/lijn/GVB/19"
+            href="https://gvb.nl/reisinformatie/lijn/GVB/5"
             target="_blank"
-            alt="lijn19"
+            alt="lijn5"
             className="underline"
           >
             klik hier

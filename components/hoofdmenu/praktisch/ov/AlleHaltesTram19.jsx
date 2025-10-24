@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import data from "@/data/haltestramlijn19.json";
+import data from "@/data/haltestramlijn5.json";
 import ToggleButton from "../../../ToggleButton"
 
 const AlleHaltesTram19 = () => {

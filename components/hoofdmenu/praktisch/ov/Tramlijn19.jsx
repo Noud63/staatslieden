@@ -11,9 +11,9 @@ const Tramlijn19 = () => {
 
      const slides = [
        {
-         src: `/images/lijn19.png`,
-         title: "GVB Tramlijn 19",
-         description: "Route tramlijn 19 met haltes",
+         src: `/images/tram_lijn_5.png`,
+         title: "GVB Tramlijn 5",
+         description: "Route tramlijn 5 met haltes",
        },
      ];
 
@@ -21,7 +21,7 @@ const Tramlijn19 = () => {
     <div>
       <div className="mb-4 h-auto max-w-[330px] max-xsm:max-w-full">
         <Image
-          src={"/images/lijn19.png"}
+          src={"/images/tram_lijn_5.png"}
           width={330}
           height={0}
           alt=""

@@ -1,15 +1,15 @@
 "use client";
 import React from "react";
-import { GridLoader } from "react-spinners";
+import { ClipLoader } from "react-spinners";
 
 const override = {
   display: "block",
-  margin: "0 auto",
+  margin: "180px auto",
 };
 
 const Spinner = ({ loading, size}) => {
   return (
-    <GridLoader
+    <ClipLoader
       color="#fff"
       loading={loading} // loading state true or false
       cssOverride={override}

@@ -18,7 +18,7 @@ import CloseSinglePostButton from "./CloseSinglePostButton";
 
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
-const SinglePost = ({ postId, post: initialPost, setPostId, loading }) => {
+const SinglePost = ({ postId, post: initialPost, setPostId }) => {
   // SWR fetch only if no initial post is provided
   const { data: post, mutate, isLoading } = useSWR(
     postId ? `/api/getSinglePost/${postId}` : null,
@@ -59,7 +59,7 @@ const SinglePost = ({ postId, post: initialPost, setPostId, loading }) => {
   const slides = post?.images?.length ? post.images.map((img) => ({ src: img })) : [];
 
   if (!post){
-  return <Spinner loading={loading} size={20} />;
+  return <Spinner loading={isLoading} size={20} />;
   }
   
  return (

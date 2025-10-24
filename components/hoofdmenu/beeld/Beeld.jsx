@@ -42,10 +42,10 @@ const Beeld = () => {
               <Image
                 src={image.src}
                 alt={image.alt}
-                height={300}
+                height={100}
                 width={300}
                 priority="lazy"
-                className="h-full w-full cursor-pointer object-cover px-4 pb-12 pt-4"
+                className="w-full h-full cursor-pointer object-cover px-4 pb-12 pt-4"
                 onClick={() => setOpen(true)}
               />
             </div>

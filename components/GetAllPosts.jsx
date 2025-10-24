@@ -31,14 +31,17 @@ const { data, error, isLoading } = useSWR("/api/getposts", fetcher, {
          <span>Refresh the page!</span>
        </div>
      );
-  
+     
+   if(isLoading){
+    return <Spinner loading={isLoading} size={20} />;
+   }
 
   return (
     <div className="mx-auto flex w-full max-w-[670px] flex-grow flex-col rounded-lg py-4">
       {
         data && data.map((post) => (
           <div key={post._id}>
-            <SinglePost post={post} loading={isLoading}/>
+            <SinglePost post={post}/>
         </div>
         ))}
     </div>

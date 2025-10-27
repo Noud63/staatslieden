@@ -302,5 +302,21 @@
     "jaar": 1905,
     "title": "Bentinckstraat 1905",
     "description": "Bentinckstraat 1905"
+  },
+  {
+    "src": "/images/toenennu/groenvanprinstererstraat.png",
+    "alt": "Groen van Prinstererstraat 1905",
+    "info": "Groen van Prinstererstraat 1905",
+    "jaar": 1905,
+    "title": "Groen van Prinstererstraat 1905",
+    "description": "Groen van Prinstererstraat 1905"
+  },
+  {
+    "src": "/images/toenennu/situatie_1912.jpg",
+    "alt": "Situatie 1912",
+    "info": "Situatie 1912",
+    "jaar": 1912,
+    "title": "Situatie 1912",
+    "description": "Situatie 1912"
   }
 ]

@@ -28,26 +28,11 @@ export default function NavbarNotificationBadge() {
   return (
     <>
       <div onClick={handleBadgeClick}>
-        <span
-          style={{
-            position: "absolute",
-            top: "-14px",
-            right: "-22px",
-            background: "red",
-            width: "1.5em",
-            height: "1.5em",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            color: "white",
-            borderRadius: "50%",
-            fontWeight: "bold",
-            fontSize: "0.9em",
-            cursor: "pointer",
-          }}
+        <div
+          className="relative"
         >
-          {count}
-        </span>
+          <div className="absolute -top-[40px] -right-[20px] flex items-center justify-center w-5 h-5 bg-red-500 text-white text-xs font-bold rounded-full">{count}</div>
+        </div>
       </div>
 
       <SideBarNotificationList

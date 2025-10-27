@@ -11,6 +11,11 @@ const getNotifications = async () => {
     }
 
     const data = await res.json();
+
+    if(!data || !Array.isArray(data.notifications)) {
+      return { notifications: [] };
+    }
+
     return data;
   } catch (error) {
     console.error("Error fetching notifications:", error);

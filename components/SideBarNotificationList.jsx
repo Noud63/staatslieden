@@ -13,10 +13,10 @@ const SideBarNotificationList = ({
   showPanel,
   setShowPanel,
   setPostId,
+  count,
 }) => {
   const { data: session } = useSession();
   const [notifications, setNotifications] = useState([]);
-
   const sidebarRef = useRef(null);
 
   // Close when clicking outside sidebar
@@ -24,7 +24,7 @@ const SideBarNotificationList = ({
     function handleClickOutside(event) {
       // console.log("Clicked outside sidebar:", event.target);
       if (
-        sidebarRef.current && 
+        sidebarRef.current &&
         !sidebarRef.current.contains(event.target) // true, same as sidebarRef.current.contains(event.target) === false
       ) {
         setShowPanel(false);
@@ -38,21 +38,26 @@ const SideBarNotificationList = ({
     };
   }, [showPanel, setShowPanel]);
 
-
   useEffect(() => {
     if (!session?.user?.id) return;
 
     const fetchNotifications = async () => {
       const res = await getNotifications();
+
       if (res && Array.isArray(res.notifications)) {
-        setNotifications(res.notifications);
-        setCount(res.notifications.length);
+        if (res.notifications.length > 9) {
+          // Happens already in the backend, but just in case
+          setNotifications(res.notifications.slice(0, 9));
+          setCount(9);
+        } else {
+          setNotifications(res.notifications);
+          setCount(res.notifications.length);
+        }
       }
     };
+
     fetchNotifications();
-
   }, [session?.user?.id, setCount]);
-
 
   const getLikedPostOrComment = (postId) => {
     if (!postId) {
@@ -63,7 +68,6 @@ const SideBarNotificationList = ({
     setShowPanel(false);
   };
 
-
   const deleteAllNotifications = async () => {
     try {
       const response = await fetch("/api/deleteAllNotifications", {
@@ -71,23 +75,22 @@ const SideBarNotificationList = ({
         headers: {
           "Content-Type": "application/json",
         },
-      });   
+      });
       if (response.ok) {
         setNotifications([]);
         setCount(0);
         setShowPanel(false);
-      } 
+      }
     } catch (error) {
       console.error("Error deleting notifications:", error);
     }
-  }
+  };
 
-return (
+  return (
     <div
-      className={`sidebar_scroll ${showPanel ? "translate-x-0" : "translate-x-full"} fixed bottom-0 right-0 top-0 z-[10] flex h-full max-h-screen w-full 
-      max-w-[340px] flex-col overflow-y-auto bg-[rgba(255,255,255)] pr-2 pl-4 pb-6 shadow-xl backdrop-blur-sm transition duration-300 ease-in`}
+      className={`sidebar_scroll ${showPanel ? "translate-x-0" : "translate-x-full"} fixed bottom-0 right-0 top-0 z-[10] flex h-full max-h-screen w-full max-w-[340px] flex-col overflow-y-auto bg-[rgba(255,255,255)] pb-6 pl-4 pr-2 shadow-xl backdrop-blur-sm transition duration-300 ease-in`}
       ref={sidebarRef}
-       >
+    >
       <div className="mb-2 mt-4 flex w-full justify-around border-b border-yellow-900">
         <FaThumbsUp color="#713f12" size={24} className="mb-4 mr-2" />
         <IoMdCloseCircleOutline
@@ -99,7 +102,11 @@ return (
       </div>
       <ul className="flex flex-col pt-2">
         {notifications.map((note) => (
-          <NotificationListItems key={note._id} note={note} getLikedPostOrComment={getLikedPostOrComment} />
+          <NotificationListItems
+            key={note._id}
+            note={note}
+            getLikedPostOrComment={getLikedPostOrComment}
+          />
         ))}
       </ul>
 
@@ -128,7 +135,6 @@ return (
 
 export default SideBarNotificationList;
 
-
 // Like a comment
 // await Notification.create({
 //           recipient: comment.userId,
@@ -136,7 +142,7 @@ export default SideBarNotificationList;
 //           type: "like",
 //           comment: comment._id,
 //           isRead: false,
-//           postId: comment.postId 
+//           postId: comment.postId
 //         });
 
 // Example notification object structure:

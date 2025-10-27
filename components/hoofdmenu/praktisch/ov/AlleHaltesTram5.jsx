@@ -3,12 +3,12 @@ import React, { useState } from "react";
 import data from "@/data/haltestramlijn5.json";
 import ToggleButton from "../../../ToggleButton"
 
-const AlleHaltesTram19 = () => {
+const AlleHaltesTram5 = () => {
   const [dropDownId, setDropDownId] = useState(false);
 
 
   return (
-    <div className="relative mb-12">
+    <div className="relative mb-4 mt-4">
       {data.map((cat) => (
         <div key={cat.title}>
           <ToggleButton
@@ -36,4 +36,4 @@ const AlleHaltesTram19 = () => {
   );
 };
 
-export default AlleHaltesTram19;
+export default AlleHaltesTram5;

@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import items from "../data/menuItems.json";
+import menuItems from "../data/menuItems.json";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useLocale } from "next-intl";
@@ -25,8 +25,8 @@ const Menu = () => {
   return (
     <div className="mx-auto mt-8 w-full max-w-[1980px] px-4 max-md:hidden">
       <div className="grid grid-cols-3 gap-2 max-sm:hidden xl:grid-cols-6">
-        {items &&
-          items.map((item, index) => (
+        {menuItems &&
+          menuItems.map((item, index) => (
             <div key={index}>
               <Link href={getLocalizedHref(item?.href || "/not-found")}>
                 <div

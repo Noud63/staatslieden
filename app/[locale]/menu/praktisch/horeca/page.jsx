@@ -1,5 +1,5 @@
 import React from "react";
-import Horeca from "@/components/hoofdmenu/praktisch/Horeca";
+import Horeca from "@/components/hoofdmenu/praktisch/horeca/Horeca";
 import TitleBar from "@/components/TitleBar";
 
 const HorecaPage = () => {

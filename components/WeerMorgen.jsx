@@ -3,6 +3,9 @@ import Image from "next/image";
 import convertSunsetAndSunrise from "@/helper/convertSunsetAndSunrise";
 
 const WeerMorgen = ({ data2, sunMoon, tomorrow }) => {
+
+  console.log("data2", data2);  
+
   const now = new Date();
   const options = {
     month: "short",
@@ -51,14 +54,14 @@ const WeerMorgen = ({ data2, sunMoon, tomorrow }) => {
         </span>
       </div>
 
-      <div className="mt-12 grid w-full grid-cols-3 grid-rows-2 bg-white/60 text-yellow-900">
-        <div className="flex items-center justify-center bg-yellow-800 py-2 text-white max-lg:bg-[#662909]">
+      <div className="mt-12 grid w-full grid-cols-3 grid-rows-2 bg-white text-yellow-900">
+        <div className="flex items-center justify-center py-2 text-white bg-gradient-to-r from-yellow-900 via-yellow-700 to-yellow-900">
           MaxTemp
         </div>
-        <div className="cell flex items-center justify-center bg-yellow-800 py-2 text-white max-lg:bg-[#662909]">
+        <div className="cell flex items-center justify-center py-2 text-white bg-gradient-to-r from-yellow-900 via-yellow-700 to-yellow-900">
           MinTemp
         </div>
-        <div className="cell flex items-center justify-center bg-yellow-800 text-white max-lg:bg-[#662909]">
+        <div className="cell flex items-center justify-center text-white bg-gradient-to-r from-yellow-900 via-yellow-700 to-yellow-900">
           Wind
         </div>
         <div className="flex items-center justify-center border-b border-l border-yellow-800">
@@ -74,14 +77,14 @@ const WeerMorgen = ({ data2, sunMoon, tomorrow }) => {
         </div>
       </div>
 
-      <div className="mb-4 mt-4 grid w-full grid-cols-3 grid-rows-2 bg-white/60 text-yellow-900">
-        <div className="flex items-center justify-center bg-yellow-800 py-2 text-white max-lg:bg-[#662909]">
+      <div className="mb-4 mt-4 grid w-full grid-cols-3 grid-rows-2 bg-white text-yellow-900">
+        <div className="flex items-center justify-center py-2 text-white bg-gradient-to-r from-yellow-900 via-yellow-700 to-yellow-900">
           druk
         </div>
-        <div className="cell flex items-center justify-center bg-yellow-800 text-white max-lg:bg-[#662909]">
+        <div className="cell flex items-center justify-center text-white bg-gradient-to-r from-yellow-900 via-yellow-700 to-yellow-900">
           zicht
         </div>
-        <div className="cell flex items-center justify-center bg-yellow-800 text-white max-lg:bg-[#662909]">
+        <div className="cell flex items-center justify-center text-white bg-gradient-to-r from-yellow-900 via-yellow-700 to-yellow-900">
           Vocht
         </div>
         <div className="flex items-center justify-center border-b border-l border-yellow-800">

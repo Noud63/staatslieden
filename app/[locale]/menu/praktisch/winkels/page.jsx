@@ -1,5 +1,5 @@
 import React from "react";
-import Winkelbestand from "@/components/hoofdmenu/praktisch/Winkelbestand";
+import Winkelbestand from "@/components/hoofdmenu/praktisch/winkels/Winkelbestand";
 import TitleBar from "@/components/TitleBar";
 
 const WinkelsPage = () => {

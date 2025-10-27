@@ -7,7 +7,7 @@ const AlleHaltesBus21 = () => {
   const [dropDownId, setDropDownId] = useState(false);
 
   return (
-    <div className="relative mb-12">
+    <div className="relative mb-12 mt-4">
       {data.map((cat) => (
         <div key={cat.title}>
           <ToggleButton

@@ -42,7 +42,7 @@ const WeatherreportPage = () => {
 
   return (
     <div className="mx-auto mt-8 w-full text-white md:max-w-[650px]">
-      <div className="mx-4 bg-[url('/images/cloud2.png')] bg-cover bg-center bg-no-repeat max-md:mx-6 max-sm:mx-4 max-xsm:mx-2">
+      <div className="mx-4 bg-[url('/images/cloud2.png')] bg-cover bg-center bg-no-repeat max-sm:mx-4 max-xsm:mx-2">
         <div className="flex items-center justify-between rounded-lg bg-white px-4 py-2 text-xl font-semibold text-yellow-900 max-xsm:text-xl">
           <span>Het weer actueel:</span>
           <span className="flex items-end py-1 text-base font-normal">

@@ -63,7 +63,7 @@ const SinglePost = ({ postId, post: initialPost, setPostId }) => {
   }
   
  return (
-    <div className={`singlepost ${postId ? "max-xsm:mx-0" : "max-xsm:mx-2"} relative mx-6 mb-4 flex h-auto flex-col rounded-xl bg-white shadow-md max-sm:mx-4 `}>
+    <div className={`singlepost ${postId ? "max-xsm:mx-0" : "max-xsm:mx-2"} relative mb-4 flex h-auto flex-col rounded-xl bg-white shadow-md`}>
 
       {postId && <div className="w-full h-full bg-gradient-to-r from-red-950 via-yellow-700 to-red-950 rounded-t-lg"><CloseSinglePostButton setPostId={setPostId} /></div>}
 

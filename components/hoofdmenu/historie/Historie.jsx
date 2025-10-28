@@ -22,7 +22,7 @@ const Historie = () => {
 
   return (
     <>
-      <div className="mx-auto w-full max-w-[900px] max-xl:max-w-full">
+      <div className="w-full px-4">
         <TitleBar title={t("titel")} titleWidth={"font-bold max-xsm:text-[16px]"}/>
 
         <div className="mb-4 mt-4 flex w-full items-center justify-between rounded-md border-b-2 border-yellow-900 bg-yellow-700 px-4 py-2 text-lg shadow-lg max-xsm:text-base">
@@ -44,7 +44,7 @@ const Historie = () => {
         <div className="mt-1 text-lg text-white max-xsm:text-base">
           <p className="pb-4">{t.raw("content_a3").slice(0, 5)}</p>
           <div
-            className="float-left mr-3 mt-2 w-[280px] bg-white p-2 max-xsmd:mb-4 max-xsmd:w-full max-xsmd:pb-4"
+            className="float-left mr-3 mt-2 w-[295px] bg-white pt-2 px-2 max-xsmd:mb-4 max-xsmd:w-full max-xsmd:pb-4"
             onClick={() =>
               addSlide({
                 src: "/images/Sloten_1750.jpg",
@@ -55,9 +55,9 @@ const Historie = () => {
             <Image
               src="/images/Sloten_1750.jpg"
               alt="Staatsliedenbuurt"
-              width={280}
+              width={295}
               height={0}
-              className="float-left h-auto w-[280px] cursor-pointer pb-1 max-xsmd:w-full"
+              className="float-left h-auto w-auto cursor-pointer max-xsmd:w-full"
               onClick={() => setOpen(true)}
             />
 
@@ -65,11 +65,11 @@ const Historie = () => {
               <span> {t("kaart_1")}</span>
             </div>
           </div>
-          <p>{t.raw("content_a3").slice(5, 10)}</p>
+          <p className="">{t.raw("content_a3").slice(5, 10)}</p>
           <p>{t.raw("content_a3").slice(10, t.raw("content_a3").length)}</p>
         </div>
 
-        <div className="mb-4 mt-8 flex w-full items-center justify-between rounded-md border-b-2 border-yellow-900 bg-yellow-700 px-4 py-2 text-lg shadow-lg max-xsm:text-base">
+        <div className="mb-4 mt-8 flex w-full items-center justify-between rounded-md border-b-2 border-yellow-900 bg-yellow-700 px-4 py-2 text-lg shadow-lg max-xsm:text-base historie:mt-12">
           Moderne tijd
         </div>
 
@@ -94,7 +94,7 @@ const Historie = () => {
               onClick={() => setOpen(true)}
             />
 
-            <div className="bg-white pl-1 text-base text-yellow-950">
+            <div className="bg-white pl-2 text-base text-yellow-950">
               <span> {t("kaart_2")}</span>
             </div>
           </div>
@@ -104,7 +104,7 @@ const Historie = () => {
         </div>
 
         <div
-          className="float-start mr-3 mt-2 w-[285px] bg-white p-2 max-xsmd:mb-4 max-xsmd:w-full"
+          className="float-start mr-3 mt-2 w-[295px] bg-white px-2 pt-2 max-xsmd:mb-4 max-xsmd:w-full"
           onClick={() =>
             addSlide({
               src: "/images/amsterdam_1940.jpg",
@@ -115,13 +115,13 @@ const Historie = () => {
           <Image
             src="/images/amsterdam_1940.jpg"
             alt="Staatsliedenbuurt"
-            width={285}
+            width={295}
             height={0}
-            className="h-auto w-[285px] cursor-pointer pb-1 max-xsmd:w-full"
+            className="h-auto w-[295px] cursor-pointer max-xsmd:w-full"
             onClick={() => setOpen(true)}
           />
 
-          <div className="bg-white text-base text-yellow-950">
+          <div className="bg-white py-1 text-base text-yellow-950">
             <span> {t("kaart_3")}</span>
           </div>
         </div>
@@ -130,7 +130,7 @@ const Historie = () => {
           <p>{t.raw("content_a5")}</p>
         </div>
 
-        <div className="mt-4 text-lg text-white max-xsm:text-base">
+        <div className="text-lg text-white max-xsm:text-base">
           <p>{t.raw("content_a6")}</p>
         </div>
         <Lightbox

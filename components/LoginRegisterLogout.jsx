@@ -15,7 +15,7 @@ const LoginRegisterLogout = () => {
   const t = useTranslations("auth");
 
   return (
-    <div className="flex flex-row items-center text-white max-md:mt-4 justify-between max-xsm:h-[50px]">
+    <div className="flex flex-row items-center text-white max-md:mt-4 justify-between max-xsm:h-[50px] max-md:border-b-2">
       <Hamburger />
 
       <div className="flex flex-row gap-4">
@@ -52,11 +52,12 @@ const LoginRegisterLogout = () => {
             </button>
           )}
         </div>
-      </div>
-
-      <Link href="/weatherreport" className="md:hidden">
+        <Link href="/weatherreport" className="md:hidden">
         <Weatherreport />
       </Link>
+      </div>
+
+      
     </div>
   );
 };

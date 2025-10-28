@@ -37,7 +37,8 @@ const { data, error, isLoading } = useSWR("/api/getposts", fetcher, {
    }
 
   return (
-    <div className="mx-auto flex w-full max-w-[670px] flex-grow flex-col rounded-lg py-4">
+    <div className="w-full flex justify-center px-4">
+         <div className="w-full max-w-[620px] flex-grow flex-col rounded-lg py-4">
       {
         data && data.map((post) => (
           <div key={post._id}>
@@ -45,6 +46,8 @@ const { data, error, isLoading } = useSWR("/api/getposts", fetcher, {
         </div>
         ))}
     </div>
+    </div>
+    
   );
 };
 

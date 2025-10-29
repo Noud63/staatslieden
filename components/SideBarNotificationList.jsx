@@ -3,7 +3,7 @@ import React, { useRef } from "react";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { FaThumbsUp } from "react-icons/fa";
-import { IoMdClose, IoMdCloseCircleOutline } from "react-icons/io";
+import { IoMdCloseCircleOutline } from "react-icons/io";
 import Image from "next/image";
 import getNotifications from "@/utils/getNotifications";
 import NotificationListItems from "./NotificationListItems";
@@ -37,6 +37,7 @@ const SideBarNotificationList = ({
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [showPanel, setShowPanel]);
+
 
   useEffect(() => {
     if (!session?.user?.id) return;
@@ -86,21 +87,24 @@ const SideBarNotificationList = ({
     }
   };
 
+  console.log("Notifications in sidebar:", notifications);  
+
   return (
     <div
-      className={`sidebar_scroll ${showPanel ? "translate-x-0" : "translate-x-full"} fixed bottom-0 right-0 top-0 z-[10] flex h-full max-h-screen w-full max-w-[340px] flex-col overflow-y-auto bg-[rgba(255,255,255)] pb-6 pl-4 pr-2 shadow-xl backdrop-blur-sm transition duration-300 ease-in`}
+      className={`sidebar_scroll ${showPanel ? "translate-x-0" : "translate-x-full"} fixed bottom-0 right-0 top-0 z-[10] flex h-full max-h-screen w-full max-w-[340px] flex-col 
+      overflow-y-auto bg-gradient-to-r from-yellow-800  to-red-950 pb-16 shadow-xl backdrop-blur-sm transition duration-300 ease-in singlepost pl-3`}
       ref={sidebarRef}
     >
-      <div className="mb-2 mt-4 flex w-full justify-around border-b border-yellow-900">
-        <FaThumbsUp color="#713f12" size={24} className="mb-4 mr-2" />
+      <div className="mt-4 flex w-full justify-around border-b border-white">
+        <FaThumbsUp color="#fff" size={24} className="mb-4 mr-2" />
         <IoMdCloseCircleOutline
-          color="#713f12"
+          color="#fff"
           size={30}
           onClick={() => setShowPanel(false)}
           className="mb-4 cursor-pointer"
         />
       </div>
-      <ul className="flex flex-col pt-2">
+      <ul className="flex flex-col">
         {notifications.map((note) => (
           <NotificationListItems
             key={note._id}
@@ -112,23 +116,23 @@ const SideBarNotificationList = ({
 
       <button
         type="button"
-        className="mx-auto mt-8 w-full rounded-lg bg-gradient-to-r from-yellow-950 via-yellow-700 to-yellow-950 py-2 text-white"
+        className="mx-auto mt-8 w-full rounded-lg border-2 border-white py-2 text-white"
         onClick={deleteAllNotifications}
       >
         Verwijder reacties
       </button>
 
-      <div className="flex w-full justify-center">
-        <div className="mt-8 flex h-[30px] w-[30px] items-center justify-center rounded-full border-2 border-[#422006] pb-1 pl-[2px]">
+      {/* <div className="flex w-full justify-center">
+        <div className="mt-8 flex items-center justify-center rounded-full border border-white p-2">
           <Image
-            src={"/images/logo_yellow.png"}
+            src={"/images/logo.png"}
             alt="logo"
             width={100}
             height={0}
-            className="h-[16px] w-[16px] rotate-6 object-cover"
+            className="h-[18px] w-[18px] rotate-6 object-cover"
           />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

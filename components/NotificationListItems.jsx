@@ -1,37 +1,37 @@
 import React from 'react'
 import Image from 'next/image'
 
-const NotificationListItems = ({ getLikedPostOrComment, note, }) => {
+const NotificationListItems = ({ getLikedPostOrComment, note }) => {
   return (
     <li
             key={note._id}
-            className="w-full border-b-2 border-dotted border-yellow-950 pt-4"
+            className="w-full border-b-2 border-dotted border-white hover:bg-gradient-to-r from-yellow-800/0 to-yellow-800"
           >
             <div
-              className="flex cursor-pointer flex-col"
+              className="flex cursor-pointer flex-col "
               onClick={() => getLikedPostOrComment(note.postId)}
-            >
+             >
               {(note.post || note.comment) && (
-                <div className="flex w-full flex-col text-yellow-900">
-                  <div className="flex justify-center pb-2">
+                <div className="flex w-full flex-col text-yellow-900  pl-4 pr-2">
+                  <div className="flex justify-center pb-2 mt-4">
                     <Image
-                      src={note?.sender.avatar || "/images/logo_yellow.png"}
+                      src={note?.sender.avatar || "/images/defaultavatar2.png"}
                       alt="logo"
                       width={100}
                       height={0}
-                      className="h-[30px] w-[30px] rounded-full object-cover"
+                      className="h-[40px] w-[40px] rounded-full object-cover"
                     />
                   </div>
 
                   <div className="flex flex-col justify-start">
-                    <div className="text-yellow-950">
-                      <span className="font-semibold">
+                    <div className="text-white">
+                      <span className="font-bold">
                         {note.sender?.name || note.sender?.username}
                       </span>{" "}
                       {note.type === "like" &&
                         (note.post ? (
                           <>
-                            vindt je bericht leuk: <br />
+                            <span className="text-base font-normal">vindt je bericht leuk:</span> <br />
                             <span>
                               {note.post?.postContent.length < 60
                                 ? note.post?.postContent
@@ -41,7 +41,7 @@ const NotificationListItems = ({ getLikedPostOrComment, note, }) => {
                           </>
                         ) : (
                           <>
-                            vindt je reactie leuk: <br />
+                            <span className="text-base font-normal">vindt je reactie leuk: </span><br />
                             <span>
                               {note.comment?.comment.length < 60
                                 ? note.comment?.comment
@@ -68,8 +68,8 @@ const NotificationListItems = ({ getLikedPostOrComment, note, }) => {
                         ))}
                     </div>
 
-                    <div className="mb-6 flex flex-col border-yellow-900 pb-2">
-                      <small className="pt-1 text-gray-500">
+                    <div className="mb-6 flex flex-col pb-2">
+                      <small className="pt-1 text-orange-300">
                         Gepost op : {new Date(note.createdAt).toLocaleString()}
                       </small>
                     </div>

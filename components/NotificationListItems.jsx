@@ -5,14 +5,14 @@ const NotificationListItems = ({ getLikedPostOrComment, note }) => {
   return (
     <li
             key={note._id}
-            className="w-full border-b-2 border-dotted border-white hover:bg-gradient-to-r from-yellow-800/0 to-yellow-800"
+            className="w-full border-b-2 border-dotted border-white hover:bg-gradient-to-r from-yellow-800/0 to-yellow-800 cursor-pointer"
           >
             <div
-              className="flex cursor-pointer flex-col "
+              className="flex flex-col"
               onClick={() => getLikedPostOrComment(note.postId)}
              >
               {(note.post || note.comment) && (
-                <div className="flex w-full flex-col text-yellow-900  pl-4 pr-2">
+                <div className="flex w-full flex-col text-yellow-900 pl-4 pr-2">
                   <div className="flex justify-center pb-2 mt-4">
                     <Image
                       src={note?.sender.avatar || "/images/defaultAvatar2.png"}

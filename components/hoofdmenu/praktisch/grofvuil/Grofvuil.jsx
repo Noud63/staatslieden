@@ -9,8 +9,8 @@ const Grofvuil = () => {
   return (
     <div>
       <div className="mt-8">
-        <TitleBar title="Grofvuil" />
-        <div className="py-8 pl-4 max-xsm:pl-2">
+        <TitleBar title="Grofvuil" titleWidth={"ml-2 font-bold"}/>
+        <div className="pt-4 pb-6 pl-4 max-xsm:pl-2">
           <p>
             Grofvuil zijn spullen die niet in een vuilniszak of afvalcontainer
             passen, zoals een magnetron, matras, vloerkleed of tafel.
@@ -22,8 +22,8 @@ const Grofvuil = () => {
       </div>
 
       <div>
-        <TitleBar title="Grofvuil: wegbrengen" />
-        <div className="py-8 pl-4 max-xsm:pl-2">
+        <TitleBar title="Grofvuil: wegbrengen" titleWidth={"ml-2 font-bold"}/>
+        <div className="pt-4 pb-6 pl-4 max-xsm:pl-2">
           <p>
             Breng uw grof afval gratis naar een recyclepunt. Dat bent u er
             meteen vanaf.
@@ -49,14 +49,14 @@ const Grofvuil = () => {
       </div>
 
       <div>
-        <TitleBar title="Grofvuil: laten ophalen" />
+        <TitleBar title="Grofvuil: laten ophalen" titleWidth={"ml-2 font-bold"}/>
       </div>
 
       <WatWeOphalen />
 
-      <div className="mt-8">
-        <TitleBar title="Ophaaldag grofvuil" />
-        <div className="py-8 pl-4 max-xsm:pl-2">
+      <div className="mt-2">
+        <TitleBar title="Ophaaldag grofvuil" titleWidth={"ml-2 font-bold"} />
+        <div className="pt-4 pb-6 pl-4 max-xsm:pl-2">
           <div className="flex flex-row">
             <div className="w-[110px]">Ophaaldag: </div>
             <div className="flex flex-1">Woensdag</div>
@@ -76,13 +76,24 @@ const Grofvuil = () => {
         </div>
       </div>
 
+<div>
+<TitleBar title="Droppie" titleWidth={"ml-2 font-bold"}/>
+<div className="pt-4 pb-6 pl-4 max-xsm:pl-2">
+  Bij Droppie op het Van Limburg StierumPlein 1, krijg je cash voor gescheiden afval.<br />
+  Je kunt hier textiel, E-waste, lege flessen of blikjes, plastic verpakking en drankkartons, frituurvet en oliën, batterijen en cartridges inleveren.<br />
+  Voor meer informatie, <a href="https://www.GOdroppie.com/" target="_blank"><span className="underline">klik hier.</span></a> 
+</div>
+</div>
+      
+
       <div>
-        <TitleBar title="Bruikbare spullen" />
-        <div className="py-8 pl-4 max-xsm:pl-2">
+        <TitleBar title="Bruikbare spullen" titleWidth={"ml-2 font-bold"}/>
+        <div className="pt-4 pb-6 pl-4 max-xsm:pl-2">
           <p>
             Geef spullen die nog bruikbaar zijn een tweede leven.
             <br />
-            Verkoop ze of breng ze naar een kringloop- of weggeefwinkel.
+            Verkoop ze of breng ze naar een kringloop- of weggeefwinkel, bijvoorbeeld Rataplan aan de Van Slingelandtstraat 39.<br />
+            Voor meer informatie, <a href="https://rataplan.nl/" target="_blank"><span className="underline">klik hier.</span></a>
           </p>
         </div>
       </div>

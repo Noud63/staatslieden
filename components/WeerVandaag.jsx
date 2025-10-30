@@ -53,13 +53,13 @@ const WeerVandaag = ({ data1, sunMoon }) => {
       </div>
 
       <div className="mt-12 grid w-full grid-cols-3 grid-rows-2 bg-white font-semibold text-yellow-900">
-        <div className="flex items-center justify-center py-2 text-white bg-gradient-to-r from-yellow-900 via-yellow-700 to-yellow-900">
+        <div className="flex items-center justify-center py-2 text-white max-lg:bg-[#662909] bg-yellow-800">
           MaxTemp
         </div>
-        <div className="cell flex items-center justify-center py-2 text-white max-lg:bg-[#662909] bg-gradient-to-r from-yellow-900 via-yellow-700 to-yellow-900">
+        <div className="cell flex items-center justify-center py-2 text-white max-lg:bg-[#662909] bg-yellow-800">
           MinTemp
         </div>
-        <div className="cell flex items-center justify-center text-white max-lg:bg-[#662909] bg-gradient-to-r from-yellow-900 via-yellow-700 to-yellow-900">
+        <div className="cell flex items-center justify-center text-white max-lg:bg-[#662909] bg-yellow-800">
           Wind
         </div>
         <div className="flex items-center justify-center border-b border-l border-yellow-800">
@@ -70,25 +70,25 @@ const WeerVandaag = ({ data1, sunMoon }) => {
           {data1.tempMin}
           {`\xB0C`}
         </div>
-        <div className="f flex items-center justify-center border-b border-l border-r border-yellow-800">
+        <div className="flex items-center justify-center border-b border-l border-r border-yellow-800">
           {data1.wind} bft
         </div>
       </div>
 
       <div className="mt-4 grid w-full grid-cols-3 grid-rows-2 bg-white font-semibold text-yellow-900">
-        <div className="flex items-center justify-center py-2 text-white max-lg:bg-[#662909] bg-gradient-to-r from-yellow-900 via-yellow-700 to-yellow-900">
+        <div className="flex items-center justify-center py-2 text-white max-lg:bg-[#662909] bg-yellow-800">
           Druk
         </div>
-        <div className="cell flex items-center justify-center text-white max-lg:bg-[#662909] bg-gradient-to-r from-yellow-900 via-yellow-700 to-yellow-900">
+        <div className="cell flex items-center justify-center text-white max-lg:bg-[#662909] bg-yellow-800">
           Zicht
         </div>
-        <div className="cell flex items-center justify-center text-white max-lg:bg-[#662909] bg-gradient-to-r from-yellow-900 via-yellow-700 to-yellow-900">
+        <div className="cell flex items-center justify-center text-white max-lg:bg-[#662909] bg-yellow-800">
           Vocht
         </div>
         <div className="flex items-center justify-center border-b border-l border-yellow-800">
           {data1.pressure} hPa
         </div>
-        <div className="f flex items-center justify-center border-b border-l border-yellow-800">
+        <div className="flex items-center justify-center border-b border-l border-yellow-800">
           {data1.visibility} m
         </div>
         <div className="flex items-center justify-center border-b border-l border-r border-yellow-800">

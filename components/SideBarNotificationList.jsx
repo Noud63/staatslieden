@@ -87,8 +87,7 @@ const SideBarNotificationList = ({
     }
   };
 
-  console.log("Notifications in sidebar:", notifications);  
-
+  // console.log("Notifications in sidebar:", notifications); 
   return (
     <div
       className={`sidebar_scroll ${showPanel ? "translate-x-0" : "translate-x-full"} fixed bottom-0 right-0 top-0 z-[10] flex h-full max-h-screen w-full max-w-[340px] flex-col 

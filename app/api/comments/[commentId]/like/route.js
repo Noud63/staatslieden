@@ -1,6 +1,7 @@
 import connectDB from "@/connectDB/database";
 import CommentLike from "@/models/commentLikes";
 import Comment from "@/models/comment";
+import Post from "@/models/post";
 import { getSessionUser } from "@/utils/getSessionUser";
 import Notification from "@/models/notification";
 
@@ -46,6 +47,7 @@ export const POST = async (request, { params }) => {
 
        // Remove the notification for this like
   if (comment && comment.userId.toString() !== userId) {
+    
     await Notification.findOneAndDelete({
       recipient: comment.userId,
       sender: userId,
@@ -65,6 +67,7 @@ export const POST = async (request, { params }) => {
 
        // Create a notification for this like
       if (comment && comment.userId.toString() !== userId) {
+
         await Notification.create({
           recipient: comment.userId,
           sender: userId,

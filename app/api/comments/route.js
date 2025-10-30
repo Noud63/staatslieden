@@ -62,7 +62,7 @@ export const POST = async (request) => {
         sender: userId,
         postId: postId,
       });
-      console.log("Comment owner Note:", note);
+      console.log("Comment owner Note:", JSON.stringify("Note:", note, null, 2) );
     }else if(parentId === null && (post && post.userId.toString()) !== userId){
          const postOwnerNote = await Notification.create({
         recipient: post.userId,
@@ -72,7 +72,7 @@ export const POST = async (request) => {
         sender: userId,
         postId: postId,
       });
-      console.log("Post Owner Note:", postOwnerNote);
+      console.log("Post Owner Note:", JSON.stringify("PostOwnerNote:", postOwnerNote, null, 2) );
     }
 
     return NextResponse.json(newComment, { status: 201 });

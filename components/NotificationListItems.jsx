@@ -15,7 +15,7 @@ const NotificationListItems = ({ getLikedPostOrComment, note }) => {
                 <div className="flex w-full flex-col text-yellow-900 pl-4 pr-2">
                   <div className="flex justify-center pb-2 mt-4">
                     <Image
-                      src={note?.sender.avatar || "/images/defaultAvatar2.png"}
+                      src={note?.sender.avatar || "/images/defaultAvatar1.png"}
                       alt="logo"
                       width={100}
                       height={0}

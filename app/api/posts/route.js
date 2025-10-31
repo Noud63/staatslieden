@@ -181,7 +181,7 @@ export async function GET() {
       }),
     );
 
-    // console.log("Posts with Comments:", JSON.stringify(postsWithComments, null, 2))
+    console.log("Posts with Comments:", JSON.stringify(postsWithComments, null, 2))
 
     return NextResponse.json(postsWithComments, { status: 200 });
   } catch (error) {

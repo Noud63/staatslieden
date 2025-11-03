@@ -22,7 +22,7 @@ if (isLoading)
     </div>
   );
 
-if (error) return <div>Error loading posts.</div>;
+if (error) return <div className="flex justify-center text-xl text-white mt-20">Error loading posts!</div>;
 
   return (
     <div className="py-4">

@@ -1,7 +1,7 @@
-
+import AddPost from "@/components/AddPost";
 export default function Layout({ children }) {
   return (
-    <div className="w-full max-w-[670px] mx-auto">
+    <div className="w-full max-w-[620px] mx-auto">
       <main>{children}</main>
    </div>
   );

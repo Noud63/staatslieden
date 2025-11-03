@@ -24,7 +24,7 @@ export async function GET(req, { params }) {
 
     // const userId = currentUserId
 
-    const posts = await Post.find({})
+    const posts = await Post.find({});
     // Fetch all avatars
     const userIds = posts.map((p) => p.userId);
     const avatars = await Avatar.find({ userId: { $in: userIds } }).lean();
@@ -33,13 +33,22 @@ export async function GET(req, { params }) {
       avatars.map((a) => [a.userId.toString(), a.avatar]),
     );
 
-    const postComments = await postWithComments(post, currentUserId, avatarMap);
+    //Fetch all posts likes
+    const postIds = posts.map((p) => p._id);
+    const likes = await PostLike.find({
+      postId: { $in: postIds },
+      userId: currentUserId,
+    }).lean();
+
+    const likedPosts = new Set(likes.map((l) => l.postId.toString()));
+
+    const postComments = await postWithComments(post, currentUserId, avatarMap, likedPosts);
 
     return NextResponse.json(postComments, { status: 200 });
   } catch (error) {
     return NextResponse.json(
       { message: "Error fetching post", error },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

@@ -35,8 +35,17 @@ export async function GET(request, { params }) {
       avatars.map((a) => [a.userId.toString(), a.avatar]),
     );
 
+    //Fetch all posts likes
+    const postIds = posts.map((p) => p._id);
+    const likes = await PostLike.find({
+      postId: { $in: postIds },
+      userId: currentUserId,
+    }).lean();
+
+    const likedPosts = new Set(likes.map((l) => l.postId.toString()));
+
     const postsWithComments = await Promise.all(
-      posts.map((post) => postWithComments(post, currentUserId, avatarMap)),
+      posts.map((post) => postWithComments(post, currentUserId, avatarMap, likedPosts)),
     );
 
     // console.log(

@@ -27,11 +27,22 @@ export async function GET(request, { params }) {
       .sort({ createdAt: -1 })
       .lean();
 
-    const postsWithComments = await Promise.all(
-      posts.map((post) => postWithComments(post, currentUserId)),
+    // Fetch all avatars
+    const userIds = posts.map((p) => p.userId);
+    const avatars = await Avatar.find({ userId: { $in: userIds } }).lean();
+
+    const avatarMap = Object.fromEntries(
+      avatars.map((a) => [a.userId.toString(), a.avatar]),
     );
 
-     console.log("Posts with Comments:", JSON.stringify(postsWithComments[2], null, 2)  )
+    const postsWithComments = await Promise.all(
+      posts.map((post) => postWithComments(post, currentUserId, avatarMap)),
+    );
+
+    // console.log(
+    //   "Posts with Comments:",
+    //   JSON.stringify(postsWithComments[2], null, 2),
+    // );
 
     return NextResponse.json(postsWithComments, { status: 200 });
   } catch (error) {

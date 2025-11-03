@@ -25,7 +25,7 @@ export async function GET(request, { params }) {
 
     const posts = await Post.find(query) // Filter posts by userId if provided else get all posts {}
       .sort({ createdAt: -1 })
-      .lean();
+      .lean()
 
     // Fetch all avatars
     const userIds = posts.map((p) => p.userId);

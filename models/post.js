@@ -29,6 +29,8 @@ const PostSchema = new Schema(
   { timestamps: true },
 );
 
+PostSchema.index({ createdAt: -1 })
+
 const Post = models.Post || model("Post", PostSchema);
 
 export default Post;

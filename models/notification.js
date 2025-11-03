@@ -11,5 +11,7 @@ const notificationSchema = new Schema({
   createdAt: { type: Date, default: Date.now }
 });
 
+notificationSchema.index({ createdAt: -1 })
+
 const Notification = models.Notification || model("Notification", notificationSchema);
 export default Notification;

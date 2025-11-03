@@ -22,8 +22,6 @@ export async function GET(req, { params }) {
       return NextResponse.json({ message: "Post not found" }, { status: 404 });
     }
 
-    // const userId = currentUserId
-
     const posts = await Post.find({});
     // Fetch all avatars
     const userIds = posts.map((p) => p.userId);

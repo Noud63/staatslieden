@@ -9,6 +9,7 @@ const PostLikeSchema = new Schema(
 );
 
 PostLikeSchema.index({ userId: 1, postId: 1 }, { unique: true });
+PostLikeSchema.index({ userId: 1 });    
 
 const PostLike = models.PostLike || model("PostLike", PostLikeSchema);
 export default PostLike;

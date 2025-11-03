@@ -30,7 +30,7 @@ if (cached.conn &&  mongoose.connection.readyState === 1) {
       bufferCommands: true,
     };
 
-    cached.promise = await mongoose.connect(MONGODB_URI, {autoIndex: true}, opts).then((mongoose) => {
+    cached.promise = await mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
       return mongoose;
     });
 

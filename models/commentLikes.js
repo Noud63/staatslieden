@@ -9,6 +9,7 @@ const CommentLikeSchema = new Schema(
 );
 
 CommentLikeSchema.index({ userId: 1, commentId: 1 }, { unique: true });
+CommentLikeSchema.index({ userId: 1 });
 
 const CommentLike = models.CommentLike || model("CommentLike", CommentLikeSchema);
 export default CommentLike;

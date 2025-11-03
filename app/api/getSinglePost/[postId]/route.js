@@ -22,7 +22,18 @@ export async function GET(req, { params }) {
       return NextResponse.json({ message: "Post not found" }, { status: 404 });
     }
 
-    const postComments = await postWithComments(post, currentUserId);
+    // const userId = currentUserId
+
+    const posts = await Post.find({})
+    // Fetch all avatars
+    const userIds = posts.map((p) => p.userId);
+    const avatars = await Avatar.find({ userId: { $in: userIds } }).lean();
+
+    const avatarMap = Object.fromEntries(
+      avatars.map((a) => [a.userId.toString(), a.avatar]),
+    );
+
+    const postComments = await postWithComments(post, currentUserId, avatarMap);
 
     return NextResponse.json(postComments, { status: 200 });
   } catch (error) {

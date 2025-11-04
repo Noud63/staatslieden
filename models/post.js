@@ -31,7 +31,6 @@ const PostSchema = new Schema(
 
 PostSchema.index({ createdAt: -1 });                    // latest posts first
 PostSchema.index({ userId: 1, createdAt: -1 });        // posts by user, newest first
-PostSchema.index({ _id: 1 });                           // fetch post by id (single post)
 
 const Post = models.Post || model("Post", PostSchema);
 

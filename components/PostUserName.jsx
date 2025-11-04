@@ -1,7 +1,10 @@
 import React from 'react'
 import Link from 'next/link';
+import { useTranslations } from "next-intl";
 
 const PostUserName = ({post}) => {
+
+    const t = useTranslations("post");
 
   return (
     <div className="flex flex-col justify-start text-lg font-semibold text-black ml-2">
@@ -11,7 +14,7 @@ const PostUserName = ({post}) => {
         </div>
       </Link>
       <span className="w-full flex text-sm font-normal text-gray-500">
-        Gepost op: {`${new Date(post.createdAt).toLocaleDateString()}`}
+        {t('gepostop')} {`${new Date(post.createdAt).toLocaleDateString()}`}
       </span>
     </div>
   );

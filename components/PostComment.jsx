@@ -48,7 +48,7 @@ const PostComment = ({post, onLikeComment, onDeleteComment}) => {
       <div className="flex h-auto w-full gap-2 px-4 pb-4 max-xxsm:px-2">
         <div className="h-[45px] w-[45px] overflow-hidden rounded-full bg-gray-200 max-xxsm:h-[40px] max-xxsm:w-[40px]">
           <Image
-            src={profilePic ? profilePic : "/images/defaultAvatar2.png"}
+            src={profilePic ? profilePic : "/images/defaultAvatar1.png"}
             alt="avatar"
             width={45}
             height={45}

@@ -112,7 +112,8 @@
   },
   "post": {
     "postiets": "Post something",
-    "delen": "Share something with us?"
+    "delen": "Share something with us?",
+    "gepostop": "Posted on:"
   },
   "beeld": {
     "titel": "The Staatsliedenbuurt in pictures",
@@ -123,5 +124,18 @@
   },
   "reactie": {
     "reacties": "Comments"
+  },
+   "schrijfbericht": {
+    "bericht": "Write a message",
+    "afbeelding": "Add image:",
+    "error": "No text or image selected!",
+    "verstuur": "Send"
+  },
+  "contact": {
+    "contact": "Do you have a question, complaint, or a suggestion to improve the app?"
+  },
+  "weer": {
+    "vandaag": "Current weather",
+    "morgen": "The weather tomorrow"
   }
 }

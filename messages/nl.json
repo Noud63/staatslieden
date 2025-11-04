@@ -112,7 +112,8 @@
   },
   "post": {
     "postiets": "Post hier iets",
-    "delen": "Wat wil je met ons delen?"
+    "delen": "Wat wil je met ons delen?",
+    "gepostop": "Gepost op:"
   },
   "beeld": {
     "titel": "De Staatsliedenbuurt in beeld",
@@ -123,5 +124,18 @@
   },
   "reactie": {
     "reacties": "Reacties"
+  },
+  "schrijfbericht": {
+    "bericht": "Schrijf een bericht",
+    "afbeelding": "Voeg afbeelding toe:",
+    "error": "Geen tekst of afbeelding geselecteerd!",
+    "verstuur": "Verstuur"
+  },
+  "contact": {
+    "contact": "Heeft u een vraag, klacht of een tip ter verbetering van de app?"
+  },
+  "weer": {
+    "vandaag": "Het weer actueel",
+    "morgen": "Het weer morgen"
   }
 }

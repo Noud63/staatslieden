@@ -48,6 +48,8 @@ const getWeatherData = async () => {
       sunset: convertTime(city.sunset),
     };
 
+    // console.log("Weather:", data)
+
     return { data, data2, result };
   } catch (error) {
     console.log(error);

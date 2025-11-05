@@ -84,9 +84,7 @@
       "There are various new housing complexes, such as the eco-district on the former waterworks site. The elderly housing complex De Koperen Knoop on Van Limburg Stirumstraat preserves the memory of the neighborhood's oldest residents.\n",
       "In Zaal 100, a squatted school on De Wittenstraat, and on the grounds of the former Westergasfabriek, culture is thriving."
     ],
-    "content_a7": [
-
-    ]
+    "content_a7": []
   },
   "demografie": {
     "titel": "Demografics",
@@ -125,7 +123,7 @@
   "reactie": {
     "reacties": "Comments"
   },
-   "schrijfbericht": {
+  "schrijfbericht": {
     "bericht": "Write a message",
     "afbeelding": "Add image:",
     "error": "No text or image selected!",
@@ -136,6 +134,12 @@
   },
   "weer": {
     "vandaag": "Current weather",
-    "morgen": "The weather tomorrow"
+    "morgen": "The weather tomorrow",
+    "druk": "Pressure",
+    "vocht": "Humidity",
+    "zicht": "Visibility",
+    "zonop": "Sunrise",
+    "zononder": "Sunset",
+    "uur": "hour"
   }
 }

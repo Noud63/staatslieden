@@ -136,6 +136,12 @@
   },
   "weer": {
     "vandaag": "Het weer actueel",
-    "morgen": "Het weer morgen"
+    "morgen": "Het weer morgen",
+    "druk": "Druk",
+    "vocht": "Vocht",
+    "zicht": "Zicht",
+    "zonop": "Zon op",
+    "zononder": "Zon onder",
+    "uur": "uur"
   }
 }

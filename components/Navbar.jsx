@@ -6,7 +6,6 @@ import LanguageSwitcher from "./LanguageSwitcher";
 import { useLocale } from "next-intl";
 
 const Navbar = () => {
-  
   const locale = useLocale();
 
   return (

@@ -16,7 +16,7 @@ const getNotifications = async () => {
       return { notifications: [] };
     }
 
-    console.log("Fetched notifications:", JSON.stringify(data.notifications, null, 2) );
+    // console.log("Fetched notifications:", JSON.stringify(data.notifications, null, 2) );
 
     return data;
   } catch (error) {

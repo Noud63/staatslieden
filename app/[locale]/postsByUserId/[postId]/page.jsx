@@ -8,7 +8,7 @@ const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
 const PostByUserPage =({params}) => {
 
-const userId = params.postId; // Assuming postId is the userId in this context
+const userId = params.postId; // PostId is the userId in this context
 
 const { data, error, isLoading } = useSWR(
   `/api/getposts/postsByUserId/${userId}`,

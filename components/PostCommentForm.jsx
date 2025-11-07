@@ -3,7 +3,6 @@ import { useState, useEffect, useRef } from "react";
 import { useSession } from "next-auth/react";
 import { IoSendSharp } from "react-icons/io5";
 import { useRouter } from "next/navigation";
-import { mutate } from "swr";
 import { useTranslations } from "next-intl";
 import { revalidatePostCaches } from "@/utils/revalidatePost";
 import { usePostActions } from "@/hooks/usePostActions";
@@ -12,7 +11,6 @@ const PostCommentForm = ({
   postId,
   parentId = null,
   setShowForm,
-  showForm,
   post
 }) => {
   const [text, setText] = useState("");
@@ -74,10 +72,11 @@ const PostCommentForm = ({
   };
 
   useEffect(() => {
-    if (text !== "") {
+    if (text) {
       setSendButton(true);
-    } else {
+    } else if(text === "") {
       setSendButton(false);
+      setShowForm(false)
     }
   }, [text]);
 
@@ -105,7 +104,7 @@ const PostCommentForm = ({
         ref={textareaRef}
         type="text"
         name="comment"
-        className="max-h-[500px] w-full resize-none overflow-y-hidden rounded-xl bg-yellow-800/10 py-2 pl-2 pr-10 text-black placeholder-gray-500 outline-none"
+        className="max-h-[500px] w-full resize-none overflow-y-hidden rounded-xl bg-yellow-800/10 py-2 pl-2 pr-10 text-black placeholder-gray-500 outline-non"
         placeholder={t("schrijfeenreactie")}
         defaultValue={text}
         onChange={handleInputChange}

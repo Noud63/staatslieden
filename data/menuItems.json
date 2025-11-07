@@ -14,7 +14,7 @@
     "title": ["Praktisch", "Praktical"],
     "href": "/menu/praktisch/grofvuil"
   },
-  { "id": 8, "title": ["Westergasfabriek", "Westergasfabriek"], "href": "/menu/westergas" },
+  { "id": 8, "title": ["Westergas", "Westergas"], "href": "/menu/westergas" },
   { "id": 9, "title": ["Buurtteam", "neighborhood team"], "href": "/menu/buurt/buurtteam" },
   {
     "id": 10,

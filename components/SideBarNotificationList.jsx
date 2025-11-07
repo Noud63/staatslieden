@@ -60,7 +60,7 @@ const SideBarNotificationList = ({
     fetchNotifications();
   }, [session?.user?.id, setCount]);
 
-  const getLikedPostOrComment = (postId) => {
+  const getLikedPost = (postId) => {
     if (!postId) {
       console.warn("No postId found for notification:", note);
       return;
@@ -108,7 +108,7 @@ const SideBarNotificationList = ({
           <NotificationListItems
             key={note._id}
             note={note}
-            getLikedPostOrComment={getLikedPostOrComment}
+            getLikedPostOrComment={getLikedPost}
           />
         ))}
       </ul>

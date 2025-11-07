@@ -48,11 +48,6 @@ export async function GET(request, { params }) {
       posts.map((post) => postWithComments(post, currentUserId, avatarMap, likedPosts)),
     );
 
-    // console.log(
-    //   "Posts with Comments:",
-    //   JSON.stringify(postsWithComments[2], null, 2),
-    // );
-
     return NextResponse.json(postsWithComments, { status: 200 });
   } catch (error) {
     return NextResponse.json(

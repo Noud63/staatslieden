@@ -4,14 +4,17 @@ import data from "../../../../data/winkelbestand.json"
 import ToggleButton from "@/components/ToggleButton";
 
 const Winkelbestand = () => {
+
   const [dropDownId, setDropDownId] = useState(null);
+
+  console.log("DD:", dropDownId)
 
   return data.map((cat) => (
     <div key={cat.title}>
       <ToggleButton
-        dropDownId={dropDownId}
+        dropDownId={dropDownId}  // Initially null
         setDropDownId={setDropDownId}
-        ID={cat.id}
+        ID={cat.id}  // All id's 0,1,2,3,4,5,6,7 etc
         title={cat.title}
       />
 

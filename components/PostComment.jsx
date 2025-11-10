@@ -7,6 +7,7 @@ import Comment from "./Comment";
 import { useTranslations } from "next-intl";
 
 const PostComment = ({post, onLikeComment, onDeleteComment}) => {
+  
   const { data: session } = useSession();
   const profilePic = session?.user?.avatar;
 

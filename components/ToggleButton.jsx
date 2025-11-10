@@ -3,8 +3,11 @@ import { IoIosArrowDown } from "react-icons/io";
 
 const ToggleButton = ({ ID, title, dropDownId, setDropDownId }) => {
 
+  console.log("ID:", ID)
+
   const toggleDropdown = () => {
-    setDropDownId(dropDownId === ID ? null : ID);
+    setDropDownId(dropDownId === ID ? null : ID); // Open: when clicked ID is set, cause dropDownId === ID is always false
+                                                  // Close: now dropDownId === ID is always true, ID set back to null
   };
   
   return (

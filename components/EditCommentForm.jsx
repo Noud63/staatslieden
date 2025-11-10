@@ -7,6 +7,7 @@ import { useTranslations } from 'next-intl';
 import { usePostActions } from "@/hooks/usePostActions";
 
 const EditCommentForm = ({comment, setShowEditComment, post}) => {
+  
   const [commentContent, setCommentContent] = useState(comment?.comment);
 
   const textareaRef = useRef(null);

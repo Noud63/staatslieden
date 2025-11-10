@@ -29,8 +29,7 @@ const Veiligheid = () => {
           <br />
           Hulp nodig?
         </p>
-        <span className="mt-2 font-semibold"></span>
-        <br />
+        
 
         <p className="mt-4">
           <span className="mt-2 font-semibold">Huiselijk geweld</span><br />

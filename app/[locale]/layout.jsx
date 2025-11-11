@@ -12,13 +12,15 @@ import "yet-another-react-lightbox/styles.css";
 import "yet-another-react-lightbox/plugins/captions.css";
 
 // Replace hasLocale with a custom implementation
-// const isValidLocale = (locales, locale) => locales.includes(locale);
+const isValidLocale = (locales, locale) => locales.includes(locale);
 
 export default async function RootLayout({ children, params }) {
   const { locale } = await params;
-  // if (!isValidLocale(routing.locales, locale)) {
-  //   notFound();
-  // }
+
+  console.log(routing.locales, locale)
+  if (!isValidLocale(routing.locales, locale)) {
+    notFound();
+  }
 
   const messages = (await import(`../../messages/${locale}.json`)).default;
 

@@ -1,4 +1,4 @@
-import TitleBar from "@/components/TitleBar";
+import React,{useEffect, useState} from "react";
 import Financien from "./Financien";
 import Huisvesting from "./Huisvesting";
 import Gezondheid from "./Gezondheid";
@@ -7,8 +7,10 @@ import Werk from "./Werk";
 import Ontmoeten from "./Ontmoeten";
 import Zorg from "./Zorg";
 import Veiligheid from "./Veiligheid";
+import { ArrowUp } from "lucide-react";
 
 const BuurtTeam = () => {
+
   const items = [
     { label: "Financiën", id: "financien" },
     { label: "Huisvesting", id: "huisvesting" },
@@ -20,11 +22,34 @@ const BuurtTeam = () => {
     { label: "Veiligheid", id: "veiligheid" },
   ];
 
+  
+
+ const [showScrollButton, setShowScrollButton] = useState(false);
+
+  useEffect(() => {
+     
+    const handleScrollVisibility = () => {
+      if (window.scrollY > 1000) {
+        setShowScrollButton(true);
+      } else {
+        setShowScrollButton(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScrollVisibility);
+    return () => window.removeEventListener("scroll", handleScrollVisibility);
+  }, []);
+
+
   const handleScroll = (id) => {
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: "smooth", block: "start" });
     }
+  };
+
+   const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -71,7 +96,7 @@ const BuurtTeam = () => {
               <li
                 key={item.id}
                 onClick={() => handleScroll(item.id)}
-                className="hover:underline text-white bg-white w-[200px] rounded-md py-1"
+                className="hover:underline decoration-yellow-800 text-white bg-white w-[200px] rounded-md py-1"
               >
                 <span className="text-yellow-950 pl-2 font-semibold text-base">{item.label}</span>
               </li>
@@ -95,6 +120,17 @@ const BuurtTeam = () => {
       <Werk />
 
       <Veiligheid />
+
+      {/* Scroll to Top Button */}
+      {showScrollButton && (
+        <button
+          onClick={scrollToTop}
+          className="p-2 bg-gradient-to-l from-red-950 to-yellow-700 fixed bottom-6 right-6 text-white rounded-full shadow-lg border-2 transition-all duration-300 singlepost max-md:p-1"
+          aria-label="Scroll to top"
+        >
+          <ArrowUp size={30} />
+        </button>
+      )}
 
      </div>
   );

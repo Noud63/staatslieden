@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import Financien from "./Financien";
 import Huisvesting from "./Huisvesting";
 import Gezondheid from "./Gezondheid";
@@ -7,10 +7,9 @@ import Werk from "./Werk";
 import Ontmoeten from "./Ontmoeten";
 import Zorg from "./Zorg";
 import Veiligheid from "./Veiligheid";
-import { ArrowUp } from "lucide-react";
+import { ArrowUp, ArrowRight } from "lucide-react";
 
 const BuurtTeam = () => {
-
   const items = [
     { label: "Financiën", id: "financien" },
     { label: "Huisvesting", id: "huisvesting" },
@@ -22,12 +21,9 @@ const BuurtTeam = () => {
     { label: "Veiligheid", id: "veiligheid" },
   ];
 
-  
-
- const [showScrollButton, setShowScrollButton] = useState(false);
+  const [showScrollButton, setShowScrollButton] = useState(false);
 
   useEffect(() => {
-     
     const handleScrollVisibility = () => {
       if (window.scrollY > 1000) {
         setShowScrollButton(true);
@@ -40,7 +36,6 @@ const BuurtTeam = () => {
     return () => window.removeEventListener("scroll", handleScrollVisibility);
   }, []);
 
-
   const handleScroll = (id) => {
     const el = document.getElementById(id);
     if (el) {
@@ -48,7 +43,7 @@ const BuurtTeam = () => {
     }
   };
 
-   const scrollToTop = () => {
+  const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -80,25 +75,34 @@ const BuurtTeam = () => {
           <br />
           Mail of bel ons voor een afspraak.
           <br />
-          <div className="mt-4">Adres : Van Limburg Stirumstraat 119 , 1051 BA
-          <br />
-          E-mail : aanmelden@​buurtteamamsterdamwest​.nl
-          <br />
-          Tel : 020 618 49 52
+          <div className="mt-4">
+            Adres : Van Limburg Stirumstraat 119 , 1051 BA
+            <br />
+            E-mail : aanmelden@​buurtteamamsterdamwest​.nl
+            <br />
+            Tel : 020 618 49 52
           </div>
         </div>
 
-        <div className="mt-4">
-          <div className="border-b border-yellow-800 w-full rounded-md bg-yellow-700 px-4 py-2 text-lg shadow-lg">Het buurtteam kan u bijstaan op het gebied van :</div>
+        <div className="mt-6">
+          <div className="w-full rounded-md border-b border-yellow-800 bg-yellow-700 px-4 py-2 text-lg shadow-lg">
+            Het buurtteam kan u bijstaan op het gebied van :
+          </div>
           <br />
-          <ul className="ml-5 cursor-pointer list-disc space-y-2 text-yellow-900 w-full max-w-[200px]">
+          <ul className="ml-5 w-full max-w-[200px] cursor-pointer list-disc space-y-2 text-yellow-900">
             {items.map((item) => (
               <li
                 key={item.id}
                 onClick={() => handleScroll(item.id)}
-                className="hover:underline decoration-yellow-800 text-white bg-white w-[200px] rounded-md py-1"
+                className="w-[200px] rounded-md bg-white py-1 text-white decoration-yellow-800 hover:underline"
               >
-                <span className="text-yellow-950 pl-2 font-semibold text-base">{item.label}</span>
+                <div className="flex flex-row items-center justify-between px-2">
+                  
+                  <div className=" text-base font-semibold text-yellow-950">
+                    {item.label}
+                  </div>
+                  <ArrowRight size={15} color={"#713f12"} />
+                </div>
               </li>
             ))}
           </ul>
@@ -125,14 +129,13 @@ const BuurtTeam = () => {
       {showScrollButton && (
         <button
           onClick={scrollToTop}
-          className="p-2 bg-gradient-to-l from-red-950 to-yellow-700 fixed bottom-6 right-6 text-white rounded-full shadow-lg border-2 transition-all duration-300 singlepost max-md:p-1"
+          className="singlepost fixed bottom-6 right-6 rounded-full border-2 bg-gradient-to-l from-red-950 to-yellow-700 p-2 text-white shadow-lg transition-all duration-300 max-md:p-1"
           aria-label="Scroll to top"
         >
           <ArrowUp size={30} />
         </button>
       )}
-
-     </div>
+    </div>
   );
 };
 

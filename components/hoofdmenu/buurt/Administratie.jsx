@@ -18,7 +18,7 @@ const Administratie = () => {
           <br />
         </p>
         <div className="ml-4 mt-4">
-          <span className="mt-2 font-semibold">Uw geldzaken op orde</span>
+          <span className="mt-2 font-semibold border-b">Uw geldzaken op orde</span>
           <br />
           Het buurtteam kan u ook helpen om een overzicht te maken van uw
           financiën. Dat gaat zo:
@@ -39,7 +39,7 @@ const Administratie = () => {
           de controle over uw geldzaken.
         </p>
         <p className="ml-4 mt-4">
-          <span className="mt-2 font-semibold">
+          <span className="mt-2 font-semibold border-b">
             Wat moet u meenemen naar uw afspraak?
           </span>
           <br />

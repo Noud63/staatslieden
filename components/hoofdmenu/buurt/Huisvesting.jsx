@@ -25,7 +25,7 @@ const Huisvesting = () => {
             regelen. We kunnen wel samen met u kijken naar wat u nodig heeft en
             wat mogelijk is.
           </p>
-          <span className="mt-2 font-semibold">Langer thuis</span>
+          <span className="mt-2 font-semibold border-b">Langer thuis</span>
           <br />U bent 65+ en woont zelfstandig in uw huis en u wilt dat met de
           juiste steun blijven doen.
           <br />

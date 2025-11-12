@@ -32,7 +32,7 @@ const Ontmoeten = () => {
       </p>
 
       <p className="ml-4 mt-4">
-        <span className="mt-2 font-semibold">Activiteiten in de buurt</span>
+        <span className="mt-2 font-semibold border-b">Activiteiten in de buurt</span>
         <br />
         In uw buurt worden veel activiteiten georganiseerd.
         <br />
@@ -53,7 +53,7 @@ const Ontmoeten = () => {
       </p>
 
       <div className="ml-4 mt-4">
-        <span className="mt-2 font-semibold">
+        <span className="mt-2 font-semibold border-b">
           Voorbeelden van Activiteiten:
         </span>
         <ul className="ml-5 mt-2 list-disc">
@@ -77,7 +77,7 @@ const Ontmoeten = () => {
       </div>
 
       <div className="ml-4 mt-4">
-        <span className="mt-2 font-semibold">
+        <span className="mt-2 font-semibold border-b">
           Meedoen met een ziekte of beperking
         </span>
         <br />
@@ -88,7 +88,7 @@ const Ontmoeten = () => {
         zijn. <br />
         We bespreken graag de mogelijkheden met u.
         <p className="mt-4">
-          <span className="mt-2 font-semibold">Zelf iets organiseren</span>
+          <span className="mt-2 font-semibold border-b">Zelf iets organiseren</span>
           <br />
           Heeft u een idee voor een activiteit waar uw buurt van opknapt,
           veiliger of gezelliger wordt?

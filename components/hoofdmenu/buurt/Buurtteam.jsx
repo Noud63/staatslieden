@@ -29,8 +29,8 @@ const BuurtTeam = () => {
 
   return (
     <div className="my-4 text-lg text-white max-xsm:text-base">
-      <div className="ml-4">
-        <p>
+      <section className="ml-4">
+        <div>
           Het buurtteam is een plek in de buurt waar u naartoe kunt met uw
           vragen.
           <br />
@@ -46,38 +46,39 @@ const BuurtTeam = () => {
           <br />
           Het buurtteam kijkt samen met u wat er aan de hand is en wat er nodig
           is.
-        </p>
+        </div>
 
-        <p className="mt-4">
+        <div className="mt-4">
           U vindt ons in Huis van de Buurt Koperen Knoop.
           <br />
           Onze buurtteammedewerkers helpen u graag.
           <br />
           Mail of bel ons voor een afspraak.
           <br />
-          Adres : Van Limburg Stirumstraat 119 , 1051 BA
+          <div className="mt-4">Adres : Van Limburg Stirumstraat 119 , 1051 BA
           <br />
           E-mail : aanmelden@​buurtteamamsterdamwest​.nl
           <br />
           Tel : 020 618 49 52
-        </p>
+          </div>
+        </div>
 
         <div className="mt-4">
-          Het buurtteam kan u bijstaan op het gebied van:
+          <div className="border-b border-yellow-800 w-full rounded-md bg-yellow-700 px-4 py-2 text-lg shadow-lg">Het buurtteam kan u bijstaan op het gebied van :</div>
           <br />
-          <ul className="ml-5 mt-2 cursor-pointer list-disc space-y-2 text-white w-full max-w-[120px]">
+          <ul className="ml-5 cursor-pointer list-disc space-y-2 text-yellow-900 w-full max-w-[200px]">
             {items.map((item) => (
               <li
                 key={item.id}
                 onClick={() => handleScroll(item.id)}
-                className="hover:underline"
+                className="hover:underline text-white bg-white w-[200px] rounded-md py-1"
               >
-                {item.label}
+                <span className="text-yellow-950 pl-2 font-semibold text-base">{item.label}</span>
               </li>
             ))}
           </ul>
         </div>
-      </div>
+      </section>
 
       <Financien />
 

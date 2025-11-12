@@ -3,10 +3,10 @@ import TitleBar from '@/components/TitleBar'
 
 const Werk = () => {
   return (
-    <div className="mt-8">
+    <section className="mt-8">
         <TitleBar title="Werk" titleWidth={"ml-2 font-bold"} id="werk" />
         <p className="ml-4 mt-4">
-          <span className="mt-2 font-semibold">Werk zoeken </span>
+          <span className="mt-2 font-semibold border-b">Werk zoeken </span>
           <br />
           Als u werk zoekt en niet zo goed weet waar u moet beginnen, dan kunt u
           terecht bij het buurteam.
@@ -36,7 +36,7 @@ const Werk = () => {
           Heeft u vragen? Twijfel niet en neem contact op met het buurtteam in
           uw wijk om uw situatie te bespreken.
         </p>
-      </div>
+      </section>
   )
 }
 

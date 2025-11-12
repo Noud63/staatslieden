@@ -3,7 +3,7 @@ import TitleBar from '@/components/TitleBar'
 
 const Financien = () => {
   return (
-    <div className="mt-8">
+    <section className="mt-8">
         <TitleBar
           title="Financiën"
           titleWidth={"ml-2 font-bold"}
@@ -31,7 +31,7 @@ const Financien = () => {
         </p>
 
         <p className="ml-4 mt-4">
-          <span className="mt-2 font-semibold">Energiecrisis?</span>
+          <span className="mt-2 font-semibold border-b">Energiecrisis?</span>
           <br />
           Kunt u alles nog betalen? Energie, boodschappen, alles wordt duurder.
           Het buurtteam helpt bij vragen over geld. Er is vaak meer mogelijk dan
@@ -42,7 +42,7 @@ const Financien = () => {
           Wacht niet te lang en maak een afspraak.
         </p>
         <p className="ml-4 mt-4">
-          <span className="mt-2 font-semibold">
+          <span className="mt-2 font-semibold border-b">
             Te laat met betalen van uw huur?
           </span>
           <br />
@@ -58,7 +58,7 @@ const Financien = () => {
           Ook als u te laat bent met betalen van andere rekeningen, kunt u bij
           het buurtteam terecht.
         </p>
-      </div>
+      </section>
   )
 }
 

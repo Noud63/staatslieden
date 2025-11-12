@@ -25,7 +25,7 @@ const Gezondheid = () => {
             verbeteren en die van uw gezin.
           </p>
           <p className="mb-4">
-            <span className="mt-2 font-semibold">Geestelijk fit</span>
+            <span className="mt-2 font-semibold border-b">Geestelijk fit</span>
             <br />
             Voelt u zich vaak gespannen? Zit u niet lekker in uw vel of slaapt u
             slecht?
@@ -44,7 +44,7 @@ const Gezondheid = () => {
             contactpersoon regelt dan deskundige hulp voor u.
           </p>
           <p className="mb-4">
-            <span className="mt-2 font-semibold">Mensen ontmoeten</span>
+            <span className="mt-2 font-semibold border-b">Mensen ontmoeten</span>
             <br />
             Er zijn verschillende mogelijkheden om mensen in de buurt te
             ontmoeten.
@@ -61,7 +61,7 @@ const Gezondheid = () => {
           </p>
 
           <p className="mb-4">
-            <span className="mt-2 font-semibold">Verlies van een dierbare</span>
+            <span className="mt-2 font-semibold border-b">Verlies van een dierbare</span>
             <br />
             Het verlies van een dierbare kan u veel verdriet doen.
             <br />

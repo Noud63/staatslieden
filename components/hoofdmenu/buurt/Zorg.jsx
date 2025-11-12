@@ -3,10 +3,10 @@ import TitleBar from "@/components/TitleBar";
 
 const Zorg = () => {
   return (
-    <div className="mt-8">
+    <section className="mt-8">
       <TitleBar title="Zorg" titleWidth={"ml-2 font-bold"} id="zorg" />
       <p className="ml-4 mt-4">
-        <span className="mt-2 font-semibold">Mantelzorg</span>
+        <span className="mt-2 font-semibold border-b">Mantelzorg</span>
         <br />
         Zorgt u langdurig voor een naaste met een beperking of ziekte en doet u
         dit onbetaald? Dan bent u mantelzorger.
@@ -22,7 +22,7 @@ const Zorg = () => {
       </p>
 
       <p className="ml-4 mt-4">
-        <span className="mt-2 font-semibold">
+        <span className="mt-2 font-semibold border-b">
           Parkeerregeling voor mantelzorgers
         </span>
         <br />
@@ -40,7 +40,7 @@ const Zorg = () => {
         Hiermee kun u zelf de parkeervergunning voor mantelzorgers aanvragen via
         de website van de gemeente Amsterdam of bij het Stadsloket.
       </p>
-    </div>
+    </section>
   );
 };
 

@@ -53,7 +53,7 @@ const Beeld = () => {
                 onClick={() => setOpen(true)}
               />
             </div>
-            <div className="absolute bottom-0 left-0 right-0 p-4 text-center text-sm text-white">
+            <div className="absolute bottom-4 left-4 right-4 px-4 py-2 text-center text-sm text-yellow-800 font-semibold bg-white">
               {image.info}
             </div>
           </div>

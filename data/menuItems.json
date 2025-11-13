@@ -8,7 +8,7 @@
     "href": "/menu/demografie"
   },
   { "id": 5, "title": ["Beeld", "Images"], "href": "/menu/beeld" },
-  { "id": 6, "title": ["Over", "About"], "href": "/menu/over" },
+  { "id": 6, "title": ["Staatslieden", "Staatslieden"], "href": "/menu/staatslieden" },
   {
     "id": 7,
     "title": ["Praktisch", "Praktical"],

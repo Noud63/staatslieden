@@ -13,7 +13,7 @@ const StaatsliedenPage = () => {
       </div>
 
       <div className="mt-4 mb-6">
-        De staasliedenbuurt kent 36 straten.
+        De staasliedenbuurt kent 35 straten.
         <br />
         Alle straatnamen zijn vernoemd naar Nederlandse staatslieden uit de 18e
         en 19e eeuw.

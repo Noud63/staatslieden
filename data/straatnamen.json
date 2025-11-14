@@ -27,7 +27,7 @@
     "naam": "van Bossestraat",
     "href": "https://www.google.nl/maps/place/52%C2%B022'55.6%22N+4%C2%B052'06.5%22E/@52.382103,4.8658931,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.382103!4d4.868468?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
     "desc": "J.J. van Bosse (1801–1870) was een Nederlands liberaal politicus en minister van Financiën, bekend om zijn hervormingen van het belastingstelsel.",
-    "img": ""
+    "img": "/images/staatslieden/vanbosse.jpg"
   },
   {
     "naam": "Buyskade",
@@ -45,7 +45,7 @@
     "naam": "Donker Curtiusstraat",
     "href": "https://www.google.nl/maps/place/52%C2%B022'42.7%22N+4%C2%B052'15.7%22E/@52.37854,4.8684651,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.37854!4d4.87104?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
     "desc": "G.W. Donker Curtius (1792–1865) was jurist, politicus en korte tijd minister van Justitie. Een belangrijk hervormer van de rechtspraak.",
-    "img": ""
+    "img": "/images/staatslieden/donkercurtius.jpg"
   },
   {
     "naam": "van der Duijnstraat",
@@ -111,7 +111,7 @@
     "naam": "De Kempenaerstraat",
     "href": "https://www.google.nl/maps/place/52%C2%B022'53.6%22N+4%C2%B052'09.7%22E/@52.38155,4.8667761,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.38155!4d4.869351?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
     "desc": "W. de Kempenaer (1819–1878) was Nederlands politicus, jurist en voorvechter van liberale hervormingen.",
-    "img": ""
+    "img": "/images/staatslieden/dekempenaer.jpg"
   },
   {
     "naam": "Eerste Keucheniusstraat",
@@ -182,7 +182,7 @@
   {
     "naam": "Rochussenstraat",
     "href": "https://www.google.nl/maps/place/52%C2%B022'53.5%22N+4%C2%B052'09.5%22E/@52.381516,4.8667341,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.381516!4d4.869309?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
-    "desc": "J.J. Rochussen (1797–1871) was minister, gouverneur-generaal van Indië en later minister-president.",
+    "desc": "J.J. Rochussen (1797–1871) was een Nederlands politicus. Hij was een typische vertegenwoordiger van de Amsterdamse handelswereld, die zowel onder Willem I, Willem II als Willem III minister was. In 1843 was hij een van de eerste ministers die door de Tweede Kamer tot aftreden werd gedwongen.",
     "img": ""
   },
   {
@@ -205,6 +205,7 @@
   {
     "naam": "De Wittenstraat",
     "href": "https://www.google.nl/maps/place/52%C2%B023'04.7%22N+4%C2%B052'51.3%22E/@52.384624,4.8783521,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.384624!4d4.880927?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
+    "desc": "Naar Witte Corneliszoon de With (1599–1658), admiraal en leider van vele zeeslagen tijdens de Gouden Eeuw.",
     "img": ""
   }
 ]

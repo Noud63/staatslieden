@@ -1,13 +1,17 @@
+"use client"
 import React from "react";
 import straatnamen from "@/data/straatnamen.json";
 import Image from "next/image";
 
+import Description from "./Description";
+
 const staatslieden = () => {
-  //If you only need the href's keys from the array
+
+  //If you only need the href's keys from the array of objects
   // const hrefs = straatnamen.map((obj) => ({href: obj.href}))
   // console.log("Hrefs:", hrefs)
 
-  return (
+return (
     <div className="mx-auto mt-8 w-full max-w-[1280px] px-4 text-white max-md:mt-4 max-sm:mt-4 max-sm:px-4">
       <div className="flex justify-center border-b-2 text-2xl font-semibold tracking-wide">
         <div className="px-4 pb-4">De Staatslieden</div>
@@ -28,7 +32,7 @@ const staatslieden = () => {
       </div>
 
       <div className="">
-        <div className="mt-4 grid auto-rows-[380px] grid-cols-[repeat(auto-fill,_minmax(260px,_1fr))] gap-2">
+        <div className="mt-4 grid auto-rows-[370px]  grid-cols-[repeat(auto-fill,_minmax(290px,_1fr))] gap-2">
           {straatnamen &&
             straatnamen.map((naam) => (
               <div
@@ -41,13 +45,14 @@ const staatslieden = () => {
                   </span>
                 </div>
 
-                <div className="w-[80px]">
+                <div className="w-[67px]">
                   <Image src={naam.img ? naam.img : "/images/staatslieden/king.jpg"} width={100} height={0} alt=""/>
                 </div>
 
-                <div className="mt-2 text-yellow-900">{naam.desc?.slice(0, 138)}.....</div>
+                <Description naam={naam}/>
 
-                <div className="absolute bottom-2 mt-2 flex mb-1">
+                <div className="absolute bottom-2 flex mb-1 ">
+                  
                   <a href={naam.href} target="_blank">
                     <Image
                       src="/icons/googlemaps.png"

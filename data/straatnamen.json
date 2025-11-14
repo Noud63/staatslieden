@@ -1,41 +1,210 @@
 [
-  { "naam": "Bentinckstraat", "href": "https://www.google.nl/maps/place/52%C2%B023'01.1%22N+4%C2%B052'27.2%22E/@52.383636,4.8716541,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.383636!4d4.874229?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D" },
-  { "naam": "van Beuningenplein", "href": "https://www.google.nl/maps/place/52%C2%B022'53.3%22N+4%C2%B052'16.7%22E/@52.381466,4.8687271,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.381466!4d4.871302?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D" },
-  { "naam": "van Beuningenstraat", "href": "https://www.google.nl/maps/place/52%C2%B023'06.7%22N+4%C2%B052'47.3%22E/@52.385201,4.8772251,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.385201!4d4.8798?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D" },
-  { "naam": "van Boetzelaerstraat", "href": "https://www.google.nl/maps?q=52.38232,4.87279" },
-  { "naam": "van Bossestraat", "href": "https://www.google.nl/maps/place/52%C2%B022'55.6%22N+4%C2%B052'06.5%22E/@52.382103,4.8658931,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.382103!4d4.868468?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D" },
-  { "naam": "Buyskade", "href": "https://www.google.nl/maps?q=52.376774,4.870545" },
-  { "naam": "Cliffordstraat", "href": "https://www.google.nl/maps/place/52%C2%B023'02.2%22N+4%C2%B052'23.5%22E/@52.383938,4.8706081,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.383938!4d4.873183?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D" },
-  { "naam": "Donker Curtiusstraat", "href": "https://www.google.nl/maps/place/52%C2%B022'42.7%22N+4%C2%B052'15.7%22E/@52.37854,4.8684651,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.37854!4d4.87104?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D" },
-  { "naam": "van der Duijnstraat", "href": "https://www.google.nl/maps?q=52.385262,4.876697" },
-  { "naam": "Fannius Scholtenstraat", "href": "https://www.google.nl/maps/place/52%C2%B023'06.9%22N+4%C2%B052'24.0%22E/@52.385254,4.8707491,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.385254!4d4.873324?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D" },
-  { "naam": "Groen van Prinstererstraat", "href": "https://www.google.nl/maps/place/52%C2%B023'05.7%22N+4%C2%B052'17.5%22E/@52.384922,4.8689561,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.384922!4d4.871531?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D" },
-  { "naam": "Haarlemmerweg", "href": "https://www.google.nl/maps/place/52%C2%B023'07.4%22N+4%C2%B052'17.3%22E/@52.385391,4.8689051,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.385391!4d4.87148?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D" },
-  { "naam": "van Hallstraat", "href": "https://www.google.nl/maps/place/52%C2%B022'53.3%22N+4%C2%B052'16.1%22E/@52.381466,4.8685751,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.381466!4d4.87115?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D" },
-  { "naam": "van Hogendorpplein", "href": "https://www.google.nl/maps/place/52%C2%B023'05.2%22N+4%C2%B052'35.4%22E/@52.384777,4.8739191,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.384777!4d4.876494?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D" },
-  { "naam": "van Hogendorpstraat", "href": "https://www.google.nl/maps/place/52%C2%B022'58.6%22N+4%C2%B052'20.4%22E/@52.382935,4.8697601,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.382935!4d4.872335?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D" },
-  { "naam": "van der Hoopstraat", "href": "https://www.google.nl/maps/place/52%C2%B026'21.1%22N+4%C2%B052'25.3%22E/@52.439205,4.8711131,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.439205!4d4.873688?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D" },
-  { "naam": "Jacob Catskade", "href": "https://www.google.nl/maps/place/52%C2%B022'53.4%22N+4%C2%B052'44.2%22E/@52.381508,4.8763651,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.381508!4d4.87894?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D" },
-  { "naam": "Joan Melchior Kemperstraat", "href": "https://www.google.nl/maps/place/52%C2%B023'05.6%22N+4%C2%B052'21.5%22E/@52.384899,4.8700501,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.384899!4d4.872625?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D" },
-  { "naam": "De Kempenaerstraat", "href": "https://www.google.nl/maps/place/52%C2%B022'53.6%22N+4%C2%B052'09.7%22E/@52.38155,4.8667761,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.38155!4d4.869351?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D" },
-  { "naam": "Eerste Keucheniusstraat", "href": "https://www.google.nl/maps/place/Eerste+Keucheniusstraat+47-11,+1051+HP+Amsterdam/@52.3811409,4.8674054,16z/data=!3m1!4b1!4m12!1m5!3m4!2zNTLCsDIyJzUyLjEiTiA0wrA1MicyNC40IkU!8m2!3d52.38113!4d4.873455!3m5!1s0x47c609d64a7e0157:0x606a5c6801d79ada!8m2!3d52.3811377!4d4.8722763!16s%2Fg%2F11y7d1hkvp?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D" },
-  { "naam": "Tweede Keucheniusstraat", "href": "https://www.google.nl/maps/place/52%C2%B022'50.4%22N+4%C2%B052'10.6%22E/@52.3806651,4.8696763,18.75z/data=!4m4!3m3!8m2!3d52.380672!4d4.869605?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D" },
-  { "naam": "Van Limburg Stirumplein", "href": "https://www.google.nl/maps/place/52%C2%B023'04.4%22N+4%C2%B052'30.9%22E/@52.384556,4.8726861,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.384556!4d4.875261?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D" },
-  { "naam": "Van Limburg Stirumstraat", "href": "https://www.google.nl/maps/place/Van+Limburg+Stirumstraat,+1051+BC+Amsterdam/@52.3839511,4.8745455,19z/data=!3m1!4b1!4m12!1m5!3m4!2zNTLCsDIzJzA3LjAiTiA0wrA1MicyOS43IkU!8m2!3d52.385277!4d4.87492!3m5!1s0x47c609d418aaf90f:0x933b35f69987f215!8m2!3d52.3839503!4d4.8757632!16s%2Fg%2F11wc277sst?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D" },
-  { "naam": "Luzacstraat", "href": "https://www.google.nl/maps/place/52%C2%B022'45.7%22N+4%C2%B052'12.3%22E/@52.3793602,4.8695731,19.25z/data=!4m4!3m3!8m2!3d52.379368!4d4.870089?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D" },
-  { "naam": "Nassaukade", "href": "https://www.google.nl/maps/place/52%C2%B023'04.2%22N+4%C2%B052'52.5%22E/@52.384502,4.8786821,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.384502!4d4.881257?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D" },
-  { "naam": "Nassauplein", "href": "https://www.google.nl/maps/place/52%C2%B023'05.4%22N+4%C2%B052'50.5%22E/@52.384823,4.8781181,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.384823!4d4.880693?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D" },
-  { "naam": "Eerste Nassaustraat", "href": "https://www.google.nl/maps/place/52%C2%B022'58.3%22N+4%C2%B052'47.4%22E/@52.38287,4.8772701,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.38287!4d4.879845?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D" },
-  { "naam": "Tweede Nassaustraat", "href": "https://www.google.nl/maps/place/52%C2%B022'55.9%22N+4%C2%B052'43.3%22E/@52.382183,4.8761071,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.382183!4d4.878682?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D" },
-  { "naam": "van Rappardstraat", "href": "https://www.google.nl/maps/place/52%C2%B022'43.3%22N+4%C2%B052'12.6%22E/@52.3788062,4.8695605,19z/data=!4m4!3m3!8m2!3d52.378681!4d4.870172?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D" },
-  { "naam": "van Reenenstraat", "href": "https://www.google.nl/maps/place/52%C2%B022'44.9%22N+4%C2%B052'16.8%22E/@52.379147,4.8687681,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.379147!4d4.871343?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D" },
-  { "naam": "Rochussenstraat", "href": "https://www.google.nl/maps/place/52%C2%B022'53.5%22N+4%C2%B052'09.5%22E/@52.381516,4.8667341,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.381516!4d4.869309?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D" },
-  { "naam": "Schaepmanstraat", "href": "https://www.google.nl/maps/place/52%C2%B022'47.0%22N+4%C2%B052'15.2%22E/@52.37973,4.8683011,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.37973!4d4.870876?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D" },
-  { "naam": "Visseringstraat", "href": "https://www.google.nl/maps/place/52%C2%B022'42.4%22N+4%C2%B052'09.7%22E/@52.378445,4.8667951,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.378445!4d4.86937?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D" },
-  { "naam": "De Wittenkade", "href": "https://www.google.nl/maps/place/52%C2%B022'57.5%22N+4%C2%B052'37.3%22E/@52.382645,4.8744541,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.382645!4d4.877029?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D" },
-  { "naam": "De Wittenstraat", "href": "https://www.google.nl/maps/place/52%C2%B023'04.7%22N+4%C2%B052'51.3%22E/@52.384624,4.8783521,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.384624!4d4.880927?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D" }
+  {
+    "naam": "Bentinckstraat",
+    "href": "https://www.google.nl/maps/place/52%C2%B023'01.1%22N+4%C2%B052'27.2%22E/@52.383636,4.8716541,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.383636!4d4.874229?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
+    "desc": "Berend Hendrik baron Bentinck tot Buckhorst (1753 - 1830), heer van Buckhorst, Zalk en Veecaten was een Nederlands orangist, luitenant-generaal en staatsman, onder meer commandeur in de Militaire Willems-Orde.",
+    "img": "/images/staatslieden/bentinck.jpg"
+  },
+  {
+    "naam": "van Beuningenplein",
+    "href": "https://www.google.nl/maps/place/52%C2%B022'53.3%22N+4%C2%B052'16.7%22E/@52.381466,4.8687271,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.381466!4d4.871302?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
+    "desc": "H.A. van Beuningen, industrieel en liberaal politicus; oprichter en directeur van de Steenkolen Handelsvereeniging. Was voorzitter van de Utrechtse Kamer van Koophandel en raadslid, en werd in 1891 voor Utrecht tot Tweede Kamerlid gekozen.",
+    "img": "/images/staatslieden/vanbeuningen.jpg"
+  },
+  {
+    "naam": "van Beuningenstraat",
+    "href": "https://www.google.nl/maps/place/52%C2%B023'06.7%22N+4%C2%B052'47.3%22E/@52.385201,4.8772251,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.385201!4d4.8798?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
+    "desc": "H.A. van Beuningen, industrieel en liberaal politicus; oprichter en directeur van de Steenkolen Handelsvereeniging. Was voorzitter van de Utrechtse Kamer van Koophandel en raadslid, en werd in 1891 voor Utrecht tot Tweede Kamerlid gekozen.",
+    "img": "/images/staatslieden/vanbeuningen.jpg"
+  },
+  {
+    "naam": "van Boetzelaerstraat",
+    "href": "https://www.google.nl/maps?q=52.38232,4.87279",
+    "desc": "P.A. van Boetzelaer, was rechter en lid van het Wetgevend Lichaam. Was na 1813 burgemeester van Amsterdam. Zes jaar Tweede Kamerlid als vertegenwoordiger van de Amsterdamse stedelijke elite.",
+    "img": "/images/staatslieden/vanboetzelaer.jpg"
+  },
+  {
+    "naam": "van Bossestraat",
+    "href": "https://www.google.nl/maps/place/52%C2%B022'55.6%22N+4%C2%B052'06.5%22E/@52.382103,4.8658931,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.382103!4d4.868468?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
+    "desc": "J.J. van Bosse (1801–1870) was een Nederlands liberaal politicus en minister van Financiën, bekend om zijn hervormingen van het belastingstelsel.",
+    "img": ""
+  },
+  {
+    "naam": "Buyskade",
+    "href": "https://www.google.nl/maps?q=52.376774,4.870545",
+    "desc": "J. Buys (1826–1899) was een Nederlands jurist en politicus, later lid van de Raad van State, bekend om zijn werk op het gebied van burgerlijk recht.",
+    "img": ""
+  },
+  {
+    "naam": "Cliffordstraat",
+    "href": "https://www.google.nl/maps/place/52%C2%B023'02.2%22N+4%C2%B052'23.5%22E/@52.383938,4.8706081,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.383938!4d4.873183?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
+    "desc": "George Clifford (1685–1760) was een Amsterdamse bankier en bewindhebber van de VOC; bekend als mecenas van Linnaeus.",
+    "img": ""
+  },
+  {
+    "naam": "Donker Curtiusstraat",
+    "href": "https://www.google.nl/maps/place/52%C2%B022'42.7%22N+4%C2%B052'15.7%22E/@52.37854,4.8684651,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.37854!4d4.87104?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
+    "desc": "G.W. Donker Curtius (1792–1865) was jurist, politicus en korte tijd minister van Justitie. Een belangrijk hervormer van de rechtspraak.",
+    "img": ""
+  },
+  {
+    "naam": "van der Duijnstraat",
+    "href": "https://www.google.nl/maps?q=52.385262,4.876697",
+    "desc": "D. van der Duijn van Maasdam (1769–1830) was een Nederlands staatsman en een van de drie ‘Driemanschap’ die de macht overdroeg aan Willem I in 1813.",
+    "img": ""
+  },
+  {
+    "naam": "Fannius Scholtenstraat",
+    "href": "https://www.google.nl/maps/place/52%C2%B023'06.9%22N+4%C2%B052'24.0%22E/@52.385254,4.8707491,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.385254!4d4.873324?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
+    "desc": "J.D. Fannius Scholten (1812–1878) was een Nederlands politicus, lid van de Tweede Kamer en actief binnen de Noord-Nederlandse politiek.",
+    "img": ""
+  },
+  {
+    "naam": "Groen van Prinstererstraat",
+    "href": "https://www.google.nl/maps/place/52%C2%B023'05.7%22N+4%C2%B052'17.5%22E/@52.384922,4.8689561,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.384922!4d4.871531?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
+    "desc": "Guillaume Groen van Prinsterer (1801–1876) was staatsman, historicus en grondlegger van het protestants-christelijke denken in Nederland.",
+    "img": ""
+  },
+  {
+    "naam": "Haarlemmerweg",
+    "href": "https://www.google.nl/maps/place/52%C2%B023'07.4%22N+4%C2%B052'17.3%22E/@52.385391,4.8689051,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.385391!4d4.87148?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
+    "desc": "Een historische route tussen Amsterdam en Haarlem, aangelegd in de 17e eeuw als belangrijke verbindingsweg en waterkering.",
+    "img": ""
+  },
+  {
+    "naam": "van Hallstraat",
+    "href": "https://www.google.nl/maps/place/52%C2%B022'53.3%22N+4%C2%B052'16.1%22E/@52.381466,4.8685751,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.381466!4d4.87115?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
+    "desc": "Floris Adriaan van Hall (1791–1866) was minister, diplomaat en tweemaal minister-president van Nederland.",
+    "img": ""
+  },
+  {
+    "naam": "van Hogendorpplein",
+    "href": "https://www.google.nl/maps/place/52%C2%B023'05.2%22N+4%C2%B052'35.4%22E/@52.384777,4.8739191,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.384777!4d4.876494?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
+    "desc": "Naar Gijsbert Karel van Hogendorp, staatsman en medeopsteller van de Grondwet die het moderne Nederland vormde.",
+    "img": ""
+  },
+  {
+    "naam": "van Hogendorpstraat",
+    "href": "https://www.google.nl/maps/place/52%C2%B022'58.6%22N+4%C2%B052'20.4%22E/@52.382935,4.8697601,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.382935!4d4.872335?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
+    "desc": "Naar Gijsbert Karel van Hogendorp, staatsman en medeopsteller van de Grondwet die het moderne Nederland vormde.",
+    "img": ""
+  },
+  {
+    "naam": "van der Hoopstraat",
+    "href": "https://www.google.nl/maps/place/52%C2%B026'21.1%22N+4%C2%B052'25.3%22E/@52.439205,4.8711131,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.439205!4d4.873688?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
+    "desc": "Adriaan van der Hoop (1778–1854) was bankier, politicus en mecenas, bekend als grondlegger van de collectie van het Rijksmuseum.",
+    "img": ""
+  },
+  {
+    "naam": "Jacob Catskade",
+    "href": "https://www.google.nl/maps/place/52%C2%B022'53.4%22N+4%C2%B052'44.2%22E/@52.381508,4.8763651,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.381508!4d4.87894?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
+    "desc": "Jacob Cats (1577–1660) was dichter, jurist en een van de bekendste staatslieden uit de Gouden Eeuw.",
+    "img": ""
+  },
+  {
+    "naam": "Joan Melchior Kemperstraat",
+    "href": "https://www.google.nl/maps/place/52%C2%B023'05.6%22N+4%C2%B052'21.5%22E/@52.384899,4.8700501,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.384899!4d4.872625?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
+    "desc": "Joan Melchior Kemper (1776–1824) was jurist, hoogleraar en medeoprichter van het Nederlandse burgerlijk recht.",
+    "img": ""
+  },
+  {
+    "naam": "De Kempenaerstraat",
+    "href": "https://www.google.nl/maps/place/52%C2%B022'53.6%22N+4%C2%B052'09.7%22E/@52.38155,4.8667761,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.38155!4d4.869351?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
+    "desc": "W. de Kempenaer (1819–1878) was Nederlands politicus, jurist en voorvechter van liberale hervormingen.",
+    "img": ""
+  },
+  {
+    "naam": "Eerste Keucheniusstraat",
+    "href": "https://www.google.nl/maps/place/Eerste+Keucheniusstraat+47-11,+1051+HP+Amsterdam/@52.3811409,4.8674054,16z/data=!3m1!4b1!4m12!1m5!3m4!2zNTLCsDIyJzUyLjEiTiA0wrA1MicyNC40IkU!8m2!3d52.38113!4d4.873455!3m5!1s0x47c609d64a7e0157:0x606a5c6801d79ada!8m2!3d52.3811377!4d4.8722763!16s%2Fg%2F11y7d1hkvp?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
+    "desc": "Johannes Keuchenius (1816–1893) was minister van Koloniën en een invloedrijke antirevolutionaire politicus.",
+    "img": ""
+  },
+  {
+    "naam": "Tweede Keucheniusstraat",
+    "href": "https://www.google.nl/maps/place/52%C2%B022'50.4%22N+4%C2%B052'10.6%22E/@52.3806651,4.8696763,18.75z/data=!4m4!3m3!8m2!3d52.380672!4d4.869605?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
+    "desc": "Johannes Keuchenius (1816–1893) was minister van Koloniën en een invloedrijke antirevolutionaire politicus.",
+    "img": ""
+  },
+  {
+    "naam": "Van Limburg Stirumplein",
+    "href": "https://www.google.nl/maps/place/52%C2%B023'04.4%22N+4%C2%B052'30.9%22E/@52.384556,4.8726861,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.384556!4d4.875261?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
+    "desc": "J.W. van Limburg Stirum (1873–1948) was gouverneur-generaal van Nederlands-Indië en later ambassadeur.",
+    "img": ""
+  },
+  {
+    "naam": "Van Limburg Stirumstraat",
+    "href": "https://www.google.nl/maps/place/Van+Limburg+Stirumstraat,+1051+BC+Amsterdam/@52.3839511,4.8745455,19z/data=!3m1!4b1!4m12!1m5!3m4!2zNTLCsDIzJzA3LjAiTiA0wrA1MicyOS43IkU!8m2!3d52.385277!4d4.87492!3m5!1s0x47c609d418aaf90f:0x933b35f69987f215!8m2!3d52.3839503!4d4.8757632!16s%2Fg%2F11wc277sst?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
+    "desc": "J.W. van Limburg Stirum (1873–1948) was gouverneur-generaal van Nederlands-Indië en later ambassadeur.",
+    "img": ""
+  },
+  {
+    "naam": "Luzacstraat",
+    "href": "https://www.google.nl/maps/place/52%C2%B022'45.7%22N+4%C2%B052'12.3%22E/@52.3793602,4.8695731,19.25z/data=!4m4!3m3!8m2!3d52.379368!4d4.870089?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
+    "desc": "Élie Luzac (1721–1796) was filosoof, schrijver en voorvechter van persvrijheid in de Republiek.",
+    "img": ""
+  },
+  {
+    "naam": "Nassaukade",
+    "href": "https://www.google.nl/maps/place/52%C2%B023'04.2%22N+4%C2%B052'52.5%22E/@52.384502,4.8786821,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.384502!4d4.881257?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
+    "desc": "Verwijst naar het Huis van Nassau, de dynastie waartoe de Nederlandse koninklijke familie behoort.",
+    "img": ""
+  },
+  {
+    "naam": "Nassauplein",
+    "href": "https://www.google.nl/maps/place/52%C2%B023'05.4%22N+4%C2%B052'50.5%22E/@52.384823,4.8781181,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.384823!4d4.880693?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
+    "desc": "Verwijst naar het Huis van Nassau, de dynastie waartoe de Nederlandse koninklijke familie behoort.",
+    "img": ""
+  },
+  {
+    "naam": "Eerste Nassaustraat",
+    "href": "https://www.google.nl/maps/place/52%C2%B022'58.3%22N+4%C2%B052'47.4%22E/@52.38287,4.8772701,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.38287!4d4.879845?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
+    "desc": "Verwijst naar het Huis van Nassau, de dynastie waartoe de Nederlandse koninklijke familie behoort.",
+    "img": ""
+  },
+  {
+    "naam": "Tweede Nassaustraat",
+    "href": "https://www.google.nl/maps/place/52%C2%B022'55.9%22N+4%C2%B052'43.3%22E/@52.382183,4.8761071,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.382183!4d4.878682?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
+    "desc": "Verwijst naar het Huis van Nassau, de dynastie waartoe de Nederlandse koninklijke familie behoort.",
+    "img": ""
+  },
+  {
+    "naam": "van Rappardstraat",
+    "href": "https://www.google.nl/maps/place/52%C2%B022'43.3%22N+4%C2%B052'12.6%22E/@52.3788062,4.8695605,19z/data=!4m4!3m3!8m2!3d52.378681!4d4.870172?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
+    "desc": "J.A. van Rappard (1791–1869) was bestuurder en lid van de Raad van State, betrokken bij de hervorming van het bestuur van het Koninkrijk.",
+    "img": ""
+  },
+  {
+    "naam": "van Reenenstraat",
+    "href": "https://www.google.nl/maps/place/52%C2%B022'44.9%22N+4%C2%B052'16.8%22E/@52.379147,4.8687681,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.379147!4d4.871343?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
+    "desc": "Willem van Reenen (1760–1820) was een invloedrijk bestuurder, burgemeester van Amsterdam en lid van diverse staatscolleges.",
+    "img": ""
+  },
+  {
+    "naam": "Rochussenstraat",
+    "href": "https://www.google.nl/maps/place/52%C2%B022'53.5%22N+4%C2%B052'09.5%22E/@52.381516,4.8667341,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.381516!4d4.869309?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
+    "desc": "J.J. Rochussen (1797–1871) was minister, gouverneur-generaal van Indië en later minister-president.",
+    "img": ""
+  },
+  {
+    "naam": "Schaepmanstraat",
+    "href": "https://www.google.nl/maps/place/52%C2%B022'47.0%22N+4%C2%B052'15.2%22E/@52.37973,4.8683011,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.37973!4d4.870876?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
+    "desc": "Herman Schaepman (1844–1903) was priester, dichter en politicus, grondlegger van de katholieke emancipatie in Nederland.",
+    "img": ""
+  },
+  {
+    "naam": "Visseringstraat",
+    "href": "https://www.google.nl/maps/place/52%C2%B022'42.4%22N+4%C2%B052'09.7%22E/@52.378445,4.8667951,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.378445!4d4.86937?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
+    "desc": "C. Vissering (1826–1890) was econoom en hoogleraar, bekend van zijn invloed op het Nederlandse munt- en bankwezen.",
+    "img": ""
+  },
+  {
+    "naam": "De Wittenkade",
+    "href": "https://www.google.nl/maps/place/52%C2%B022'57.5%22N+4%C2%B052'37.3%22E/@52.382645,4.8744541,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.382645!4d4.877029?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
+    "desc": "Naar Witte Corneliszoon de With (1599–1658), admiraal en leider van vele zeeslagen tijdens de Gouden Eeuw."
+  },
+  {
+    "naam": "De Wittenstraat",
+    "href": "https://www.google.nl/maps/place/52%C2%B023'04.7%22N+4%C2%B052'51.3%22E/@52.384624,4.8783521,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.384624!4d4.880927?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
+    "img": ""
+  }
 ]
-
-
-
-

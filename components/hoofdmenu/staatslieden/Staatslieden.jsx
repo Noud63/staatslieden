@@ -32,7 +32,7 @@ return (
       </div>
 
       <div className="">
-        <div className="mt-4 grid auto-rows-[370px]  grid-cols-[repeat(auto-fill,_minmax(290px,_1fr))] gap-2">
+        <div className="mt-4 grid auto-rows-[420px] max-xxl:auto-rows-[430px]  max-xxm:auto-rows-[340px] max-xm:auto-rows-[400px]  grid-cols-[repeat(auto-fill,_minmax(290px,_1fr))] gap-2">
           {straatnamen &&
             straatnamen.map((naam) => (
               <div
@@ -41,7 +41,7 @@ return (
               >
                 <div className="mb-3 w-full border-b border-yellow-900 pb-1">
                   <span className="text-lg font-semibold text-yellow-900">
-                    {naam.naam}
+                    {naam.naam[0]}
                   </span>
                 </div>
 

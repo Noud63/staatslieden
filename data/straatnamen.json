@@ -6,16 +6,16 @@
     "img": "/images/staatslieden/bentinck.jpg"
   },
   {
-    "naam": ["van Beuningenplein", "H.A. van Beuningen"],
+    "naam": ["van Beuningenplein", "Daniël van Beuningen"],
     "href": "https://www.google.nl/maps/place/52%C2%B022'53.3%22N+4%C2%B052'16.7%22E/@52.381466,4.8687271,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.381466!4d4.871302?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
-    "desc": "H.A. van Beuningen (1841-1908), was industrieel en liberaal politicus; oprichter en directeur van de Steenkolen Handelsvereeniging. Was voorzitter van de Utrechtse Kamer van Koophandel en raadslid, en werd in 1891 voor Utrecht tot Tweede Kamerlid gekozen.",
-    "img": "/images/staatslieden/vanbeuningen.jpg"
+    "desc": "Daniël van Beuningen (1681-1758), was een Amsterdamse koopman en regent, die in de 18e eeuw een belangrijke rol speelde in de Nederlandse politiek. Hij was een vooraanstaand lid van het stadsbestuur en heeft zich ingezet voor de handel en scheepvaart.",
+    "img": ""
   },
   {
-    "naam": ["van Beuningenstraat", "H.A. van Beuningen"],
+    "naam": ["van Beuningenstraat", "Daniël van Beuningen"],
     "href": "https://www.google.nl/maps/place/52%C2%B023'06.7%22N+4%C2%B052'47.3%22E/@52.385201,4.8772251,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.385201!4d4.8798?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
-    "desc": "H.A. van Beuningen (1841-1908), was industrieel en liberaal politicus; oprichter en directeur van de Steenkolen Handelsvereeniging. Was voorzitter van de Utrechtse Kamer van Koophandel en raadslid, en werd in 1891 voor Utrecht tot Tweede Kamerlid gekozen.",
-    "img": "/images/staatslieden/vanbeuningen.jpg"
+    "desc": "Daniël van Beuningen (1681-1758), was een Amsterdamse koopman en regent, die in de 18e eeuw een belangrijke rol speelde in de Nederlandse politiek. Hij was een vooraanstaand lid van het stadsbestuur en heeft zich ingezet voor de handel en scheepvaart.",
+    "img": ""
   },
   {
     "naam": ["van Boetzelaerstraat", "P.A. van Boetzelaer"],
@@ -26,14 +26,14 @@
   {
     "naam": ["van Bossestraat", "J.J. van Bosse"],
     "href": "https://www.google.nl/maps/place/52%C2%B022'55.6%22N+4%C2%B052'06.5%22E/@52.382103,4.8658931,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.382103!4d4.868468?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
-    "desc": "J.J. van Bosse (1801–1870) was een Nederlands liberaal politicus en minister van Financiën, bekend om zijn hervormingen van het belastingstelsel.",
+    "desc": "J.J. van Bosse (1801–1870) Vooraanstaande liberaal die tussen 1848 en 1871 in acht kabinetten minister was, waarvan zes keer van Financiën. Wisselde dat af met het Tweede Kamerlidmaatschap. Oorspronkelijk fabrikant en advocaat.",
     "img": "/images/staatslieden/vanbosse.jpg"
   },
   {
-    "naam": ["Buyskade", "J. Buys"],
+    "naam": ["Buyskade", "J.T. Buys"],
     "href": "https://www.google.nl/maps?q=52.376774,4.870545",
-    "desc": "J. Buys (1826–1899) was een Nederlands jurist en politicus. Voorname en invloedrijke liberale staatsrechtgeleerde, politiek commentator en publicist in de negentiende eeuw, later lid van de Raad van State. Bekend om zijn werk op het gebied van burgerlijk recht.",
-    "img": ""
+    "desc": " Johannes Theodoor Buys (1828-1893), was een Nederlandse advocaat, politicus en hoogleraar en staatsraad in buitengewone dienst. Hij is vooral bekend van zijn werk over de Nederlandse Grondwet.",
+    "img": "/images/staatslieden/buys.jpg"
   },
   {
     "naam": ["Cliffordstraat", "George Clifford"],
@@ -126,16 +126,16 @@
     "img": ""
   },
   {
-    "naam": ["Van Limburg Stirumplein", "J.W. van Limburg Stirum"],
+    "naam": ["Van Limburg Stirumplein", "Leopold van Limburg Stirum"],
     "href": "https://www.google.nl/maps/place/52%C2%B023'04.4%22N+4%C2%B052'30.9%22E/@52.384556,4.8726861,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.384556!4d4.875261?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
-    "desc": "J.W. van Limburg Stirum (1873–1948) was gouverneur-generaal van Nederlands-Indië en later ambassadeur.",
-    "img": ""
+    "desc": "Leopold van Limburg Stirum (1873–1948) Leopold van Limburg Stirum was een Nederlands luitenant-generaal der infanterie, gouverneur der Residentie, lid van het Driemanschap van 1813, lid van de Eerste Kamer der Staten-Generaal.",
+    "img": "/images/staatslieden/vanlimburgstirum.jpg"
   },
   {
-    "naam": ["Van Limburg Stirumstraat", "J.W. van Limburg Stirum"],
+    "naam": ["Van Limburg Stirumstraat", "Leopold van Limburg Stirum"],
     "href": "https://www.google.nl/maps/place/Van+Limburg+Stirumstraat,+1051+BC+Amsterdam/@52.3839511,4.8745455,19z/data=!3m1!4b1!4m12!1m5!3m4!2zNTLCsDIzJzA3LjAiTiA0wrA1MicyOS43IkU!8m2!3d52.385277!4d4.87492!3m5!1s0x47c609d418aaf90f:0x933b35f69987f215!8m2!3d52.3839503!4d4.8757632!16s%2Fg%2F11wc277sst?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
-    "desc": "J.W. van Limburg Stirum (1873–1948) was gouverneur-generaal van Nederlands-Indië en later ambassadeur.",
-    "img": ""
+    "desc": "Leopold van Limburg Stirum (1873–1948) Leopold van Limburg Stirum was een Nederlands luitenant-generaal der infanterie, gouverneur der Residentie, lid van het Driemanschap van 1813, lid van de Eerste Kamer der Staten-Generaal.",
+    "img": "/images/staatslieden/vanlimburgstirum.jpg"
   },
    {
     "naam": ["Luzacstraat", "Élie Luzac"],
@@ -146,26 +146,26 @@
   {
     "naam": ["Nassaukade", "Huis van Nassau"],
     "href": "https://www.google.nl/maps/place/52%C2%B023'04.2%22N+4%C2%B052'52.5%22E/@52.384502,4.8786821,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.384502!4d4.881257?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
-    "desc": "Verwijst naar het Huis van Nassau, de dynastie waartoe de Nederlandse koninklijke familie behoort.",
-    "img": ""
+    "desc": "Verwijst naar het Huis van Nassau, de dynastie waartoe de Nederlandse koninklijke familie behoort. Het huis Nassau is een wijdvertakte Duitse adellijke familie van Europees belang, waarvan het begin teruggaat tot de 11e eeuw.",
+    "img": "/images/staatslieden/nassau.jpg"
   },
   {
     "naam": ["Nassauplein", "Huis van Nassau"],
     "href": "https://www.google.nl/maps/place/52%C2%B023'05.4%22N+4%C2%B052'50.5%22E/@52.384823,4.8781181,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.384823!4d4.880693?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
-    "desc": "Verwijst naar het Huis van Nassau, de dynastie waartoe de Nederlandse koninklijke familie behoort.",
-    "img": ""
+    "desc": "Verwijst naar het Huis van Nassau, de dynastie waartoe de Nederlandse koninklijke familie behoort. Het huis Nassau is een wijdvertakte Duitse adellijke familie van Europees belang, waarvan het begin teruggaat tot de 11e eeuw.",
+    "img": "/images/staatslieden/nassau.jpg"
   },
   {
     "naam": ["Eerste Nassaustraat","Huis van Nassau"],
     "href": "https://www.google.nl/maps/place/52%C2%B022'58.3%22N+4%C2%B052'47.4%22E/@52.38287,4.8772701,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.38287!4d4.879845?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
-    "desc": "Verwijst naar het Huis van Nassau, de dynastie waartoe de Nederlandse koninklijke familie behoort.",
-    "img": ""
+    "desc": "Verwijst naar het Huis van Nassau, de dynastie waartoe de Nederlandse koninklijke familie behoort. Het huis Nassau is een wijdvertakte Duitse adellijke familie van Europees belang, waarvan het begin teruggaat tot de 11e eeuw.",
+    "img": "/images/staatslieden/nassau.jpg"
   },
   {
     "naam": ["Tweede Nassaustraat", "Huis van Nassau"],
     "href": "https://www.google.nl/maps/place/52%C2%B022'55.9%22N+4%C2%B052'43.3%22E/@52.382183,4.8761071,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.382183!4d4.878682?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
-    "desc": "Verwijst naar het Huis van Nassau, de dynastie waartoe de Nederlandse koninklijke familie behoort.",
-    "img": ""
+    "desc": "Verwijst naar het Huis van Nassau, de dynastie waartoe de Nederlandse koninklijke familie behoort. Het huis Nassau is een wijdvertakte Duitse adellijke familie van Europees belang, waarvan het begin teruggaat tot de 11e eeuw.",
+    "img": "/images/staatslieden/nassau.jpg"
   },
   {
     "naam": ["van Rappardstraat", "J.A. van Rappard"],
@@ -183,7 +183,7 @@
     "naam": ["Rochussenstraat", "J.J. Rochussen"],
     "href": "https://www.google.nl/maps/place/52%C2%B022'53.5%22N+4%C2%B052'09.5%22E/@52.381516,4.8667341,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.381516!4d4.869309?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
     "desc": "J.J. Rochussen (1797–1871) was een Nederlands politicus. Hij was ertegenwoordiger van de Amsterdamse handelswereld, die zowel onder Willem I, Willem II als Willem III minister was. In 1843 was hij een van de eerste ministers die door de Tweede Kamer tot aftreden werd gedwongen.",
-    "img": ""
+    "img": "/images/staatslieden/rochussen.jpg"
   },
   {
     "naam": ["Schaepmanstraat", "Herman Schaepman"],

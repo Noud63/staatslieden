@@ -6,16 +6,16 @@
     "img": "/images/staatslieden/bentinck.jpg"
   },
   {
-    "naam": ["van Beuningenplein", "Daniël van Beuningen"],
+    "naam": ["van Beuningenplein", "Coenraad van Beuningen"],
     "href": "https://www.google.nl/maps/place/52%C2%B022'53.3%22N+4%C2%B052'16.7%22E/@52.381466,4.8687271,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.381466!4d4.871302?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
-    "desc": "Daniël van Beuningen (1681-1758), was een Amsterdamse koopman en regent, die in de 18e eeuw een belangrijke rol speelde in de Nederlandse politiek. Hij was een vooraanstaand lid van het stadsbestuur en heeft zich ingezet voor de handel en scheepvaart.",
-    "img": ""
+    "desc": "Coenraad van Beuningen (1622-1693), was een Nederlandse diplomaat. Hij was burgemeester van Amsterdam in 1669, 1672, 1680, 1681, 1683 en 1684 en sinds 1681 bewindhebber bij de VOC. ",
+    "img": "/images/staatslieden/vanbeuningen.jpg"
   },
   {
-    "naam": ["van Beuningenstraat", "Daniël van Beuningen"],
+    "naam": ["van Beuningenstraat", "Coenraad van Beuningen"],
     "href": "https://www.google.nl/maps/place/52%C2%B023'06.7%22N+4%C2%B052'47.3%22E/@52.385201,4.8772251,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.385201!4d4.8798?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
-    "desc": "Daniël van Beuningen (1681-1758), was een Amsterdamse koopman en regent, die in de 18e eeuw een belangrijke rol speelde in de Nederlandse politiek. Hij was een vooraanstaand lid van het stadsbestuur en heeft zich ingezet voor de handel en scheepvaart.",
-    "img": ""
+    "desc": "Coenraad van Beuningen (1622-1693), was een Nederlandse diplomaat. Hij was burgemeester van Amsterdam in 1669, 1672, 1680, 1681, 1683 en 1684 en sinds 1681 bewindhebber bij de VOC. ",
+    "img": "/images/staatslieden/vanbeuningen.jpg"
   },
   {
     "naam": ["van Boetzelaerstraat", "P.A. van Boetzelaer"],
@@ -57,7 +57,7 @@
     "naam": ["Fannius Scholtenstraat", "J.D. Fannius Scholten"],
     "href": "https://www.google.nl/maps/place/52%C2%B023'06.9%22N+4%C2%B052'24.0%22E/@52.385254,4.8707491,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.385254!4d4.873324?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
     "desc": "J.D. Fannius Scholten (1812–1878) was een Nederlands politicus, lid van de Tweede Kamer en actief binnen de Noord-Nederlandse politiek.",
-    "img": ""
+    "img": "/images/staatslieden/fanniusscholten.jpg"
   },
   {
     "naam": ["Groen van Prinstererstraat", "Guillaume Groen van Prinsterer"],
@@ -69,7 +69,7 @@
     "naam": ["Haarlemmerweg"],
     "href": "https://www.google.nl/maps/place/52%C2%B023'07.4%22N+4%C2%B052'17.3%22E/@52.385391,4.8689051,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.385391!4d4.87148?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
     "desc": "Een historische route tussen Amsterdam en Haarlem, aangelegd in de 17e eeuw als belangrijke verbindingsweg en waterkering.",
-    "img": ""
+    "img": "/images/staatslieden/haarlemmerweg.jpg"
   },
   {
     "naam": ["van Hallstraat", "Floris Adriaan van Hall"],
@@ -192,10 +192,10 @@
     "img": ""
   },
   {
-    "naam": ["Visseringstraat", "C. Vissering"],
+    "naam": ["Visseringstraat", "Simon Vissering"],
     "href": "https://www.google.nl/maps/place/52%C2%B022'42.4%22N+4%C2%B052'09.7%22E/@52.378445,4.8667951,17z/data=!3m1!4b1!4m4!3m3!8m2!3d52.378445!4d4.86937?entry=ttu&g_ep=EgoyMDI1MTExMC4wIKXMDSoASAFQAw%3D%3D",
-    "desc": "C. Vissering (1826–1890) was econoom en hoogleraar, bekend van zijn invloed op het Nederlandse munt- en bankwezen.",
-    "img": ""
+    "desc": "Simon Vissering (1818–1888) Liberaal econoom en minister van Financiën in het kabinet-Van Lynden van Sandenburg. Aanvankelijk journalist. Volgde in 1850 Thorbecke in Leiden op als hoogleraar. Schreef een handboek over economie.",
+    "img": "/images/staatslieden/vissering.jpg"
   },
   {
     "naam": ["De Wittenkade", "Witte Corneliszoon de With"],

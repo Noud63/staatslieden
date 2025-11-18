@@ -45,7 +45,7 @@ return (
                   </span>
                 </div>
 
-                <div className="w-[67px]">
+                <div className="w-[67px] h-auto">
                   <Image src={naam.img ? naam.img : "/images/staatslieden/king.jpg"} width={100} height={0} alt=""/>
                 </div>
 

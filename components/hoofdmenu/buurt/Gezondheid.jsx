@@ -9,7 +9,7 @@ const Gezondheid = () => {
           titleWidth={"ml-2 font-bold"}
           id="gezondheid"
         />
-        <div className="ml-4 mt-4">
+        <div className="px-4 mt-4 max-xsm:pr-2 max-xsm:pl-0">
           <p className="mb-4">
             Een gezonde leefstijl betekent goed zorgen voor uzelf.
             <br />

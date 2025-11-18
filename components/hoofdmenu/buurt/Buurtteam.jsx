@@ -49,7 +49,7 @@ const BuurtTeam = () => {
 
   return (
     <div className="my-4 text-lg text-white max-xsm:text-base">
-      <section className="ml-4">
+      <section className="ml-4 w-full max-xsm:ml-0">
         <div>
           Het buurtteam is een plek in de buurt waar u naartoe kunt met uw
           vragen.

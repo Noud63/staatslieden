@@ -10,7 +10,7 @@ const Ontmoeten = () => {
         id="ontmoeten"
       />
 
-      <p className="ml-4 mt-4">
+      <p className="px-4 mt-4 max-xsm:pr-2 max-xsm:pl-0">
         Houdt u ervan om mensen te ontmoeten?
         <br />
         Of vindt u het leuk om iets bij te dragen in de buurt?
@@ -31,7 +31,7 @@ const Ontmoeten = () => {
         Wij helpen u de eerste stap te zetten.
       </p>
 
-      <p className="ml-4 mt-4">
+      <p className="px-4 mt-4 max-xsm:pr-2 max-xsm:pl-0">
         <span className="mt-2 font-semibold border-b">Activiteiten in de buurt</span>
         <br />
         In uw buurt worden veel activiteiten georganiseerd.
@@ -52,7 +52,7 @@ const Ontmoeten = () => {
         Het buurtteam organiseert zelf ook veel voor de buurt.
       </p>
 
-      <div className="ml-4 mt-4">
+      <div className="px-4 mt-4 max-xsm:pr-2 max-xsm:pl-0">
         <span className="mt-2 font-semibold border-b">
           Voorbeelden van Activiteiten:
         </span>
@@ -76,7 +76,7 @@ const Ontmoeten = () => {
         </ul>
       </div>
 
-      <div className="ml-4 mt-4">
+      <div className="px-4 mt-4 max-xsm:pr-2 max-xsm:pl-0">
         <span className="mt-2 font-semibold border-b">
           Meedoen met een ziekte of beperking
         </span>

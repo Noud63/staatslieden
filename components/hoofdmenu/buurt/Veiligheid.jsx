@@ -10,7 +10,7 @@ const Veiligheid = () => {
           id="veiligheid"
         />
 
-        <div className="ml-4 mt-4">
+        <div className="px-4 mt-4 max-xsm:pr-2 max-xsm:pl-0">
         <p>
           Geweld komt helaas vaak voor.
           <br />
@@ -31,7 +31,7 @@ const Veiligheid = () => {
         </p>
         
 
-        <p className="mt-4">
+        <p className="mt-4 ">
           <span className="mt-2 font-semibold border-b">Huiselijk geweld</span><br />
           U heeft te
           maken met huiselijk geweld als iemand in uw directe omgeving geweld

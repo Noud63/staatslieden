@@ -5,7 +5,7 @@ const Werk = () => {
   return (
     <section className="mt-8">
         <TitleBar title="Werk" titleWidth={"ml-2 font-bold"} id="werk" />
-        <p className="ml-4 mt-4">
+        <p className="px-4 mt-4 max-xsm:pr-2 max-xsm:pl-0">
           <span className="mt-2 font-semibold border-b">Werk zoeken </span>
           <br />
           Als u werk zoekt en niet zo goed weet waar u moet beginnen, dan kunt u

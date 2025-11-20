@@ -1,19 +1,13 @@
 import connectDB from "@/connectDB/database";
 import GoogleProvider from "next-auth/providers/google";
 import User from "@/models/User";
-// import Register from "@/models/Register";
-// import profileDefault from "@/assets/images/profile.png";
 import CredentialsProvider from "next-auth/providers/credentials";
-// import FacebookProvider from "next-auth/providers/facebook";
-// import GithubProvider from "next-auth/providers/github";
 // import EmailProvider from "next-auth/providers/email";
 import bcrypt from "bcrypt";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import clientPromise from "@/lib/db";
 
-
 export const authOptions = {
-
   adapter: MongoDBAdapter(clientPromise),
 
   session: {
@@ -32,32 +26,26 @@ export const authOptions = {
       name: `__Secure-next-auth.session-token`,
       options: {
         httpOnly: true,
-        sameSite: 'lax',
-        path: '/',
-        secure: true //in production >  process.env.NODE_ENV === "production"
-      }
-    }
+        sameSite: "lax", // "strict" if using OAuth providers
+        path: "/",
+        secure: true, //in production >  process.env.NODE_ENV === "production"
+      },
+    },
   },
 
   providers: [
-    // GoogleProvider({
-    //   clientId: process.env.GOOGLE_CLIENT_ID,
-    //   clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    //   authorization: {
-    //     params: {
-    //       prompt: "consent",
-    //       access_type: "offline",
-    //       response_type: "code",
-    //     },
-    //   },
-    //   allowDangerousEmailAccountLinking: true,
-    // }),
-
-    //     FacebookProvider({
-    //       clientId: process.env.FACEBOOK_CLIENT_ID,
-    //       clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-    //       allowDangerousEmailAccountLinking: true,
-    //     }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      authorization: {
+        params: {
+          prompt: "consent",
+          access_type: "offline",
+          response_type: "code",
+        },
+      },
+      allowDangerousEmailAccountLinking: true,
+    }),
 
     CredentialsProvider({
       name: "Credentials",
@@ -73,6 +61,7 @@ export const authOptions = {
           placeholder: "password",
         },
       },
+
       async authorize(credentials, req) {
         try {
           if (!credentials?.email || !credentials?.password) return null;
@@ -85,26 +74,36 @@ export const authOptions = {
 
           await connectDB();
 
-          const foundUser = await User.findOne({
+          const dbUser = await User.findOne({
             email: credentials.email.toLowerCase(),
-          }).select('+password'); // Ensure password is selected if excluded by default
+          }).select("+password"); // Ensure password is selected if excluded by default
 
-          if (!foundUser || !foundUser.password) {
+          if (!dbUser || !dbUser.password) {
             // return null for security, don't reveal whether user exists
-            return null; 
+            return null;
           }
-          
+
           const match = await bcrypt.compare(
             credentials.password,
-            foundUser.password,
+            dbUser.password,
           );
           if (!match) {
             // return null for security
-           return null;
+            return null;
           }
 
-          return foundUser
+          // console.log("User:", dbUser);
 
+          //Do not return the whole dbUser object including password!
+          //This is the user object that will be saved in the JWT token
+
+          return {
+            id: dbUser._id.toString(),
+            name: dbUser.name,
+            username: dbUser.username,
+            email: dbUser.email,
+            avatar: dbUser.avatar,
+          };
         } catch (error) {
           console.error("Auth error:", error); // Log on server only
           return null;
@@ -116,36 +115,47 @@ export const authOptions = {
   callbacks: {
     //Invoked on successful signin
     async signIn({ user, profile, account }) {
-      await connectDB();
+      if (account.provider === "google") {
+        // console.log("Google profile:", profile);
+        // console.log("User:", user);
 
-      if (account.provider === "google" || account.provider === "facebook") {
-        // 2. Check if user exists, and if not, add user to database, or update image if social login
-        const update = {
-          $set: {
-            username: profile.name,
-            name: profile.name,
-            avatar:
-              account.provider === "facebook" ? user.image : profile.picture,
-          },
-        };
-        const options = { upsert: true, new: true, setDefaultsOnInsert: true };
+        await connectDB();
 
-        await User.findOneAndUpdate({ email: profile.email }, update, options);
+        // Find the user in your DB
+        const dbUser = await User.findOne({ email: profile.email });
+
+        // If the user doesn't exist, create it
+        if (!dbUser) {
+          const newUser = await User.create({
+            email: profile.email,
+            username: profile.given_name,
+            name: profile.name
+          });
+          return {
+            id: newUser._id.toString(),
+            name: newUser.name,
+            username: newUser.username,
+            email: newUser.email
+          };
+        } else {
+          return {
+            id: user.id.toString(),
+            name: user.name,
+            username: user.username,
+            email: user.email,
+            avatar: user.avatar,
+          };
+        }
       }
-      // 4. Return true to allow sign in
+
       return true;
     },
-    
+
     async jwt({ token, user, account, trigger, session }) {
-  
-      token.exp = Math.floor(Date.now() / 1000) + (60 * 60 * 24); //24 hours expiration
       if (user) {
-        // token.name = user.name;
-        // console.log("User:", { user });
         token.username = user.username;
-        token.id = user._id;
+        token.id = user.id;
         token.avatar = user.avatar;
-        // console.log("Jwt_user:", { user });
       }
       if (trigger === "update" && session?.user) {
         token.avatar = session.user.avatar;

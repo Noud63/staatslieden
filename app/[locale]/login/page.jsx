@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { CircleX } from "lucide-react";
 import { CircleCheckBig } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { useLocale } from "next-intl";
@@ -62,7 +63,7 @@ const LoginPage = () => {
               Email:
             </label>
             <input
-              className="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-blue-900 shadow focus:outline-none"
+              className="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight shadow focus:outline-none"
               id="email"
               type="email"
               placeholder="Enter your email"
@@ -76,7 +77,7 @@ const LoginPage = () => {
               Password:
             </label>
             <input
-              className="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-blue-900 shadow focus:outline-none"
+              className="focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight shadow focus:outline-none"
               id="password"
               type="password"
               placeholder="Enter password"
@@ -104,12 +105,27 @@ const LoginPage = () => {
 
           <div className="mb-4 mt-4">
             <button
-              className="text-md flex w-full items-center justify-center rounded-lg bg-gradient-to-r from-yellow-900 via-yellow-700 to-yellow-900 py-6 text-white"
+              className="text-md flex w-full items-center justify-center rounded-lg bg-gradient-to-r from-red-950 via-yellow-700 to-red-950 py-4 text-white"
               type="submit"
             >
               <SendHorizontal className="mr-2" /> Log in
             </button>
           </div>
+
+          <button
+    type="button"
+    onClick={() => signIn("google", { callbackUrl: "/" })}
+    className="mt-4 flex w-full items-center justify-center rounded-lg border-2 border-gray-300 bg-white py-3 text-black  hover:border-yellow-700 transition duration-500"
+  >
+    <Image
+      src="/icons/google_icon.png"
+      alt="Google logo"
+      width={20}
+      height={20}
+      className="mr-2 h-5 w-5"
+    />
+    Log in met Google
+  </button>
 
           <div className="mt-4 flex w-full items-center gap-1 font-medium">
             Nog geen account? <ArrowRight size={16} />

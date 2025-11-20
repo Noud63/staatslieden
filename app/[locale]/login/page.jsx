@@ -104,7 +104,7 @@ const LoginPage = () => {
 
           <div className="mb-4 mt-4">
             <button
-              className="text-md flex w-full items-center justify-center rounded-lg bg-gradient-to-r from-yellow-900 via-yellow-700 to-yellow-900 py-4 text-white"
+              className="text-md flex w-full items-center justify-center rounded-lg bg-gradient-to-r from-red-950 via-yellow-700 to-red-950 py-4 text-white"
               type="submit"
             >
               <SendHorizontal className="mr-2" /> Log in
@@ -121,7 +121,7 @@ const LoginPage = () => {
       alt="Google logo"
       className="mr-2 h-5 w-5"
     />
-    Sign in with Google
+    Log in met Google
   </button>
 
           <div className="mt-4 flex w-full items-center gap-1 font-medium">

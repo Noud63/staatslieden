@@ -43,10 +43,13 @@ export async function GET(req, { params }) {
     const postComments = await postWithComments(post, currentUserId, avatarMap, likedPosts);
 
     return NextResponse.json(postComments, { status: 200 });
+
   } catch (error) {
+
     return NextResponse.json(
       { message: "Error fetching post", error },
       { status: 500 },
     );
+    
   }
 }

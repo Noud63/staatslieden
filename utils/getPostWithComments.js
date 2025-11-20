@@ -63,14 +63,6 @@ export async function postWithComments(post, currentUserId, avatarMap, likedPost
     { $sort: { createdAt: -1 } },
   ]);
 
-  // Post like check
-  // const postLike = await PostLike.findOne({
-  //   postId: post._id,
-  //   userId: currentUserId,
-  // }).lean();
-
-  // Post avatar
-  //const postAvatar = await Avatar.findOne({ userId: post.userId }).select("avatar");
   const postAvatar = avatarMap[post.userId.toString()] || null;
   const postLiked = likedPosts.has(post._id.toString())
 

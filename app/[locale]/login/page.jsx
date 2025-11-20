@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { CircleX } from "lucide-react";
 import { CircleCheckBig } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { useLocale } from "next-intl";
@@ -116,9 +117,11 @@ const LoginPage = () => {
     onClick={() => signIn("google", { callbackUrl: "/" })}
     className="mt-4 flex w-full items-center justify-center rounded-lg border-2 border-gray-300 bg-white py-3 text-black  hover:border-yellow-700 transition duration-500"
   >
-    <img
+    <Image
       src="/icons/google_icon.png"
       alt="Google logo"
+      width={20}
+      height={20}
       className="mr-2 h-5 w-5"
     />
     Log in met Google

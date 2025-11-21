@@ -17,7 +17,7 @@ export const authOptions = {
   },
 
   jwt: {
-    secret: process.env.AUTH_SECRET,
+    secret: process.env.NEXTAUTH_SECRET,
     maxAge: 60 * 60 * 24, // 24 hours
   },
 

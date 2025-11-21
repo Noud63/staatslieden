@@ -8,6 +8,7 @@ import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import clientPromise from "@/lib/db";
 
 export const authOptions = {
+
   adapter: MongoDBAdapter(clientPromise),
 
   session: {
@@ -17,7 +18,7 @@ export const authOptions = {
   },
 
   jwt: {
-    secret: process.env.AUTH_SECRET,
+    secret: process.env.NEXTAUTH_SECRET,
     maxAge: 60 * 60 * 24, // 24 hours
   },
 
@@ -151,6 +152,8 @@ export const authOptions = {
       return true;
     },
 
+
+      //User object is saved to the JWT token
     async jwt({ token, user, account, trigger, session }) {
       if (user) {
         token.username = user.username;
@@ -164,9 +167,9 @@ export const authOptions = {
       return token;
     },
 
-    //Modify the session object
+      //Modify the session object
     async session({ session, token }) {
-      //  NextAuth automatically includes the name property in the session if it exists on the user object
+      // NextAuth automatically includes the name property in the session if it exists on the user object
       // Assign user id to the session
       session.user.id = token.id;
       // Assign username to the session

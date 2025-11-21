@@ -27,6 +27,10 @@ const CommentSchema = new Schema(
   },
   { timestamps: true },
 );
+
+CommentSchema.index({ postId: 1, parentId: 1, createdAt: -1 });
+CommentSchema.index({ userId: 1, createdAt: -1 });
+
 const Comment = models.Comment || model("Comment", CommentSchema);
 
 export default Comment;

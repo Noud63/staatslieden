@@ -26,7 +26,7 @@
     "netcdfjs": "^3.0.0",
     "next": "14.2.5",
     "next-auth": "^4.24.7",
-    "next-intl": "^3.26.0",
+    "next-intl": "^4.5.1",
     "node-mailer": "^0.1.1",
     "photoswipe": "^5.4.4",
     "react": "^18",

@@ -3,7 +3,7 @@ import Comment from "@/models/comment";
 import PostLike from "@/models/postLikes";
 import Avatar from "@/models/avatar";
 
-export async function postWithComments(post, currentUserId) {
+export async function postWithComments(post, currentUserId, avatarMap, likedPosts) {
   if (!post) return null;
 
   // Fetch comments with aggregation pipeline
@@ -63,19 +63,13 @@ export async function postWithComments(post, currentUserId) {
     { $sort: { createdAt: -1 } },
   ]);
 
-  // Post like check
-  const postLike = await PostLike.findOne({
-    postId: post._id,
-    userId: currentUserId,
-  }).lean();
-
-  // Post avatar
-  const postAvatar = await Avatar.findOne({ userId: post.userId }).select("avatar");
+  const postAvatar = avatarMap[post.userId.toString()] || null;
+  const postLiked = likedPosts.has(post._id.toString())
 
   return {
     ...post,
-    avatar: postAvatar ? postAvatar.avatar : null,
+    avatar: postAvatar,
     comments: comments.length > 0 ? comments : [],
-    likedByUser: !!postLike,
+    likedByUser: postLiked,
   };
 }

@@ -10,11 +10,9 @@ import commentIcon from "../assets/icons/comment.png";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import PostCommentForm from "./PostCommentForm";
 import EditCommentForm from "./EditCommentForm";
-import { optimisticCommentLikeUpdate } from "@/utils/optimisticUpdate";
-import { optimisticDeleteComment } from "@/utils/optimisticUpdate";
 import CommentOptions from "./CommentOptions"; // Assuming you have a separate component for comment options
 
-const Comment = ({ comment, postId, parentId, post, onLikeComment, onDeleteComment }) => {
+const Comment = ({ comment, parentId, post, onLikeComment, onDeleteComment }) => {
   const { data: session } = useSession();
 
   const t = useTranslations("auth");
@@ -32,63 +30,6 @@ const Comment = ({ comment, postId, parentId, post, onLikeComment, onDeleteComme
     }
   }, [showForm, showOptions]);
 
-//   const toggleLike = async (commentId) => {
-//     try {
-//       // Optimistically update the UI both for all the post and the post by user
-//       mutate("/api/getposts", optimisticCommentLikeUpdate(commentId), false);
-//       mutate(
-//         `/api/getposts/postsByUserId/${post.userId}`,
-//         optimisticCommentLikeUpdate(commentId),
-//         false,
-//       );
-
-//       const res = await fetch(`/api/comments/${commentId}/like`, {
-//         method: "POST",
-//         headers: { "Content-Type": "application/json" },
-//         body: JSON.stringify({ commentId, postId }),
-//       });
-
-//       if (!res.ok) throw new Error("Failed to update like");
-//       // mutate("/api/posts");
-//     } catch (error) {
-//       console.error(error);
-//     }
-//     await Promise.all([
-//   mutate("/api/getposts"),
-//   mutate(`/api/getposts/postsByUserId/${post.userId}`),
-//    mutatePost?.(),
-// ]);
-
-//   };
-
-//   const deleteComment = async (commentId) => {
-//     // Optimistically update the UI
-//     try {
-//       mutate(
-//         "/api/getposts",
-//         optimisticDeleteComment(postId, commentId),
-//         false,
-//       );
-
-//       mutate(
-//         `/api/getposts/postsByUserId/${post.userId}`,
-//         optimisticDeleteComment(postId, commentId),
-//         false,
-//       );
-//       const res = await fetch(`/api/deleteComment/${commentId}`, {
-//         method: "DELETE",
-//       });
-
-//       const data = await res.json();
-
-//       if (res.ok) {
-//         console.log(data.message);
-//       }
-//     } catch (error) {
-//       console.log(data.message);
-//       return currentData;
-//     }
-//   };
 
   return (
     <div className="mb-2 flex h-auto w-full gap-2 px-4 max-xxsm:px-2">
@@ -96,7 +37,7 @@ const Comment = ({ comment, postId, parentId, post, onLikeComment, onDeleteComme
         className={`${parentId === null ? "h-[40px] w-[40px]" : "h-[30px] w-[30px]"} flex overflow-hidden rounded-full`}
       >
         <Image
-          src={comment.avatar ? comment.avatar : "/images/defaultAvatar2.png"}
+          src={comment.avatar ? comment.avatar : "/images/defaultAvatar1.png"}
           alt="icon"
           width={100}
           height={100}
@@ -110,6 +51,7 @@ const Comment = ({ comment, postId, parentId, post, onLikeComment, onDeleteComme
             <EditCommentForm
               comment={comment}
               setShowEditComment={setShowEditComment}
+              post={post}
             />
           )}
         </div>

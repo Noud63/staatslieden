@@ -149,6 +149,34 @@ const optimisticDeleteCommentSinglePost = (commentId) => (currentData) => {
   };
 };
 
+// For all posts (feed or posts by user id)
+const optimisticCommentEditUpdate = (commentId, newContent) => (currentData) => {
+  if (!currentData) return currentData;
+
+  return currentData.map((post) => ({
+    ...post,
+    comments: post.comments.map((comment) =>
+      comment._id === commentId
+        ? { ...comment, comment: newContent }
+        : comment
+    ),
+  }));
+};
+
+// For single post view
+const optimisticCommentEditUpdateSinglePost = (commentId, newContent) => (currentData) => {
+  if (!currentData) return currentData;
+
+  return {
+    ...currentData,
+    comments: currentData.comments.map((comment) =>
+      comment._id === commentId
+        ? { ...comment, comment: newContent }
+        : comment
+    ),
+  };
+};
+
 export {
   optimisticPostLikeUpdate,
   optimisticCommentLikeUpdate,
@@ -159,4 +187,6 @@ export {
   optimisticAddComment,
   optimisticPostLikeUpdateSinglePost,
   optimisticDeleteCommentSinglePost,
+  optimisticCommentEditUpdate,
+  optimisticCommentEditUpdateSinglePost
 };

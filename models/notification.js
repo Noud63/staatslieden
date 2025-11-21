@@ -11,5 +11,7 @@ const notificationSchema = new Schema({
   createdAt: { type: Date, default: Date.now }
 });
 
+notificationSchema.index({ recipient: 1, createdAt: -1 }); // latest notifications for a user
+
 const Notification = models.Notification || model("Notification", notificationSchema);
 export default Notification;

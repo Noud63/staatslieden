@@ -10,7 +10,9 @@ import {
   optimisticDeleteCommentSinglePost,
   optimisticDeletePost,
   optimisticDeleteSinglePost,
-  optimisticAddComment
+  optimisticAddComment,
+  optimisticCommentEditUpdate,
+  optimisticCommentEditUpdateSinglePost
 } from "@/utils/optimisticUpdate";
 
 export function usePostActions(postOrPosts) {
@@ -99,6 +101,8 @@ export function usePostActions(postOrPosts) {
       ]);
 };
 
+
+//ADD COMMENT
  const addComment = (post, postId, tempComment) => {
     if (!post || !postId) return;
 
@@ -107,6 +111,8 @@ export function usePostActions(postOrPosts) {
     mutate(`/api/getSinglePost/${postId}`, optimisticAddComment(postId, tempComment), false);
   };
 
+
+  // DELETE POST
 const deletePost = async (postId, userId) => {
   try {
     // Optimistic updates
@@ -132,6 +138,35 @@ const deletePost = async (postId, userId) => {
   }
 };
 
+// EDIT COMMENT
+const editComment = async (commentId, post, formData, newContent) => {
+    const postId = post._id;
 
-  return { likePost, likeComment, addComment, deleteComment, deletePost };
+    // Optimistic UI update
+    mutate("/api/getposts", optimisticCommentEditUpdate(commentId, newContent), false);
+    mutate(`/api/getposts/postsByUserId/${post.userId}`, optimisticCommentEditUpdate(commentId, newContent), false);
+    mutate(`/api/getSinglePost/${postId}`, optimisticCommentEditUpdateSinglePost(commentId, newContent), false);
+
+    try {
+      // ✅ Send FormData directly (do NOT set Content-Type manually!)
+      const res = await fetch(`/api/editComment/${commentId}`, {
+        method: "PUT",
+        body: formData,
+      });
+
+      if (!res.ok) throw new Error("Failed to edit comment");
+
+      // ✅ Revalidate after success
+      await Promise.all([
+        mutate("/api/getposts"),
+        mutate(`/api/getposts/postsByUserId/${post.userId}`),
+        mutate(`/api/getSinglePost/${postId}`),
+      ]);
+    } catch (err) {
+      console.error("Edit comment failed:", err);
+    }
+  };
+
+
+  return { likePost, likeComment, addComment, deleteComment, deletePost, editComment };
 }

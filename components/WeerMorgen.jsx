@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import convertSunsetAndSunrise from "@/helper/convertSunsetAndSunrise";
+import { useTranslations } from "next-intl";
 
 const WeerMorgen = ({ data2, sunMoon, tomorrow }) => {
 
-  console.log("data2", data2);  
+  // console.log("data2", data2);  
 
   const now = new Date();
   const options = {
@@ -15,6 +16,9 @@ const WeerMorgen = ({ data2, sunMoon, tomorrow }) => {
 
   const nextDay = tomorrow.toLocaleDateString("nl-NL").split("-")[0];
   const nextMonth = tomorrow.toLocaleDateString("nl-NL", { month: "short" });
+
+   const t = useTranslations("weer")
+  
 
   const [data, setData] = useState({});
 
@@ -79,13 +83,13 @@ const WeerMorgen = ({ data2, sunMoon, tomorrow }) => {
 
       <div className="mb-4 mt-4 grid w-full grid-cols-3 grid-rows-2 bg-white text-yellow-900">
         <div className="flex items-center justify-center py-2 text-white max-lg:bg-[#662909] bg-yellow-800">
-          druk
+           {t('druk')}
         </div>
         <div className="cell flex items-center justify-center text-white max-lg:bg-[#662909] bg-yellow-800">
-          zicht
+           {t('zicht')}
         </div>
         <div className="cell flex items-center justify-center text-white max-lg:bg-[#662909] bg-yellow-800">
-          Vocht
+           {t('vocht')}
         </div>
         <div className="flex items-center justify-center border-b border-l border-yellow-800">
           {data2.pressure} hPa
@@ -100,7 +104,7 @@ const WeerMorgen = ({ data2, sunMoon, tomorrow }) => {
 
       <div className="my-8 flex flex-row justify-between font-semibold">
         <div className="flex w-1/3 flex-col items-center justify-center gap-4">
-          <span className="text-lg">Zon op</span>
+          <span className="text-lg"> {t('zonop')}</span>
           <Image
             src="/icons/sun.png"
             width={35}
@@ -108,7 +112,7 @@ const WeerMorgen = ({ data2, sunMoon, tomorrow }) => {
             alt=""
             className="w-auto drop-shadow-[0_2px_4px_rgba(113,63,18,1)]"
           />
-          <span>{data.sunrise} uur</span>
+          <span>{data.sunrise}  {t('uur')}</span>
         </div>
 
         <div className="flex h-[135px] w-1/5 flex-col items-center justify-between">
@@ -123,7 +127,7 @@ const WeerMorgen = ({ data2, sunMoon, tomorrow }) => {
           </span>
         </div>
         <div className="flex w-1/3 flex-col items-center justify-center gap-4">
-          <span className="text-lg">Zon onder</span>
+          <span className="text-lg"> {t('zononder')}</span>
           <Image
             src="/icons/moon.png"
             width={35}
@@ -131,7 +135,7 @@ const WeerMorgen = ({ data2, sunMoon, tomorrow }) => {
             alt=""
             className="w-auto drop-shadow-[0_2px_4px_rgba(113,63,18,1)]"
           />
-          <span>{data.sunset} uur</span>
+          <span>{data.sunset}  {t('uur')}</span>
         </div>
       </div>
     </div>

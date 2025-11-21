@@ -42,7 +42,7 @@ export const PUT = async (request, { params }) => {
     console.log("Updated Post:", updatedPost);  
 
     return new Response(
-      JSON.stringify({ message: "Comment updated successfully!" }),
+      JSON.stringify(updatedPost, { message: "Comment updated successfully!" }, {status: 200}),
       { status: 200 }
     );
   } catch (error) {

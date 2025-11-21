@@ -4,13 +4,17 @@ import { IoMdCloseCircleOutline } from "react-icons/io";
 import { IoSendSharp } from "react-icons/io5";
 import { mutate } from "swr";
 import { useTranslations } from 'next-intl';
+import { usePostActions } from "@/hooks/usePostActions";
 
-const EditCommentForm = ({comment, setShowEditComment}) => {
+const EditCommentForm = ({comment, setShowEditComment, post}) => {
+  
   const [commentContent, setCommentContent] = useState(comment?.comment);
 
   const textareaRef = useRef(null);
 
   const t = useTranslations("auth");  
+
+  let { editComment, deleteComment } = usePostActions()
 
   const updatedData = {
     commentContent,
@@ -37,29 +41,18 @@ const EditCommentForm = ({comment, setShowEditComment}) => {
   const handleEditPost = async (e) => {
     e.preventDefault();
 
+  console.log("Data:", commentContent)
+  
+  if(commentContent === ""){
+     await deleteComment(comment._id, post)
+  }
     const formData = new FormData(e.target);
+    formData.append("commentContent", commentContent);
 
-    formData.append("commentContent", updatedData.commentContent);
+    // Optimistic + actual update
+    await editComment(comment._id, post, formData, commentContent);
 
-    console.log("FormData", formData);
-
-    try {
-      const res = await fetch(`/api/editComment/${comment._id}`, {
-        method: "PUT",
-        body: formData,
-      });
-
-      const data = await res.json();
-
-      if (res.status === 200) {
-        console.log(data.message);
-        setShowEditComment(false);
-      }
-    } catch (error) {
-      console.log(error);
-      console.log(data.message);
-    }
-    mutate("/api/posts");
+    setShowEditComment(false);
   };
 
   return (
@@ -73,7 +66,7 @@ const EditCommentForm = ({comment, setShowEditComment}) => {
               name="commentContent"
               defaultValue={commentContent}
               onChange={(e) => setCommentContent(e.target.value)}
-              className="max-h-[500px] w-full resize-none rounded-xl bg-transparent py-2 pr-10 text-base placeholder-gray-500 outline-none"
+              className="max-h-[500px] w-full resize-none rounded-xl bg-transparent py-2 pr-10 text-black text-base placeholder-gray-500 outline-none"
             />
           </div>
 

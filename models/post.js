@@ -29,6 +29,9 @@ const PostSchema = new Schema(
   { timestamps: true },
 );
 
+PostSchema.index({ createdAt: -1 });                    // latest posts first
+PostSchema.index({ userId: 1, createdAt: -1 });        // posts by user, newest first
+
 const Post = models.Post || model("Post", PostSchema);
 
 export default Post;

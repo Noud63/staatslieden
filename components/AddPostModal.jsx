@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useRef } from "react";
 import { IoMdCloseCircleOutline } from "react-icons/io";
+import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { IoWarningOutline } from "react-icons/io5";
 import { mutate } from "swr";
@@ -9,6 +10,8 @@ const AddPostModal = ({ inView, setInView }) => {
   const [newFiles, setNewFiles] = useState({ images: [] });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+
+  const t = useTranslations("schrijfbericht");
 
   const router = useRouter();
   const imageRef = useRef(null);
@@ -84,7 +87,7 @@ const AddPostModal = ({ inView, setInView }) => {
       <div className="fixed bottom-0 left-0 right-0 top-0 z-[999] flex w-full items-center justify-center overflow-y-auto bg-yellow-950/70">
         <div className="postmodal mx-4 mt-4 max-h-screen w-full max-w-[500px] overflow-y-auto rounded-lg bg-white p-4 shadow-md max-xsm:mx-2">
           <div className="flex w-full flex-row items-center justify-between border-b border-gray-300 pb-2">
-            <div className="text-lg font-semibold">Schrijf een bericht</div>
+            <div className="text-lg font-semibold">{t('bericht')}</div>
             <div className="cursor-pointer" onClick={closeModal}>
               <IoMdCloseCircleOutline size={35} color={"#854d0e"} />
             </div>
@@ -100,7 +103,7 @@ const AddPostModal = ({ inView, setInView }) => {
               // required
             />
 
-            <span className="pb-2">Voeg een afbeelding toe:</span>
+            <span className="pb-2">{t('afbeelding')}</span>
 
             <div className="mt-2">
               <input
@@ -144,7 +147,7 @@ const AddPostModal = ({ inView, setInView }) => {
                 <IoWarningOutline size={20} color="darkred" className="mr-2" />
                 <span className="text-red-800">
                   {" "}
-                  Geen text of afbeelding geselecteerd!
+                  {t('error')}
                 </span>
               </div>
             )}
@@ -153,7 +156,7 @@ const AddPostModal = ({ inView, setInView }) => {
               type="submit"
               className="flex w-full justify-center rounded-lg bg-gradient-to-r from-yellow-950 via-yellow-700 to-yellow-950 py-3 text-lg text-white"
             >
-              {loading ? <span>....even geduld!</span> : "Plaatsen"}
+              {loading ? <span>....even geduld!</span> : <span>{t('verstuur')}</span>}
             </button>
           </form>
         </div>

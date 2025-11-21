@@ -35,7 +35,7 @@ const AddPost = () => {
       <section className="singlepost mx-auto flex w-full max-w-[620px] justify-between rounded-lg bg-white px-4 py-4 max-xsm:py-3">
         <div className="flex w-full flex-row items-center gap-4">
           <Image
-            src={profilePic ? profilePic : "/images/defaultAvatar2.png"}
+            src={profilePic ? profilePic : "/images/defaultAvatar1.png"}
             alt="icon"
             width={0}
             height={0}

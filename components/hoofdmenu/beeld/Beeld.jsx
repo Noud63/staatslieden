@@ -25,12 +25,16 @@ const Beeld = () => {
 
   return (
     <>
-      <div className="text-lg font-semibold tracking-wide">
-        <div className="flex w-full items-center gap-2 rounded-md bg-white py-2 pl-4 text-yellow-950 max-xsm:text-base">
+    <div className="flex justify-center border-b-2 text-2xl font-semibold tracking-wide mt-8 max-sm:text-xl ">
+        <span className="px-4 pb-4">{t("titel")}</span>
+        <span className="max-sm:hidden">{t("1900heden")}</span>
+      </div>
+      {/* <div className="text-lg font-semibold tracking-wide mt-4">
+        <div className="flex w-full items-center gap-2 rounded-md bg-yellow-700 border-b border-yellow-800 py-2 pl-4 text-white max-xsm:text-base">
           <span>{t("titel")}</span>
           <span className="max-xsm:hidden">{t("1900heden")}</span>
         </div>
-      </div>
+      </div> */}
       <div className="mt-4 grid grid-cols-[repeat(auto-fill,_minmax(260px,_1fr))] gap-2">
         {sortedImages.map((image, index) => (
           <div
@@ -49,7 +53,7 @@ const Beeld = () => {
                 onClick={() => setOpen(true)}
               />
             </div>
-            <div className="absolute bottom-0 left-0 right-0 p-4 text-center text-sm text-white">
+            <div className="absolute bottom-4 left-4 right-4 px-4 py-2 text-center text-sm text-yellow-800 font-semibold bg-white">
               {image.info}
             </div>
           </div>

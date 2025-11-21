@@ -12,7 +12,7 @@ const url = `https://api.sunrisesunset.io/json?lat=${latitude}&lng=${longitude}&
 const getSunriseAndSunset = async () => {
     const res = await fetch(url);
     const data = await res.json()
-    console.log(data)
+    // console.log(data)
     return data
 };
 

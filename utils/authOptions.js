@@ -2,7 +2,6 @@ import connectDB from "@/connectDB/database";
 import GoogleProvider from "next-auth/providers/google";
 import User from "@/models/User";
 import CredentialsProvider from "next-auth/providers/credentials";
-// import EmailProvider from "next-auth/providers/email";
 import bcrypt from "bcrypt";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import clientPromise from "@/lib/db";
